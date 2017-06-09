@@ -8,19 +8,27 @@
 
 #import "AMPSquareView.h"
 
+#import "AMPRandom.h"
 #import "AMPMarcos.h"
 
+static const NSUInteger     AMPSquarePositionCount      = AMPSquarePositionBottomLeft + 1;
 static const NSTimeInterval AMPDefaultAnimationDuration = 0.5;
 static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
 
 @interface AMPSquareView ()
-@property (nonatomic, assign, getter=isAllowAnimations) BOOL    allowAnimations;
+@property (nonatomic, assign, getter=isStarted)    BOOL    started;
 
-- (CGPoint)squareOriginWithPosition:(AMPSquarePosition)squarePosition;
-- (CGRect)squareFrameWithPosition:(AMPSquarePosition)squarePosition;
+@property (nonatomic, assign, getter=isAllowBeginChangePosition)    BOOL    allowBeginChangePosition;
+
+- (CGPoint)squareOriginWithPosition:(AMPSquarePosition)position;
+- (CGRect)squareFrameWithPosition:(AMPSquarePosition)position;
 
 - (AMPSquarePosition)nextPosition;
+- (AMPSquarePosition)randomPosition;
+
 - (void)cyclicallyChangePosition;
+
+- (BOOL)shouldChangePosition;
 
 @end
 
@@ -28,16 +36,6 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
 
 #pragma mark -
 #pragma mark Accessors
-
-- (void)setAllowAnimations:(BOOL)allowAnimations {
-    if (_allowAnimations != allowAnimations) {
-        _allowAnimations = allowAnimations;
-        
-        if (_allowAnimations) {
-            [self cyclicallyChangePosition];
-        }
-    }
-}
 
 - (void)setSquarePosition:(AMPSquarePosition)position {
     [self setSquarePosition:position animated:NO];
@@ -51,11 +49,7 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
                  animated:(BOOL)animated
         completionHanfler:(void (^)(void))handler
 {
-    if (!self.isAllowAnimations) {
-        return;
-    }
-    
-    [UIView animateWithDuration:AMPDefaultAnimationDuration
+    [UIView animateWithDuration:animated ? AMPDefaultAnimationDuration : 0
                           delay:AMPDefaultAnimationDelay
                         options:UIViewAnimationCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState
                      animations:^{
@@ -63,7 +57,7 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
                      }
                      completion:^(BOOL finished) {
                          _squarePosition = position;
-                         
+                    
                          if (handler) {
                              handler();
                          }
@@ -73,14 +67,14 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
 #pragma mark -
 #pragma mark - Public Methods
 
-- (void)randomSquarePosition {
-    AMPSquarePosition randomPosition = arc4random_uniform(AMPSquarePositionBottomLeft + 1);
-    
-    [self setSquarePosition:randomPosition animated:YES];
+- (void)moveToRandomPosition {
+    [self setSquarePosition:[self randomPosition] animated:YES];
 }
 
 - (void)performRepeatedAnimations {
-    self.allowAnimations = !self.allowAnimations;
+    self.allowBeginChangePosition = !self.isAllowBeginChangePosition;
+    
+    [self cyclicallyChangePosition];
 }
 
 #pragma mark -
@@ -89,25 +83,28 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
 - (CGPoint)squareOriginWithPosition:(AMPSquarePosition)position {
     CGRect squareViewFrame = self.bounds;
     CGRect squareFrame = self.square.frame;
+
+    CGPoint point = squareViewFrame.origin;
+    CGPoint bottomRightPoint = CGPointMake(CGMaxX(squareViewFrame) - CGWidth(squareFrame),
+                                           CGMaxY(squareViewFrame) - CGHeight(squareFrame));
+    
     switch (position) {
-        case AMPSquarePositionTopLeft:
-            return CGPointZero;
-            
         case AMPSquarePositionTopRight:
-            return CGPointMake(CGRectGetMaxX(squareViewFrame) - CGRectGetWidth(squareFrame),
-                               CGRectGetMinY(squareViewFrame));
+            point.x = bottomRightPoint.x;
+            break;
             
         case AMPSquarePositionBottomRight:
-            return CGPointMake(CGRectGetMaxX(squareViewFrame) - CGRectGetWidth(squareFrame),
-                               CGRectGetMaxY(squareViewFrame) - CGRectGetHeight(squareFrame));
+            point = bottomRightPoint;
+            break;
             
         case AMPSquarePositionBottomLeft:
-            return CGPointMake(CGRectGetMinX(squareViewFrame),
-                               CGRectGetMaxY(squareViewFrame) - CGRectGetHeight(squareFrame));
+            point.y = bottomRightPoint.y;
             
         default:
-            return CGPointZero;
+            break;
     }
+    
+    return point;
 }
 
 - (CGRect)squareFrameWithPosition:(AMPSquarePosition)position {
@@ -117,18 +114,28 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
     return squareFrame;
 }
 
-- (void)cyclicallyChangePosition {
-    AMPWeakify(self);
-    [self setSquarePosition:[self nextPosition] animated:YES completionHanfler:^{
-        AMPStrongify(self);
-        [self cyclicallyChangePosition];
-    }];
+- (AMPSquarePosition)nextPosition {
+    return (self.squarePosition + 1) % AMPSquarePositionCount;
 }
 
-- (AMPSquarePosition)nextPosition {
-    AMPSquarePosition currentPosition = self.squarePosition;
-    
-    return ++currentPosition % (AMPSquarePositionBottomLeft + 1);
+- (AMPSquarePosition)randomPosition {
+    return AMPRandomValueUntilLocation(AMPSquarePositionCount);
+}
+
+- (void)cyclicallyChangePosition {
+    if ([self shouldChangePosition]) {
+        AMPWeakify(self);
+        self.started = YES;
+        [self setSquarePosition:[self nextPosition] animated:YES completionHanfler:^{
+            AMPStrongifyAndReturnIfNil(self);
+            self.started = NO;
+            [self cyclicallyChangePosition];
+        }];
+    }
+}
+
+- (BOOL)shouldChangePosition {
+    return !self.started && self.isAllowBeginChangePosition;
 }
 
 @end

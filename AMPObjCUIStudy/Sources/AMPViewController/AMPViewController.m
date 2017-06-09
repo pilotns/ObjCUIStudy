@@ -38,18 +38,7 @@
 }
 
 - (IBAction)onRandom:(UIButton *)sender {
-    [self.squareView randomSquarePosition];
-}
-
-#pragma mark -
-#pragma mark View Lifecycle
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    [self.squareView moveToRandomPosition];
 }
 
 @end

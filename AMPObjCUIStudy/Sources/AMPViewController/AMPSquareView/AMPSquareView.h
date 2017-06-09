@@ -19,13 +19,12 @@ typedef NS_ENUM(NSUInteger, AMPSquarePosition) {
 @property (nonatomic, strong)   IBOutlet    UIView  *square;
 @property (nonatomic, assign)   AMPSquarePosition   squarePosition;
 
-- (void)setSquarePosition:(AMPSquarePosition)position;
 - (void)setSquarePosition:(AMPSquarePosition)position animated:(BOOL)animated;
 - (void)setSquarePosition:(AMPSquarePosition)position
                  animated:(BOOL)animated
         completionHanfler:(void (^)(void))handler;
 
-- (void)randomSquarePosition;
+- (void)moveToRandomPosition;
 - (void)performRepeatedAnimations;
 
 @end
