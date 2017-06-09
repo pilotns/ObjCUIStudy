@@ -10,6 +10,8 @@
 
 #import "AMPViewController.h"
 
+#import "UIWindow+AMPExtensions.h"
+
 @interface AMPAppDelegate ()
 
 @end
@@ -18,12 +20,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    UIWindow *window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     AMPViewController *controller = [AMPViewController new];
-    window.rootViewController = controller;
-    
-    [window makeKeyAndVisible];
-    self.window = window;
+    self.window = [UIWindow windowForMainScreenWithRootViewController:controller];
     
     return YES;
 }
