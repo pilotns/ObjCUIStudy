@@ -36,6 +36,7 @@
 		8A4E55C11EE19CFD007B5B51 /* AMPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPViewController.xib; sourceTree = "<group>"; };
 		8A4E55D01EE19F00007B5B51 /* AMPSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPSquareView.h; sourceTree = "<group>"; };
 		8A4E55D11EE19F00007B5B51 /* AMPSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPSquareView.m; sourceTree = "<group>"; };
+		8ACB3E741EEAE742004A8B89 /* AMPCGShortCuts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPCGShortCuts.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +57,7 @@
 				8A248B211EE2E1410039958F /* AMPRandom.h */,
 				8A248B221EE2E1410039958F /* AMPRandom.m */,
 				8A248B191EE1AC000039958F /* AMPMarcos.h */,
+				8ACB3E741EEAE742004A8B89 /* AMPCGShortCuts.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";
