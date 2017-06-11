@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A248B231EE2E1410039958F /* AMPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A248B221EE2E1410039958F /* AMPRandom.m */; };
 		8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */; };
 		8A4E55B81EE19B28007B5B51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55B11EE19B28007B5B51 /* main.m */; };
 		8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */; };
 		8A4E55BD1EE19C02007B5B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55B31EE19B28007B5B51 /* Assets.xcassets */; };
+		8A4E55C21EE19CFD007B5B51 /* AMPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55C01EE19CFD007B5B51 /* AMPViewController.m */; };
+		8A4E55C31EE19CFD007B5B51 /* AMPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55C11EE19CFD007B5B51 /* AMPViewController.xib */; };
+		8A4E55D21EE19F00007B5B51 /* AMPSquareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55D11EE19F00007B5B51 /* AMPSquareView.m */; };
+		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A248B191EE1AC000039958F /* AMPMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMarcos.h; sourceTree = "<group>"; };
+		8A248B211EE2E1410039958F /* AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPRandom.h; sourceTree = "<group>"; };
+		8A248B221EE2E1410039958F /* AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPRandom.m; sourceTree = "<group>"; };
 		8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMPObjCUIStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E55AE1EE19B28007B5B51 /* AMPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPAppDelegate.h; sourceTree = "<group>"; };
 		8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPAppDelegate.m; sourceTree = "<group>"; };
@@ -21,6 +29,14 @@
 		8A4E55B11EE19B28007B5B51 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A4E55B31EE19B28007B5B51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A4E55B51EE19B28007B5B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A4E55BF1EE19CFD007B5B51 /* AMPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPViewController.h; sourceTree = "<group>"; };
+		8A4E55C01EE19CFD007B5B51 /* AMPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPViewController.m; sourceTree = "<group>"; };
+		8A4E55C11EE19CFD007B5B51 /* AMPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPViewController.xib; sourceTree = "<group>"; };
+		8A4E55D01EE19F00007B5B51 /* AMPSquareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPSquareView.h; sourceTree = "<group>"; };
+		8A4E55D11EE19F00007B5B51 /* AMPSquareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPSquareView.m; sourceTree = "<group>"; };
+		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
+		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
+		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,9 +50,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A248B181EE1ABD50039958F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8ACB3E761EEC0632004A8B89 /* Categories */,
+				8A248B211EE2E1410039958F /* AMPRandom.h */,
+				8A248B221EE2E1410039958F /* AMPRandom.m */,
+				8A248B191EE1AC000039958F /* AMPMarcos.h */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		8A4E55881EE19AB4007B5B51 = {
 			isa = PBXGroup;
 			children = (
+				8A248B181EE1ABD50039958F /* Library */,
 				8A4E55AC1EE19AF0007B5B51 /* Sources */,
 				8A4E55B21EE19B28007B5B51 /* Resources */,
 				8A4E55AD1EE19B28007B5B51 /* AMPObjCUIStudy */,
@@ -55,6 +83,7 @@
 		8A4E55AC1EE19AF0007B5B51 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8A4E55BE1EE19CD5007B5B51 /* AMPViewController */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -77,6 +106,44 @@
 				8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8A4E55BE1EE19CD5007B5B51 /* AMPViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A4E55CC1EE19EEB007B5B51 /* AMPSquareView */,
+				8A4E55BF1EE19CFD007B5B51 /* AMPViewController.h */,
+				8A4E55C01EE19CFD007B5B51 /* AMPViewController.m */,
+				8A4E55C11EE19CFD007B5B51 /* AMPViewController.xib */,
+			);
+			path = AMPViewController;
+			sourceTree = "<group>";
+		};
+		8A4E55CC1EE19EEB007B5B51 /* AMPSquareView */ = {
+			isa = PBXGroup;
+			children = (
+				8A4E55D01EE19F00007B5B51 /* AMPSquareView.h */,
+				8A4E55D11EE19F00007B5B51 /* AMPSquareView.m */,
+			);
+			path = AMPSquareView;
+			sourceTree = "<group>";
+		};
+		8ACB3E761EEC0632004A8B89 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8ACB3E781EEC0632004A8B89 /* UIWindow+AMPExtensions */,
+				8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		8ACB3E781EEC0632004A8B89 /* UIWindow+AMPExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */,
+				8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */,
+			);
+			path = "UIWindow+AMPExtensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +207,7 @@
 			files = (
 				8A4E55BD1EE19C02007B5B51 /* Assets.xcassets in Resources */,
 				8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */,
+				8A4E55C31EE19CFD007B5B51 /* AMPViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +219,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
+				8A4E55D21EE19F00007B5B51 /* AMPSquareView.m in Sources */,
+				8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */,
+				8A4E55C21EE19CFD007B5B51 /* AMPViewController.m in Sources */,
+				8A248B231EE2E1410039958F /* AMPRandom.m in Sources */,
 				8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +278,7 @@
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -249,6 +322,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
@@ -266,7 +340,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = AMPObjCUIStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,7 +355,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = AMPObjCUIStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -304,6 +384,7 @@
 				8A4E55AA1EE19AB4007B5B51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
