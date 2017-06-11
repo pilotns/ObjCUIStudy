@@ -10,7 +10,7 @@
 
 @interface UIWindow (AMPExtensions)
 
-+ (instancetype)windowForMainScreen;
-+ (instancetype)windowForMainScreenWithRootViewController:(UIViewController *)controller;
++ (instancetype)window;
++ (instancetype)windowWithRootViewController:(UIViewController *)controller;
 
 @end

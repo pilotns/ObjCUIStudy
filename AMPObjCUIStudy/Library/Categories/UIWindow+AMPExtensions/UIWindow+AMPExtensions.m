@@ -10,12 +10,12 @@
 
 @implementation UIWindow (AMPExtensions)
 
-+ (instancetype)windowForMainScreen {
++ (instancetype)window {
     return [[self alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 }
 
-+ (instancetype)windowForMainScreenWithRootViewController:(UIViewController *)controller {
-    UIWindow *window = [self windowForMainScreen];
++ (instancetype)windowWithRootViewController:(UIViewController *)controller {
+    UIWindow *window = [self window];
     window.rootViewController = controller;
     [window makeKeyAndVisible];
     

@@ -68,7 +68,7 @@ static const NSTimeInterval AMPDefaultAnimationDelay    = 0;
 #pragma mark - Public Methods
 
 - (void)moveToRandomPosition {
-    [self setSquarePosition:[self randomPosition] animated:YES];
+     [self setSquarePosition:[self randomPosition] animated:YES];
 }
 
 - (void)performRepeatedAnimations {

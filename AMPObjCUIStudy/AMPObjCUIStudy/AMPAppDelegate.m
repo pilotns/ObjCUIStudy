@@ -21,7 +21,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     AMPViewController *controller = [AMPViewController new];
-    self.window = [UIWindow windowForMainScreenWithRootViewController:controller];
+    self.window = [UIWindow windowWithRootViewController:controller];
     
     return YES;
 }

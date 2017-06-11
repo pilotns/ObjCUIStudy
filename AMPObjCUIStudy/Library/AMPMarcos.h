@@ -9,7 +9,7 @@
 #ifndef AMPMarcos_h
 #define AMPMarcos_h
 
-#import "AMPCGShortCuts.h"
+#import "CGGeometry+AMPExtensions.h"
 
 #define AMPPragmaDiagnosticPushWshadow \
     _Pragma("clang diagnostic push"); \
