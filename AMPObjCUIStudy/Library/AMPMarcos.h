@@ -11,6 +11,10 @@
 
 #import "CGGeometry+AMPExtensions.h"
 
+#define AMPPragmaDiagnosticPushSelectorLeak \
+    _Pragma("clang diagnostic push"); \
+    _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\""); 
+
 #define AMPPragmaDiagnosticPushWshadow \
     _Pragma("clang diagnostic push"); \
     _Pragma("clang diagnostic ignored \"-Wshadow\"");
