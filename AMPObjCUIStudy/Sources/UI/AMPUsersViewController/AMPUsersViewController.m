@@ -8,12 +8,15 @@
 
 #import "AMPUsersViewController.h"
 
+#import "AMPUsersView.h"
 #import "AMPUsersModel.h"
-#import "AMPUser.h"
+#import "AMPUserCell.h"
 
-@interface AMPUsersViewController ()
+#import "AMPMarcos.h"
 
-@end
+#import "UITableView+AMPExtensions.h"
+
+AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
 @implementation AMPUsersViewController
 
@@ -25,24 +28,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier =  @"cell";
+    AMPUserCell *userCell = [tableView cellWithClass:[AMPUserCell class]];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    userCell.user = self.users[indexPath.row];
     
-    cell.textLabel.text = [self.users userAtIndex:indexPath.row].fullName;
-    
-    return cell;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    return userCell;
 }
 
 @end

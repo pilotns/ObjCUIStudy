@@ -25,15 +25,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="URd-Li-3nq">
-                        <rect key="frame" x="0.0" y="0.0" width="71" height="43"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="URd-Li-3nq">
+                        <rect key="frame" x="8" y="0.0" width="63" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="fullName" destination="PVO-gE-AMr" id="n1v-vf-p8b"/>
-                <outlet property="userImage" destination="URd-Li-3nq" id="rWj-MV-BSF"/>
+                <outlet property="fullNameLable" destination="PVO-gE-AMr" id="s3E-tF-I8F"/>
+                <outlet property="userImageView" destination="URd-Li-3nq" id="0zg-HJ-9Rr"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="54"/>
         </tableViewCell>

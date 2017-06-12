@@ -40,7 +40,7 @@
 }
 
 - (UIImage *)image {
-    return nil;
+    return [UIImage imageNamed:@"vw.jpg"];
 }
 
 @end
