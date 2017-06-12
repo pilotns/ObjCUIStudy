@@ -10,8 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, AMPUsersModelChangesType) {
     AMPUsersModelChangesTypeAdd,
-    AMPUsersModelChangesTypeRemove,
-    AMPUsersModelChangesTypeExchange
+    AMPUsersModelChangesTypeRemove
 };
 
 @class AMPUsersModelChangesInfo;
@@ -36,7 +35,11 @@ typedef NS_ENUM(NSUInteger, AMPUsersModelChangesType) {
 - (void)removeUsers:(id<NSFastEnumeration>)users;
 - (void)removeUserAtIndex:(NSUInteger)index;
 
+- (void)moveUserAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex;
+
 - (AMPUser *)userAtIndex:(NSUInteger)index;
 - (AMPUser *)objectAtIndexedSubscript:(NSUInteger)index;
+
+- (NSUInteger)indexOfUser:(AMPUser *)user;
 
 @end

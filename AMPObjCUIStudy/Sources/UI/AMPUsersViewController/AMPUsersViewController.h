@@ -13,4 +13,7 @@
 @interface AMPUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)   AMPUsersModel   *users;
 
+- (IBAction)onAdd:(UIBarButtonItem *)sender;
+- (IBAction)onEdit:(UIBarButtonItem *)sender;
+
 @end

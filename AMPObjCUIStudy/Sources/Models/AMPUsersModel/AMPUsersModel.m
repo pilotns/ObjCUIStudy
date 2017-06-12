@@ -11,8 +11,10 @@
 #import "AMPUser.h"
 
 #import "NSArray+AMPExtensions.h"
+#import "NSIndexPath+AMPExtensions.h"
+#import "AMPUsersModelChangesInfo.h"
 
-static const NSUInteger AMPDefaultUsersCount = 500;
+static const NSUInteger AMPDefaultUsersCount = 5;
 
 @interface AMPUsersModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableUsers;
@@ -51,9 +53,7 @@ static const NSUInteger AMPDefaultUsersCount = 500;
 #pragma mark Public Methods
 
 - (void)addUser:(AMPUser *)user {
-    if (user) {
-        [self.mutableUsers addObject:user];
-    }
+    [self insertUser:user atIndex:self.count];
 }
 
 - (void)addUsers:(id<NSFastEnumeration>)users {
@@ -65,11 +65,22 @@ static const NSUInteger AMPDefaultUsersCount = 500;
 - (void)insertUser:(AMPUser *)user atIndex:(NSUInteger)index {
     if (user && index <= self.count) {
         [self.mutableUsers insertObject:user atIndex:index];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index];
+        AMPUsersModelChangesInfo *info = [AMPUsersModelChangesInfo changesInfoWithIndexPath:indexPath
+                                                                                       type:AMPUsersModelChangesTypeAdd];
+        
+        [self setState:AMPUsersModelChangesTypeAdd userInfo:info];
     }
 }
 
 - (void)removeUser:(AMPUser *)user {
-    [self.mutableUsers removeObject:user];
+    NSUInteger index = [self indexOfUser:user];
+    if (index == NSNotFound) {
+        return;
+    }
+    
+    [self removeUserAtIndex:index];
 }
 
 - (void)removeUsers:(id<NSFastEnumeration>)users {
@@ -80,8 +91,20 @@ static const NSUInteger AMPDefaultUsersCount = 500;
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     if (index <= self.count) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index];
+        AMPUsersModelChangesInfo *info = [AMPUsersModelChangesInfo changesInfoWithIndexPath:indexPath
+                                                                                       type:AMPUsersModelChangesTypeRemove];
+        
         [self.mutableUsers removeObjectAtIndex:index];
+        
+        [self setState:AMPUsersModelChangesTypeRemove userInfo:info];
     }
+}
+
+- (void)moveUserAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex {
+    AMPUser *user = [self userAtIndex:sourceIndex];
+    [self.mutableUsers removeObjectAtIndex:sourceIndex];
+    [self.mutableUsers insertObject:user atIndex:destinationIndex];
 }
 
 - (AMPUser *)userAtIndex:(NSUInteger)index {
@@ -94,6 +117,17 @@ static const NSUInteger AMPDefaultUsersCount = 500;
 
 - (AMPUser *)objectAtIndexedSubscript:(NSUInteger)index {
     return [self userAtIndex:index];
+}
+
+- (NSUInteger)indexOfUser:(AMPUser *)user {
+    return [self.mutableUsers indexOfObject:user];
+}
+
+#pragma mark -
+#pragma mark AMPObservableObject
+
+- (SEL)selectorForState:(NSUInteger)state {
+    return @selector(usersModel:didChangeStateWithInfo:);
 }
 
 @end

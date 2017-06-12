@@ -48,9 +48,9 @@
     @synchronized (self) {
         if (_state != state) {
             _state = state;
-            
-            [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
         }
+        
+        [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
     }
 }
 

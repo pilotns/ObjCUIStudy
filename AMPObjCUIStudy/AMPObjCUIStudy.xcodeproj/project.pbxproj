@@ -20,7 +20,7 @@
 		8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99C31EEEAC7E00B939B1 /* UITableView+AMPExtensions.m */; };
 		8A8E99C71EEEAF4900B939B1 /* vw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E99C61EEEAF4900B939B1 /* vw.jpg */; };
 		8A8E99CB1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99CA1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m */; };
-		8A8E99CE1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99CD1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.m */; };
+		8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
 		8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */; };
@@ -61,8 +61,8 @@
 		8A8E99C61EEEAF4900B939B1 /* vw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vw.jpg; sourceTree = "<group>"; };
 		8A8E99C91EEEBB1700B939B1 /* AMPUsersModelChangesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModelChangesInfo.h; sourceTree = "<group>"; };
 		8A8E99CA1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModelChangesInfo.m; sourceTree = "<group>"; };
-		8A8E99CC1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.h"; sourceTree = "<group>"; };
-		8A8E99CD1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.m"; sourceTree = "<group>"; };
+		8A8E99D01EEEC21500B939B1 /* NSIndexPath+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+AMPExtensions.h"; sourceTree = "<group>"; };
+		8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+AMPExtensions.m"; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -104,9 +104,9 @@
 		8A248B181EE1ABD50039958F /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				8A8E99AF1EEEA0A200B939B1 /* AMPTableViewCell */,
-				8ACB3EA81EEE8EAA004A8B89 /* AMPObservableObject */,
 				8ACB3E761EEC0632004A8B89 /* Categories */,
+				8ACB3EA81EEE8EAA004A8B89 /* AMPObservableObject */,
+				8A8E99AF1EEEA0A200B939B1 /* AMPTableViewCell */,
 				8A248B211EE2E1410039958F /* AMPRandom.h */,
 				8A248B221EE2E1410039958F /* AMPRandom.m */,
 				8A248B191EE1AC000039958F /* AMPMarcos.h */,
@@ -222,15 +222,23 @@
 			children = (
 				8A8E99C91EEEBB1700B939B1 /* AMPUsersModelChangesInfo.h */,
 				8A8E99CA1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m */,
-				8A8E99CC1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.h */,
-				8A8E99CD1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.m */,
 			);
 			path = AMPUsersModelChangesInfo;
+			sourceTree = "<group>";
+		};
+		8A8E99CF1EEEC1F000B939B1 /* NSIndexPath+AMPExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99D01EEEC21500B939B1 /* NSIndexPath+AMPExtensions.h */,
+				8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */,
+			);
+			path = "NSIndexPath+AMPExtensions";
 			sourceTree = "<group>";
 		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8A8E99CF1EEEC1F000B939B1 /* NSIndexPath+AMPExtensions */,
 				8A8E99C11EEEAC5200B939B1 /* UITableView+AMPExtensions */,
 				8A8E99BD1EEEA99D00B939B1 /* NSBundle+AMPExtensions */,
 				8A8E99B91EEEA49500B939B1 /* UINib+AMPExtensions */,
@@ -436,11 +444,11 @@
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
 				8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */,
 				8A8E99B21EEEA0C500B939B1 /* AMPTableViewCell.m in Sources */,
-				8A8E99CE1EEEBF9200B939B1 /* AMPUsersModelChangesInfo+AMPUsersModelExchangeOrder.m in Sources */,
 				8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */,
 				8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */,
 				8ACB3EAB1EEE8EAA004A8B89 /* AMPObservableObject.m in Sources */,
 				8A8E99B61EEEA13900B939B1 /* AMPUserCell.m in Sources */,
+				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */,
 				8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */,
 				8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */,
