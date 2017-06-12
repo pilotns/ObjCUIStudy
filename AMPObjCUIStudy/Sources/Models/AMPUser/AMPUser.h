@@ -6,9 +6,10 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface AMPUser : NSObject
 @property (nonatomic, readonly) NSString    *fullName;
+@property (nonatomic, readonly) UIImage     *image;
 
 @end

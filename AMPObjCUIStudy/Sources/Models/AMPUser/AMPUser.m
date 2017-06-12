@@ -19,6 +19,7 @@
 @implementation AMPUser
 
 @dynamic fullName;
+@dynamic image;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -36,6 +37,10 @@
 
 - (NSString *)fullName {
     return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
+- (UIImage *)image {
+    return nil;
 }
 
 @end
