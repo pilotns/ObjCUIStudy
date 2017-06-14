@@ -17,14 +17,18 @@
 #import "AMPMarcos.h"
 
 #import "UITableView+AMPExtensions.h"
-#import "AMPUsersModelChangesInfo.h"
+#import "NSIndexPath+AMPExtensions.h"
 
 AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
+static NSString * const AMPSortButtonTitle = @"Sort";
 
 @interface AMPUsersViewController () <AMPUsersModelObserver>
 
 - (void)fillWithModel:(AMPUsersModel *)model;
+- (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model;
+
+- (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem;
 
 @end
 
@@ -49,33 +53,28 @@ AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
     }
     
     [self fillWithModel:users];
-    [self.usersView.tableView reloadData];
 }
 
 #pragma mark -
 #pragma mark Actions
 
-- (IBAction)onAdd:(UIBarButtonItem *)sender {
+- (void)onAdd:(UIBarButtonItem *)sender {
     [self.users addUser:[AMPUser new]];
 }
 
-- (IBAction)onEdit:(UIBarButtonItem *)sender {
+- (void)onEdit:(UIBarButtonItem *)sender {
     UITableView *tableView = self.usersView.tableView;
-    
     [tableView setEditing:!tableView.isEditing animated:YES];
     
-    UIBarButtonItem *button = nil;
-    if (tableView.isEditing) {
-        button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                               target:self
-                                                               action:@selector(onEdit:)];
-    } else {
-        button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                               target:self
-                                                               action:@selector(onEdit:)];
-    }
-    
-    self.navigationItem.rightBarButtonItem = button;
+    UIBarButtonSystemItem systemItem = tableView.isEditing
+                                        ? UIBarButtonSystemItemDone
+                                        : UIBarButtonSystemItemEdit;
+
+    self.navigationItem.rightBarButtonItem = [self editButtonWithSystemIntem:systemItem];
+}
+
+- (void)onSort:(UIBarButtonItem *)sender {
+    [self.users performSorting];
 }
 
 #pragma mark -
@@ -84,17 +83,18 @@ AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                                          target:self
-                                                                          action:@selector(onEdit:)];
+    UIBarButtonItem *edit = [self editButtonWithSystemIntem:UIBarButtonSystemItemEdit];
     
-    self.navigationItem.rightBarButtonItem = edit;
+    UIBarButtonItem *sort = [[UIBarButtonItem alloc] initWithTitle:AMPSortButtonTitle
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(onSort:)];
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                          target:self
                                                                          action:@selector(onAdd:)];
-    
     self.navigationItem.leftBarButtonItem = add;
+    self.navigationItem.rightBarButtonItems = @[edit, sort];
     
     [self.usersView.tableView reloadData];
 }
@@ -154,14 +154,20 @@ AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 #pragma mark -
 #pragma mark AMPUsersModelObserver
 
-- (void)usersModel:(AMPUsersModel *)model didChangeStateWithInfo:(AMPUsersModelChangesInfo *)info {
-    switch (info.type) {
+- (void)usersModel:(AMPUsersModel *)model didChangeStateWithInfo:(id)info {
+    UITableView *tableView = self.usersView.tableView;
+    switch (model.state) {
         case AMPUsersModelChangesTypeAdd:
-            [self.usersView.tableView insertRowsAtIndexPaths:info.indexPaths withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView insertRowAtIndexPath:info withRowAnimation:UITableViewRowAnimationLeft];
             break;
             
         case AMPUsersModelChangesTypeRemove:
-            [self.usersView.tableView deleteRowsAtIndexPaths:info.indexPaths withRowAnimation:UITableViewRowAnimationRight];
+            [tableView deleteRowAtIndexPath:info withRowAnimation:UITableViewRowAnimationRight];
+            break;
+            
+        case AMPUsersModelChangesTypeSorting:
+            [self performUpdatesWithPreviousStateOfModel:info];
+            break;
             
         default:
             break;
@@ -173,6 +179,28 @@ AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
 - (void)fillWithModel:(AMPUsersModel *)model {
     self.navigationItem.title = model.title;
+    
+    [self.usersView.tableView reloadData];
+}
+
+- (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model {
+    UITableView *tableView = self.usersView.tableView;
+    AMPUsersModel *currentModel = self.users;
+    
+    [tableView performUpdatesWithBlock:^{
+        for (id user in model) {
+            NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[currentModel indexOfUser:user]];
+            NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:[model indexOfUser:user]];
+            
+            [tableView moveRowAtIndexPath:previousIndexPath toIndexPath:newIndexPath];
+        }
+    }];
+}
+
+- (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
+                                                         target:self
+                                                         action:@selector(onEdit:)];
 }
 
 @end
