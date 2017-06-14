@@ -14,7 +14,7 @@
 + (instancetype)nibWithClass:(Class)class inBundle:(NSBundle *)bundle;
 
 + (id)objectWithClass:(Class)class;
-+ (id)objectWithClass:(Class)class isBundle:(NSBundle *)bundle;
-+ (id)objectWithClass:(Class)class isBundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options;
++ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle;
++ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options;
 
 @end

@@ -21,14 +21,14 @@
 }
 
 + (id)objectWithClass:(Class)class {
-    return [self objectWithClass:class isBundle:[NSBundle mainBundle]];
+    return [self objectWithClass:class inBundle:[NSBundle mainBundle]];
 }
 
-+ (id)objectWithClass:(Class)class isBundle:(NSBundle *)bundle {
-    return [self objectWithClass:class isBundle:bundle owner:nil options:nil];
++ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle {
+    return [self objectWithClass:class inBundle:bundle owner:nil options:nil];
 }
 
-+ (id)objectWithClass:(Class)class isBundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
++ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
     UINib *nib = [self nibWithClass:class inBundle:bundle];
     NSArray *topLevelObjects = [nib instantiateWithOwner:owner options:options];
     
