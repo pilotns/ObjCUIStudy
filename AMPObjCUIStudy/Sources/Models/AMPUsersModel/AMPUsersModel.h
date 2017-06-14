@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, AMPUsersModelChangesType) {
     AMPUsersModelChangesTypeAdd,
-    AMPUsersModelChangesTypeRemove
+    AMPUsersModelChangesTypeRemove,
+    AMPUsersModelChangesTypeSorting
 };
 
 @class AMPUsersModelChangesInfo;
@@ -23,9 +24,11 @@ typedef NS_ENUM(NSUInteger, AMPUsersModelChangesType) {
 
 @end
 
-@interface AMPUsersModel : AMPObservableObject
+@interface AMPUsersModel : AMPObservableObject <NSFastEnumeration>
 @property (nonatomic, readonly) NSUInteger  count;
 @property (nonatomic, readonly) NSString    *title;
+
+- (instancetype)initWithUsers:(NSArray *)users;
 
 - (void)addUser:(AMPUser *)user;
 - (void)addUsers:(id<NSFastEnumeration>)users;
@@ -41,5 +44,7 @@ typedef NS_ENUM(NSUInteger, AMPUsersModelChangesType) {
 - (AMPUser *)objectAtIndexedSubscript:(NSUInteger)index;
 
 - (NSUInteger)indexOfUser:(AMPUser *)user;
+
+- (void)performSorting;
 
 @end

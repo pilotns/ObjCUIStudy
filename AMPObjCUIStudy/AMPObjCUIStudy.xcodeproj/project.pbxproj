@@ -19,7 +19,6 @@
 		8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99BF1EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m */; };
 		8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99C31EEEAC7E00B939B1 /* UITableView+AMPExtensions.m */; };
 		8A8E99C71EEEAF4900B939B1 /* vw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E99C61EEEAF4900B939B1 /* vw.jpg */; };
-		8A8E99CB1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99CA1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m */; };
 		8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
@@ -59,8 +58,6 @@
 		8A8E99C21EEEAC7E00B939B1 /* UITableView+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+AMPExtensions.h"; sourceTree = "<group>"; };
 		8A8E99C31EEEAC7E00B939B1 /* UITableView+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+AMPExtensions.m"; sourceTree = "<group>"; };
 		8A8E99C61EEEAF4900B939B1 /* vw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vw.jpg; sourceTree = "<group>"; };
-		8A8E99C91EEEBB1700B939B1 /* AMPUsersModelChangesInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModelChangesInfo.h; sourceTree = "<group>"; };
-		8A8E99CA1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModelChangesInfo.m; sourceTree = "<group>"; };
 		8A8E99D01EEEC21500B939B1 /* NSIndexPath+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+AMPExtensions.h"; sourceTree = "<group>"; };
 		8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+AMPExtensions.m"; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
@@ -217,15 +214,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		8A8E99C81EEEBAD500B939B1 /* AMPUsersModelChangesInfo */ = {
-			isa = PBXGroup;
-			children = (
-				8A8E99C91EEEBB1700B939B1 /* AMPUsersModelChangesInfo.h */,
-				8A8E99CA1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m */,
-			);
-			path = AMPUsersModelChangesInfo;
-			sourceTree = "<group>";
-		};
 		8A8E99CF1EEEC1F000B939B1 /* NSIndexPath+AMPExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,8 +260,8 @@
 		8ACB3E841EED3FC5004A8B89 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8A8E99B31EEEA0FD00B939B1 /* AMPUserCell */,
 				8ACB3E851EED3FC5004A8B89 /* AMPUsersViewController */,
+				8A8E99B31EEEA0FD00B939B1 /* AMPUserCell */,
 				8ACB3E891EED3FC5004A8B89 /* AMPViewController */,
 			);
 			path = UI;
@@ -332,7 +320,6 @@
 		8ACB3EA41EED44C0004A8B89 /* AMPUsersModel */ = {
 			isa = PBXGroup;
 			children = (
-				8A8E99C81EEEBAD500B939B1 /* AMPUsersModelChangesInfo */,
 				8ACB3EA51EED44D9004A8B89 /* AMPUsersModel.h */,
 				8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */,
 			);
@@ -461,7 +448,6 @@
 				8ACB3E9F1EED4331004A8B89 /* AMPUser.m in Sources */,
 				8ACB3EA71EED44D9004A8B89 /* AMPUsersModel.m in Sources */,
 				8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */,
-				8A8E99CB1EEEBB1700B939B1 /* AMPUsersModelChangesInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

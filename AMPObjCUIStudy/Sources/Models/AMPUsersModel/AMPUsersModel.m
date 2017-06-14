@@ -10,13 +10,27 @@
 
 #import "AMPUser.h"
 
-#import "NSArray+AMPExtensions.h"
+#import "NSObject+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
-#import "AMPUsersModelChangesInfo.h"
 
-static const NSUInteger AMPDefaultUsersCount = 5;
+typedef void(^AMPVoidBlock)(void);
 
-@interface AMPUsersModel ()
+void (^AMPPerformChangesBlock)(AMPUsersModel *, NSUInteger index, AMPUsersModelChangesType, AMPVoidBlock) =
+    ^(AMPUsersModel *model, NSUInteger index, AMPUsersModelChangesType type, AMPVoidBlock block) {
+        if (!block) {
+            return;
+        }
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index];
+        block();
+        
+        [model setState:type userInfo:indexPath];
+    };
+
+static const NSUInteger AMPDefaultUsersCount = 10;
+static NSString * const AMPUsersModelTitle = @"Users";
+
+@interface AMPUsersModel () <NSCopying>
 @property (nonatomic, strong)   NSMutableArray  *mutableUsers;
 
 @end
@@ -30,10 +44,12 @@ static const NSUInteger AMPDefaultUsersCount = 5;
 #pragma mark Initializations and Deallocations
 
 - (instancetype)init {
+    return [self initWithUsers:[AMPUser objectsWithCount:AMPDefaultUsersCount]];
+}
+
+- (instancetype)initWithUsers:(NSArray *)users {
     self = [super init];
-    self.mutableUsers = [NSMutableArray objectsWithCount:AMPDefaultUsersCount factoryBlock:^id{
-        return [AMPUser new];
-    }];
+    self.mutableUsers = [NSMutableArray arrayWithArray:users];
     
     return self;
 }
@@ -46,7 +62,7 @@ static const NSUInteger AMPDefaultUsersCount = 5;
 }
 
 - (NSString *)title {
-    return @"Users";
+    return AMPUsersModelTitle;
 }
 
 #pragma mark - 
@@ -64,13 +80,9 @@ static const NSUInteger AMPDefaultUsersCount = 5;
 
 - (void)insertUser:(AMPUser *)user atIndex:(NSUInteger)index {
     if (user && index <= self.count) {
-        [self.mutableUsers insertObject:user atIndex:index];
-        
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index];
-        AMPUsersModelChangesInfo *info = [AMPUsersModelChangesInfo changesInfoWithIndexPath:indexPath
-                                                                                       type:AMPUsersModelChangesTypeAdd];
-        
-        [self setState:AMPUsersModelChangesTypeAdd userInfo:info];
+        AMPPerformChangesBlock(self, index, AMPUsersModelChangesTypeAdd, ^{
+            [self.mutableUsers insertObject:user atIndex:index];
+        });
     }
 }
 
@@ -91,13 +103,9 @@ static const NSUInteger AMPDefaultUsersCount = 5;
 
 - (void)removeUserAtIndex:(NSUInteger)index {
     if (index <= self.count) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index];
-        AMPUsersModelChangesInfo *info = [AMPUsersModelChangesInfo changesInfoWithIndexPath:indexPath
-                                                                                       type:AMPUsersModelChangesTypeRemove];
-        
-        [self.mutableUsers removeObjectAtIndex:index];
-        
-        [self setState:AMPUsersModelChangesTypeRemove userInfo:info];
+        AMPPerformChangesBlock(self, index, AMPUsersModelChangesTypeRemove, ^{
+            [self.mutableUsers removeObjectAtIndex:index];
+        });
     }
 }
 
@@ -123,11 +131,38 @@ static const NSUInteger AMPDefaultUsersCount = 5;
     return [self.mutableUsers indexOfObject:user];
 }
 
+- (void)performSorting {
+    NSArray *previousModelState = [self copy];
+    
+    [self.mutableUsers sortUsingComparator:^NSComparisonResult(AMPUser *obj1, AMPUser *obj2) {
+        return [obj1.fullName compare:obj2.fullName options:NSCaseInsensitiveSearch];
+    }];
+    
+    [self setState:AMPUsersModelChangesTypeSorting userInfo:previousModelState];
+}
+
+#pragma mark -
+#pragma mark NSFastEnumeration
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
+                                  objects:(id __unsafe_unretained _Nullable [_Nonnull])buffer
+                                    count:(NSUInteger)len
+{
+    return [self.mutableUsers countByEnumeratingWithState:state objects:buffer count:len];
+}
+
 #pragma mark -
 #pragma mark AMPObservableObject
 
 - (SEL)selectorForState:(NSUInteger)state {
     return @selector(usersModel:didChangeStateWithInfo:);
+}
+
+#pragma mark -
+#pragma mark NSCopying
+
+- (id)copyWithZone:(nullable NSZone *)zone {
+    return [[[self class] alloc] initWithUsers:self.mutableUsers];
 }
 
 @end
