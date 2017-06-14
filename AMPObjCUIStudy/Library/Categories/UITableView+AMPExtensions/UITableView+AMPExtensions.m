@@ -21,4 +21,21 @@
     return cell;
 }
 
+- (void)performUpdatesWithBlock:(void (^)(void))block {
+    if (!block) {
+        return;
+    }
+    
+    [self beginUpdates];
+    block();
+    [self endUpdates];
+}
+
+- (void)insertRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation {
+    [self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+}
+- (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation {
+    [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+}
+
 @end
