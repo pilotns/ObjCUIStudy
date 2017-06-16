@@ -8,7 +8,8 @@
 
 #import "AMPAppDelegate.h"
 
-#import "AMPViewController.h"
+#import "AMPUsersViewController.h"
+#import "AMPUsersModel.h"
 
 #import "UIWindow+AMPExtensions.h"
 
@@ -20,8 +21,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    AMPViewController *controller = [AMPViewController new];
-    self.window = [UIWindow windowWithRootViewController:controller];
+    AMPUsersViewController *controller = [AMPUsersViewController new];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    self.window = [UIWindow windowWithRootViewController:navController];
+    
+    controller.users = [AMPUsersModel new];
     
     return YES;
 }

@@ -11,6 +11,30 @@
 
 #import "CGGeometry+AMPExtensions.h"
 
+#define AMPDefineBaseViewProperty(controllerClass, propertyClass, propertyName) \
+    @interface controllerClass (controllerClass_propertyClass) \
+    @property (nonatomic, strong)   propertyClass    *propertyName; \
+    \
+    @end \
+    \
+    @implementation controllerClass (controllerClass_propertyClass) \
+    \
+    @dynamic propertyName; \
+    \
+    - (propertyClass *)propertyName { \
+        if ([self isViewLoaded] && [self.view isKindOfClass:[propertyClass class]]) { \
+            return (propertyClass *)self.view; \
+        } \
+        \
+        return nil; \
+    } \
+    \
+    @end
+
+#define AMPPragmaDiagnosticPushSelectorLeak \
+    _Pragma("clang diagnostic push"); \
+    _Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\""); 
+
 #define AMPPragmaDiagnosticPushWshadow \
     _Pragma("clang diagnostic push"); \
     _Pragma("clang diagnostic ignored \"-Wshadow\"");
