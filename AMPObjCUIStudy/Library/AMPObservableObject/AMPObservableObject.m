@@ -80,7 +80,9 @@
 }
 
 - (void)notifyOfState:(NSUInteger)state userInfo:(id)userInfo {
-    [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
+    @synchronized (self) {
+        [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
+    }
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
