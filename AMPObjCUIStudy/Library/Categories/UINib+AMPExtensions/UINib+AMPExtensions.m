@@ -13,28 +13,39 @@
 @implementation UINib (AMPExtensions)
 
 + (instancetype)nibWithClass:(Class)class {
-    return [self nibWithClass:class inBundle:[NSBundle mainBundle]];
+    return [self nibWithClass:class bundle:[NSBundle mainBundle]];
 }
 
-+ (instancetype)nibWithClass:(Class)cls inBundle:(NSBundle *)bundle {
++ (instancetype)nibWithClass:(Class)cls bundle:(NSBundle *)bundle {
     return [self nibWithNibName:NSStringFromClass([cls class]) bundle:bundle];
 }
 
 + (id)objectWithClass:(Class)class {
-    return [self objectWithClass:class inBundle:[NSBundle mainBundle]];
+    return [self objectWithClass:class bundle:[NSBundle mainBundle]];
 }
 
-+ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle {
-    return [self objectWithClass:class inBundle:bundle owner:nil options:nil];
++ (id)objectWithClass:(Class)class bundle:(NSBundle *)bundle {
+    return [self objectWithClass:class bundle:bundle owner:nil options:nil];
 }
 
-+ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
-    UINib *nib = [self nibWithClass:class inBundle:bundle];
-    NSArray *topLevelObjects = [nib instantiateWithOwner:owner options:options];
++ (id)objectWithClass:(Class)class bundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
+    UINib *nib = [self nibWithClass:class bundle:bundle];
     
-    return [[topLevelObjects objectsWithClass:class] firstObject];
+    return [nib objectWithClass:class bundle:bundle owner:owner options:options];
 }
 
+- (id)objectWithClass:(Class)cls {
+    return [self objectWithClass:cls bundle:[NSBundle mainBundle]];
+}
 
+- (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle {
+    return [self objectWithClass:cls bundle:bundle owner:nil options:nil];
+}
+
+- (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
+    NSArray *objects = [self instantiateWithOwner:owner options:options];
+    
+    return [[objects objectsWithClass:cls] firstObject];
+}
 
 @end

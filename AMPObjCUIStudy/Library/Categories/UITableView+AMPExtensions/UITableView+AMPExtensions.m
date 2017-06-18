@@ -21,7 +21,7 @@
     return cell;
 }
 
-- (void)performUpdatesWithBlock:(void (^)(void))block {
+- (void)updateWithBlock:(void (^)(void))block {
     if (!block) {
         return;
     }

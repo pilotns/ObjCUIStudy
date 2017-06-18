@@ -22,9 +22,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     AMPUsersViewController *controller = [AMPUsersViewController new];
-    
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    self.window = [UIWindow windowWithRootViewController:navController];
+    UIWindow *window = [UIWindow windowWithRootViewController:navController];
+    self.window = window;
+    
+    [window makeKeyAndVisible];
     
     controller.users = [AMPUsersModel new];
     

@@ -10,11 +10,15 @@
 
 @interface UINib (AMPExtensions)
 
-+ (instancetype)nibWithClass:(Class)class;
-+ (instancetype)nibWithClass:(Class)class inBundle:(NSBundle *)bundle;
++ (instancetype)nibWithClass:(Class)cls;
++ (instancetype)nibWithClass:(Class)cls bundle:(NSBundle *)bundle;
 
-+ (id)objectWithClass:(Class)class;
-+ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle;
-+ (id)objectWithClass:(Class)class inBundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options;
++ (id)objectWithClass:(Class)cls;
++ (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle;
++ (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options;
+
+- (id)objectWithClass:(Class)cls;
+- (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle;
+- (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options;
 
 @end

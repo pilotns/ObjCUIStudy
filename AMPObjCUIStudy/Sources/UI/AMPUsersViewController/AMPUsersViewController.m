@@ -28,6 +28,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 - (void)fillWithModel:(AMPUsersModel *)model;
 - (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model;
 
+- (void)initButtons;
 - (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem;
 
 @end
@@ -39,6 +40,13 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 
 - (void)dealloc {
     self.users = nil;
+}
+
+- (instancetype)init {
+    self = [super init];
+    [self initButtons];
+    
+    return self;
 }
 
 #pragma mark -
@@ -82,19 +90,6 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIBarButtonItem *edit = [self editButtonWithSystemIntem:UIBarButtonSystemItemEdit];
-    
-    UIBarButtonItem *sort = [[UIBarButtonItem alloc] initWithTitle:AMPSortButtonTitle
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(onSort:)];
-    
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                         target:self
-                                                                         action:@selector(onAdd:)];
-    self.navigationItem.leftBarButtonItem = add;
-    self.navigationItem.rightBarButtonItems = @[edit, sort];
     
     [self.usersView.tableView reloadData];
 }
@@ -152,6 +147,50 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 }
 
 #pragma mark -
+#pragma mark Private Methods
+
+- (void)fillWithModel:(AMPUsersModel *)model {
+    self.navigationItem.title = model.title;
+    
+    [self.usersView.tableView reloadData];
+}
+
+- (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model {
+    UITableView *tableView = self.usersView.tableView;
+    AMPUsersModel *currentModel = self.users;
+    
+    [tableView updateWithBlock:^{
+        for (id user in model) {
+            NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[currentModel indexOfUser:user]];
+            NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:[model indexOfUser:user]];
+            
+            [tableView moveRowAtIndexPath:previousIndexPath toIndexPath:newIndexPath];
+        }
+    }];
+}
+
+- (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
+                                                         target:self
+                                                         action:@selector(onEdit:)];
+}
+
+- (void)initButtons {
+    UIBarButtonItem *edit = [self editButtonWithSystemIntem:UIBarButtonSystemItemEdit];
+    
+    UIBarButtonItem *sort = [[UIBarButtonItem alloc] initWithTitle:AMPSortButtonTitle
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(onSort:)];
+    
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                         target:self
+                                                                         action:@selector(onAdd:)];
+    self.navigationItem.leftBarButtonItem = add;
+    self.navigationItem.rightBarButtonItems = @[edit, sort];
+}
+
+#pragma mark -
 #pragma mark AMPUsersModelObserver
 
 - (void)usersModel:(AMPUsersModel *)model didChangeStateWithInfo:(id)info {
@@ -172,35 +211,6 @@ static NSString * const AMPSortButtonTitle = @"Sort";
         default:
             break;
     }
-}
-
-#pragma mark -
-#pragma mark Private Methods
-
-- (void)fillWithModel:(AMPUsersModel *)model {
-    self.navigationItem.title = model.title;
-    
-    [self.usersView.tableView reloadData];
-}
-
-- (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model {
-    UITableView *tableView = self.usersView.tableView;
-    AMPUsersModel *currentModel = self.users;
-    
-    [tableView performUpdatesWithBlock:^{
-        for (id user in model) {
-            NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[currentModel indexOfUser:user]];
-            NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:[model indexOfUser:user]];
-            
-            [tableView moveRowAtIndexPath:previousIndexPath toIndexPath:newIndexPath];
-        }
-    }];
-}
-
-- (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem {
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
-                                                         target:self
-                                                         action:@selector(onEdit:)];
 }
 
 @end
