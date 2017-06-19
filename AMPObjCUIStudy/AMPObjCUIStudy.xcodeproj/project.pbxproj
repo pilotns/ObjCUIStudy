@@ -20,6 +20,12 @@
 		8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */; };
 		8A8E99DE1EF7090E00B939B1 /* AMPUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */; };
 		8A8E99DF1EF7090E00B939B1 /* AMPUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */; };
+		8A8E9A0B1EF7EB3900B939B1 /* AMPArrayModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */; };
+		8A8E9A0C1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */; };
+		8A8E9A0D1EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */; };
+		8A8E9A0E1EF7EB3900B939B1 /* AMPArrayModelChangeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */; };
+		8A8E9A0F1EF7EB3900B939B1 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */; };
+		8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
 		8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */; };
@@ -27,9 +33,7 @@
 		8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E8E1EED3FC5004A8B89 /* AMPViewController.m */; };
 		8ACB3E941EED3FC5004A8B89 /* AMPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E8F1EED3FC5004A8B89 /* AMPViewController.xib */; };
 		8ACB3E971EED40B8004A8B89 /* AMPUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E961EED40B8004A8B89 /* AMPUsersView.m */; };
-		8ACB3E9F1EED4331004A8B89 /* AMPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E9E1EED4331004A8B89 /* AMPUser.m */; };
 		8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EA21EED4420004A8B89 /* NSString+AMPRandom.m */; };
-		8ACB3EA71EED44D9004A8B89 /* AMPUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */; };
 		8ACB3EAB1EEE8EAA004A8B89 /* AMPObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */; };
 		8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EAE1EEE955E004A8B89 /* NSArray+AMPExtensions.m */; };
 		8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EB21EEE95A6004A8B89 /* NSObject+AMPExtensions.m */; };
@@ -60,6 +64,19 @@
 		8A8E99DB1EF7090E00B939B1 /* AMPUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUserCell.h; sourceTree = "<group>"; };
 		8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUserCell.m; sourceTree = "<group>"; };
 		8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPUserCell.xib; sourceTree = "<group>"; };
+		8A8E99FA1EF7EB3900B939B1 /* AMPArrayModelChange+AMPPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPArrayModelChange+AMPPrivate.h"; sourceTree = "<group>"; };
+		8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChange.h; sourceTree = "<group>"; };
+		8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChange.m; sourceTree = "<group>"; };
+		8A8E99FE1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeDelete.h; sourceTree = "<group>"; };
+		8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeDelete.m; sourceTree = "<group>"; };
+		8A8E9A011EF7EB3900B939B1 /* AMPArrayModelChangeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeInsert.h; sourceTree = "<group>"; };
+		8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeInsert.m; sourceTree = "<group>"; };
+		8A8E9A041EF7EB3900B939B1 /* AMPArrayModelChangeMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeMove.h; sourceTree = "<group>"; };
+		8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeMove.m; sourceTree = "<group>"; };
+		8A8E9A061EF7EB3900B939B1 /* AMPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModel.h; sourceTree = "<group>"; };
+		8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModel.m; sourceTree = "<group>"; };
+		8A8E9A091EF7EB3900B939B1 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
+		8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -73,12 +90,8 @@
 		8ACB3E8F1EED3FC5004A8B89 /* AMPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPViewController.xib; sourceTree = "<group>"; };
 		8ACB3E951EED40B8004A8B89 /* AMPUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersView.h; sourceTree = "<group>"; };
 		8ACB3E961EED40B8004A8B89 /* AMPUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersView.m; sourceTree = "<group>"; };
-		8ACB3E9D1EED4331004A8B89 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
-		8ACB3E9E1EED4331004A8B89 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
 		8ACB3EA11EED4420004A8B89 /* NSString+AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AMPRandom.h"; sourceTree = "<group>"; };
 		8ACB3EA21EED4420004A8B89 /* NSString+AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AMPRandom.m"; sourceTree = "<group>"; };
-		8ACB3EA51EED44D9004A8B89 /* AMPUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModel.h; sourceTree = "<group>"; };
-		8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModel.m; sourceTree = "<group>"; };
 		8ACB3EA91EEE8EAA004A8B89 /* AMPObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPObservableObject.h; sourceTree = "<group>"; };
 		8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPObservableObject.m; sourceTree = "<group>"; };
 		8ACB3EAD1EEE955E004A8B89 /* NSArray+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMPExtensions.h"; sourceTree = "<group>"; };
@@ -134,7 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				8ACB3E841EED3FC5004A8B89 /* UI */,
-				8ACB3E831EED3FC5004A8B89 /* Models */,
+				8A8E99F71EF7EB3900B939B1 /* Models */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -223,6 +236,74 @@
 			path = AMPUserCell;
 			sourceTree = "<group>";
 		};
+		8A8E99F71EF7EB3900B939B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99F81EF7EB3900B939B1 /* AMPArrayModel */,
+				8A8E9A081EF7EB3900B939B1 /* AMPUser */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8A8E99F81EF7EB3900B939B1 /* AMPArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99F91EF7EB3900B939B1 /* AMPArrayModelChange */,
+				8A8E9A061EF7EB3900B939B1 /* AMPArrayModel.h */,
+				8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */,
+			);
+			path = AMPArrayModel;
+			sourceTree = "<group>";
+		};
+		8A8E99F91EF7EB3900B939B1 /* AMPArrayModelChange */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99FD1EF7EB3900B939B1 /* AMPArrayModelChangeDelete */,
+				8A8E9A001EF7EB3900B939B1 /* AMPArrayModelChangeInsert */,
+				8A8E9A031EF7EB3900B939B1 /* AMPArrayModelChangeMove */,
+				8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */,
+				8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */,
+				8A8E99FA1EF7EB3900B939B1 /* AMPArrayModelChange+AMPPrivate.h */,
+			);
+			path = AMPArrayModelChange;
+			sourceTree = "<group>";
+		};
+		8A8E99FD1EF7EB3900B939B1 /* AMPArrayModelChangeDelete */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99FE1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.h */,
+				8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */,
+			);
+			path = AMPArrayModelChangeDelete;
+			sourceTree = "<group>";
+		};
+		8A8E9A001EF7EB3900B939B1 /* AMPArrayModelChangeInsert */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A011EF7EB3900B939B1 /* AMPArrayModelChangeInsert.h */,
+				8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */,
+			);
+			path = AMPArrayModelChangeInsert;
+			sourceTree = "<group>";
+		};
+		8A8E9A031EF7EB3900B939B1 /* AMPArrayModelChangeMove */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A041EF7EB3900B939B1 /* AMPArrayModelChangeMove.h */,
+				8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */,
+			);
+			path = AMPArrayModelChangeMove;
+			sourceTree = "<group>";
+		};
+		8A8E9A081EF7EB3900B939B1 /* AMPUser */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A091EF7EB3900B939B1 /* AMPUser.h */,
+				8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */,
+			);
+			path = AMPUser;
+			sourceTree = "<group>";
+		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,15 +327,6 @@
 				8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */,
 			);
 			path = "UIWindow+AMPExtensions";
-			sourceTree = "<group>";
-		};
-		8ACB3E831EED3FC5004A8B89 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8ACB3EA41EED44C0004A8B89 /* AMPUsersModel */,
-				8ACB3E9C1EED4320004A8B89 /* AMPUser */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		8ACB3E841EED3FC5004A8B89 /* UI */ = {
@@ -299,15 +371,6 @@
 			path = AMPSquareView;
 			sourceTree = "<group>";
 		};
-		8ACB3E9C1EED4320004A8B89 /* AMPUser */ = {
-			isa = PBXGroup;
-			children = (
-				8ACB3E9D1EED4331004A8B89 /* AMPUser.h */,
-				8ACB3E9E1EED4331004A8B89 /* AMPUser.m */,
-			);
-			path = AMPUser;
-			sourceTree = "<group>";
-		};
 		8ACB3EA01EED43F1004A8B89 /* NSString+AMPExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,15 +378,6 @@
 				8ACB3EA21EED4420004A8B89 /* NSString+AMPRandom.m */,
 			);
 			path = "NSString+AMPExtensions";
-			sourceTree = "<group>";
-		};
-		8ACB3EA41EED44C0004A8B89 /* AMPUsersModel */ = {
-			isa = PBXGroup;
-			children = (
-				8ACB3EA51EED44D9004A8B89 /* AMPUsersModel.h */,
-				8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */,
-			);
-			path = AMPUsersModel;
 			sourceTree = "<group>";
 		};
 		8ACB3EA81EEE8EAA004A8B89 /* AMPObservableObject */ = {
@@ -429,24 +483,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
+				8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */,
 				8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */,
 				8A8E99B21EEEA0C500B939B1 /* AMPTableViewCell.m in Sources */,
 				8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */,
 				8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */,
 				8A8E99DE1EF7090E00B939B1 /* AMPUserCell.m in Sources */,
 				8ACB3EAB1EEE8EAA004A8B89 /* AMPObservableObject.m in Sources */,
+				8A8E9A0D1EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m in Sources */,
 				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */,
 				8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */,
+				8A8E9A0E1EF7EB3900B939B1 /* AMPArrayModelChangeMove.m in Sources */,
+				8A8E9A0B1EF7EB3900B939B1 /* AMPArrayModelChange.m in Sources */,
 				8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */,
 				8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */,
+				8A8E9A0C1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m in Sources */,
 				8ACB3E921EED3FC5004A8B89 /* AMPSquareView.m in Sources */,
+				8A8E9A0F1EF7EB3900B939B1 /* AMPArrayModel.m in Sources */,
 				8ACB3E971EED40B8004A8B89 /* AMPUsersView.m in Sources */,
 				8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */,
 				8A8E99BC1EEEA4B800B939B1 /* UINib+AMPExtensions.m in Sources */,
 				8A248B231EE2E1410039958F /* AMPRandom.m in Sources */,
-				8ACB3E9F1EED4331004A8B89 /* AMPUser.m in Sources */,
-				8ACB3EA71EED44D9004A8B89 /* AMPUsersModel.m in Sources */,
 				8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

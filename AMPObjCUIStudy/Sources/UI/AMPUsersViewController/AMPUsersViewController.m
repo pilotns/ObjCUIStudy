@@ -8,7 +8,7 @@
 
 #import "AMPUsersViewController.h"
 
-#import "AMPUsersModel.h"
+#import "AMPArrayModel.h"
 #import "AMPUser.h"
 
 #import "AMPUsersView.h"
@@ -19,17 +19,17 @@
 #import "UITableView+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
 
-AMPDefineBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
+AMPSynthesizeBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
-static NSString * const AMPSortButtonTitle = @"Sort";
+static NSString * const AMPSortButtonTitle              = @"Sort";
+static NSString * const AMPNavigationControllerTitle    = @"Users";
 
-@interface AMPUsersViewController () <AMPUsersModelObserver>
+@interface AMPUsersViewController () <AMPArrayModelObserver>
 
-- (void)fillWithModel:(AMPUsersModel *)model;
-- (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model;
+- (void)fillWithModel:(AMPArrayModel *)model;
 
-- (void)initButtons;
-- (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem;
+- (void)initBarButtonItems;
+- (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem;
 
 @end
 
@@ -42,9 +42,9 @@ static NSString * const AMPSortButtonTitle = @"Sort";
     self.users = nil;
 }
 
-- (instancetype)init {
-    self = [super init];
-    [self initButtons];
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    [self initBarButtonItems];
     
     return self;
 }
@@ -52,7 +52,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 #pragma mark -
 #pragma mark Accessers
 
-- (void)setUsers:(AMPUsersModel *)users {
+- (void)setUsers:(AMPArrayModel *)users {
     if (_users != users) {
         [_users removeObserver:self];
         
@@ -67,7 +67,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 #pragma mark Actions
 
 - (void)onAdd:(UIBarButtonItem *)sender {
-    [self.users addUser:[AMPUser new]];
+    [self.users addObject:[AMPUser new]];
 }
 
 - (void)onEdit:(UIBarButtonItem *)sender {
@@ -78,11 +78,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
                                         ? UIBarButtonSystemItemDone
                                         : UIBarButtonSystemItemEdit;
 
-    self.navigationItem.rightBarButtonItem = [self editButtonWithSystemIntem:systemItem];
-}
-
-- (void)onSort:(UIBarButtonItem *)sender {
-    [self.users performSorting];
+    self.navigationItem.rightBarButtonItem = [self editButtonWithSystemItem:systemItem];
 }
 
 #pragma mark -
@@ -91,7 +87,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.usersView.tableView reloadData];
+    [self fillWithModel:self.users];
 }
 
 #pragma mark -
@@ -102,7 +98,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AMPUserCell *userCell = [tableView cellWithClass:[AMPUserCell class]];
+    AMPUserCell *userCell = [tableView reusableCellWithClass:[AMPUserCell class]];
 
     userCell.user = self.users[indexPath.row];
     
@@ -122,7 +118,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
   forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
-        [self.users removeUserAtIndex:indexPath.row];
+        [self.users removeObjectAtIndex:indexPath.row];
     }
 }
 
@@ -130,7 +126,7 @@ static NSString * const AMPSortButtonTitle = @"Sort";
  moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
         toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    [self.users moveUserAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+    [self.users moveObjectAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
 
 #pragma mark - UITableViewDelegate
@@ -149,68 +145,34 @@ static NSString * const AMPSortButtonTitle = @"Sort";
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)fillWithModel:(AMPUsersModel *)model {
-    self.navigationItem.title = model.title;
+- (void)fillWithModel:(AMPArrayModel *)model {
+    self.navigationItem.title = AMPNavigationControllerTitle;
     
     [self.usersView.tableView reloadData];
 }
 
-- (void)performUpdatesWithPreviousStateOfModel:(AMPUsersModel *)model {
-    UITableView *tableView = self.usersView.tableView;
-    AMPUsersModel *currentModel = self.users;
-    
-    [tableView updateWithBlock:^{
-        for (id user in model) {
-            NSIndexPath *newIndexPath = [NSIndexPath indexPathForRow:[currentModel indexOfUser:user]];
-            NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:[model indexOfUser:user]];
-            
-            [tableView moveRowAtIndexPath:previousIndexPath toIndexPath:newIndexPath];
-        }
-    }];
-}
-
-- (UIBarButtonItem *)editButtonWithSystemIntem:(UIBarButtonSystemItem)systemItem {
+- (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem {
     return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
                                                          target:self
                                                          action:@selector(onEdit:)];
 }
 
-- (void)initButtons {
-    UIBarButtonItem *edit = [self editButtonWithSystemIntem:UIBarButtonSystemItemEdit];
-    
-    UIBarButtonItem *sort = [[UIBarButtonItem alloc] initWithTitle:AMPSortButtonTitle
-                                                             style:UIBarButtonItemStylePlain
-                                                            target:self
-                                                            action:@selector(onSort:)];
-    
+- (void)initBarButtonItems {
+    UIBarButtonItem *edit = [self editButtonWithSystemItem:UIBarButtonSystemItemEdit];
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                          target:self
                                                                          action:@selector(onAdd:)];
-    self.navigationItem.leftBarButtonItem = add;
-    self.navigationItem.rightBarButtonItems = @[edit, sort];
+    
+    UINavigationItem *navigationItem = self.navigationItem;
+    navigationItem.leftBarButtonItem = add;
+    navigationItem.rightBarButtonItem = edit;
 }
 
 #pragma mark -
 #pragma mark AMPUsersModelObserver
 
-- (void)usersModel:(AMPUsersModel *)model didChangeStateWithInfo:(id)info {
-    UITableView *tableView = self.usersView.tableView;
-    switch (model.state) {
-        case AMPUsersModelChangesTypeAdd:
-            [tableView insertRowAtIndexPath:info withRowAnimation:UITableViewRowAnimationLeft];
-            break;
-            
-        case AMPUsersModelChangesTypeRemove:
-            [tableView deleteRowAtIndexPath:info withRowAnimation:UITableViewRowAnimationRight];
-            break;
-            
-        case AMPUsersModelChangesTypeSorting:
-            [self performUpdatesWithPreviousStateOfModel:info];
-            break;
-            
-        default:
-            break;
-    }
+- (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
+    [self.usersView.tableView updateWithArrayModelChange:info];
 }
 
 @end

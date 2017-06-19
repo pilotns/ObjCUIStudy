@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class AMPUsersModel;
+@class AMPArrayModel;
 
 @interface AMPUsersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong)   AMPUsersModel   *users;
+@property (nonatomic, strong)   AMPArrayModel   *users;
 
 - (void)onAdd:(UIBarButtonItem *)sender;
 - (void)onEdit:(UIBarButtonItem *)sender;
-- (void)onSort:(UIBarButtonItem *)sender;
 
 @end
