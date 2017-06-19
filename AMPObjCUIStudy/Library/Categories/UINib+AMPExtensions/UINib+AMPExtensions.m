@@ -12,26 +12,26 @@
 
 @implementation UINib (AMPExtensions)
 
-+ (instancetype)nibWithClass:(Class)class {
-    return [self nibWithClass:class bundle:[NSBundle mainBundle]];
++ (instancetype)nibWithClass:(Class)cls {
+    return [self nibWithClass:cls bundle:[NSBundle mainBundle]];
 }
 
 + (instancetype)nibWithClass:(Class)cls bundle:(NSBundle *)bundle {
     return [self nibWithNibName:NSStringFromClass([cls class]) bundle:bundle];
 }
 
-+ (id)objectWithClass:(Class)class {
-    return [self objectWithClass:class bundle:[NSBundle mainBundle]];
++ (id)objectWithClass:(Class)cls {
+    return [self objectWithClass:cls bundle:[NSBundle mainBundle]];
 }
 
-+ (id)objectWithClass:(Class)class bundle:(NSBundle *)bundle {
-    return [self objectWithClass:class bundle:bundle owner:nil options:nil];
++ (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle {
+    return [self objectWithClass:cls bundle:bundle owner:nil options:nil];
 }
 
-+ (id)objectWithClass:(Class)class bundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
-    UINib *nib = [self nibWithClass:class bundle:bundle];
++ (id)objectWithClass:(Class)cls bundle:(NSBundle *)bundle owner:(id)owner options:(NSDictionary *)options {
+    UINib *nib = [self nibWithClass:cls bundle:bundle];
     
-    return [nib objectWithClass:class bundle:bundle owner:owner options:options];
+    return [nib objectWithClass:cls bundle:bundle owner:owner options:options];
 }
 
 - (id)objectWithClass:(Class)cls {

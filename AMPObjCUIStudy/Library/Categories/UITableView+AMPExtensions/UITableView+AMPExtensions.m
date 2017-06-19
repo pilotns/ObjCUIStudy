@@ -8,11 +8,12 @@
 
 #import "UITableView+AMPExtensions.h"
 
+#import "AMPArrayModelChange+AMPPrivate.h"
 #import "UINib+AMPExtensions.h"
 
 @implementation UITableView (AMPExtensions)
 
-- (id)cellWithClass:(Class)class {
+- (id)reusableCellWithClass:(Class)class {
     id cell = [self dequeueReusableCellWithIdentifier:NSStringFromClass([class class])];
     if (!cell) {
         cell = [UINib objectWithClass:class];
@@ -29,6 +30,10 @@
     [self beginUpdates];
     block();
     [self endUpdates];
+}
+
+- (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange {
+    [modelChange applyToTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)insertRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation {

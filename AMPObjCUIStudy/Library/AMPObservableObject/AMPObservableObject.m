@@ -19,6 +19,8 @@
 
 @implementation AMPObservableObject
 
+@synthesize state = _state;
+
 @dynamic observers;
 
 #pragma mark -
@@ -37,6 +39,12 @@
 - (NSSet *)observers {
     @synchronized (self) {
         return [self.mutableObservers setRepresentation];
+    }
+}
+
+- (NSUInteger)state {
+    @synchronized (self) {
+        return _state;
     }
 }
 
@@ -83,6 +91,10 @@
     @synchronized (self) {
         [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
     }
+}
+
+- (void)notifyOfStateChangeWithUserInfo:(id)userInfo {
+    [self notifyOfState:self.state userInfo:userInfo];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
