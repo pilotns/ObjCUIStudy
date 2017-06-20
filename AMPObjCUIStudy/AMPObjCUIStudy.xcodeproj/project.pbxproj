@@ -26,6 +26,7 @@
 		8A8E9A0E1EF7EB3900B939B1 /* AMPArrayModelChangeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */; };
 		8A8E9A0F1EF7EB3900B939B1 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */; };
 		8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */; };
+		8A8E9A181EF8FDE300B939B1 /* AMPObjCUIStudyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A171EF8FDE300B939B1 /* AMPObjCUIStudyTests.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
 		8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */; };
@@ -37,9 +38,26 @@
 		8ACB3EAB1EEE8EAA004A8B89 /* AMPObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */; };
 		8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EAE1EEE955E004A8B89 /* NSArray+AMPExtensions.m */; };
 		8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EB21EEE95A6004A8B89 /* NSObject+AMPExtensions.m */; };
+		F652972F32B0DBF57D210368 /* libPods-AMPObjCUIStudyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD010F491C21DFD54CFD76 /* libPods-AMPObjCUIStudyTests.a */; };
+		FD483BB2248B6508EE5F4847 /* libPods-AMPObjCUIStudy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8A8E9A1A1EF8FDE300B939B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A4E55891EE19AB4007B5B51 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A4E55901EE19AB4007B5B51;
+			remoteInfo = AMPObjCUIStudy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1A26A3238A0013F718795815 /* Pods-AMPObjCUIStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2B8B00711BFE91269F7430D9 /* Pods-AMPObjCUIStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy.debug.xcconfig"; sourceTree = "<group>"; };
+		4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy.release.xcconfig"; sourceTree = "<group>"; };
+		8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests.release.xcconfig"; sourceTree = "<group>"; };
+		873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMPObjCUIStudy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A248B191EE1AC000039958F /* AMPMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMarcos.h; sourceTree = "<group>"; };
 		8A248B211EE2E1410039958F /* AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPRandom.h; sourceTree = "<group>"; };
 		8A248B221EE2E1410039958F /* AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPRandom.m; sourceTree = "<group>"; };
@@ -77,6 +95,9 @@
 		8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModel.m; sourceTree = "<group>"; };
 		8A8E9A091EF7EB3900B939B1 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
 		8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
+		8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMPObjCUIStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8E9A171EF8FDE300B939B1 /* AMPObjCUIStudyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPObjCUIStudyTests.m; sourceTree = "<group>"; };
+		8A8E9A191EF8FDE300B939B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -98,6 +119,7 @@
 		8ACB3EAE1EEE955E004A8B89 /* NSArray+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMPExtensions.m"; sourceTree = "<group>"; };
 		8ACB3EB11EEE95A6004A8B89 /* NSObject+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3EB21EEE95A6004A8B89 /* NSObject+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AMPExtensions.m"; sourceTree = "<group>"; };
+		D3AD010F491C21DFD54CFD76 /* libPods-AMPObjCUIStudyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMPObjCUIStudyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,12 +127,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD483BB2248B6508EE5F4847 /* libPods-AMPObjCUIStudy.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8E9A121EF8FDE300B939B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F652972F32B0DBF57D210368 /* libPods-AMPObjCUIStudyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B390D8F6BA0B4CB3A356EF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */,
+				D3AD010F491C21DFD54CFD76 /* libPods-AMPObjCUIStudyTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8A248B181EE1ABD50039958F /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +171,10 @@
 				8A4E55AC1EE19AF0007B5B51 /* Sources */,
 				8A4E55AD1EE19B28007B5B51 /* AMPObjCUIStudy */,
 				8A4E55B21EE19B28007B5B51 /* Resources */,
+				8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */,
 				8A4E55921EE19AB4007B5B51 /* Products */,
+				BE0040CD41B677017220C2AC /* Pods */,
+				7B390D8F6BA0B4CB3A356EF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */,
+				8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,6 +348,15 @@
 			path = AMPUser;
 			sourceTree = "<group>";
 		};
+		8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A171EF8FDE300B939B1 /* AMPObjCUIStudyTests.m */,
+				8A8E9A191EF8FDE300B939B1 /* Info.plist */,
+			);
+			path = AMPObjCUIStudyTests;
+			sourceTree = "<group>";
+		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,6 +460,17 @@
 			path = "NSObject+AMpextensions";
 			sourceTree = "<group>";
 		};
+		BE0040CD41B677017220C2AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B8B00711BFE91269F7430D9 /* Pods-AMPObjCUIStudy.debug.xcconfig */,
+				4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */,
+				1A26A3238A0013F718795815 /* Pods-AMPObjCUIStudyTests.debug.xcconfig */,
+				8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -414,9 +478,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A4E55A81EE19AB4007B5B51 /* Build configuration list for PBXNativeTarget "AMPObjCUIStudy" */;
 			buildPhases = (
+				AC903EF3267B607FFB4A6EFD /* [CP] Check Pods Manifest.lock */,
 				8A4E558D1EE19AB4007B5B51 /* Sources */,
 				8A4E558E1EE19AB4007B5B51 /* Frameworks */,
 				8A4E558F1EE19AB4007B5B51 /* Resources */,
+				0CAB38DFC3A787F8E9A1304C /* [CP] Embed Pods Frameworks */,
+				9E8F5772A149D14CDB32EC7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,6 +493,27 @@
 			productName = AMPObjCUIStudy;
 			productReference = 8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8A8E9A141EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A8E9A1E1EF8FDE300B939B1 /* Build configuration list for PBXNativeTarget "AMPObjCUIStudyTests" */;
+			buildPhases = (
+				2EC29AD2283E33B6AB4A5EDD /* [CP] Check Pods Manifest.lock */,
+				8A8E9A111EF8FDE300B939B1 /* Sources */,
+				8A8E9A121EF8FDE300B939B1 /* Frameworks */,
+				8A8E9A131EF8FDE300B939B1 /* Resources */,
+				0A4B7FFC74F809701427529E /* [CP] Embed Pods Frameworks */,
+				424F3CD6254DC15228E7D318 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A8E9A1B1EF8FDE300B939B1 /* PBXTargetDependency */,
+			);
+			name = AMPObjCUIStudyTests;
+			productName = AMPObjCUIStudyTests;
+			productReference = 8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -440,6 +528,12 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = FWP6H8H8UZ;
 						ProvisioningStyle = Automatic;
+					};
+					8A8E9A141EF8FDE300B939B1 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FWP6H8H8UZ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8A4E55901EE19AB4007B5B51;
 					};
 				};
 			};
@@ -457,6 +551,7 @@
 			projectRoot = "";
 			targets = (
 				8A4E55901EE19AB4007B5B51 /* AMPObjCUIStudy */,
+				8A8E9A141EF8FDE300B939B1 /* AMPObjCUIStudyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -475,7 +570,107 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8A8E9A131EF8FDE300B939B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A4B7FFC74F809701427529E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0CAB38DFC3A787F8E9A1304C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC29AD2283E33B6AB4A5EDD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		424F3CD6254DC15228E7D318 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E8F5772A149D14CDB32EC7C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC903EF3267B607FFB4A6EFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A4E558D1EE19AB4007B5B51 /* Sources */ = {
@@ -509,7 +704,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8A8E9A111EF8FDE300B939B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A8E9A181EF8FDE300B939B1 /* AMPObjCUIStudyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A8E9A1B1EF8FDE300B939B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A4E55901EE19AB4007B5B51 /* AMPObjCUIStudy */;
+			targetProxy = 8A8E9A1A1EF8FDE300B939B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */ = {
@@ -619,6 +830,7 @@
 		};
 		8A4E55A91EE19AB4007B5B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8B00711BFE91269F7430D9 /* Pods-AMPObjCUIStudy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
@@ -634,6 +846,7 @@
 		};
 		8A4E55AA1EE19AB4007B5B51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
@@ -644,6 +857,34 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8A8E9A1C1EF8FDE300B939B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A26A3238A0013F718795815 /* Pods-AMPObjCUIStudyTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				INFOPLIST_FILE = AMPObjCUIStudyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AMPObjCUIStudy.app/AMPObjCUIStudy";
+			};
+			name = Debug;
+		};
+		8A8E9A1D1EF8FDE300B939B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				INFOPLIST_FILE = AMPObjCUIStudyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AMPObjCUIStudy.app/AMPObjCUIStudy";
 			};
 			name = Release;
 		};
@@ -667,6 +908,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8A8E9A1E1EF8FDE300B939B1 /* Build configuration list for PBXNativeTarget "AMPObjCUIStudyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8E9A1C1EF8FDE300B939B1 /* Debug */,
+				8A8E9A1D1EF8FDE300B939B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
