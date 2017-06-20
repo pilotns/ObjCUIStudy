@@ -10,14 +10,16 @@
 
 #import "AMPMarcos.h"
 
+#import "AMPObservableObject+AMPPrivate.h"
+
 @interface AMPObservableObject ()
 @property (nonatomic, retain)   NSHashTable     *mutableObservers;
-
-- (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo;
 
 @end
 
 @implementation AMPObservableObject
+
+@synthesize state = _state;
 
 @dynamic observers;
 
@@ -37,6 +39,12 @@
 - (NSSet *)observers {
     @synchronized (self) {
         return [self.mutableObservers setRepresentation];
+    }
+}
+
+- (NSUInteger)state {
+    @synchronized (self) {
+        return _state;
     }
 }
 
@@ -80,7 +88,9 @@
 }
 
 - (void)notifyOfState:(NSUInteger)state userInfo:(id)userInfo {
-    [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
+    @synchronized (self) {
+        [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
+    }
 }
 
 - (SEL)selectorForState:(NSUInteger)state {

@@ -33,7 +33,7 @@
 #pragma mark Private Methods
 
 - (void)fillWithUser:(AMPUser *)user {
-    self.fullNameLable.text = user.fullName;
+    self.fullNameLabel.text = user.fullName;
     self.userImageView.image = user.image;
 }
 

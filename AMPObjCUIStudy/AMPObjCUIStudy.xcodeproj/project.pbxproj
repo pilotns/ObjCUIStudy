@@ -13,13 +13,25 @@
 		8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */; };
 		8A4E55BD1EE19C02007B5B51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55B31EE19B28007B5B51 /* Assets.xcassets */; };
 		8A8E99B21EEEA0C500B939B1 /* AMPTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99B11EEEA0C500B939B1 /* AMPTableViewCell.m */; };
-		8A8E99B61EEEA13900B939B1 /* AMPUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99B51EEEA13900B939B1 /* AMPUserCell.m */; };
-		8A8E99B81EEEA14E00B939B1 /* AMPUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E99B71EEEA14E00B939B1 /* AMPUserCell.xib */; };
 		8A8E99BC1EEEA4B800B939B1 /* UINib+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99BB1EEEA4B800B939B1 /* UINib+AMPExtensions.m */; };
 		8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99BF1EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m */; };
 		8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99C31EEEAC7E00B939B1 /* UITableView+AMPExtensions.m */; };
 		8A8E99C71EEEAF4900B939B1 /* vw.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E99C61EEEAF4900B939B1 /* vw.jpg */; };
 		8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */; };
+		8A8E99DE1EF7090E00B939B1 /* AMPUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */; };
+		8A8E99DF1EF7090E00B939B1 /* AMPUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */; };
+		8A8E9A0B1EF7EB3900B939B1 /* AMPArrayModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */; };
+		8A8E9A0C1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */; };
+		8A8E9A0D1EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */; };
+		8A8E9A0E1EF7EB3900B939B1 /* AMPArrayModelChangeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */; };
+		8A8E9A0F1EF7EB3900B939B1 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */; };
+		8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */; };
+		8A8E9A201EF9001800B939B1 /* AMPArrayModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */; };
+		8A8E9A211EF9002100B939B1 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */; };
+		8A8E9A221EF9002C00B939B1 /* AMPArrayModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */; };
+		8A8E9A231EF9003000B939B1 /* AMPArrayModelChangeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */; };
+		8A8E9A241EF9003300B939B1 /* AMPArrayModelChangeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */; };
+		8A8E9A251EF9003600B939B1 /* AMPArrayModelChangeDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
 		8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */; };
@@ -27,15 +39,30 @@
 		8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E8E1EED3FC5004A8B89 /* AMPViewController.m */; };
 		8ACB3E941EED3FC5004A8B89 /* AMPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E8F1EED3FC5004A8B89 /* AMPViewController.xib */; };
 		8ACB3E971EED40B8004A8B89 /* AMPUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E961EED40B8004A8B89 /* AMPUsersView.m */; };
-		8ACB3E9F1EED4331004A8B89 /* AMPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E9E1EED4331004A8B89 /* AMPUser.m */; };
 		8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EA21EED4420004A8B89 /* NSString+AMPRandom.m */; };
-		8ACB3EA71EED44D9004A8B89 /* AMPUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */; };
 		8ACB3EAB1EEE8EAA004A8B89 /* AMPObservableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */; };
 		8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EAE1EEE955E004A8B89 /* NSArray+AMPExtensions.m */; };
 		8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EB21EEE95A6004A8B89 /* NSObject+AMPExtensions.m */; };
+		F652972F32B0DBF57D210368 /* libPods-AMPObjCUIStudyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3AD010F491C21DFD54CFD76 /* libPods-AMPObjCUIStudyTests.a */; };
+		FD483BB2248B6508EE5F4847 /* libPods-AMPObjCUIStudy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8A8E9A1A1EF8FDE300B939B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A4E55891EE19AB4007B5B51 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A4E55901EE19AB4007B5B51;
+			remoteInfo = AMPObjCUIStudy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1A26A3238A0013F718795815 /* Pods-AMPObjCUIStudyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2B8B00711BFE91269F7430D9 /* Pods-AMPObjCUIStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy.debug.xcconfig"; sourceTree = "<group>"; };
+		4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy.release.xcconfig"; sourceTree = "<group>"; };
+		8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests.release.xcconfig"; sourceTree = "<group>"; };
+		873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMPObjCUIStudy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A248B191EE1AC000039958F /* AMPMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMarcos.h; sourceTree = "<group>"; };
 		8A248B211EE2E1410039958F /* AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPRandom.h; sourceTree = "<group>"; };
 		8A248B221EE2E1410039958F /* AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPRandom.m; sourceTree = "<group>"; };
@@ -48,9 +75,6 @@
 		8A4E55B51EE19B28007B5B51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A8E99B01EEEA0C500B939B1 /* AMPTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPTableViewCell.h; sourceTree = "<group>"; };
 		8A8E99B11EEEA0C500B939B1 /* AMPTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPTableViewCell.m; sourceTree = "<group>"; };
-		8A8E99B41EEEA13900B939B1 /* AMPUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUserCell.h; sourceTree = "<group>"; };
-		8A8E99B51EEEA13900B939B1 /* AMPUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUserCell.m; sourceTree = "<group>"; };
-		8A8E99B71EEEA14E00B939B1 /* AMPUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPUserCell.xib; sourceTree = "<group>"; };
 		8A8E99BA1EEEA4B800B939B1 /* UINib+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINib+AMPExtensions.h"; sourceTree = "<group>"; };
 		8A8E99BB1EEEA4B800B939B1 /* UINib+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINib+AMPExtensions.m"; sourceTree = "<group>"; };
 		8A8E99BE1EEEA9BF00B939B1 /* NSBundle+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+AMPExtensions.h"; sourceTree = "<group>"; };
@@ -60,6 +84,26 @@
 		8A8E99C61EEEAF4900B939B1 /* vw.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vw.jpg; sourceTree = "<group>"; };
 		8A8E99D01EEEC21500B939B1 /* NSIndexPath+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+AMPExtensions.h"; sourceTree = "<group>"; };
 		8A8E99D11EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+AMPExtensions.m"; sourceTree = "<group>"; };
+		8A8E99DB1EF7090E00B939B1 /* AMPUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUserCell.h; sourceTree = "<group>"; };
+		8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUserCell.m; sourceTree = "<group>"; };
+		8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPUserCell.xib; sourceTree = "<group>"; };
+		8A8E99FA1EF7EB3900B939B1 /* AMPArrayModelChange+AMPPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPArrayModelChange+AMPPrivate.h"; sourceTree = "<group>"; };
+		8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChange.h; sourceTree = "<group>"; };
+		8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChange.m; sourceTree = "<group>"; };
+		8A8E99FE1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeDelete.h; sourceTree = "<group>"; };
+		8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeDelete.m; sourceTree = "<group>"; };
+		8A8E9A011EF7EB3900B939B1 /* AMPArrayModelChangeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeInsert.h; sourceTree = "<group>"; };
+		8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeInsert.m; sourceTree = "<group>"; };
+		8A8E9A041EF7EB3900B939B1 /* AMPArrayModelChangeMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeMove.h; sourceTree = "<group>"; };
+		8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeMove.m; sourceTree = "<group>"; };
+		8A8E9A061EF7EB3900B939B1 /* AMPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModel.h; sourceTree = "<group>"; };
+		8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModel.m; sourceTree = "<group>"; };
+		8A8E9A091EF7EB3900B939B1 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
+		8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
+		8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMPObjCUIStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8E9A191EF8FDE300B939B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelSpec.m; sourceTree = "<group>"; };
+		8A8E9A2A1EF924CA00B939B1 /* AMPObservableObject+AMPPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPObservableObject+AMPPrivate.h"; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -73,18 +117,15 @@
 		8ACB3E8F1EED3FC5004A8B89 /* AMPViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPViewController.xib; sourceTree = "<group>"; };
 		8ACB3E951EED40B8004A8B89 /* AMPUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersView.h; sourceTree = "<group>"; };
 		8ACB3E961EED40B8004A8B89 /* AMPUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersView.m; sourceTree = "<group>"; };
-		8ACB3E9D1EED4331004A8B89 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
-		8ACB3E9E1EED4331004A8B89 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
 		8ACB3EA11EED4420004A8B89 /* NSString+AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+AMPRandom.h"; sourceTree = "<group>"; };
 		8ACB3EA21EED4420004A8B89 /* NSString+AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+AMPRandom.m"; sourceTree = "<group>"; };
-		8ACB3EA51EED44D9004A8B89 /* AMPUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModel.h; sourceTree = "<group>"; };
-		8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModel.m; sourceTree = "<group>"; };
 		8ACB3EA91EEE8EAA004A8B89 /* AMPObservableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPObservableObject.h; sourceTree = "<group>"; };
 		8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPObservableObject.m; sourceTree = "<group>"; };
 		8ACB3EAD1EEE955E004A8B89 /* NSArray+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3EAE1EEE955E004A8B89 /* NSArray+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+AMPExtensions.m"; sourceTree = "<group>"; };
 		8ACB3EB11EEE95A6004A8B89 /* NSObject+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3EB21EEE95A6004A8B89 /* NSObject+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AMPExtensions.m"; sourceTree = "<group>"; };
+		D3AD010F491C21DFD54CFD76 /* libPods-AMPObjCUIStudyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMPObjCUIStudyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +133,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD483BB2248B6508EE5F4847 /* libPods-AMPObjCUIStudy.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8E9A121EF8FDE300B939B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F652972F32B0DBF57D210368 /* libPods-AMPObjCUIStudyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B390D8F6BA0B4CB3A356EF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */,
+				D3AD010F491C21DFD54CFD76 /* libPods-AMPObjCUIStudyTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8A248B181EE1ABD50039958F /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,7 +177,10 @@
 				8A4E55AC1EE19AF0007B5B51 /* Sources */,
 				8A4E55AD1EE19B28007B5B51 /* AMPObjCUIStudy */,
 				8A4E55B21EE19B28007B5B51 /* Resources */,
+				8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */,
 				8A4E55921EE19AB4007B5B51 /* Products */,
+				BE0040CD41B677017220C2AC /* Pods */,
+				7B390D8F6BA0B4CB3A356EF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */,
+				8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,7 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				8ACB3E841EED3FC5004A8B89 /* UI */,
-				8ACB3E831EED3FC5004A8B89 /* Models */,
+				8A8E99F71EF7EB3900B939B1 /* Models */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -167,16 +230,6 @@
 				8A8E99B11EEEA0C500B939B1 /* AMPTableViewCell.m */,
 			);
 			path = AMPTableViewCell;
-			sourceTree = "<group>";
-		};
-		8A8E99B31EEEA0FD00B939B1 /* AMPUserCell */ = {
-			isa = PBXGroup;
-			children = (
-				8A8E99B41EEEA13900B939B1 /* AMPUserCell.h */,
-				8A8E99B51EEEA13900B939B1 /* AMPUserCell.m */,
-				8A8E99B71EEEA14E00B939B1 /* AMPUserCell.xib */,
-			);
-			path = AMPUserCell;
 			sourceTree = "<group>";
 		};
 		8A8E99B91EEEA49500B939B1 /* UINib+AMPExtensions */ = {
@@ -223,6 +276,101 @@
 			path = "NSIndexPath+AMPExtensions";
 			sourceTree = "<group>";
 		};
+		8A8E99DA1EF7090E00B939B1 /* AMPUserCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99DB1EF7090E00B939B1 /* AMPUserCell.h */,
+				8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */,
+				8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */,
+			);
+			path = AMPUserCell;
+			sourceTree = "<group>";
+		};
+		8A8E99F71EF7EB3900B939B1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99F81EF7EB3900B939B1 /* AMPArrayModel */,
+				8A8E9A081EF7EB3900B939B1 /* AMPUser */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8A8E99F81EF7EB3900B939B1 /* AMPArrayModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99F91EF7EB3900B939B1 /* AMPArrayModelChange */,
+				8A8E9A061EF7EB3900B939B1 /* AMPArrayModel.h */,
+				8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */,
+			);
+			path = AMPArrayModel;
+			sourceTree = "<group>";
+		};
+		8A8E99F91EF7EB3900B939B1 /* AMPArrayModelChange */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99FD1EF7EB3900B939B1 /* AMPArrayModelChangeDelete */,
+				8A8E9A001EF7EB3900B939B1 /* AMPArrayModelChangeInsert */,
+				8A8E9A031EF7EB3900B939B1 /* AMPArrayModelChangeMove */,
+				8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */,
+				8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */,
+				8A8E99FA1EF7EB3900B939B1 /* AMPArrayModelChange+AMPPrivate.h */,
+			);
+			path = AMPArrayModelChange;
+			sourceTree = "<group>";
+		};
+		8A8E99FD1EF7EB3900B939B1 /* AMPArrayModelChangeDelete */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E99FE1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.h */,
+				8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */,
+			);
+			path = AMPArrayModelChangeDelete;
+			sourceTree = "<group>";
+		};
+		8A8E9A001EF7EB3900B939B1 /* AMPArrayModelChangeInsert */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A011EF7EB3900B939B1 /* AMPArrayModelChangeInsert.h */,
+				8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */,
+			);
+			path = AMPArrayModelChangeInsert;
+			sourceTree = "<group>";
+		};
+		8A8E9A031EF7EB3900B939B1 /* AMPArrayModelChangeMove */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A041EF7EB3900B939B1 /* AMPArrayModelChangeMove.h */,
+				8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */,
+			);
+			path = AMPArrayModelChangeMove;
+			sourceTree = "<group>";
+		};
+		8A8E9A081EF7EB3900B939B1 /* AMPUser */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A091EF7EB3900B939B1 /* AMPUser.h */,
+				8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */,
+			);
+			path = AMPUser;
+			sourceTree = "<group>";
+		};
+		8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */,
+				8A8E9A191EF8FDE300B939B1 /* Info.plist */,
+			);
+			path = AMPObjCUIStudyTests;
+			sourceTree = "<group>";
+		};
+		8A8E9A291EF924A900B939B1 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A2A1EF924CA00B939B1 /* AMPObservableObject+AMPPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,20 +396,10 @@
 			path = "UIWindow+AMPExtensions";
 			sourceTree = "<group>";
 		};
-		8ACB3E831EED3FC5004A8B89 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8ACB3EA41EED44C0004A8B89 /* AMPUsersModel */,
-				8ACB3E9C1EED4320004A8B89 /* AMPUser */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		8ACB3E841EED3FC5004A8B89 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				8ACB3E851EED3FC5004A8B89 /* AMPUsersViewController */,
-				8A8E99B31EEEA0FD00B939B1 /* AMPUserCell */,
 				8ACB3E891EED3FC5004A8B89 /* AMPViewController */,
 			);
 			path = UI;
@@ -270,6 +408,7 @@
 		8ACB3E851EED3FC5004A8B89 /* AMPUsersViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8A8E99DA1EF7090E00B939B1 /* AMPUserCell */,
 				8ACB3E861EED3FC5004A8B89 /* AMPUsersViewController.h */,
 				8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */,
 				8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */,
@@ -299,15 +438,6 @@
 			path = AMPSquareView;
 			sourceTree = "<group>";
 		};
-		8ACB3E9C1EED4320004A8B89 /* AMPUser */ = {
-			isa = PBXGroup;
-			children = (
-				8ACB3E9D1EED4331004A8B89 /* AMPUser.h */,
-				8ACB3E9E1EED4331004A8B89 /* AMPUser.m */,
-			);
-			path = AMPUser;
-			sourceTree = "<group>";
-		};
 		8ACB3EA01EED43F1004A8B89 /* NSString+AMPExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,18 +447,10 @@
 			path = "NSString+AMPExtensions";
 			sourceTree = "<group>";
 		};
-		8ACB3EA41EED44C0004A8B89 /* AMPUsersModel */ = {
-			isa = PBXGroup;
-			children = (
-				8ACB3EA51EED44D9004A8B89 /* AMPUsersModel.h */,
-				8ACB3EA61EED44D9004A8B89 /* AMPUsersModel.m */,
-			);
-			path = AMPUsersModel;
-			sourceTree = "<group>";
-		};
 		8ACB3EA81EEE8EAA004A8B89 /* AMPObservableObject */ = {
 			isa = PBXGroup;
 			children = (
+				8A8E9A291EF924A900B939B1 /* Private */,
 				8ACB3EA91EEE8EAA004A8B89 /* AMPObservableObject.h */,
 				8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */,
 			);
@@ -353,6 +475,17 @@
 			path = "NSObject+AMpextensions";
 			sourceTree = "<group>";
 		};
+		BE0040CD41B677017220C2AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B8B00711BFE91269F7430D9 /* Pods-AMPObjCUIStudy.debug.xcconfig */,
+				4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */,
+				1A26A3238A0013F718795815 /* Pods-AMPObjCUIStudyTests.debug.xcconfig */,
+				8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -360,9 +493,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A4E55A81EE19AB4007B5B51 /* Build configuration list for PBXNativeTarget "AMPObjCUIStudy" */;
 			buildPhases = (
+				AC903EF3267B607FFB4A6EFD /* [CP] Check Pods Manifest.lock */,
 				8A4E558D1EE19AB4007B5B51 /* Sources */,
 				8A4E558E1EE19AB4007B5B51 /* Frameworks */,
 				8A4E558F1EE19AB4007B5B51 /* Resources */,
+				0CAB38DFC3A787F8E9A1304C /* [CP] Embed Pods Frameworks */,
+				9E8F5772A149D14CDB32EC7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -372,6 +508,27 @@
 			productName = AMPObjCUIStudy;
 			productReference = 8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8A8E9A141EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A8E9A1E1EF8FDE300B939B1 /* Build configuration list for PBXNativeTarget "AMPObjCUIStudyTests" */;
+			buildPhases = (
+				2EC29AD2283E33B6AB4A5EDD /* [CP] Check Pods Manifest.lock */,
+				8A8E9A111EF8FDE300B939B1 /* Sources */,
+				8A8E9A121EF8FDE300B939B1 /* Frameworks */,
+				8A8E9A131EF8FDE300B939B1 /* Resources */,
+				0A4B7FFC74F809701427529E /* [CP] Embed Pods Frameworks */,
+				424F3CD6254DC15228E7D318 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A8E9A1B1EF8FDE300B939B1 /* PBXTargetDependency */,
+			);
+			name = AMPObjCUIStudyTests;
+			productName = AMPObjCUIStudyTests;
+			productReference = 8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -386,6 +543,12 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = FWP6H8H8UZ;
 						ProvisioningStyle = Automatic;
+					};
+					8A8E9A141EF8FDE300B939B1 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = FWP6H8H8UZ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8A4E55901EE19AB4007B5B51;
 					};
 				};
 			};
@@ -403,6 +566,7 @@
 			projectRoot = "";
 			targets = (
 				8A4E55901EE19AB4007B5B51 /* AMPObjCUIStudy */,
+				8A8E9A141EF8FDE300B939B1 /* AMPObjCUIStudyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -415,13 +579,113 @@
 				8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */,
 				8A4E55BD1EE19C02007B5B51 /* Assets.xcassets in Resources */,
 				8A8E99C71EEEAF4900B939B1 /* vw.jpg in Resources */,
+				8A8E99DF1EF7090E00B939B1 /* AMPUserCell.xib in Resources */,
 				8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */,
 				8ACB3E941EED3FC5004A8B89 /* AMPViewController.xib in Resources */,
-				8A8E99B81EEEA14E00B939B1 /* AMPUserCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A8E9A131EF8FDE300B939B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A4B7FFC74F809701427529E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0CAB38DFC3A787F8E9A1304C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EC29AD2283E33B6AB4A5EDD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		424F3CD6254DC15228E7D318 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E8F5772A149D14CDB32EC7C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC903EF3267B607FFB4A6EFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A4E558D1EE19AB4007B5B51 /* Sources */ = {
@@ -429,29 +693,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
+				8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */,
 				8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */,
 				8A8E99B21EEEA0C500B939B1 /* AMPTableViewCell.m in Sources */,
 				8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */,
 				8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */,
+				8A8E99DE1EF7090E00B939B1 /* AMPUserCell.m in Sources */,
 				8ACB3EAB1EEE8EAA004A8B89 /* AMPObservableObject.m in Sources */,
-				8A8E99B61EEEA13900B939B1 /* AMPUserCell.m in Sources */,
+				8A8E9A0D1EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m in Sources */,
 				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */,
 				8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */,
+				8A8E9A0E1EF7EB3900B939B1 /* AMPArrayModelChangeMove.m in Sources */,
+				8A8E9A0B1EF7EB3900B939B1 /* AMPArrayModelChange.m in Sources */,
 				8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */,
 				8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */,
+				8A8E9A0C1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m in Sources */,
 				8ACB3E921EED3FC5004A8B89 /* AMPSquareView.m in Sources */,
+				8A8E9A0F1EF7EB3900B939B1 /* AMPArrayModel.m in Sources */,
 				8ACB3E971EED40B8004A8B89 /* AMPUsersView.m in Sources */,
 				8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */,
 				8A8E99BC1EEEA4B800B939B1 /* UINib+AMPExtensions.m in Sources */,
 				8A248B231EE2E1410039958F /* AMPRandom.m in Sources */,
-				8ACB3E9F1EED4331004A8B89 /* AMPUser.m in Sources */,
-				8ACB3EA71EED44D9004A8B89 /* AMPUsersModel.m in Sources */,
 				8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8A8E9A111EF8FDE300B939B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A8E9A251EF9003600B939B1 /* AMPArrayModelChangeDelete.m in Sources */,
+				8A8E9A221EF9002C00B939B1 /* AMPArrayModelChange.m in Sources */,
+				8A8E9A241EF9003300B939B1 /* AMPArrayModelChangeInsert.m in Sources */,
+				8A8E9A231EF9003000B939B1 /* AMPArrayModelChangeMove.m in Sources */,
+				8A8E9A211EF9002100B939B1 /* AMPArrayModel.m in Sources */,
+				8A8E9A201EF9001800B939B1 /* AMPArrayModelSpec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A8E9A1B1EF8FDE300B939B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A4E55901EE19AB4007B5B51 /* AMPObjCUIStudy */;
+			targetProxy = 8A8E9A1A1EF8FDE300B939B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */ = {
@@ -561,6 +850,7 @@
 		};
 		8A4E55A91EE19AB4007B5B51 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B8B00711BFE91269F7430D9 /* Pods-AMPObjCUIStudy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
@@ -576,6 +866,7 @@
 		};
 		8A4E55AA1EE19AB4007B5B51 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
@@ -586,6 +877,34 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8A8E9A1C1EF8FDE300B939B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A26A3238A0013F718795815 /* Pods-AMPObjCUIStudyTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				INFOPLIST_FILE = AMPObjCUIStudyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AMPObjCUIStudy.app/AMPObjCUIStudy";
+			};
+			name = Debug;
+		};
+		8A8E9A1D1EF8FDE300B939B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				INFOPLIST_FILE = AMPObjCUIStudyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = AMP.AMPObjCUIStudyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AMPObjCUIStudy.app/AMPObjCUIStudy";
 			};
 			name = Release;
 		};
@@ -606,6 +925,15 @@
 			buildConfigurations = (
 				8A4E55A91EE19AB4007B5B51 /* Debug */,
 				8A4E55AA1EE19AB4007B5B51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8A8E9A1E1EF8FDE300B939B1 /* Build configuration list for PBXNativeTarget "AMPObjCUIStudyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8E9A1C1EF8FDE300B939B1 /* Debug */,
+				8A8E9A1D1EF8FDE300B939B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

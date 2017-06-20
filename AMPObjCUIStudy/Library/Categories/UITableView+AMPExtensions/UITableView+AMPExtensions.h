@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class AMPArrayModelChange;
+
 @interface UITableView (AMPExtensions)
 
-- (id)cellWithClass:(Class)class;
+- (id)reusableCellWithClass:(Class)class;
 
-- (void)performUpdatesWithBlock:(void (^)(void))block;
+- (void)updateWithBlock:(void (^)(void))block;
+
+- (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange;
 
 - (void)insertRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
 - (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation;

@@ -11,7 +11,7 @@
 
 #import "CGGeometry+AMPExtensions.h"
 
-#define AMPDefineBaseViewProperty(controllerClass, propertyClass, propertyName) \
+#define AMPSynthesizeBaseViewProperty(controllerClass, propertyClass, propertyName) \
     @interface controllerClass (controllerClass_propertyClass) \
     @property (nonatomic, strong)   propertyClass    *propertyName; \
     \

@@ -17,9 +17,9 @@
 }
 
 - (id)objectWithClass:(Class)class owner:(id)owner options:(NSDictionary *)options {
-    NSArray *topLevelObjects = [self loadNibNamed:NSStringFromClass([class class]) owner:owner options:options];
+    NSArray *objects = [self loadNibNamed:NSStringFromClass([class class]) owner:owner options:options];
     
-    return [[topLevelObjects objectsWithClass:class] firstObject];
+    return [[objects objectsWithClass:class] firstObject];
 }
 
 @end
