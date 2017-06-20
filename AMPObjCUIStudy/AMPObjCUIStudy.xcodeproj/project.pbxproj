@@ -26,7 +26,12 @@
 		8A8E9A0E1EF7EB3900B939B1 /* AMPArrayModelChangeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */; };
 		8A8E9A0F1EF7EB3900B939B1 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */; };
 		8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */; };
-		8A8E9A181EF8FDE300B939B1 /* AMPObjCUIStudyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A171EF8FDE300B939B1 /* AMPObjCUIStudyTests.m */; };
+		8A8E9A201EF9001800B939B1 /* AMPArrayModelSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */; };
+		8A8E9A211EF9002100B939B1 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */; };
+		8A8E9A221EF9002C00B939B1 /* AMPArrayModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */; };
+		8A8E9A231EF9003000B939B1 /* AMPArrayModelChangeMove.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */; };
+		8A8E9A241EF9003300B939B1 /* AMPArrayModelChangeInsert.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */; };
+		8A8E9A251EF9003600B939B1 /* AMPArrayModelChangeDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
 		8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */; };
@@ -96,8 +101,8 @@
 		8A8E9A091EF7EB3900B939B1 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
 		8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
 		8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMPObjCUIStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A8E9A171EF8FDE300B939B1 /* AMPObjCUIStudyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMPObjCUIStudyTests.m; sourceTree = "<group>"; };
 		8A8E9A191EF8FDE300B939B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelSpec.m; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -351,7 +356,7 @@
 		8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
 			isa = PBXGroup;
 			children = (
-				8A8E9A171EF8FDE300B939B1 /* AMPObjCUIStudyTests.m */,
+				8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */,
 				8A8E9A191EF8FDE300B939B1 /* Info.plist */,
 			);
 			path = AMPObjCUIStudyTests;
@@ -708,7 +713,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A8E9A181EF8FDE300B939B1 /* AMPObjCUIStudyTests.m in Sources */,
+				8A8E9A251EF9003600B939B1 /* AMPArrayModelChangeDelete.m in Sources */,
+				8A8E9A221EF9002C00B939B1 /* AMPArrayModelChange.m in Sources */,
+				8A8E9A241EF9003300B939B1 /* AMPArrayModelChangeInsert.m in Sources */,
+				8A8E9A231EF9003000B939B1 /* AMPArrayModelChangeMove.m in Sources */,
+				8A8E9A211EF9002100B939B1 /* AMPArrayModel.m in Sources */,
+				8A8E9A201EF9001800B939B1 /* AMPArrayModelSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -916,6 +926,7 @@
 				8A8E9A1D1EF8FDE300B939B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
