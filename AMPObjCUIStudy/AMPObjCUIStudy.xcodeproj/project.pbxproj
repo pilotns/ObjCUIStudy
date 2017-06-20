@@ -103,6 +103,7 @@
 		8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMPObjCUIStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8E9A191EF8FDE300B939B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelSpec.m; sourceTree = "<group>"; };
+		8A8E9A2A1EF924CA00B939B1 /* AMPObservableObject+AMPPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPObservableObject+AMPPrivate.h"; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -362,6 +363,14 @@
 			path = AMPObjCUIStudyTests;
 			sourceTree = "<group>";
 		};
+		8A8E9A291EF924A900B939B1 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				8A8E9A2A1EF924CA00B939B1 /* AMPObservableObject+AMPPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +450,7 @@
 		8ACB3EA81EEE8EAA004A8B89 /* AMPObservableObject */ = {
 			isa = PBXGroup;
 			children = (
+				8A8E9A291EF924A900B939B1 /* Private */,
 				8ACB3EA91EEE8EAA004A8B89 /* AMPObservableObject.h */,
 				8ACB3EAA1EEE8EAA004A8B89 /* AMPObservableObject.m */,
 			);

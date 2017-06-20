@@ -8,12 +8,6 @@
 
 #import "AMPObservableObject.h"
 
-typedef NS_ENUM(NSUInteger, AMPArrayModelChangesType) {
-    AMPArrayModelChangesTypeAdd,
-    AMPArrayModelChangesTypeMove,
-    AMPArrayModelChangesTypeRemove
-};
-
 @class AMPArrayModelChange;
 @class AMPArrayModel;
 

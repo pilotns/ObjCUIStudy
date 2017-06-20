@@ -13,12 +13,14 @@
 
 #import "NSObject+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
+#import "AMPObservableObject+AMPPrivate.h"
 
 typedef void(^AMPVoidBlock)(void);
 
 @interface AMPArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableObjects;
 
+- (void)notifyOfChangeModelWithArrayModelChange:(AMPArrayModelChange *)modelChange;
 - (void)performChangeWithModelChange:(AMPArrayModelChange *)modelChange block:(AMPVoidBlock)block;
 
 @end
@@ -131,14 +133,12 @@ typedef void(^AMPVoidBlock)(void);
     }
     
     block();
-    [self notifyOfStateChangeWithUserInfo:modelChange];
+    [self notifyOfChangeModelWithArrayModelChange:modelChange];
 }
 
-#pragma mark -
-#pragma mark AMPObservableObject
-
-- (SEL)selectorForState:(NSUInteger)state {
-    return @selector(arrayModel:didChangeWithArrayModelChange:);
+- (void)notifyOfChangeModelWithArrayModelChange:(AMPArrayModelChange *)modelChange {
+    [self notifyOfStateWithSelector:@selector(arrayModel:didChangeWithArrayModelChange:)
+                           userInfo:modelChange];
 }
 
 @end

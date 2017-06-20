@@ -21,8 +21,6 @@
 - (void)notifyOfState:(NSUInteger)state;
 - (void)notifyOfState:(NSUInteger)state userInfo:(id)userInfo;
 
-- (void)notifyOfStateChangeWithUserInfo:(id)userInfo;
-
 // This method is intended for subclassing
 - (SEL)selectorForState:(NSUInteger)state;
 
