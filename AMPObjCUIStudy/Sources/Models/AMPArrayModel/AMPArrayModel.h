@@ -6,7 +6,7 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPObservableObject.h"
+#import "AMPModel.h"
 
 @class AMPArrayModelChange;
 @class AMPArrayModel;
@@ -17,10 +17,8 @@
 
 @end
 
-@interface AMPArrayModel : AMPObservableObject
+@interface AMPArrayModel : AMPModel
 @property (nonatomic, readonly) NSUInteger  count;
-
-- (instancetype)initWithObjects:(NSArray *)objects;
 
 - (void)addObject:(id)object;
 - (void)addObjects:(id<NSFastEnumeration>)objects;

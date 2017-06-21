@@ -13,20 +13,22 @@
 
 #import "AMPUsersView.h"
 #import "AMPUserCell.h"
+#import "AMPLoadingView.h"
 
 #import "AMPMarcos.h"
 
 #import "UITableView+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
+#import "UINib+AMPExtensions.h"
 
 AMPSynthesizeBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
-static NSString * const AMPSortButtonTitle              = @"Sort";
 static NSString * const AMPNavigationControllerTitle    = @"Users";
 
-@interface AMPUsersViewController () <AMPArrayModelObserver>
+@interface AMPUsersViewController () <AMPModelObserver, AMPArrayModelObserver>
+@property (nonatomic, strong)   AMPLoadingView  *loadingView;
 
-- (void)fillWithModel:(AMPArrayModel *)model;
+- (void)fillWithModel:(AMPModel *)model;
 
 - (void)initBarButtonItems;
 - (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem;
@@ -40,6 +42,7 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 
 - (void)dealloc {
     self.users = nil;
+    self.loadingView = nil;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -60,7 +63,16 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
         [_users addObserver:self];
     }
     
-    [self fillWithModel:users];
+    [users load];
+}
+
+- (void)setLoadingView:(AMPLoadingView *)loadingView {
+    if (_loadingView != loadingView) {
+        [_loadingView dismiss];
+        
+        _loadingView = loadingView;
+        [_loadingView present];
+    }
 }
 
 #pragma mark -
@@ -84,10 +96,11 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark -
 #pragma mark View LifeCycle
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self fillWithModel:self.users];
+    self.loadingView = [AMPLoadingView loadingViewWithView:self.usersView];
 }
 
 #pragma mark -
@@ -145,9 +158,9 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)fillWithModel:(AMPArrayModel *)model {
+- (void)fillWithModel:(AMPModel *)model {
     self.navigationItem.title = AMPNavigationControllerTitle;
-    
+
     [self.usersView.tableView reloadData];
 }
 
@@ -169,7 +182,15 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 }
 
 #pragma mark -
-#pragma mark AMPUsersModelObserver
+#pragma mark AMPModelObserver
+
+- (void)modelDidFinishLoading:(AMPModel *)model {
+    [self fillWithModel:model];
+    self.loadingView = nil;
+}
+
+#pragma mark -
+#pragma mark AMPArrayModelObserver
 
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
     [self.usersView.tableView updateWithArrayModelChange:info];

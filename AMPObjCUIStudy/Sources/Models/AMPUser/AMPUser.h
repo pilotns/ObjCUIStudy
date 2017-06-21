@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AMPUser : NSObject
+@interface AMPUser : NSObject <NSCoding>
 @property (nonatomic, readonly) NSString    *fullName;
 @property (nonatomic, readonly) UIImage     *image;
 

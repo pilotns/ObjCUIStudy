@@ -10,18 +10,24 @@
 
 #import "AMPUser.h"
 #import "AMPArrayModelChange.h"
+#import "AMPMarcos.h"
 
+#import "AMPModel+AMPPrivate.h"
 #import "NSObject+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
 #import "AMPObservableObject+AMPPrivate.h"
+#import "NSNotificationCenter+AMPExtensions.h"
 
 typedef void(^AMPVoidBlock)(void);
 
 @interface AMPArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableObjects;
+@property (nonatomic, strong)   NSArray         *notificationTokens;
 
-- (void)notifyOfChangeModelWithArrayModelChange:(AMPArrayModelChange *)modelChange;
+@property (nonatomic, readonly) NSString        *mutableObjectsPath;
+
 - (void)performChangeWithModelChange:(AMPArrayModelChange *)modelChange block:(AMPVoidBlock)block;
+- (void)prepareObserving;
 
 @end
 
@@ -32,13 +38,13 @@ typedef void(^AMPVoidBlock)(void);
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)init {
-    return [self initWithObjects:nil];
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObservers:self.notificationTokens];
 }
 
-- (instancetype)initWithObjects:(NSArray *)objects {
+- (instancetype)init {
     self = [super init];
-    self.mutableObjects = [NSMutableArray arrayWithArray:objects];
+    [self prepareObserving];
     
     return self;
 }
@@ -48,6 +54,17 @@ typedef void(^AMPVoidBlock)(void);
 
 - (NSUInteger)count {
     return self.mutableObjects.count;
+}
+
+- (BOOL)isLoaded {
+    return nil != self.mutableObjects;
+}
+
+- (NSString *)mutableObjectsPath {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSURL *url = [[manager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    
+    return [url URLByAppendingPathComponent:@"users.plist"].path;
 }
 
 #pragma mark - 
@@ -125,6 +142,24 @@ typedef void(^AMPVoidBlock)(void);
 }
 
 #pragma mark -
+#pragma mark Override Methods
+
+- (void)loadInBackground {
+    NSMutableArray *users = [NSKeyedUnarchiver unarchiveObjectWithFile:self.mutableObjectsPath];;
+    
+    if (!users) {
+        users = [NSMutableArray array];
+    }
+    
+    usleep(1000 * 1000 * 3);
+    self.mutableObjects = users;
+}
+
+- (void)saveCurrentState {
+    [NSKeyedArchiver archiveRootObject:self.mutableObjects toFile:self.mutableObjectsPath];
+}
+
+#pragma mark -
 #pragma mark Private Metohds
 
 - (void)performChangeWithModelChange:(AMPArrayModelChange *)modelChange block:(AMPVoidBlock)block {
@@ -133,12 +168,22 @@ typedef void(^AMPVoidBlock)(void);
     }
     
     block();
-    [self notifyOfChangeModelWithArrayModelChange:modelChange];
-}
-
-- (void)notifyOfChangeModelWithArrayModelChange:(AMPArrayModelChange *)modelChange {
+    
     [self notifyOfStateWithSelector:@selector(arrayModel:didChangeWithArrayModelChange:)
                            userInfo:modelChange];
+}
+
+- (void)prepareObserving {
+    NSArray *notificationNames = @[UIApplicationWillTerminateNotification,
+                                  UIApplicationWillResignActiveNotification];
+    
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    
+    AMPWeakify(self);
+    self.notificationTokens = [center addObserverForNames:notificationNames usingBlock:^(NSNotification *note) {
+        AMPStrongifyAndReturnIfNil(self);
+        [self saveCurrentState];
+    }];
 }
 
 @end
