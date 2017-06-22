@@ -21,6 +21,8 @@
 
 @implementation AMPModel
 
+@dynamic loaded;
+
 #pragma mark -
 #pragma mark Accessors
 

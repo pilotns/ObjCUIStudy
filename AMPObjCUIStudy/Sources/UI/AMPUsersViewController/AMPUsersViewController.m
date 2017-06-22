@@ -79,7 +79,9 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark Actions
 
 - (void)onAdd:(UIBarButtonItem *)sender {
-    [self.users addObject:[AMPUser new]];
+    if (self.users.isLoaded) {
+        [self.users addObject:[AMPUser new]];
+    }
 }
 
 - (void)onEdit:(UIBarButtonItem *)sender {

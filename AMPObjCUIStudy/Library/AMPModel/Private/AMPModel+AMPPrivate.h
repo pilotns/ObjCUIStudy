@@ -8,10 +8,7 @@
 
 #import "AMPModel.h"
 
-// subclasses must provide implementation of the following interface
-
 @interface AMPModel (AMPPrivate)
-@property (nonatomic, readonly, getter=isLoaded)    BOOL    loaded;
 
 - (void)loadInBackground;
 - (void)saveCurrentState;
