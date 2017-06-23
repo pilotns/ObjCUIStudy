@@ -8,6 +8,8 @@
 
 #import "AMPUser.h"
 
+#import "AMPImageModel.h"
+
 #import "NSString+AMPRandom.h"
 
 static NSString * const kAMPUserFirstName = @"kAMPUserFirstName";
@@ -22,7 +24,7 @@ static NSString * const kAMPUserLastName = @"kAMPUserLastName";
 @implementation AMPUser
 
 @dynamic fullName;
-@dynamic image;
+@dynamic imageModel;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -58,8 +60,10 @@ static NSString * const kAMPUserLastName = @"kAMPUserLastName";
     return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
-- (UIImage *)image {
-    return [UIImage imageNamed:@"vw.jpg"];
+- (AMPImageModel *)imageModel {
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"vw_240" withExtension:@"jpg"];
+    
+    return [AMPImageModel imageModelWithURL:url];
 }
 
 @end

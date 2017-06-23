@@ -9,6 +9,7 @@
 #import "AMPUserCell.h"
 
 #import "AMPUser.h"
+#import "AMPImageView.h"
 
 @interface AMPUserCell ()
 
@@ -34,7 +35,7 @@
 
 - (void)fillWithUser:(AMPUser *)user {
     self.fullNameLabel.text = user.fullName;
-    self.userImageView.image = user.image;
+    self.userImageView.imageModel = user.imageModel;
 }
 
 @end

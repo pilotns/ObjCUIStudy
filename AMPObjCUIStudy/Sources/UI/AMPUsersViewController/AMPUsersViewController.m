@@ -157,6 +157,13 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
     return UITableViewCellEditingStyleDelete;
 }
 
+- (void)    tableView:(UITableView *)tableView
+ didEndDisplayingCell:(AMPUserCell *)cell
+    forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    cell.user = nil;
+}
+
 #pragma mark -
 #pragma mark Private Methods
 

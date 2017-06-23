@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class AMPImageModel;
+
 @interface AMPUser : NSObject <NSCoding>
-@property (nonatomic, readonly) NSString    *fullName;
-@property (nonatomic, readonly) UIImage     *image;
+@property (nonatomic, readonly) NSString        *fullName;
+@property (nonatomic, readonly) AMPImageModel   *imageModel;
 
 @end
