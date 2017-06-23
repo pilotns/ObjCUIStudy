@@ -10,7 +10,8 @@
 
 @interface AMPModel (AMPPrivate)
 
-- (void)loadInBackground;
-- (void)saveCurrentState;
+- (void)processLoad;
+- (void)processSave;
+- (void)processDump;
 
 @end

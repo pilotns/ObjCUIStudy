@@ -13,7 +13,7 @@
 #import "AMPGCDExtensions.h"
 
 @interface AMPModel ()
-@property (nonatomic, strong)   NSOperation *operation;
+@property (nonatomic, readonly)   NSOperation *operation;
 
 - (NSOperation *)loadingOperation;
 
@@ -59,7 +59,11 @@
 }
 
 - (void)save {
-    [self saveCurrentState];
+    [self processSave];
+}
+
+- (void)dump {
+    [self processDump];
 }
 
 #pragma mark -
@@ -69,7 +73,7 @@
     AMPWeakify(self);
     NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
         AMPStrongifyAndReturnIfNil(self);
-        [self loadInBackground];
+        [self processLoad];
     }];
     
     operation.completionBlock = ^{

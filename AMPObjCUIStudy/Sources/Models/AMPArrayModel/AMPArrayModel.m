@@ -144,7 +144,7 @@ typedef void(^AMPVoidBlock)(void);
 #pragma mark -
 #pragma mark Override Methods
 
-- (void)loadInBackground {
+- (void)processLoad {
     NSMutableArray *users = [NSKeyedUnarchiver unarchiveObjectWithFile:self.mutableObjectsPath];;
     
     if (!users) {
@@ -155,8 +155,13 @@ typedef void(^AMPVoidBlock)(void);
     self.mutableObjects = users;
 }
 
-- (void)saveCurrentState {
+- (void)processSave {
     [NSKeyedArchiver archiveRootObject:self.mutableObjects toFile:self.mutableObjectsPath];
+}
+
+- (void)processDump {
+    [self save];
+    self.mutableObjects = nil;
 }
 
 #pragma mark -
@@ -182,7 +187,7 @@ typedef void(^AMPVoidBlock)(void);
     AMPWeakify(self);
     self.notificationTokens = [center addObserverForNames:notificationNames usingBlock:^(NSNotification *note) {
         AMPStrongifyAndReturnIfNil(self);
-        [self saveCurrentState];
+        [self save];
     }];
 }
 

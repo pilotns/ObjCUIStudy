@@ -27,9 +27,11 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
 @end
 
 @interface AMPModel : AMPObservableObject
+
 @property (nonatomic, readonly, getter=isLoaded)    BOOL    loaded;
 
 - (void)load;
 - (void)save;
+- (void)dump;
 
 @end
