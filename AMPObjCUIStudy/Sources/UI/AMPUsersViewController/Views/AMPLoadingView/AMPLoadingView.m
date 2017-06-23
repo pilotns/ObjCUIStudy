@@ -43,7 +43,7 @@ static const NSTimeInterval AMPLoadingViewPresentationDuration = 0.25;
         [self removeFromSuperview];
         _view = view;
         
-        self.frame = view.frame;
+        self.frame = view.bounds;
         [_view addSubview:self];
     }
 }
