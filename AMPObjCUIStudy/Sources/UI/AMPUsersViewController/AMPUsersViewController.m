@@ -128,18 +128,18 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
     return YES;
 }
 
--   (void)tableView:(UITableView *)tableView
- commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-  forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)    tableView:(UITableView *)tableView
+   commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+    forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         [self.users removeObjectAtIndex:indexPath.row];
     }
 }
 
--   (void)tableView:(UITableView *)tableView
- moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
-        toIndexPath:(NSIndexPath *)destinationIndexPath
+- (void)    tableView:(UITableView *)tableView
+   moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+          toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [self.users moveObjectAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
