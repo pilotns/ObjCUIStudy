@@ -9,25 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @interface AMPArrayModelChange : NSObject
-@property (nonatomic, readonly) NSIndexPath *indexPath;
 
 + (instancetype)arrayModelChangeInsertWithIndex:(NSUInteger)index;
 + (instancetype)arrayModelChangeDeleteWithIndex:(NSUInteger)index;
 + (instancetype)arrayModelChangeMoveWithSourceIndex:(NSUInteger)sourceIndex
                                    destinationIndex:(NSUInteger)destinationIndex;
 
-+ (instancetype)arrayModelChangeInsertWithIndexPath:(NSIndexPath *)indexPath;
-+ (instancetype)arrayModelChangeDeleteWithIndexPath:(NSIndexPath *)indexPath;
-+ (instancetype)arrayModelChangeMoveWithSourceIndexPath:(NSIndexPath *)sourceIndexPath
-                                   destinationIndexPath:(NSIndexPath *)destinationIndexPath;
+@end
 
-- (instancetype)initWithIndex:(NSUInteger)index;
-- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath;
+@interface AMPArrayModelChange (UITableView)
 
-- (instancetype)initWithSourceIndex:(NSUInteger)sourceIndex
-                   destinationIndex:(NSUInteger)destinationIndex;
+- (void)applyToTableView:(UITableView *)tableView;
+- (void)applyToTableView:(UITableView *)tableView section:(NSUInteger)section;
 
-- (instancetype)initWithSourceIndexPath:(NSIndexPath *)sourceIndexPath
-                   destinationIndexPath:(NSIndexPath *)destinationIndexPath;
+- (void)applyToTableView:(UITableView *)tableView
+                 section:(NSUInteger)section
+            rowAnimation:(UITableViewRowAnimation)animation;
 
 @end

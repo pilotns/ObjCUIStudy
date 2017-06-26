@@ -8,13 +8,12 @@
 
 #import "AMPArrayModelChangeMove.h"
 
-#import "AMPArrayModelChange+AMPPrivate.h"
-
 #import "NSIndexPath+AMPExtensions.h"
+#import "UITableView+AMPExtensions.h"
 
 @interface AMPArrayModelChangeMove ()
-@property (nonatomic, strong)   NSIndexPath *sourceIndexPath;
-@property (nonatomic, strong)   NSIndexPath *destinationIndexPath;
+@property (nonatomic, assign)   NSUInteger sourceIndex;
+@property (nonatomic, assign)   NSUInteger destinationIndex;
 
 @end
 
@@ -26,25 +25,24 @@
 - (instancetype)initWithSourceIndex:(NSUInteger)sourceIndex
                    destinationIndex:(NSUInteger)destinationIndex
 {
-    return [self initWithSourceIndexPath:[NSIndexPath indexPathForRow:sourceIndex]
-                    destinationIndexPath:[NSIndexPath indexPathForRow:destinationIndex]];
-}
-
-- (instancetype)initWithSourceIndexPath:(NSIndexPath *)sourceIndexPath
-                   destinationIndexPath:(NSIndexPath *)destinationIndexPath
-{
     self = [super init];
-    self.sourceIndexPath = sourceIndexPath;
-    self.destinationIndexPath = destinationIndexPath;
+    self.sourceIndex = sourceIndex;
+    self.destinationIndex = destinationIndex;
     
     return self;
 }
 
 #pragma mark -
-#pragma mark Public Methods
+#pragma mark AMPArrayModelChange (UITableView)
 
-- (void)applyToTableView:(UITableView *)tableView withRowAnimation:(UITableViewRowAnimation)animation {
-    [tableView moveRowAtIndexPath:self.sourceIndexPath toIndexPath:self.destinationIndexPath];
+- (void)applyToTableView:(UITableView *)tableView
+                 section:(NSUInteger)section
+            rowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath *sourceIndexPath = [NSIndexPath indexPathForRow:self.sourceIndex inSection:section];
+    NSIndexPath *destinationIndexPath = [NSIndexPath indexPathForRow:self.destinationIndex inSection:section];
+    
+    [tableView moveRowAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
 }
 
 @end

@@ -10,4 +10,7 @@
 
 @interface AMPArrayModelChangeMove : AMPArrayModelChange
 
+- (instancetype)initWithSourceIndex:(NSUInteger)sourceIndex
+                   destinationIndex:(NSUInteger)destinationIndex;
+
 @end

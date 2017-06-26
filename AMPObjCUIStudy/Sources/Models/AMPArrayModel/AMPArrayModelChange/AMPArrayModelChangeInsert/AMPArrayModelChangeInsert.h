@@ -10,4 +10,6 @@
 
 @interface AMPArrayModelChangeInsert : AMPArrayModelChange
 
+- (instancetype)initWithIndex:(NSUInteger)index;
+
 @end
