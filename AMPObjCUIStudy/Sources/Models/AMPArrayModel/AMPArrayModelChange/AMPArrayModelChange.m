@@ -14,11 +14,6 @@
 
 #import "NSIndexPath+AMPExtensions.h"
 
-@interface AMPArrayModelChange ()
-@property (nonatomic, strong)   NSIndexPath *indexPath;
-
-@end
-
 @implementation AMPArrayModelChange
 
 #pragma mark -
@@ -32,54 +27,30 @@
     return [[AMPArrayModelChangeDelete alloc] initWithIndex:index];
 }
 
-+ (instancetype)arrayModelChangeMoveWithSourceIndex:(NSUInteger)sourceInde
++ (instancetype)arrayModelChangeMoveWithSourceIndex:(NSUInteger)sourceIndex
                                    destinationIndex:(NSUInteger)destinationIndex
-{
-    return [[AMPArrayModelChangeMove alloc] initWithSourceIndex:sourceInde
-                                               destinationIndex:destinationIndex];
-}
-
-+ (instancetype)arrayModelChangeInsertWithIndexPath:(NSIndexPath *)indexPath {
-    return [[AMPArrayModelChangeInsert alloc] initWithIndexPath:indexPath];
-}
-
-+ (instancetype)arrayModelChangeDeleteWithIndexPath:(NSIndexPath *)indexPath {
-    return [[AMPArrayModelChangeDelete alloc] initWithIndexPath:indexPath];
-}
-
-+ (instancetype)arrayModelChangeMoveWithSourceIndexPath:(NSIndexPath *)sourceIndexPath
-                                   destinationIndexPath:(NSIndexPath *)destinationIndexPath
-{
-    return [[AMPArrayModelChangeMove alloc] initWithSourceIndexPath:sourceIndexPath
-                                               destinationIndexPath:destinationIndexPath];
-}
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (instancetype)initWithIndex:(NSUInteger)index {
-    return [self initWithIndexPath:[NSIndexPath indexPathForRow:index]];
-}
-
-- (instancetype)initWithIndexPath:(NSIndexPath *)indexPath {
-    self = [super init];
-    self.indexPath = indexPath;
-    
-    return self;
-}
-
-- (instancetype)initWithSourceIndex:(NSUInteger)sourceIndex
-                   destinationIndex:(NSUInteger)destinationIndex
 {
     return [[AMPArrayModelChangeMove alloc] initWithSourceIndex:sourceIndex
                                                destinationIndex:destinationIndex];
 }
 
-- (instancetype)initWithSourceIndexPath:(NSIndexPath *)sourceIndexPath
-                   destinationIndexPath:(NSIndexPath *)destinationIndexPath
+@end
+
+@implementation AMPArrayModelChange (UITableView)
+
+- (void)applyToTableView:(UITableView *)tableView {
+    [self applyToTableView:tableView section:0];
+}
+
+- (void)applyToTableView:(UITableView *)tableView section:(NSUInteger)section {
+    [self applyToTableView:tableView section:section rowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)applyToTableView:(UITableView *)tableView
+                 section:(NSUInteger)section
+            rowAnimation:(UITableViewRowAnimation)animation
 {
-    return [[AMPArrayModelChangeMove alloc] initWithSourceIndexPath:sourceIndexPath
-                                               destinationIndexPath:destinationIndexPath];
+    
 }
 
 @end

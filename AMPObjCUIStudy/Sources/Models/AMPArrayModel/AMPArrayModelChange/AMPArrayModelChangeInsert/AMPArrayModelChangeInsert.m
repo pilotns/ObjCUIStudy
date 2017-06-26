@@ -8,17 +8,37 @@
 
 #import "AMPArrayModelChangeInsert.h"
 
-#import "AMPArrayModelChange+AMPPrivate.h"
-
 #import "NSIndexPath+AMPExtensions.h"
+#import "UITableView+AMPExtensions.h"
+
+@interface AMPArrayModelChangeInsert ()
+@property (nonatomic, assign)   NSUInteger  index;
+
+@end
 
 @implementation AMPArrayModelChangeInsert
 
 #pragma mark -
-#pragma mark Public Methods
+#pragma mark Initializations and Deallocations
 
-- (void)applyToTableView:(UITableView *)tableView withRowAnimation:(UITableViewRowAnimation)animation {
-    [tableView insertRowsAtIndexPaths:@[self.indexPath] withRowAnimation:animation];
+- (instancetype)initWithIndex:(NSUInteger)index {
+    self = [super init];
+    self.index = index;
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark AMPArrayModelChange (UITableView)
+
+- (void)applyToTableView:(UITableView *)tableView
+                 section:(NSUInteger)section
+            rowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.index inSection:section];
+    [tableView updateWithBlock:^{
+        [tableView insertRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+    }];
 }
 
 @end

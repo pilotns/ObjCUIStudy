@@ -10,10 +10,10 @@
 
 #import "AMPMarcos.h"
 
-#import "AMPObservableObject+AMPPrivate.h"
-
 @interface AMPObservableObject ()
 @property (nonatomic, retain)   NSHashTable     *mutableObservers;
+
+- (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo;
 
 @end
 
@@ -88,9 +88,7 @@
 }
 
 - (void)notifyOfState:(NSUInteger)state userInfo:(id)userInfo {
-    @synchronized (self) {
-        [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
-    }
+    [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
@@ -101,11 +99,13 @@
 #pragma mark Private Methods
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo {
-    for (id observer in self.mutableObservers) {
-        if ([observer respondsToSelector:aSelector]) {
+    @synchronized (self) {
+        for (id observer in self.mutableObservers) {
+            if ([observer respondsToSelector:aSelector]) {
 AMPPragmaDiagnosticPushSelectorLeak
-            [observer performSelector:aSelector withObject:self withObject:userInfo];
+                [observer performSelector:aSelector withObject:self withObject:userInfo];
 AMPPragmaDiagnosticPop
+            }
         }
     }
 }
