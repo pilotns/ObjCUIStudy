@@ -11,17 +11,14 @@
 #import "AMPUser.h"
 #import "AMPArrayModelChange.h"
 
+#import "NSArray+AMPExtensions.h"
 #import "NSObject+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
-#import "AMPObservableObject+AMPPrivate.h"
 
 typedef void(^AMPVoidBlock)(void);
 
 @interface AMPArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableObjects;
-
-- (void)notifyOfChangeModelWithArrayModelChange:(AMPArrayModelChange *)modelChange;
-- (void)performChangeWithModelChange:(AMPArrayModelChange *)modelChange block:(AMPVoidBlock)block;
 
 @end
 
@@ -47,7 +44,9 @@ typedef void(^AMPVoidBlock)(void);
 #pragma mark Accessors
 
 - (NSUInteger)count {
-    return self.mutableObjects.count;
+    @synchronized (self) {
+        return self.mutableObjects.count;
+    }
 }
 
 #pragma mark - 
@@ -64,22 +63,24 @@ typedef void(^AMPVoidBlock)(void);
 }
 
 - (void)insertObject:(id)object atIndex:(NSUInteger)index {
-    if (object && index <= self.count) {
-        AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeInsertWithIndex:index];
-        
-        [self performChangeWithModelChange:modelChange block:^{
+    if (!object) {
+        return;
+    }
+    
+    @synchronized (self) {
+        if (index <= self.count) {
+            AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeInsertWithIndex:index];
+            
             [self.mutableObjects insertObject:object atIndex:index];
-        }];
+            [self notifyOfState:AMPArrayModelDidChange userInfo:modelChange];
+        }
     }
 }
 
 - (void)removeObject:(id)object {
-    NSUInteger index = [self indexOfObject:object];
-    if (index == NSNotFound) {
-        return;
+    @synchronized (self) {
+        [self removeObjectAtIndex:[self indexOfObject:object]];
     }
-    
-    [self removeObjectAtIndex:index];
 }
 
 - (void)removeObjects:(id<NSFastEnumeration>)objects {
@@ -89,12 +90,13 @@ typedef void(^AMPVoidBlock)(void);
 }
 
 - (void)removeObjectAtIndex:(NSUInteger)index {
-    if (index < self.count) {
-        AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeDeleteWithIndex:index];
-        
-        [self performChangeWithModelChange:modelChange block:^{
+    @synchronized (self) {
+        if (index < self.count) {
+            AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeDeleteWithIndex:index];
+            
             [self.mutableObjects removeObjectAtIndex:index];
-        }];
+            [self notifyOfState:AMPArrayModelDidChange userInfo:modelChange];
+        }
     }
 }
 
@@ -103,17 +105,19 @@ typedef void(^AMPVoidBlock)(void);
         return;
     }
     
-    AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeMoveWithSourceIndex:sourceIndex
-                                                                               destinationIndex:destinationIndex];
-    id object = [self objectAtIndex:sourceIndex];
-    [self performChangeWithModelChange:modelChange block:^{
-        [self.mutableObjects removeObjectAtIndex:sourceIndex];
-        [self.mutableObjects insertObject:object atIndex:destinationIndex];
-    }];
+    @synchronized (self) {
+        AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeMoveWithSourceIndex:sourceIndex
+                                                                                   destinationIndex:destinationIndex];
+        
+        [self.mutableObjects moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
+        [self notifyOfState:AMPArrayModelDidChange userInfo:modelChange];
+    }
 }
 
 - (id)objectAtIndex:(NSUInteger)index {
-    return index < self.count ? self.mutableObjects[index] : nil;
+    @synchronized (self) {
+        return index < self.count ? self.mutableObjects[index] : nil;
+    }
 }
 
 - (id)objectAtIndexedSubscript:(NSUInteger)index {
@@ -121,24 +125,21 @@ typedef void(^AMPVoidBlock)(void);
 }
 
 - (NSUInteger)indexOfObject:(id)object {
-    return [self.mutableObjects indexOfObject:object];
+    @synchronized (self) {
+        return [self.mutableObjects indexOfObject:object];
+    }
 }
 
 #pragma mark -
-#pragma mark Private Metohds
+#pragma AMPObservableObject
 
-- (void)performChangeWithModelChange:(AMPArrayModelChange *)modelChange block:(AMPVoidBlock)block {
-    if (!block) {
-        return;
+- (SEL)selectorForState:(NSUInteger)state {
+    switch (state) {
+        case AMPArrayModelDidChange:
+            return @selector(arrayModel:didChangeWithArrayModelChange:);
     }
     
-    block();
-    [self notifyOfChangeModelWithArrayModelChange:modelChange];
-}
-
-- (void)notifyOfChangeModelWithArrayModelChange:(AMPArrayModelChange *)modelChange {
-    [self notifyOfStateWithSelector:@selector(arrayModel:didChangeWithArrayModelChange:)
-                           userInfo:modelChange];
+    return [super selectorForState:state];
 }
 
 @end
