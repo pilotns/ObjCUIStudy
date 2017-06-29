@@ -17,6 +17,7 @@
 - (void)updateWithBlock:(void (^)(void))block;
 
 - (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange;
+- (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange forSection:(NSUInteger)section;
 
 - (void)insertRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
 - (void)deleteRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation;

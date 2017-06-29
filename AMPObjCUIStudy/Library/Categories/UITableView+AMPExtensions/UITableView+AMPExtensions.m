@@ -8,8 +8,10 @@
 
 #import "UITableView+AMPExtensions.h"
 
-#import "AMPArrayModelChange+AMPPrivate.h"
+#import "AMPArrayModelChange.h"
+
 #import "UINib+AMPExtensions.h"
+#import "NSIndexPath+AMPExtensions.h"
 
 @implementation UITableView (AMPExtensions)
 
@@ -33,7 +35,11 @@
 }
 
 - (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange {
-    [modelChange applyToTableView:self withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self updateWithArrayModelChange:modelChange forSection:0];
+}
+
+- (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange forSection:(NSUInteger)section {
+    [modelChange applyToTableView:self section:section];
 }
 
 - (void)insertRowAtIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation {

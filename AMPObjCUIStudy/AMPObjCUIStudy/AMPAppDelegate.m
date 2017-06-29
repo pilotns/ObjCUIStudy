@@ -9,7 +9,7 @@
 #import "AMPAppDelegate.h"
 
 #import "AMPUsersViewController.h"
-#import "AMPArrayModel.h"
+#import "AMPUsersModel.h"
 #import "AMPUser.h"
 
 #import "UIWindow+AMPExtensions.h"
@@ -29,7 +29,7 @@
     
     [window makeKeyAndVisible];
     
-    controller.users = [AMPArrayModel new];
+    controller.users = [AMPUsersModel new];
     
     return YES;
 }
