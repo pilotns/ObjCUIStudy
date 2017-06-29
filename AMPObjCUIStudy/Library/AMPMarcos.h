@@ -66,4 +66,12 @@
         } \
     AMPPragmaDiagnosticPop
 
+#define AMPUIViewAutoresizingAll \
+    UIViewAutoresizingFlexibleLeftMargin \
+    | UIViewAutoresizingFlexibleWidth \
+    | UIViewAutoresizingFlexibleRightMargin \
+    | UIViewAutoresizingFlexibleTopMargin \
+    | UIViewAutoresizingFlexibleHeight \
+    | UIViewAutoresizingFlexibleBottomMargin;
+
 #endif /* AMPMarcos_h */

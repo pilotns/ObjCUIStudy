@@ -9,9 +9,10 @@
 #import "AMPImageView.h"
 
 #import "AMPImageModel.h"
-#import "AMPView+AMPLoadingView.h"
-
 #import "AMPGCDExtensions.h"
+#import "AMPMarcos.h"
+
+#import "AMPView+AMPLoadingView.h"
 
 @interface AMPImageView ()
 @property (nonatomic, strong)   UIImageView     *contentImageView;
@@ -78,10 +79,7 @@
 
 - (void)initSubviews {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
-                                | UIViewAutoresizingFlexibleRightMargin
-                                | UIViewAutoresizingFlexibleTopMargin
-                                | UIViewAutoresizingFlexibleBottomMargin;
+    imageView.autoresizingMask = AMPUIViewAutoresizingAll;
     
     self.contentImageView = imageView;
 }

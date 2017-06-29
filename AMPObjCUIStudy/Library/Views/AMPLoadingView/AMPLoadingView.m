@@ -9,15 +9,9 @@
 #import "AMPLoadingView.h"
 
 #import "AMPGCDExtensions.h"
+#import "AMPMarcos.h"
 
 #import "UINib+AMPExtensions.h"
-
-static const NSUInteger AMPAutoresizingAll = UIViewAutoresizingFlexibleLeftMargin
-                                                | UIViewAutoresizingFlexibleWidth
-                                                | UIViewAutoresizingFlexibleRightMargin
-                                                | UIViewAutoresizingFlexibleTopMargin
-                                                | UIViewAutoresizingFlexibleHeight
-                                                | UIViewAutoresizingFlexibleBottomMargin;
 
 static const NSTimeInterval AMPLoadingViewPresentationDuration = 0.3;
 
@@ -126,7 +120,7 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
 - (void)baseInit {
     self.alpha = 0;
     self.backgroundColor = [UIColor blackColor];
-    self.autoresizingMask = AMPAutoresizingAll;
+    self.autoresizingMask = AMPUIViewAutoresizingAll;
     
     [self prepareIndicator];
 }
@@ -144,7 +138,7 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
                                          CGRectGetMidY(bounds) - CGRectGetHeight(indicatorFrame));
     
     indicator.frame = indicatorFrame;
-    indicator.autoresizingMask = AMPAutoresizingAll;
+    indicator.autoresizingMask = AMPUIViewAutoresizingAll;
     
     self.indicator = indicator;
 }
