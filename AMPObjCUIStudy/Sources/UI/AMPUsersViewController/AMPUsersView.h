@@ -6,9 +6,9 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AMPView.h"
 
-@interface AMPUsersView : UIView
+@interface AMPUsersView : AMPView
 @property (nonatomic, strong)   IBOutlet UITableView    *tableView;
 
 @end

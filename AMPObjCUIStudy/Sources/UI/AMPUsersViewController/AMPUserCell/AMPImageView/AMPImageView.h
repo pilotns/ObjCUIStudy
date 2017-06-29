@@ -6,11 +6,11 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AMPView.h"
 
 @class AMPImageModel;
 
-@interface AMPImageView : UIView
+@interface AMPImageView : AMPView
 @property (nonatomic, readonly) UIImageView     *contentImageView;
 @property (nonatomic, strong)   AMPImageModel   *imageModel;
 

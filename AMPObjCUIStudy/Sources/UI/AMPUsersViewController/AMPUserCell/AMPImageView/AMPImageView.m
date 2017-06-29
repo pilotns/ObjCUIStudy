@@ -9,12 +9,14 @@
 #import "AMPImageView.h"
 
 #import "AMPImageModel.h"
-#import "AMPLoadingView.h"
+#import "AMPView+AMPLoadingView.h"
+
+#import "AMPGCDExtensions.h"
 
 @interface AMPImageView ()
 @property (nonatomic, strong)   UIImageView     *contentImageView;
-@property (nonatomic, strong)   AMPLoadingView  *loadingView;
 
+- (void)fillWithModel:(AMPImageModel *)model;
 - (void)initSubviews;
 
 @end
@@ -26,6 +28,13 @@
 
 - (void)dealloc {
     self.imageModel = nil;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    [self initSubviews];
+    
+    return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
@@ -40,23 +49,13 @@
 
 - (void)setImageModel:(AMPImageModel *)imageModel {
     if (_imageModel != imageModel) {
-        [_imageModel dump];
         [_imageModel removeObserver:self];
         
         _imageModel = imageModel;
         [_imageModel addObserver:self];
         
-        self.loadingView = [AMPLoadingView loadingViewWithView:self];
+        [self presentLoadingViewAnimated:YES];
         [_imageModel load];
-    }
-}
-
-- (void)setLoadingView:(AMPLoadingView *)loadingView {
-    if (_loadingView != loadingView) {
-        [_loadingView dismiss];
-        
-        _loadingView = loadingView;
-        [_loadingView present];
     }
 }
 
@@ -72,6 +71,10 @@
 #pragma mark -
 #pragma mark Private Methods
 
+- (void)fillWithModel:(AMPImageModel *)model {
+    self.contentImageView.image = model.image;
+}
+
 - (void)initSubviews {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin
@@ -85,9 +88,9 @@
 #pragma mark -
 #pragma mark AMPModelObserver
 
-- (void)modelDidFinishLoading:(AMPImageModel *)model {
-    self.contentImageView.image = model.image;
-    self.loadingView = nil;
+- (void)modelDidLoad:(AMPImageModel *)model {
+    [self dismissLoadingViewAnimated:YES];
+    [self fillWithModel:model];
 }
 
 @end

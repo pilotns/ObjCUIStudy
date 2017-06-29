@@ -8,16 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, AMPLoadingViewState) {
+    AMPLoadingViewDidDismiss,
+    AMPLoadingViewDidPresent
+};
+
 @interface AMPLoadingView : UIView
-@property (nonatomic, weak)     UIView      *view;
+@property (nonatomic, assign)   AMPLoadingViewState state;
 
 @property (nonatomic, strong)   IBOutlet    UIActivityIndicatorView *indicator;
 
-+ (instancetype)loadingViewWithView:(UIView *)view;
++ (instancetype)loadingViewInView:(UIView *)view;
 
-- (instancetype)initWithView:(UIView *)view;
-
-- (void)present;
-- (void)dismiss;
+- (void)setState:(AMPLoadingViewState)state animated:(BOOL)animated;
+- (void)setState:(AMPLoadingViewState)state animated:(BOOL)animated completionHandler:(void (^)(void))handler;
 
 @end

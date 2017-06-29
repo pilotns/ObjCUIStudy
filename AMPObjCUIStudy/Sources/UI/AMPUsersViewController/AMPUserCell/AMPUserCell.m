@@ -38,4 +38,10 @@
     self.userImageView.imageModel = user.imageModel;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.userImageView.contentImageView.image = nil;
+}
+
 @end

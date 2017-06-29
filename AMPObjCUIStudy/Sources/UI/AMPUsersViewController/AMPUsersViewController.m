@@ -8,25 +8,26 @@
 
 #import "AMPUsersViewController.h"
 
-#import "AMPArrayModel.h"
+#import "AMPUsersModel.h"
 #import "AMPUser.h"
 
 #import "AMPUsersView.h"
 #import "AMPUserCell.h"
-#import "AMPLoadingView.h"
 
 #import "AMPMarcos.h"
+
+#import "AMPGCDExtensions.h"
 
 #import "UITableView+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
 #import "UINib+AMPExtensions.h"
+#import "AMPView+AMPLoadingView.h"
 
 AMPSynthesizeBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
 static NSString * const AMPNavigationControllerTitle    = @"Users";
 
 @interface AMPUsersViewController () <AMPModelObserver, AMPArrayModelObserver>
-@property (nonatomic, strong)   AMPLoadingView  *loadingView;
 
 - (void)fillWithModel:(AMPModel *)model;
 
@@ -42,7 +43,6 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 
 - (void)dealloc {
     self.users = nil;
-    self.loadingView = nil;
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -55,32 +55,24 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark -
 #pragma mark Accessers
 
-- (void)setUsers:(AMPArrayModel *)users {
+- (void)setUsers:(AMPUsersModel *)users {
     if (_users != users) {
         [_users removeObserver:self];
         
         _users = users;
         [_users addObserver:self];
     }
-    
-    [users load];
-}
 
-- (void)setLoadingView:(AMPLoadingView *)loadingView {
-    if (_loadingView != loadingView) {
-        [_loadingView dismiss];
-        
-        _loadingView = loadingView;
-        [_loadingView present];
-    }
+    [users load];
 }
 
 #pragma mark -
 #pragma mark Actions
 
 - (void)onAdd:(UIBarButtonItem *)sender {
-    if (self.users.isLoaded) {
-        [self.users addObject:[AMPUser new]];
+    AMPUsersModel *users = self.users;
+    if (AMPModelDidLoad == users.state) {
+        [users addObject:[AMPUser new]];
     }
 }
 
@@ -102,7 +94,34 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.loadingView = [AMPLoadingView loadingViewWithView:self.usersView];
+    [self.usersView presentLoadingViewAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)fillWithModel:(AMPModel *)model {
+    AMPDispatchSyncOnMainQueue(^{
+        self.navigationItem.title = AMPNavigationControllerTitle;
+        [self.usersView.tableView reloadData];
+    });
+}
+
+- (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
+                                                         target:self
+                                                         action:@selector(onEdit:)];
+}
+
+- (void)initBarButtonItems {
+    UIBarButtonItem *edit = [self editButtonWithSystemItem:UIBarButtonSystemItemEdit];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                         target:self
+                                                                         action:@selector(onAdd:)];
+    
+    UINavigationItem *navigationItem = self.navigationItem;
+    navigationItem.leftBarButtonItem = add;
+    navigationItem.rightBarButtonItem = edit;
 }
 
 #pragma mark -
@@ -165,44 +184,20 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 }
 
 #pragma mark -
-#pragma mark Private Methods
-
-- (void)fillWithModel:(AMPModel *)model {
-    self.navigationItem.title = AMPNavigationControllerTitle;
-
-    [self.usersView.tableView reloadData];
-}
-
-- (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem {
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
-                                                         target:self
-                                                         action:@selector(onEdit:)];
-}
-
-- (void)initBarButtonItems {
-    UIBarButtonItem *edit = [self editButtonWithSystemItem:UIBarButtonSystemItemEdit];
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                         target:self
-                                                                         action:@selector(onAdd:)];
-    
-    UINavigationItem *navigationItem = self.navigationItem;
-    navigationItem.leftBarButtonItem = add;
-    navigationItem.rightBarButtonItem = edit;
-}
-
-#pragma mark -
 #pragma mark AMPModelObserver
 
-- (void)modelDidFinishLoading:(AMPModel *)model {
+- (void)modelDidLoad:(id)model {
     [self fillWithModel:model];
-    self.loadingView = nil;
+    [self.usersView dismissLoadingViewAnimated:YES];
 }
 
 #pragma mark -
 #pragma mark AMPArrayModelObserver
 
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
-    [self.usersView.tableView updateWithArrayModelChange:info];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self.usersView.tableView updateWithArrayModelChange:info];
+    });
 }
 
 @end

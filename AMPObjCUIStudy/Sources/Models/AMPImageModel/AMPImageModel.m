@@ -8,8 +8,6 @@
 
 #import "AMPImageModel.h"
 
-#import "AMPModel+AMPPrivate.h"
-
 @interface AMPImageModel ()
 @property (nonatomic, strong)   NSURL   *url;
 @property (nonatomic, strong)   UIImage *image;
@@ -36,24 +34,14 @@
 }
 
 #pragma mark -
-#pragma mark Override Methods
+#pragma mark Public Methods
 
-- (BOOL)isLoaded {
-    return nil != self.image;
+- (void)processLoading {
+    self.image = [UIImage imageWithContentsOfFile:self.url.path];
 }
 
-- (void)processLoad {
-    UIImage *image = [UIImage imageWithContentsOfFile:self.url.path];
-    usleep(1000 * 100);
-    self.image = image;
-}
-
-- (void)processSave {
-    
-}
-
-- (void)processDump {
-    self.image = nil;
+- (void)finishLoading {
+    self.state = self.image ? AMPModelDidLoad : AMPModelDidFailLoading;
 }
 
 @end
