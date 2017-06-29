@@ -28,6 +28,7 @@
 
 - (void)dealloc {
     self.imageModel = nil;
+    self.contentImageView = nil;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
