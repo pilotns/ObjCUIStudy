@@ -10,4 +10,6 @@
 
 @interface AMPArrayModelChangeDelete : AMPArrayModelChange
 
+- (instancetype)initWithIndex:(NSUInteger)index;
+
 @end

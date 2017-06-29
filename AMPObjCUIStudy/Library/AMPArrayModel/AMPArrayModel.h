@@ -8,6 +8,10 @@
 
 #import "AMPModel.h"
 
+typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
+    AMPArrayModelDidChangeState = 1 << 8
+};
+
 @class AMPArrayModelChange;
 @class AMPArrayModel;
 
