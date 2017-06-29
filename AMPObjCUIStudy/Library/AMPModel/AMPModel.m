@@ -6,36 +6,26 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPModel+AMPPrivate.h"
+#import "AMPModel.h"
 
 #import "AMPMarcos.h"
-#import "AMPModelLoadingDispatcher.h"
 #import "AMPGCDExtensions.h"
 
 @interface AMPModel ()
-@property (nonatomic, readonly)   NSOperation *operation;
 
-- (NSOperation *)loadingOperation;
+- (void)processLoadingInBackground;
 
 @end
 
 @implementation AMPModel
 
-@dynamic loaded;
-
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Initializations and Deallocations
 
-- (void)setOperation:(NSOperation *)operation {
-    if (_operation != operation) {
-        [_operation cancel];
-        
-        _operation = operation;
-        
-        if (operation) {
-            [[AMPModelLoadingDispatcher sharedDispatcher] addOperation:operation];
-        }
-    }
+- (instancetype)init {
+    self = [super init];
+    
+    return self;
 }
 
 #pragma mark -
@@ -43,47 +33,40 @@
 
 - (void)load {
     @synchronized (self) {
-        if (AMPModelLoading == self.state) {
-            return;
-        }
-        
-        if (AMPModelLoaded == self.state) {
-            [self notifyOfState:AMPModelLoaded];
+        NSUInteger state = self.state;
+        if (AMPModelWillLoad == state || AMPModelDidLoad == state) {
+            [self notifyOfState:state];
             return;
         }
     
-        self.state = AMPModelLoading;
+        self.state = AMPModelWillLoad;
     }
     
-    self.operation = [self loadingOperation];
+    [self processLoadingInBackground];
 }
 
-- (void)save {
-    [self processSave];
+- (void)processLoading {
+    
 }
 
-- (void)dump {
-    [self processDump];
+- (void)finishLoading {
+    
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
-- (NSOperation *)loadingOperation {
+- (void)processLoadingInBackground {
     AMPWeakify(self);
-    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+    AMPDispatchAsyncInBackground(^{
         AMPStrongifyAndReturnIfNil(self);
-        [self processLoad];
-    }];
-    
-    operation.completionBlock = ^{
+        [self processLoading];
+        
         AMPDispatchAsyncOnMainQueue(^{
             AMPStrongifyAndReturnIfNil(self);
-            self.state = self.isLoaded ? AMPModelLoaded : AMPModelFailLoaded;
+            [self finishLoading];
         });
-    };
-    
-    return operation;
+    });
 }
 
 #pragma mark -
@@ -91,11 +74,13 @@
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case AMPModelLoading:
-            return @selector(modelDidBecomeLoading:);
-        case AMPModelLoaded:
-            return @selector(modelDidFinishLoading:);
-        case AMPModelFailLoaded:
+        case AMPModelDidUnload:
+            return @selector(modelDidUnload:);
+        case AMPModelWillLoad:
+            return @selector(modelWillLoad:);
+        case AMPModelDidLoad:
+            return @selector(modelDidLoad:);
+        case AMPModelDidFailLoading:
             return @selector(modelDidFailLoading:);
             
         default:

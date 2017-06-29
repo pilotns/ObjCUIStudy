@@ -9,10 +9,10 @@
 #import "AMPObservableObject.h"
 
 typedef NS_ENUM(NSUInteger, AMPModelState) {
-    AMPModelUnload,
-    AMPModelLoading,
-    AMPModelLoaded,
-    AMPModelFailLoaded
+    AMPModelDidUnload,
+    AMPModelWillLoad,
+    AMPModelDidLoad,
+    AMPModelDidFailLoading
 };
 
 @class AMPModel;
@@ -20,18 +20,19 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
 @protocol AMPModelObserver <NSObject>
 
 @optional
-- (void)modelDidBecomeLoading:(AMPModel *)model;
-- (void)modelDidFinishLoading:(AMPModel *)model;
-- (void)modelDidFailLoading:(AMPModel *)model;
+- (void)modelDidUnload:(id)model;
+- (void)modelWillLoad:(id)model;
+- (void)modelDidLoad:(id)model;
+- (void)modelDidFailLoading:(id)model;
 
 @end
 
 @interface AMPModel : AMPObservableObject
 
-@property (nonatomic, readonly, getter=isLoaded)    BOOL    loaded;
-
 - (void)load;
-- (void)save;
-- (void)dump;
+
+// this methods is intended for subclassing, do not call it directly
+- (void)processLoading;
+- (void)finishLoading;
 
 @end
