@@ -37,6 +37,10 @@ typedef void(^AMPVoidBlock)(void);
     }
 }
 
+- (NSString *)propertyKeyPath {
+    return @"mutableObjects";
+}
+
 #pragma mark - 
 #pragma mark Public Methods
 

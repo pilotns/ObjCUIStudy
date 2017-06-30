@@ -38,7 +38,15 @@
 }
 
 - (void)dismissLoadingViewAnimated:(BOOL)animated completionHandler:(void (^)(void))handler {
-    [self.loadingView setState:AMPLoadingViewDidDismiss animated:animated completionHandler:handler];
+    AMPWeakify(self);
+    [self.loadingView setState:AMPLoadingViewDidDismiss animated:animated completionHandler:^{
+        if (handler) {
+            handler();
+        }
+        
+        AMPStrongifyAndReturnIfNil(self);
+        self.loadingView = nil;
+    }];
 }
 
 @end

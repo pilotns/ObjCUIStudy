@@ -101,10 +101,8 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark Private Methods
 
 - (void)fillWithModel:(AMPModel *)model {
-    AMPDispatchSyncOnMainQueue(^{
-        self.navigationItem.title = AMPNavigationControllerTitle;
-        [self.usersView.tableView reloadData];
-    });
+    self.navigationItem.title = AMPNavigationControllerTitle;
+    [self.usersView.tableView reloadData];
 }
 
 - (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem {
@@ -186,16 +184,22 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark -
 #pragma mark AMPModelObserver
 
+- (void)modelWillLoad:(id)model {
+    [self.usersView presentLoadingViewAnimated:YES];
+}
+
 - (void)modelDidLoad:(id)model {
-    [self fillWithModel:model];
-    [self.usersView dismissLoadingViewAnimated:YES];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self fillWithModel:model];
+        [self.usersView dismissLoadingViewAnimated:YES];
+    });
 }
 
 #pragma mark -
 #pragma mark AMPArrayModelObserver
 
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
-    AMPDispatchAsyncOnMainQueue(^{
+    AMPDispatchSyncOnMainQueue(^{
         [self.usersView.tableView updateWithArrayModelChange:info];
     });
 }

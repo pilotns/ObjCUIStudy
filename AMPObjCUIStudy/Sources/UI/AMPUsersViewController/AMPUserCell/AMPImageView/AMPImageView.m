@@ -55,8 +55,7 @@
         
         _imageModel = imageModel;
         [_imageModel addObserver:self];
-        
-        [self presentLoadingViewAnimated:YES];
+
         [_imageModel load];
     }
 }
@@ -87,9 +86,15 @@
 #pragma mark -
 #pragma mark AMPModelObserver
 
+- (void)modelWillLoad:(id)model {
+    [self presentLoadingViewAnimated:YES];
+}
+
 - (void)modelDidLoad:(AMPImageModel *)model {
-    [self dismissLoadingViewAnimated:YES];
-    [self fillWithModel:model];
+    AMPDispatchSyncOnMainQueue(^{
+        [self dismissLoadingViewAnimated:YES];
+        [self fillWithModel:model];
+    });
 }
 
 @end

@@ -54,10 +54,6 @@ static NSString * const kAMPDefaultPathComponent = @"Users.plist";
     self.mutableObjects = objects;
 }
 
-- (void)finishLoading {
-    self.state = self.mutableObjects ? AMPModelDidLoad : AMPModelDidFailLoading;
-}
-
 #pragma mark -
 #pragma mark Private Methods
 

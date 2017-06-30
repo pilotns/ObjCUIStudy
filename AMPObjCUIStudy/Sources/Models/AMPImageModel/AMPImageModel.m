@@ -34,14 +34,17 @@
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (NSString *)propertyKeyPath {
+    return @"image";
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
 - (void)processLoading {
     self.image = [UIImage imageWithContentsOfFile:self.url.path];
-}
-
-- (void)finishLoading {
-    self.state = self.image ? AMPModelDidLoad : AMPModelDidFailLoading;
 }
 
 @end

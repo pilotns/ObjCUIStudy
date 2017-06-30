@@ -496,8 +496,8 @@
 		8AFA2AE71F05896F00D5A566 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8AFA2AE81F05896F00D5A566 /* AMPArrayModel */,
 				8AFA2AF91F05896F00D5A566 /* AMPModel */,
+				8AFA2AE81F05896F00D5A566 /* AMPArrayModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -505,10 +505,10 @@
 		8AFA2AE81F05896F00D5A566 /* AMPArrayModel */ = {
 			isa = PBXGroup;
 			children = (
-				8AFA2AE91F05896F00D5A566 /* AMPArrayModel.h */,
-				8AFA2AEA1F05896F00D5A566 /* AMPArrayModel.m */,
 				8AFA2AEB1F05896F00D5A566 /* AMPArrayModelChange */,
 				8AFA2AF71F05896F00D5A566 /* Private */,
+				8AFA2AE91F05896F00D5A566 /* AMPArrayModel.h */,
+				8AFA2AEA1F05896F00D5A566 /* AMPArrayModel.m */,
 			);
 			path = AMPArrayModel;
 			sourceTree = "<group>";
@@ -565,24 +565,8 @@
 			children = (
 				8AFA2AFA1F05896F00D5A566 /* AMPModel.h */,
 				8AFA2AFB1F05896F00D5A566 /* AMPModel.m */,
-				8AFA2AFC1F05896F00D5A566 /* AMPModelLoadingDispatcher */,
-				8AFA2AFD1F05896F00D5A566 /* Private */,
 			);
 			path = AMPModel;
-			sourceTree = "<group>";
-		};
-		8AFA2AFC1F05896F00D5A566 /* AMPModelLoadingDispatcher */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AMPModelLoadingDispatcher;
-			sourceTree = "<group>";
-		};
-		8AFA2AFD1F05896F00D5A566 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Private;
 			sourceTree = "<group>";
 		};
 		8AFA2B041F05897300D5A566 /* Views */ = {

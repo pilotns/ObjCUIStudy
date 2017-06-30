@@ -28,11 +28,11 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
 @end
 
 @interface AMPModel : AMPObservableObject
+@property (nonatomic, readonly) NSString    *propertyKeyPath;
 
 - (void)load;
 
 // this methods is intended for subclassing, do not call it directly
 - (void)processLoading;
-- (void)finishLoading;
 
 @end
