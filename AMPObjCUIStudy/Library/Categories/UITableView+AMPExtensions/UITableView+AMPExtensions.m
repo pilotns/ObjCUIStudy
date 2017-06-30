@@ -11,6 +11,7 @@
 #import "AMPArrayModelChange.h"
 
 #import "UINib+AMPExtensions.h"
+#import "NSIndexPath+AMPExtensions.h"
 
 @implementation UITableView (AMPExtensions)
 

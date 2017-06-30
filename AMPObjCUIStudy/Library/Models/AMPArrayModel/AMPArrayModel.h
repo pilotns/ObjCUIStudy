@@ -6,7 +6,11 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPObservableObject.h"
+#import "AMPModel.h"
+
+typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
+    AMPArrayModelDidChangeState = 1 << 8
+};
 
 typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
     AMPArrayModelDidChange = 1 << 8
@@ -21,10 +25,8 @@ typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
 
 @end
 
-@interface AMPArrayModel : AMPObservableObject
+@interface AMPArrayModel : AMPModel
 @property (nonatomic, readonly) NSUInteger  count;
-
-- (instancetype)initWithObjects:(NSArray *)objects;
 
 - (void)addObject:(id)object;
 - (void)addObjects:(id<NSFastEnumeration>)objects;

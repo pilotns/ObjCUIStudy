@@ -9,13 +9,11 @@
 #import "AMPAppDelegate.h"
 
 #import "AMPUsersViewController.h"
-#import "AMPArrayModel.h"
+#import "AMPUsersModel.h"
 #import "AMPUser.h"
 
 #import "UIWindow+AMPExtensions.h"
 #import "NSObject+AMPExtensions.h"
-
-static const NSUInteger AMPDefaultUsersCount = 25;
 
 @interface AMPAppDelegate ()
 
@@ -31,7 +29,7 @@ static const NSUInteger AMPDefaultUsersCount = 25;
     
     [window makeKeyAndVisible];
     
-    controller.users = [[AMPArrayModel alloc] initWithObjects:[AMPUser objectsWithCount:AMPDefaultUsersCount]];
+    controller.users = [AMPUsersModel new];
     
     return YES;
 }

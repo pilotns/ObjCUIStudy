@@ -8,7 +8,7 @@
 
 #import "AMPUsersViewController.h"
 
-#import "AMPArrayModel.h"
+#import "AMPUsersModel.h"
 #import "AMPUser.h"
 
 #import "AMPUsersView.h"
@@ -16,17 +16,20 @@
 
 #import "AMPMarcos.h"
 
+#import "AMPGCDExtensions.h"
+
 #import "UITableView+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
+#import "UINib+AMPExtensions.h"
+#import "AMPView+AMPLoadingView.h"
 
 AMPSynthesizeBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
-static NSString * const AMPSortButtonTitle              = @"Sort";
 static NSString * const AMPNavigationControllerTitle    = @"Users";
 
-@interface AMPUsersViewController () <AMPArrayModelObserver>
+@interface AMPUsersViewController () <AMPModelObserver, AMPArrayModelObserver>
 
-- (void)fillWithModel:(AMPArrayModel *)model;
+- (void)fillWithModel:(AMPModel *)model;
 
 - (void)initBarButtonItems;
 - (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem;
@@ -52,22 +55,25 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark -
 #pragma mark Accessers
 
-- (void)setUsers:(AMPArrayModel *)users {
+- (void)setUsers:(AMPUsersModel *)users {
     if (_users != users) {
         [_users removeObserver:self];
         
         _users = users;
         [_users addObserver:self];
     }
-    
-    [self fillWithModel:users];
+
+    [users load];
 }
 
 #pragma mark -
 #pragma mark Actions
 
 - (void)onAdd:(UIBarButtonItem *)sender {
-    [self.users addObject:[AMPUser new]];
+    AMPUsersModel *users = self.users;
+    if (AMPModelDidLoad == users.state) {
+        [users addObject:[AMPUser new]];
+    }
 }
 
 - (void)onEdit:(UIBarButtonItem *)sender {
@@ -84,10 +90,36 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark -
 #pragma mark View LifeCycle
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self fillWithModel:self.users];
+    [self.usersView presentLoadingViewAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)fillWithModel:(AMPModel *)model {
+    self.navigationItem.title = AMPNavigationControllerTitle;
+    [self.usersView.tableView reloadData];
+}
+
+- (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem {
+    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
+                                                         target:self
+                                                         action:@selector(onEdit:)];
+}
+
+- (void)initBarButtonItems {
+    UIBarButtonItem *edit = [self editButtonWithSystemItem:UIBarButtonSystemItemEdit];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                         target:self
+                                                                         action:@selector(onAdd:)];
+    
+    UINavigationItem *navigationItem = self.navigationItem;
+    navigationItem.leftBarButtonItem = add;
+    navigationItem.rightBarButtonItem = edit;
 }
 
 #pragma mark -
@@ -113,18 +145,18 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
     return YES;
 }
 
--   (void)tableView:(UITableView *)tableView
- commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-  forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)    tableView:(UITableView *)tableView
+   commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+    forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (UITableViewCellEditingStyleDelete == editingStyle) {
         [self.users removeObjectAtIndex:indexPath.row];
     }
 }
 
--   (void)tableView:(UITableView *)tableView
- moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
-        toIndexPath:(NSIndexPath *)destinationIndexPath
+- (void)    tableView:(UITableView *)tableView
+   moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+          toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     [self.users moveObjectAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
 }
@@ -142,37 +174,34 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
     return UITableViewCellEditingStyleDelete;
 }
 
-#pragma mark -
-#pragma mark Private Methods
-
-- (void)fillWithModel:(AMPArrayModel *)model {
-    self.navigationItem.title = AMPNavigationControllerTitle;
-    
-    [self.usersView.tableView reloadData];
-}
-
-- (UIBarButtonItem *)editButtonWithSystemItem:(UIBarButtonSystemItem)systemItem {
-    return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:systemItem
-                                                         target:self
-                                                         action:@selector(onEdit:)];
-}
-
-- (void)initBarButtonItems {
-    UIBarButtonItem *edit = [self editButtonWithSystemItem:UIBarButtonSystemItemEdit];
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                         target:self
-                                                                         action:@selector(onAdd:)];
-    
-    UINavigationItem *navigationItem = self.navigationItem;
-    navigationItem.leftBarButtonItem = add;
-    navigationItem.rightBarButtonItem = edit;
+- (void)    tableView:(UITableView *)tableView
+ didEndDisplayingCell:(AMPUserCell *)cell
+    forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    cell.user = nil;
 }
 
 #pragma mark -
-#pragma mark AMPUsersModelObserver
+#pragma mark AMPModelObserver
+
+- (void)modelWillLoad:(id)model {
+    [self.usersView presentLoadingViewAnimated:YES];
+}
+
+- (void)modelDidLoad:(id)model {
+    AMPDispatchAsyncOnMainQueue(^{
+        [self fillWithModel:model];
+        [self.usersView dismissLoadingViewAnimated:YES];
+    });
+}
+
+#pragma mark -
+#pragma mark AMPArrayModelObserver
 
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
-    [self.usersView.tableView updateWithArrayModelChange:info];
+    AMPDispatchSyncOnMainQueue(^{
+        [self.usersView.tableView updateWithArrayModelChange:info];
+    });
 }
 
 @end
