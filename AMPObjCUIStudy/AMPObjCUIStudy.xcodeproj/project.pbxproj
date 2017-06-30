@@ -93,6 +93,16 @@
 		8A8E99DB1EF7090E00B939B1 /* AMPUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUserCell.h; sourceTree = "<group>"; };
 		8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUserCell.m; sourceTree = "<group>"; };
 		8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPUserCell.xib; sourceTree = "<group>"; };
+		8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChange.h; sourceTree = "<group>"; };
+		8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChange.m; sourceTree = "<group>"; };
+		8A8E99FE1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeDelete.h; sourceTree = "<group>"; };
+		8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeDelete.m; sourceTree = "<group>"; };
+		8A8E9A011EF7EB3900B939B1 /* AMPArrayModelChangeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeInsert.h; sourceTree = "<group>"; };
+		8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeInsert.m; sourceTree = "<group>"; };
+		8A8E9A041EF7EB3900B939B1 /* AMPArrayModelChangeMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeMove.h; sourceTree = "<group>"; };
+		8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeMove.m; sourceTree = "<group>"; };
+		8A8E9A061EF7EB3900B939B1 /* AMPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModel.h; sourceTree = "<group>"; };
+		8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModel.m; sourceTree = "<group>"; };
 		8A8E9A091EF7EB3900B939B1 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
 		8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
 		8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMPObjCUIStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -338,6 +348,11 @@
 		8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
 			isa = PBXGroup;
 			children = (
+				8A8E99FD1EF7EB3900B939B1 /* AMPArrayModelChangeDelete */,
+				8A8E9A001EF7EB3900B939B1 /* AMPArrayModelChangeInsert */,
+				8A8E9A031EF7EB3900B939B1 /* AMPArrayModelChangeMove */,
+				8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */,
+				8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */,
 				8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */,
 				8A8E9A191EF8FDE300B939B1 /* Info.plist */,
 			);
@@ -386,6 +401,7 @@
 				8A9FDE341F0191640008FD56 /* AMPUsersModel.h */,
 				8A9FDE351F0191640008FD56 /* AMPUsersModel.m */,
 			);
+			path = AMPObjCUIStudyTests;
 			path = AMPUsersModel;
 			sourceTree = "<group>";
 		};
