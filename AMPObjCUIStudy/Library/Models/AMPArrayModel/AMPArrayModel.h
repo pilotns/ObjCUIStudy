@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
 };
 
 typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
-    AMPArrayModelDidChange = 1 << 8
+    AMPArrayModelDidChange
 };
 
 @class AMPArrayModelChange;

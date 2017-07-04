@@ -35,10 +35,10 @@
 }
 
 - (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange {
-    [self updateWithArrayModelChange:modelChange forSection:0];
+    [self updateWithArrayModelChange:modelChange inSection:0];
 }
 
-- (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange forSection:(NSUInteger)section {
+- (void)updateWithArrayModelChange:(AMPArrayModelChange *)modelChange inSection:(NSUInteger)section {
     [modelChange applyToTableView:self section:section];
 }
 
