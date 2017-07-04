@@ -12,7 +12,8 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
     AMPModelDidUnload,
     AMPModelWillLoad,
     AMPModelDidLoad,
-    AMPModelDidFailLoading
+    AMPModelDidFailLoading,
+    AMPModelStateCount
 };
 
 @class AMPModel;

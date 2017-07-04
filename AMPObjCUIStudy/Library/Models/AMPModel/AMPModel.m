@@ -8,7 +8,7 @@
 
 #import "AMPModel.h"
 
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 #import "AMPGCDExtensions.h"
 
 static char * const kAMPModeObservationContext = "kAMPModeObservationContext";

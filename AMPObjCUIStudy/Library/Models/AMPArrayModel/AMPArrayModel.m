@@ -10,7 +10,7 @@
 
 #import "AMPUser.h"
 #import "AMPArrayModelChange.h"
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 #import "NSArray+AMPExtensions.h"
 #import "NSObject+AMPExtensions.h"
@@ -21,6 +21,8 @@ typedef void(^AMPVoidBlock)(void);
 
 @interface AMPArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableObjects;
+
+- (void)notifyOfStateChangeWithObject:(id)object;
 
 @end
 
@@ -66,7 +68,7 @@ typedef void(^AMPVoidBlock)(void);
             AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeInsertWithIndex:index];
             
             [self.mutableObjects insertObject:object atIndex:index];
-            [self notifyOfState:AMPArrayModelDidChangeState userInfo:modelChange];
+            [self notifyOfStateChangeWithObject:modelChange];
         }
     }
 }
@@ -87,7 +89,7 @@ typedef void(^AMPVoidBlock)(void);
             AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeDeleteWithIndex:index];
             
             [self.mutableObjects removeObjectAtIndex:index];
-            [self notifyOfState:AMPArrayModelDidChangeState userInfo:modelChange];
+            [self notifyOfStateChangeWithObject:modelChange];
         }
     }
 }
@@ -102,7 +104,7 @@ typedef void(^AMPVoidBlock)(void);
                                                                                    destinationIndex:destinationIndex];
         
         [self.mutableObjects moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
-        [self notifyOfState:AMPArrayModelDidChangeState userInfo:modelChange];
+        [self notifyOfStateChangeWithObject:modelChange];
     }
 }
 
@@ -120,6 +122,13 @@ typedef void(^AMPVoidBlock)(void);
     @synchronized (self) {
         return [self.mutableObjects indexOfObject:object];
     }
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)notifyOfStateChangeWithObject:(id)object {
+    [self notifyOfState:AMPModelDidFailLoading userInfo:object];
 }
 
 #pragma mark -
