@@ -37,11 +37,10 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    [self initSubviews];
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
-    return self;
+    [self initSubviews];
 }
 
 #pragma mark -
