@@ -12,8 +12,6 @@
 #import "AMPGCDExtensions.h"
 #import "AMPMacro.h"
 
-#import "AMPView+AMPLoadingView.h"
-
 @interface AMPImageView ()
 @property (nonatomic, strong)   UIImageView     *contentImageView;
 
@@ -87,12 +85,14 @@
 #pragma mark AMPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self presentLoadingViewAnimated:YES];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self setLoadingViewVisibleAnimated:YES];
+    });
 }
 
 - (void)modelDidLoad:(AMPImageModel *)model {
-    AMPDispatchSyncOnMainQueue(^{
-        [self dismissLoadingViewAnimated:YES];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self setLoadingViewHiddenAnimated:YES];
         [self fillWithModel:model];
     });
 }

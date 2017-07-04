@@ -12,6 +12,7 @@
 
 @interface AMPObservableObject ()
 @property (nonatomic, retain)   NSHashTable     *mutableObservers;
+@property (nonatomic, assign)   BOOL            postNotifications;
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo;
 
@@ -29,6 +30,7 @@
 - (instancetype)init {
     self = [super init];
     self.mutableObservers = [NSHashTable weakObjectsHashTable];
+    self.postNotifications = YES;
     
     return self;
 }
@@ -91,6 +93,25 @@
     [self notifyOfStateWithSelector:[self selectorForState:state] userInfo:userInfo];
 }
 
+- (void)performBlockWithNotifications:(void (^)(void))block {
+    if (!block) {
+        return;
+    }
+    
+    self.postNotifications = YES;
+    block();
+}
+
+- (void)performBlockWithoutNotifications:(void (^)(void))block {
+    if (!block) {
+        return;
+    }
+    
+    self.postNotifications = NO;
+    block();
+    self.postNotifications = YES;
+}
+
 - (SEL)selectorForState:(NSUInteger)state {
     return NULL;
 }
@@ -99,6 +120,10 @@
 #pragma mark Private Methods
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo {
+    if (!self.postNotifications) {
+        return;
+    }
+    
     @synchronized (self) {
         for (id observer in self.mutableObservers) {
             if ([observer respondsToSelector:aSelector]) {

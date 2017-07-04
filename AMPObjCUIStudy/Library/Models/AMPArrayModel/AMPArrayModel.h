@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
 
 @interface AMPArrayModel : AMPModel
 @property (nonatomic, readonly) NSUInteger  count;
+@property (nonatomic, readonly) NSArray     *allObjects;
 
 - (void)addObject:(id)object;
 - (void)addObjects:(id<NSFastEnumeration>)objects;

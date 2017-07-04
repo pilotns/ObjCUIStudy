@@ -12,7 +12,7 @@
 #import "AMPArrayModelChange.h"
 #import "AMPMacro.h"
 
-#import "NSArray+AMPExtensions.h"
+#import "NSMutableArray+AMPExtensions.h"
 #import "NSObject+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
 #import "NSNotificationCenter+AMPExtensions.h"
@@ -29,6 +29,17 @@ typedef void(^AMPVoidBlock)(void);
 @implementation AMPArrayModel
 
 @dynamic count;
+@dynamic allObjects;
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)init {
+    self = [super init];
+    self.mutableObjects = [NSMutableArray array];
+    
+    return self;
+}
 
 #pragma mark -
 #pragma mark Accessors
@@ -39,8 +50,10 @@ typedef void(^AMPVoidBlock)(void);
     }
 }
 
-- (NSString *)propertyKeyPath {
-    return @"mutableObjects";
+- (NSArray *)allObjects {
+    @synchronized (self) {
+        return [self.mutableObjects copy];
+    }
 }
 
 #pragma mark - 
@@ -54,7 +67,7 @@ typedef void(^AMPVoidBlock)(void);
 
 - (void)addObjects:(id<NSFastEnumeration>)objects {
     for (id object in objects) {
-        [self addObjects:object];
+        [self addObject:object];
     }
 }
 
@@ -128,7 +141,7 @@ typedef void(^AMPVoidBlock)(void);
 #pragma mark Private Methods
 
 - (void)notifyOfStateChangeWithObject:(id)object {
-    [self notifyOfState:AMPModelDidFailLoading userInfo:object];
+    [self notifyOfState:AMPArrayModelDidChangeState userInfo:object];
 }
 
 #pragma mark -
