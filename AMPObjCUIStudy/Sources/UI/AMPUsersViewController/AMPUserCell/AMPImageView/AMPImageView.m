@@ -10,7 +10,7 @@
 
 #import "AMPImageModel.h"
 #import "AMPGCDExtensions.h"
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 #import "AMPView+AMPLoadingView.h"
 

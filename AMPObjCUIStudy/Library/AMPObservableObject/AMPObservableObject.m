@@ -8,7 +8,7 @@
 
 #import "AMPObservableObject.h"
 
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 @interface AMPObservableObject ()
 @property (nonatomic, retain)   NSHashTable     *mutableObservers;

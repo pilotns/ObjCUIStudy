@@ -9,7 +9,7 @@
 #import "AMPSquareView.h"
 
 #import "AMPRandom.h"
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 static const NSUInteger     AMPSquarePositionCount      = AMPSquarePositionBottomLeft + 1;
 static const NSTimeInterval AMPDefaultAnimationDuration = 0.5;

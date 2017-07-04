@@ -69,7 +69,7 @@
 		4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy.release.xcconfig"; sourceTree = "<group>"; };
 		8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests.release.xcconfig"; sourceTree = "<group>"; };
 		873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMPObjCUIStudy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A248B191EE1AC000039958F /* AMPMarcos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMarcos.h; sourceTree = "<group>"; };
+		8A248B191EE1AC000039958F /* AMPMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMacro.h; sourceTree = "<group>"; };
 		8A248B211EE2E1410039958F /* AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPRandom.h; sourceTree = "<group>"; };
 		8A248B221EE2E1410039958F /* AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPRandom.m; sourceTree = "<group>"; };
 		8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMPObjCUIStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,7 +193,7 @@
 				8A9FDE031EFAB4E60008FD56 /* AMPGCDExtensions */,
 				8A248B211EE2E1410039958F /* AMPRandom.h */,
 				8A248B221EE2E1410039958F /* AMPRandom.m */,
-				8A248B191EE1AC000039958F /* AMPMarcos.h */,
+				8A248B191EE1AC000039958F /* AMPMacro.h */,
 			);
 			path = Library;
 			sourceTree = "<group>";

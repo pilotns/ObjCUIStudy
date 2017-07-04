@@ -14,7 +14,7 @@
 #import "AMPUsersView.h"
 #import "AMPUserCell.h"
 
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 #import "AMPGCDExtensions.h"
 

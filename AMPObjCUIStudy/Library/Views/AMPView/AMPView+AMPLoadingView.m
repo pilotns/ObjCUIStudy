@@ -9,7 +9,7 @@
 #import "AMPView+AMPLoadingView.h"
 
 #import "AMPLoadingView.h"
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 @implementation AMPView (AMPLoadingView)
 

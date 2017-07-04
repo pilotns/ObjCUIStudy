@@ -9,7 +9,7 @@
 #import "AMPLoadingView.h"
 
 #import "AMPGCDExtensions.h"
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 #import "UINib+AMPExtensions.h"
 
