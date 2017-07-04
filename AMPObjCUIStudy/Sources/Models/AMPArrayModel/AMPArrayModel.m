@@ -20,6 +20,8 @@ typedef void(^AMPVoidBlock)(void);
 @interface AMPArrayModel ()
 @property (nonatomic, strong)   NSMutableArray  *mutableObjects;
 
+- (void)notifyOfStateChangeWithObject:(id)object;
+
 @end
 
 @implementation AMPArrayModel
@@ -72,7 +74,7 @@ typedef void(^AMPVoidBlock)(void);
             AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeInsertWithIndex:index];
             
             [self.mutableObjects insertObject:object atIndex:index];
-            [self notifyOfState:AMPArrayModelDidChange userInfo:modelChange];
+            [self notifyOfStateChangeWithObject:modelChange];
         }
     }
 }
@@ -95,7 +97,7 @@ typedef void(^AMPVoidBlock)(void);
             AMPArrayModelChange *modelChange = [AMPArrayModelChange arrayModelChangeDeleteWithIndex:index];
             
             [self.mutableObjects removeObjectAtIndex:index];
-            [self notifyOfState:AMPArrayModelDidChange userInfo:modelChange];
+            [self notifyOfStateChangeWithObject:modelChange];
         }
     }
 }
@@ -110,7 +112,7 @@ typedef void(^AMPVoidBlock)(void);
                                                                                    destinationIndex:destinationIndex];
         
         [self.mutableObjects moveObjectAtIndex:sourceIndex toIndex:destinationIndex];
-        [self notifyOfState:AMPArrayModelDidChange userInfo:modelChange];
+        [self notifyOfStateChangeWithObject:modelChange];
     }
 }
 
@@ -128,6 +130,13 @@ typedef void(^AMPVoidBlock)(void);
     @synchronized (self) {
         return [self.mutableObjects indexOfObject:object];
     }
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)notifyOfStateChangeWithObject:(id)object {
+    [self notifyOfState:AMPArrayModelDidChange userInfo:object];
 }
 
 #pragma mark -

@@ -9,7 +9,7 @@
 #import "AMPObservableObject.h"
 
 typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
-    AMPArrayModelDidChange = 1 << 8
+    AMPArrayModelDidChange
 };
 
 @class AMPArrayModelChange;
