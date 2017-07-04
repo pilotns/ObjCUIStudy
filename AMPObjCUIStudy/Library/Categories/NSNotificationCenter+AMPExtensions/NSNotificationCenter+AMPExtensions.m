@@ -32,8 +32,8 @@
     return [tokens copy];
 }
 
-- (void)removeObservers:(NSArray *)observers {
-    for (id token in observers) {
+- (void)removeObserverTokens:(NSArray *)tokens {
+    for (id token in tokens) {
         [self removeObserver:token];
     }
 }

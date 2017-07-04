@@ -17,6 +17,6 @@
                            queue:(NSOperationQueue *)queue
                       usingBlock:(void (^)(NSNotification *note))block;
 
-- (void)removeObservers:(NSArray *)observers;
+- (void)removeObserverTokens:(NSArray *)tokens;
 
 @end
