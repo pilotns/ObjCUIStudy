@@ -93,26 +93,11 @@
 		8A8E99DB1EF7090E00B939B1 /* AMPUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUserCell.h; sourceTree = "<group>"; };
 		8A8E99DC1EF7090E00B939B1 /* AMPUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUserCell.m; sourceTree = "<group>"; };
 		8A8E99DD1EF7090E00B939B1 /* AMPUserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPUserCell.xib; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChange.h; sourceTree = "<group>"; };
-		8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChange.m; sourceTree = "<group>"; };
-		8A8E99FE1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeDelete.h; sourceTree = "<group>"; };
-		8A8E99FF1EF7EB3900B939B1 /* AMPArrayModelChangeDelete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeDelete.m; sourceTree = "<group>"; };
-		8A8E9A011EF7EB3900B939B1 /* AMPArrayModelChangeInsert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeInsert.h; sourceTree = "<group>"; };
-		8A8E9A021EF7EB3900B939B1 /* AMPArrayModelChangeInsert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeInsert.m; sourceTree = "<group>"; };
-		8A8E9A041EF7EB3900B939B1 /* AMPArrayModelChangeMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChangeMove.h; sourceTree = "<group>"; };
-		8A8E9A051EF7EB3900B939B1 /* AMPArrayModelChangeMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelChangeMove.m; sourceTree = "<group>"; };
-		8A8E9A061EF7EB3900B939B1 /* AMPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModel.h; sourceTree = "<group>"; };
-		8A8E9A071EF7EB3900B939B1 /* AMPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModel.m; sourceTree = "<group>"; };
-=======
->>>>>>> feature/ui_task_3
 		8A8E9A091EF7EB3900B939B1 /* AMPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUser.h; sourceTree = "<group>"; };
 		8A8E9A0A1EF7EB3900B939B1 /* AMPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUser.m; sourceTree = "<group>"; };
 		8A8E9A151EF8FDE300B939B1 /* AMPObjCUIStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMPObjCUIStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8E9A191EF8FDE300B939B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModelSpec.m; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		8A9FDDDC1EFA53E70008FD56 /* NSNotificationCenter+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+AMPExtensions.h"; sourceTree = "<group>"; };
 		8A9FDDDD1EFA53E70008FD56 /* NSNotificationCenter+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+AMPExtensions.m"; sourceTree = "<group>"; };
 		8A9FDE041EFAB4E60008FD56 /* AMPGCDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPGCDExtensions.h; sourceTree = "<group>"; };
@@ -124,7 +109,6 @@
 		8A9FDE1C1EFD9CF20008FD56 /* AMPImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPImageView.m; sourceTree = "<group>"; };
 		8A9FDE341F0191640008FD56 /* AMPUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModel.h; sourceTree = "<group>"; };
 		8A9FDE351F0191640008FD56 /* AMPUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModel.m; sourceTree = "<group>"; };
->>>>>>> feature/ui_task_3
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -354,16 +338,8 @@
 		8A8E9A161EF8FDE300B939B1 /* AMPObjCUIStudyTests */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				8A8E99FD1EF7EB3900B939B1 /* AMPArrayModelChangeDelete */,
-				8A8E9A001EF7EB3900B939B1 /* AMPArrayModelChangeInsert */,
-				8A8E9A031EF7EB3900B939B1 /* AMPArrayModelChangeMove */,
-				8A8E99FB1EF7EB3900B939B1 /* AMPArrayModelChange.h */,
-				8A8E99FC1EF7EB3900B939B1 /* AMPArrayModelChange.m */,
-=======
 				8A8E9A1F1EF9001800B939B1 /* AMPArrayModelSpec.m */,
 				8A8E9A191EF8FDE300B939B1 /* Info.plist */,
->>>>>>> feature/ui_task_3
 			);
 			path = AMPObjCUIStudyTests;
 			sourceTree = "<group>";
@@ -410,11 +386,7 @@
 				8A9FDE341F0191640008FD56 /* AMPUsersModel.h */,
 				8A9FDE351F0191640008FD56 /* AMPUsersModel.m */,
 			);
-<<<<<<< HEAD
-			path = AMPObjCUIStudyTests;
-=======
 			path = AMPUsersModel;
->>>>>>> feature/ui_task_3
 			sourceTree = "<group>";
 		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
