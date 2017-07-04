@@ -15,8 +15,9 @@
 
 static const NSTimeInterval AMPLoadingViewPresentationDuration = 0.3;
 
-static const CGFloat    AMPLoadingViewPresentedAlpha = 0.75;
-static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
+static const CGFloat    AMPLoadingViewPresentedAlpha    = 1;
+static const CGFloat    AMPLoadingViewDismissedAlpha    = 0;
+static const CGFloat    AMPLoadnigViewOpacity           = 0.8;
 
 @interface AMPLoadingView ()
 
@@ -28,6 +29,8 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
 @end
 
 @implementation AMPLoadingView
+
+@synthesize state = _state;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -41,13 +44,6 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    [self baseInit];
-    
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
     [self baseInit];
     
     return self;
@@ -71,9 +67,6 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
     }
 }
 
-#pragma mark -
-#pragma mark Public Methods
-
 - (void)setState:(AMPLoadingViewState)state {
     [self setState:state animated:YES];
 }
@@ -83,12 +76,6 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
 }
 
 - (void)setState:(AMPLoadingViewState)state animated:(BOOL)animated completionHandler:(void (^)(void))handler {
-    UIActivityIndicatorView *indicator = self.indicator;
-
-    if (AMPLoadingViewDidPresent == state) {
-        [indicator startAnimating];
-    }
-    
     [UIView animateWithDuration:animated ? AMPLoadingViewPresentationDuration : 0
                      animations:^{
                          self.alpha = [self alphaForState:state];
@@ -96,10 +83,6 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
                          _state = state;
                          if (handler) {
                              handler();
-                         }
-                         
-                         if (AMPLoadingViewDidDismiss == state) {
-                             [indicator stopAnimating];
                          }
                      }];
 }
@@ -109,9 +92,9 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
 
 - (CGFloat)alphaForState:(AMPLoadingViewState)state {
     switch (state) {
-        case AMPLoadingViewDidPresent:
+        case AMPLoadingViewVisible:
             return AMPLoadingViewPresentedAlpha;
-            
+
         default:
             return AMPLoadingViewDismissedAlpha;
     }
@@ -119,7 +102,7 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
 
 - (void)baseInit {
     self.alpha = 0;
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor colorWithWhite:0 alpha:AMPLoadnigViewOpacity];
     self.autoresizingMask = AMPUIViewAutoresizingAll;
     
     [self prepareIndicator];
@@ -131,14 +114,11 @@ static const CGFloat    AMPLoadingViewDismissedAlpha = 0;
         return;
     }
     
-    indicator = [UIActivityIndicatorView new];
-    CGRect bounds = self.bounds;
-    CGRect indicatorFrame = indicator.frame;
-    indicatorFrame.origin = CGPointMake(CGRectGetMidX(bounds) - CGRectGetWidth(indicatorFrame),
-                                         CGRectGetMidY(bounds) - CGRectGetHeight(indicatorFrame));
-    
-    indicator.frame = indicatorFrame;
+    indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    indicator.center = CGRectCenter(self.bounds);
+
     indicator.autoresizingMask = AMPUIViewAutoresizingAll;
+    [indicator startAnimating];
     
     self.indicator = indicator;
 }
