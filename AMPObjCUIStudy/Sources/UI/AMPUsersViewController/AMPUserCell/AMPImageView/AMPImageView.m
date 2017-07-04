@@ -10,9 +10,7 @@
 
 #import "AMPImageModel.h"
 #import "AMPGCDExtensions.h"
-#import "AMPMarcos.h"
-
-#import "AMPView+AMPLoadingView.h"
+#import "AMPMacro.h"
 
 @interface AMPImageView ()
 @property (nonatomic, strong)   UIImageView     *contentImageView;
@@ -39,11 +37,10 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    [self initSubviews];
+- (void)awakeFromNib {
+    [super awakeFromNib];
     
-    return self;
+    [self initSubviews];
 }
 
 #pragma mark -
@@ -87,12 +84,14 @@
 #pragma mark AMPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self presentLoadingViewAnimated:YES];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self setLoadingViewVisibleAnimated:YES];
+    });
 }
 
 - (void)modelDidLoad:(AMPImageModel *)model {
-    AMPDispatchSyncOnMainQueue(^{
-        [self dismissLoadingViewAnimated:YES];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self setLoadingViewHiddenAnimated:YES];
         [self fillWithModel:model];
     });
 }

@@ -9,7 +9,7 @@
 #import "AMPModel.h"
 
 typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
-    AMPArrayModelDidChangeState = 1 << 8
+    AMPArrayModelDidChangeState = AMPModelStateCount
 };
 
 typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
 
 @interface AMPArrayModel : AMPModel
 @property (nonatomic, readonly) NSUInteger  count;
+@property (nonatomic, readonly) NSArray     *allObjects;
 
 - (void)addObject:(id)object;
 - (void)addObjects:(id<NSFastEnumeration>)objects;

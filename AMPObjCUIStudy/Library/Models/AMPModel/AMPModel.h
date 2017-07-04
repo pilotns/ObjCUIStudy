@@ -12,7 +12,8 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
     AMPModelDidUnload,
     AMPModelWillLoad,
     AMPModelDidLoad,
-    AMPModelDidFailLoading
+    AMPModelDidFailLoading,
+    AMPModelStateCount
 };
 
 @class AMPModel;
@@ -28,7 +29,6 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
 @end
 
 @interface AMPModel : AMPObservableObject
-@property (nonatomic, readonly) NSString    *propertyKeyPath;
 
 - (void)load;
 

@@ -18,9 +18,3 @@ typedef id(^AMPFactoryBlock)(void);
 - (instancetype)filteredObjectsUsingBlock:(BOOL(^)(id object))block;
 
 @end
-
-@interface NSMutableArray (AMPExtensions)
-
-- (void)moveObjectAtIndex:(NSUInteger)sourceIndex toIndex:(NSUInteger)destinationIndex;
-
-@end

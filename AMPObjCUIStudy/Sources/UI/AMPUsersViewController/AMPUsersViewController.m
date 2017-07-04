@@ -14,14 +14,13 @@
 #import "AMPUsersView.h"
 #import "AMPUserCell.h"
 
-#import "AMPMarcos.h"
+#import "AMPMacro.h"
 
 #import "AMPGCDExtensions.h"
 
 #import "UITableView+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
 #import "UINib+AMPExtensions.h"
-#import "AMPView+AMPLoadingView.h"
 
 AMPSynthesizeBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
@@ -94,7 +93,7 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.usersView presentLoadingViewAnimated:YES];
+    [self.users load];
 }
 
 #pragma mark -
@@ -185,13 +184,15 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 #pragma mark AMPModelObserver
 
 - (void)modelWillLoad:(id)model {
-    [self.usersView presentLoadingViewAnimated:YES];
+    AMPDispatchAsyncOnMainQueue(^{
+        [self.usersView setLoadingViewVisibleAnimated:YES];
+    });
 }
 
 - (void)modelDidLoad:(id)model {
     AMPDispatchAsyncOnMainQueue(^{
         [self fillWithModel:model];
-        [self.usersView dismissLoadingViewAnimated:YES];
+        [self.usersView setLoadingViewHiddenAnimated:YES];
     });
 }
 

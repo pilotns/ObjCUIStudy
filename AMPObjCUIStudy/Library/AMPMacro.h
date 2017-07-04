@@ -9,6 +9,15 @@
 #ifndef AMPMarcos_h
 #define AMPMarcos_h
 
+#import <UIKit/UIKit.h>
+
+static NSUInteger const AMPUIViewAutoresizingAll = UIViewAutoresizingFlexibleLeftMargin
+                                                    | UIViewAutoresizingFlexibleWidth
+                                                    | UIViewAutoresizingFlexibleRightMargin
+                                                    | UIViewAutoresizingFlexibleTopMargin
+                                                    | UIViewAutoresizingFlexibleHeight
+                                                    | UIViewAutoresizingFlexibleBottomMargin;
+
 #import "CGGeometry+AMPExtensions.h"
 
 #define AMPSynthesizeBaseViewProperty(controllerClass, propertyClass, propertyName) \
@@ -65,13 +74,5 @@
             return value; \
         } \
     AMPPragmaDiagnosticPop
-
-#define AMPUIViewAutoresizingAll \
-    UIViewAutoresizingFlexibleLeftMargin \
-    | UIViewAutoresizingFlexibleWidth \
-    | UIViewAutoresizingFlexibleRightMargin \
-    | UIViewAutoresizingFlexibleTopMargin \
-    | UIViewAutoresizingFlexibleHeight \
-    | UIViewAutoresizingFlexibleBottomMargin;
 
 #endif /* AMPMarcos_h */

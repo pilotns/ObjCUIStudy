@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 
 #import "AMPUsersModel.h"
+#import "AMPUser.h"
 
+#import "NSObject+AMPExtensions.h"
 #import "AMPArrayModel+AMPPrivate.h"
 #import "NSNotificationCenter+AMPExtensions.h"
 
-static NSString * const kAMPDefaultPathComponent = @"Users.plist";
+static NSString * const kAMPDefaultPathComponent    = @"Users.plist";
+static NSUInteger const kAMPDefaultUsersCount       = 10;
 
 @interface AMPUsersModel ()
 @property (nonatomic, strong)   NSArray         *notificationTokens;
@@ -30,10 +33,6 @@ static NSString * const kAMPDefaultPathComponent = @"Users.plist";
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObservers:self.notificationTokens];
-}
-
 - (instancetype)init {
     self = [super init];
     [self prepareObservation];
@@ -46,19 +45,25 @@ static NSString * const kAMPDefaultPathComponent = @"Users.plist";
 
 - (void)processLoading {
     usleep(1000 * 1000 * 3);
-    NSMutableArray *objects = [[NSKeyedUnarchiver unarchiveObjectWithFile:[self objectsPath]] mutableCopy];
+    NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:[self objectsPath]];
     if (!objects) {
-        objects = [NSMutableArray array];
+        objects = [AMPUser objectsWithCount:kAMPDefaultUsersCount];
     }
     
-    self.mutableObjects = objects;
+    [self performBlockWithoutNotifications:^{
+        [self addObjects:objects];
+        
+        [self performBlockWithNotifications:^{
+            self.state = AMPModelDidLoad;
+        }];
+    }];
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
 - (void)save {
-    [NSKeyedArchiver archiveRootObject:self.mutableObjects toFile:[self objectsPath]];
+    [NSKeyedArchiver archiveRootObject:self.allObjects toFile:[self objectsPath]];
 }
 
 - (NSString *)objectsPath {

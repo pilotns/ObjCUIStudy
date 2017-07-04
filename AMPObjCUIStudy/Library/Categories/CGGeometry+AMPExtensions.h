@@ -21,4 +21,6 @@
 #define CGWidth CGRectGetWidth
 #define CGHeight CGRectGetHeight
 
+#define CGRectCenter(rect) CGPointMake(CGMidX(rect), CGMidY(rect))
+
 #endif /* AMPCGShortCuts_h */

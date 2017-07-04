@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, AMPLoadingViewState) {
-    AMPLoadingViewDidDismiss,
-    AMPLoadingViewDidPresent
+    AMPLoadingViewVisible,
+    AMPLoadingViewHidden
 };
 
 @interface AMPLoadingView : UIView
-@property (nonatomic, assign)   AMPLoadingViewState state;
+@property (nonatomic, assign)   AMPLoadingViewState  state;
 
 @property (nonatomic, strong)   IBOutlet    UIActivityIndicatorView *indicator;
 
