@@ -11,11 +11,17 @@
 #import <UIKit/UIKit.h>
 
 @interface AMPImageModel : AMPModel
-@property (nonatomic, readonly)   UIImage *image;
+@property (nonatomic, readonly) NSURL       *url;
+@property (nonatomic, readonly) UIImage     *image;
+@property (nonatomic, readonly) NSString    *imagePath;
+@property (nonatomic, readonly) NSString    *imageName;
 
 + (instancetype)imageModelWithURL:(NSURL *)url;
 
 - (instancetype)initWithURL:(NSURL *)url;
+
+// this method is intended for subclassing^ do not call it directly
+- (void)processLoadingImage;
 
 
 @end
