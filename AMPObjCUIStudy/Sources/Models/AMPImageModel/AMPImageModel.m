@@ -56,6 +56,13 @@
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (NSString *)imageName {
+    return [[NSFileManager defaultManager] fileNameWithURL:self.url];
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
 - (void)processLoading {

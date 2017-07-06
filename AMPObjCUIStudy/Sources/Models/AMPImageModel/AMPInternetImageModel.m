@@ -38,11 +38,8 @@
 }
 
 - (NSString *)imagePath {
-    return [[[NSFileManager defaultManager] URLForDocumentsDirectory] URLByAppendingPathComponent:self.imageName].path;
-}
-
-- (NSString *)imageName {
-    return [[NSFileManager defaultManager] fileNameWithURL:self.url];
+    return [[[NSFileManager defaultManager] URLForDirectoryInLibraryDirectory:@"Images"]
+                                            URLByAppendingPathComponent:self.imageName].path;
 }
 
 - (void)setImageLoadingTask:(NSURLSessionDataTask *)imageLoadingTask {

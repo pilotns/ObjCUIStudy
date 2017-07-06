@@ -24,10 +24,6 @@
     return self.url.path;
 }
 
-- (NSString *)imageName {
-    return self.url.lastPathComponent;
-}
-
 #pragma mark -
 #pragma mark Public Methods
 
