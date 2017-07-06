@@ -14,8 +14,9 @@
 #import "NSObject+AMPExtensions.h"
 #import "AMPArrayModel+AMPPrivate.h"
 #import "NSNotificationCenter+AMPExtensions.h"
+#import "NSFileManager+AMPExtensions.h"
 
-static NSString * const kAMPDefaultPathComponent    = @"Users.plist";
+static NSString * const kAMPDefaultPathComponent    = @"users.plist";
 static NSUInteger const kAMPDefaultUsersCount       = 10;
 
 @interface AMPUsersModel ()
@@ -67,10 +68,10 @@ static NSUInteger const kAMPDefaultUsersCount       = 10;
 }
 
 - (NSString *)objectsPath {
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSURL *url = [[fm URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSURL *url = [[manager URLForDocumentsDirectory] URLByAppendingPathComponent:kAMPDefaultPathComponent];
     
-    return [url URLByAppendingPathComponent:kAMPDefaultPathComponent].path;
+    return url.path;
 }
 
 - (void)prepareObservation {

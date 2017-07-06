@@ -8,7 +8,7 @@
 
 #import "AMPUser.h"
 
-#import "AMPImageModel.h"
+#import "AMPInternetImageModel.h"
 
 #import "NSString+AMPRandom.h"
 
@@ -61,9 +61,10 @@ static NSString * const kAMPUserLastName = @"kAMPUserLastName";
 }
 
 - (AMPImageModel *)imageModel {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"vw_240" withExtension:@"jpg"];
+    NSURL *url = [NSURL URLWithString:@"https://www.devicemedia.ca/wp-content/uploads/postthumb-5-600x400.png"];
+    NSURL *urlToFile = [[NSBundle mainBundle] URLForResource:@"vw_240" withExtension:@"jpg"];
     
-    return [AMPImageModel imageModelWithURL:url];
+    return [AMPImageModel imageModelWithURL:arc4random_uniform(2) ? url : urlToFile];
 }
 
 @end
