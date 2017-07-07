@@ -11,16 +11,12 @@
 #import "NSFileManager+AMPExtensions.h"
 
 @interface AMPInternetImageModel () <NSURLSessionDataDelegate>
-@property (nonatomic, strong)       UIImage         *image;
-@property (nonatomic, readonly)     NSURLSession    *session;
-
+@property (nonatomic, readonly)     NSURLSession            *session;
 @property (nonatomic, strong)       NSURLSessionDataTask    *imageLoadingTask;
 
 @end
 
 @implementation AMPInternetImageModel
-
-@synthesize image = _image;
 
 #pragma mark -
 #pragma mark Accessros
@@ -51,7 +47,7 @@
     }
 }
 
-- (void)processLoadingImage {
+- (void)processImageLoading {
     self.imageLoadingTask = [self.session dataTaskWithURL:self.url];
 }
 
@@ -64,12 +60,9 @@ didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
 {
     NSFileManager *manager = [NSFileManager defaultManager];
-    NSDictionary *imageAttributes = [manager attributesOfItemAtPath:self.imagePath
-                                                              error:nil];
-    
-    if (response.expectedContentLength == [imageAttributes[NSFileSize] longLongValue]) {
+    if (response.expectedContentLength == [manager fileSizeAtPath:self.imagePath]) {
         completionHandler(NSURLSessionResponseCancel);
-        [super processLoadingImage];
+        [super processImageLoading];
     } else {
         [manager removeItemAtPath:self.imagePath error:nil];
         completionHandler(NSURLSessionResponseAllow);
@@ -80,15 +73,11 @@ didReceiveResponse:(NSURLResponse *)response
           dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data
 {
-    NSError *error = dataTask.error;
-    if (error) {
-        [self setState:AMPModelDidFailLoading userInfo:error];
-    } else {
-        self.image = [UIImage imageWithData:data];
-        self.state = AMPModelDidLoad;
-        
-        [data writeToFile:self.imagePath atomically:NO];
-    }
+    
+    UIImage *image = [UIImage imageWithData:data];
+    [self finishLoadingWithImage:image error:dataTask.error];
+    
+    [data writeToFile:self.imagePath atomically:NO];
 }
 
 @end

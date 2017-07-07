@@ -8,14 +8,7 @@
 
 #import "AMPFileSystemImageModel.h"
 
-@interface AMPFileSystemImageModel ()
-@property (nonatomic, strong)   UIImage *image;
-
-@end
-
 @implementation AMPFileSystemImageModel
-
-@synthesize image = _image;
 
 #pragma mark -
 #pragma mark Accessors
@@ -27,18 +20,15 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)processLoadingImage {
+- (void)processImageLoading {
     NSError *error = nil;
     NSData *imageData = [NSData dataWithContentsOfFile:self.imagePath
                                                options:NSDataReadingMappedAlways
                                                  error:&error];
     
-    if (!error) {
-        self.image = [UIImage imageWithData:imageData];
-        self.state = AMPModelDidLoad;
-    } else {
-        [self setState:AMPModelDidFailLoading userInfo:error];
-    }
+    
+    UIImage *image = [UIImage imageWithData:imageData];
+    [self finishLoadingWithImage:image error:error];
 }
 
 @end
