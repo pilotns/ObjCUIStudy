@@ -50,4 +50,10 @@
     return [url.path stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
 }
 
+- (long long)fileSizeAtPath:(NSString *)path {
+    NSDictionary *fileAttributes = [self attributesOfItemAtPath:path error:nil];
+    
+    return [fileAttributes[NSFileSize] longLongValue];
+}
+
 @end

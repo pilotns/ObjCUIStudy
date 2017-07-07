@@ -16,13 +16,13 @@
 #import "NSFileManager+AMPExtensions.h"
 
 @interface AMPImageModel ()
+@property (nonatomic, strong)   UIImage *image;
 @property (nonatomic, strong)   NSURL   *url;
 
 @end
 
 @implementation AMPImageModel
 
-@dynamic image;
 @dynamic imagePath;
 @dynamic imageName;
 
@@ -66,11 +66,18 @@
 #pragma mark Public Methods
 
 - (void)processLoading {
-    [self processLoadingImage];
+    [self processImageLoading];
 }
 
-- (void)processLoadingImage {
+- (void)processImageLoading {
     
+}
+
+- (void)finishLoadingWithImage:(UIImage *)image error:(NSError *)error {
+    self.image = image;
+    AMPModelState state = error ? AMPModelDidFailLoading : AMPModelDidLoad;
+    
+    [self setState:state userInfo:error];
 }
 
 @end

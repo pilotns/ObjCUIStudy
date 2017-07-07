@@ -15,5 +15,6 @@
 - (NSURL *)URLForDirectoryInLibraryDirectory:(NSString *)directoryName;
 
 - (NSString *)fileNameWithURL:(NSURL *)url;
+- (long long)fileSizeAtPath:(NSString *)path;
 
 @end

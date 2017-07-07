@@ -42,8 +42,8 @@
 		8AEA38161F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38151F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m */; };
 		8AEA381F1F0CD8C800CAE008 /* AMPImageModelCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA381E1F0CD8C800CAE008 /* AMPImageModelCache.m */; };
 		8AEA38231F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38221F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m */; };
-		8AEA38261F0CEBDC00CAE008 /* AMPFileSystemImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38251F0CEBDC00CAE008 /* AMPFileSystemImageModel.m */; };
-		8AEA38291F0CED6900CAE008 /* AMPInternetImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38281F0CED6900CAE008 /* AMPInternetImageModel.m */; };
+		8AEA38311F0E5C1400CAE008 /* AMPFileSystemImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA382D1F0E5C1400CAE008 /* AMPFileSystemImageModel.m */; };
+		8AEA38321F0E5C1400CAE008 /* AMPInternetImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38301F0E5C1400CAE008 /* AMPInternetImageModel.m */; };
 		8AFA2AFE1F05896F00D5A566 /* AMPArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA2AEA1F05896F00D5A566 /* AMPArrayModel.m */; };
 		8AFA2AFF1F05896F00D5A566 /* AMPArrayModelChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA2AED1F05896F00D5A566 /* AMPArrayModelChange.m */; };
 		8AFA2B001F05896F00D5A566 /* AMPArrayModelChangeDelete.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA2AF01F05896F00D5A566 /* AMPArrayModelChangeDelete.m */; };
@@ -140,10 +140,10 @@
 		8AEA381E1F0CD8C800CAE008 /* AMPImageModelCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPImageModelCache.m; sourceTree = "<group>"; };
 		8AEA38211F0CDD0800CAE008 /* NSFileManager+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+AMPExtensions.h"; sourceTree = "<group>"; };
 		8AEA38221F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+AMPExtensions.m"; sourceTree = "<group>"; };
-		8AEA38241F0CEBDC00CAE008 /* AMPFileSystemImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFileSystemImageModel.h; sourceTree = "<group>"; };
-		8AEA38251F0CEBDC00CAE008 /* AMPFileSystemImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFileSystemImageModel.m; sourceTree = "<group>"; };
-		8AEA38271F0CED6900CAE008 /* AMPInternetImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPInternetImageModel.h; sourceTree = "<group>"; };
-		8AEA38281F0CED6900CAE008 /* AMPInternetImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPInternetImageModel.m; sourceTree = "<group>"; };
+		8AEA382C1F0E5C1400CAE008 /* AMPFileSystemImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFileSystemImageModel.h; sourceTree = "<group>"; };
+		8AEA382D1F0E5C1400CAE008 /* AMPFileSystemImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFileSystemImageModel.m; sourceTree = "<group>"; };
+		8AEA382F1F0E5C1400CAE008 /* AMPInternetImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPInternetImageModel.h; sourceTree = "<group>"; };
+		8AEA38301F0E5C1400CAE008 /* AMPInternetImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPInternetImageModel.m; sourceTree = "<group>"; };
 		8AFA2AE91F05896F00D5A566 /* AMPArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModel.h; sourceTree = "<group>"; };
 		8AFA2AEA1F05896F00D5A566 /* AMPArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPArrayModel.m; sourceTree = "<group>"; };
 		8AFA2AEC1F05896F00D5A566 /* AMPArrayModelChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPArrayModelChange.h; sourceTree = "<group>"; };
@@ -378,12 +378,10 @@
 		8A9FDE071EFCE6490008FD56 /* AMPImageModel */ = {
 			isa = PBXGroup;
 			children = (
+				8AEA382B1F0E5C1400CAE008 /* AMPFileSystemImageModel */,
+				8AEA382E1F0E5C1400CAE008 /* AMPInternetImageModel */,
 				8A9FDE081EFCE6700008FD56 /* AMPImageModel.h */,
 				8A9FDE091EFCE6700008FD56 /* AMPImageModel.m */,
-				8AEA38241F0CEBDC00CAE008 /* AMPFileSystemImageModel.h */,
-				8AEA38251F0CEBDC00CAE008 /* AMPFileSystemImageModel.m */,
-				8AEA38271F0CED6900CAE008 /* AMPInternetImageModel.h */,
-				8AEA38281F0CED6900CAE008 /* AMPInternetImageModel.m */,
 			);
 			path = AMPImageModel;
 			sourceTree = "<group>";
@@ -537,6 +535,24 @@
 				8AEA38221F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m */,
 			);
 			path = "NSFileManager+AMPExtensions";
+			sourceTree = "<group>";
+		};
+		8AEA382B1F0E5C1400CAE008 /* AMPFileSystemImageModel */ = {
+			isa = PBXGroup;
+			children = (
+				8AEA382C1F0E5C1400CAE008 /* AMPFileSystemImageModel.h */,
+				8AEA382D1F0E5C1400CAE008 /* AMPFileSystemImageModel.m */,
+			);
+			path = AMPFileSystemImageModel;
+			sourceTree = "<group>";
+		};
+		8AEA382E1F0E5C1400CAE008 /* AMPInternetImageModel */ = {
+			isa = PBXGroup;
+			children = (
+				8AEA382F1F0E5C1400CAE008 /* AMPInternetImageModel.h */,
+				8AEA38301F0E5C1400CAE008 /* AMPInternetImageModel.m */,
+			);
+			path = AMPInternetImageModel;
 			sourceTree = "<group>";
 		};
 		8AFA2AE71F05896F00D5A566 /* Models */ = {
@@ -885,13 +901,13 @@
 				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8A9FDDDE1EFA53E70008FD56 /* NSNotificationCenter+AMPExtensions.m in Sources */,
 				8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */,
-				8AEA38261F0CEBDC00CAE008 /* AMPFileSystemImageModel.m in Sources */,
+				8AEA38311F0E5C1400CAE008 /* AMPFileSystemImageModel.m in Sources */,
 				8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */,
 				8A9FDE061EFAB4E60008FD56 /* AMPGCDExtensions.m in Sources */,
 				8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */,
 				8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */,
 				8ACB3E921EED3FC5004A8B89 /* AMPSquareView.m in Sources */,
-				8AEA38291F0CED6900CAE008 /* AMPInternetImageModel.m in Sources */,
+				8AEA38321F0E5C1400CAE008 /* AMPInternetImageModel.m in Sources */,
 				8AFA2B001F05896F00D5A566 /* AMPArrayModelChangeDelete.m in Sources */,
 				8ACB3E971EED40B8004A8B89 /* AMPUsersView.m in Sources */,
 				8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */,

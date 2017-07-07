@@ -21,7 +21,10 @@
 - (instancetype)initWithURL:(NSURL *)url;
 
 // this method is intended for subclassing^ do not call it directly
-- (void)processLoadingImage;
+- (void)processImageLoading;
+
+// this method is intended for subclassing, suclasses must call it after loading is finished
+- (void)finishLoadingWithImage:(UIImage *)image error:(NSError *)error;
 
 
 @end
