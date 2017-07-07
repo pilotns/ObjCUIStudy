@@ -8,19 +8,41 @@
 
 #import "AMPImageModel.h"
 
+#import "AMPFileSystemImageModel.h"
+#import "AMPInternetImageModel.h"
+
+#import "AMPImageModelCache.h"
+
+#import "NSFileManager+AMPExtensions.h"
+
 @interface AMPImageModel ()
-@property (nonatomic, strong)   NSURL   *url;
 @property (nonatomic, strong)   UIImage *image;
+@property (nonatomic, strong)   NSURL   *url;
 
 @end
 
 @implementation AMPImageModel
 
+@dynamic imagePath;
+@dynamic imageName;
+
 #pragma mark -
 #pragma mark Class Methods
 
 + (instancetype)imageModelWithURL:(NSURL *)url {
-    return [[self alloc] initWithURL:url];
+    AMPImageModel *imageModel = nil;
+    AMPImageModelCache *modelCache = [AMPImageModelCache sharedCache];
+    imageModel = [modelCache imageModelForURL:url];
+    if (!imageModel) {
+        Class imageModelClass = url.isFileURL
+                                ? [AMPFileSystemImageModel class]
+                                : [AMPInternetImageModel class];
+        
+        imageModel = [[imageModelClass alloc] initWithURL:url];
+        [modelCache addImageModel:imageModel];
+    }
+    
+    return imageModel;
 }
 
 #pragma mark -
@@ -34,12 +56,28 @@
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (NSString *)imageName {
+    return [[NSFileManager defaultManager] fileNameWithURL:self.url];
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
 - (void)processLoading {
-    self.image = [UIImage imageWithContentsOfFile:self.url.path];
+    [self processImageLoading];
+}
+
+- (void)processImageLoading {
     
-    self.state = self.image ? AMPModelDidLoad : AMPModelDidFailLoading;
+}
+
+- (void)finishLoadingWithImage:(UIImage *)image error:(NSError *)error {
+    self.image = image;
+    AMPModelState state = error ? AMPModelDidFailLoading : AMPModelDidLoad;
+    
+    [self setState:state userInfo:error];
 }
 
 @end

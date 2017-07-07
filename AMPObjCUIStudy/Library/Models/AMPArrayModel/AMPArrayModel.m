@@ -141,7 +141,7 @@ typedef void(^AMPVoidBlock)(void);
 #pragma mark Private Methods
 
 - (void)notifyOfStateChangeWithObject:(id)object {
-    [self notifyOfState:AMPArrayModelDidChangeState userInfo:object];
+    [self notifyOfState:AMPArrayModelDidChange userInfo:object];
 }
 
 #pragma mark -
@@ -149,7 +149,7 @@ typedef void(^AMPVoidBlock)(void);
 
 - (SEL)selectorForState:(NSUInteger)state {
     switch (state) {
-        case AMPArrayModelDidChangeState:
+        case AMPArrayModelDidChange:
             return @selector(arrayModel:didChangeWithArrayModelChange:);
     }
     
