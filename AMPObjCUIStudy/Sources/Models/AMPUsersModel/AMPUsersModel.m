@@ -79,10 +79,10 @@ static NSUInteger const kAMPDefaultUsersCount       = 10;
                                   UIApplicationWillResignActiveNotification];
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    NSArray *tokens = [center addObserverForNames:notificationKeys
-                                       usingBlock:^(NSNotification *note) {
-                                           [self save];
-                                       }];
+    NSArray *tokens = [center observerTokensForNames:notificationKeys
+                                          usingBlock:^(NSNotification *note) {
+                                              [self save];
+                                          }];
     
     self.notificationTokens = tokens;
 }

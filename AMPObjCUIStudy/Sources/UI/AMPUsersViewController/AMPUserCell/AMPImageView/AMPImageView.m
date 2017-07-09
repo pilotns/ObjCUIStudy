@@ -75,7 +75,7 @@
 
 - (void)initSubviews {
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    imageView.autoresizingMask = AMPUIViewAutoresizingAll;
+    imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     self.contentImageView = imageView;
 }
@@ -85,13 +85,13 @@
 
 - (void)modelWillLoad:(id)model {
     AMPDispatchAsyncOnMainQueue(^{
-        [self setLoadingViewVisibleAnimated:YES];
+        [self setLoadingViewVisible:YES];
     });
 }
 
 - (void)modelDidLoad:(AMPImageModel *)model {
     AMPDispatchAsyncOnMainQueue(^{
-        [self setLoadingViewHiddenAnimated:YES];
+        [self setLoadingViewVisible:NO];
         [self fillWithModel:model];
     });
 }

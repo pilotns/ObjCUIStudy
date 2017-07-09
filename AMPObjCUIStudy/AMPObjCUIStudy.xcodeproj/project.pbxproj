@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A028E7A1F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028E791F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m */; };
 		8A248B231EE2E1410039958F /* AMPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A248B221EE2E1410039958F /* AMPRandom.m */; };
 		8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */; };
 		8A4E55B81EE19B28007B5B51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55B11EE19B28007B5B51 /* main.m */; };
@@ -73,6 +74,7 @@
 		4D19272AA57E3EABB6B87DC1 /* Pods-AMPObjCUIStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudy.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudy/Pods-AMPObjCUIStudy.release.xcconfig"; sourceTree = "<group>"; };
 		8049E956D4029D1C1B78245D /* Pods-AMPObjCUIStudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMPObjCUIStudyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AMPObjCUIStudyTests/Pods-AMPObjCUIStudyTests.release.xcconfig"; sourceTree = "<group>"; };
 		873ACF5CAEA1D024A4AFB461 /* libPods-AMPObjCUIStudy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AMPObjCUIStudy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A028E791F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CGGeometry+AMPExtensions.m"; sourceTree = "<group>"; };
 		8A248B191EE1AC000039958F /* AMPMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMacro.h; sourceTree = "<group>"; };
 		8A248B211EE2E1410039958F /* AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPRandom.h; sourceTree = "<group>"; };
 		8A248B221EE2E1410039958F /* AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPRandom.m; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				8ACB3EA01EED43F1004A8B89 /* NSString+AMPExtensions */,
 				8ACB3E781EEC0632004A8B89 /* UIWindow+AMPExtensions */,
 				8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */,
+				8A028E791F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -882,6 +885,7 @@
 				8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */,
 				8AEA38161F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m in Sources */,
 				8AFA2AFF1F05896F00D5A566 /* AMPArrayModelChange.m in Sources */,
+				8A028E7A1F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m in Sources */,
 				8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */,
 				8A9FDE0A1EFCE6700008FD56 /* AMPImageModel.m in Sources */,
 				8AFA2B011F05896F00D5A566 /* AMPArrayModelChangeInsert.m in Sources */,

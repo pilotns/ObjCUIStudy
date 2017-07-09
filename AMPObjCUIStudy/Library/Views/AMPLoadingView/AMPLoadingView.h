@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, AMPLoadingViewState) {
-    AMPLoadingViewVisible,
-    AMPLoadingViewHidden
+    AMPLoadingViewHidden,
+    AMPLoadingViewVisible
 };
 
 @interface AMPLoadingView : UIView
