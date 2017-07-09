@@ -1,10 +1,12 @@
 //
-//  AMPCGShortCuts.h
+//  CGGeometry+AMPExtensions.h
 //  AMPObjCUIStudy
 //
 //  Created by pilotns on 09.06.17.
 //  Copyright © 2017 pilotns. All rights reserved.
 //
+
+#import <CoreGraphics/CoreGraphics.h>
 
 #ifndef AMPCGShortCuts_h
 #define AMPCGShortCuts_h
@@ -21,6 +23,6 @@
 #define CGWidth CGRectGetWidth
 #define CGHeight CGRectGetHeight
 
-#define CGRectCenter(rect) CGPointMake(CGMidX(rect), CGMidY(rect))
+CGPoint AMPCGrectCenter(CGRect rect);
 
 #endif /* AMPCGShortCuts_h */

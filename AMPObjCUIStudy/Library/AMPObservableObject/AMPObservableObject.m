@@ -94,22 +94,11 @@
 }
 
 - (void)performBlockWithNotifications:(void (^)(void))block {
-    if (!block) {
-        return;
-    }
-    
-    self.postNotifications = YES;
-    block();
+    [self performBlock:block postNotifications:YES];
 }
 
 - (void)performBlockWithoutNotifications:(void (^)(void))block {
-    if (!block) {
-        return;
-    }
-    
-    self.postNotifications = NO;
-    block();
-    self.postNotifications = YES;
+    [self performBlock:block postNotifications:NO];
 }
 
 - (SEL)selectorForState:(NSUInteger)state {
@@ -120,18 +109,29 @@
 #pragma mark Private Methods
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo {
-    if (!self.postNotifications) {
+    @synchronized (self) {
+        if (self.postNotifications) {
+            for (id observer in self.mutableObservers) {
+                if ([observer respondsToSelector:aSelector]) {
+                    AMPPragmaDiagnosticPushSelectorLeak
+                    [observer performSelector:aSelector withObject:self withObject:userInfo];
+                    AMPPragmaDiagnosticPop
+                }
+            }
+        }
+    }
+}
+
+- (void)performBlock:(void (^)(void))block postNotifications:(BOOL)yesOrNo {
+    if (!block) {
         return;
     }
     
     @synchronized (self) {
-        for (id observer in self.mutableObservers) {
-            if ([observer respondsToSelector:aSelector]) {
-AMPPragmaDiagnosticPushSelectorLeak
-                [observer performSelector:aSelector withObject:self withObject:userInfo];
-AMPPragmaDiagnosticPop
-            }
-        }
+        BOOL postNotifications = self.postNotifications;
+        self.postNotifications = yesOrNo;
+        block();
+        self.postNotifications = postNotifications;
     }
 }
 

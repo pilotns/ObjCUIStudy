@@ -10,12 +10,12 @@
 
 @interface NSNotificationCenter (AMPExtensions)
 
-- (NSArray *)addObserverForNames:(NSArray *)names usingBlock:(void (^)(NSNotification *note))block;
+- (NSArray *)observerTokensForNames:(NSArray *)names usingBlock:(void (^)(NSNotification *note))block;
 
-- (NSArray *)addObserverForNames:(NSArray *)names
-                          object:(id)obj
-                           queue:(NSOperationQueue *)queue
-                      usingBlock:(void (^)(NSNotification *note))block;
+- (NSArray *)observerTokensForNames:(NSArray *)names
+                             object:(id)obj
+                              queue:(NSOperationQueue *)queue
+                         usingBlock:(void (^)(NSNotification *note))block;
 
 - (void)removeObserverTokens:(NSArray *)tokens;
 
