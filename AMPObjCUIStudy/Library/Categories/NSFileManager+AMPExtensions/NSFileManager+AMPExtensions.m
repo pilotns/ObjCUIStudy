@@ -6,40 +6,44 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#define AMPOnceURL(code) \
-    static NSURL *url = nil; \
+#import "NSFileManager+AMPExtensions.h"
+
+#define AMPOnce(block) \
     static dispatch_once_t onceToken; \
-    dispatch_once(&onceToken, ^{ code }); \
+    dispatch_once(&onceToken, block);
+
+#define AMPOnceURL(block) \
+    static NSURL *url = nil; \
+    AMPOnce(block); \
     \
     return url;
 
-#define AMPURLForDirectoryWithSearchPathAndDomain(searchPath, domain) \
-    url = [self URLsForDirectory:searchPath inDomains:domain].firstObject;
-
-#define AMPURLForDirectoryInLibraryDirectoryCreateIfNeeded(directoryName) \
-    url = [[self URLForLibraryDirectory] URLByAppendingPathComponent:directoryName]; \
-    if (![[NSFileManager defaultManager] createDirectoryAtPath:url.path \
-                                   withIntermediateDirectories:YES \
-                                                    attributes:nil \
-                                                         error:nil]) { \
-        url = nil; \
-    }
-
-
-#import "NSFileManager+AMPExtensions.h"
+#define AMPOnceURLForDirectoryWithSearchPathAndDoamin(searchPath, domain) \
+    AMPOnceURL(^{ \
+        url = [self URLsForDirectory:searchPath inDomains:domain].firstObject; \
+    });
 
 @implementation NSFileManager (AMPExtensions)
 
 - (NSURL *)URLForLibraryDirectory {
-    AMPOnceURL(AMPURLForDirectoryWithSearchPathAndDomain(NSLibraryDirectory, NSUserDomainMask));
+    AMPOnceURLForDirectoryWithSearchPathAndDoamin(NSLibraryDirectory, NSUserDomainMask);
 }
 
 - (NSURL *)URLForDocumentsDirectory {
-    AMPOnceURL(AMPURLForDirectoryWithSearchPathAndDomain(NSDocumentDirectory, NSUserDomainMask));
+    AMPOnceURLForDirectoryWithSearchPathAndDoamin(NSDocumentDirectory, NSUserDomainMask);
 }
 
 - (NSURL *)URLForDirectoryInLibraryDirectory:(NSString *)directoryName {
-    AMPOnceURL(AMPURLForDirectoryInLibraryDirectoryCreateIfNeeded(directoryName));
+    AMPOnceURL(^{
+        url = [[self URLForLibraryDirectory] URLByAppendingPathComponent:directoryName];
+        NSFileManager *manager = [NSFileManager defaultManager];
+        if (![manager createDirectoryAtPath:url.path
+                withIntermediateDirectories:YES
+                                 attributes:nil
+                                      error:nil]) {
+            url = nil;
+        }
+    });
 }
 
 - (NSString *)fileNameWithURL:(NSURL *)url {
@@ -47,7 +51,7 @@
         return url.lastPathComponent;
     }
     
-    return [url.path stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    return [[url.path stringByRemovingPercentEncoding] stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
 }
 
 - (long long)fileSizeAtPath:(NSString *)path {

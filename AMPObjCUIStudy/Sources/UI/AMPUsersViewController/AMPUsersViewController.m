@@ -26,7 +26,7 @@ AMPSynthesizeBaseViewProperty(AMPUsersViewController, AMPUsersView, usersView);
 
 static NSString * const AMPNavigationControllerTitle    = @"Users";
 
-@interface AMPUsersViewController () <AMPModelObserver, AMPArrayModelObserver>
+@interface AMPUsersViewController () <AMPArrayModelObserver>
 
 - (void)fillWithModel:(AMPModel *)model;
 
@@ -185,14 +185,14 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 
 - (void)modelWillLoad:(id)model {
     AMPDispatchAsyncOnMainQueue(^{
-        [self.usersView setLoadingViewVisibleAnimated:YES];
+        [self.usersView setLoadingViewVisible:YES];
     });
 }
 
 - (void)modelDidLoad:(id)model {
     AMPDispatchAsyncOnMainQueue(^{
         [self fillWithModel:model];
-        [self.usersView setLoadingViewHiddenAnimated:YES];
+        [self.usersView setLoadingViewVisible:NO];
     });
 }
 

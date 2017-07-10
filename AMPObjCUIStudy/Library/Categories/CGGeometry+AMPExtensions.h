@@ -9,6 +9,8 @@
 #ifndef AMPCGShortCuts_h
 #define AMPCGShortCuts_h
 
+#import <CoreGraphics/CoreGraphics.h>
+
 #define CGMaxX CGRectGetMaxX
 #define CGMinX CGRectGetMinX
 
@@ -21,6 +23,6 @@
 #define CGWidth CGRectGetWidth
 #define CGHeight CGRectGetHeight
 
-#define CGRectCenter(rect) CGPointMake(CGMidX(rect), CGMidY(rect))
+CGPoint AMPCGRectCenter(CGRect rect);
 
 #endif /* AMPCGShortCuts_h */

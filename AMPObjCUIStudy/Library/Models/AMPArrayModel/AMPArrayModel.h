@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, AMPArrayModelState) {
 @class AMPArrayModelChange;
 @class AMPArrayModel;
 
-@protocol AMPArrayModelObserver <NSObject>
+@protocol AMPArrayModelObserver <AMPModelObserver>
 
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info;
 

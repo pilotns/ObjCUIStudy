@@ -16,8 +16,7 @@
 static const NSTimeInterval AMPLoadingViewPresentationDuration = 0.3;
 
 static const CGFloat    AMPLoadingViewPresentedAlpha    = 1;
-static const CGFloat    AMPLoadingViewDismissedAlpha    = 0;
-static const CGFloat    AMPLoadnigViewOpacity           = 0.8;
+static const CGFloat    AMPLoadingViewOpacity           = 0.8;
 
 @interface AMPLoadingView ()
 
@@ -91,19 +90,13 @@ static const CGFloat    AMPLoadnigViewOpacity           = 0.8;
 #pragma mark Private Methods
 
 - (CGFloat)alphaForState:(AMPLoadingViewState)state {
-    switch (state) {
-        case AMPLoadingViewVisible:
-            return AMPLoadingViewPresentedAlpha;
-
-        default:
-            return AMPLoadingViewDismissedAlpha;
-    }
+    return AMPLoadingViewVisible == state ? AMPLoadingViewPresentedAlpha : 0;
 }
 
 - (void)baseInit {
     self.alpha = 0;
-    self.backgroundColor = [UIColor colorWithWhite:0 alpha:AMPLoadnigViewOpacity];
-    self.autoresizingMask = AMPUIViewAutoresizingAll;
+    self.backgroundColor = [UIColor colorWithWhite:0 alpha:AMPLoadingViewOpacity];
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self prepareIndicator];
 }
@@ -115,7 +108,7 @@ static const CGFloat    AMPLoadnigViewOpacity           = 0.8;
     }
     
     indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    indicator.center = CGRectCenter(self.bounds);
+    indicator.center = AMPCGRectCenter(self.bounds);
 
     indicator.autoresizingMask = AMPUIViewAutoresizingAll;
     [indicator startAnimating];

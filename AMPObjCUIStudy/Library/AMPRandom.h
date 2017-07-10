@@ -12,3 +12,5 @@ NSRange AMPMakeRange(NSUInteger firstNumber, NSUInteger lastNumber);
 NSUInteger AMPRandomValueUntilLocation(NSUInteger location);
 NSUInteger AMPRandomValueWithRange(NSRange range);
 
+BOOL AMPRandomBool();
+

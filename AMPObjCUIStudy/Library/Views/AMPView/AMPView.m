@@ -24,7 +24,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.loadingView = [self customLoadingView];
+    self.loadingView = [self defaultLoadingView];
     
     return self;
 }
@@ -32,7 +32,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.loadingView = [self customLoadingView];
+    if (!self.loadingView) {
+        self.loadingView = [self defaultLoadingView];
+    }
 }
 
 #pragma mark-
@@ -50,31 +52,21 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)setLoadingViewVisible {
-    [self setLoadingViewVisibleAnimated:YES];
+- (void)setLoadingViewVisible:(BOOL)yesOrNo {
+    [self setLoadingViewVisible:yesOrNo animated:YES];
 }
 
-- (void)setLoadingViewVisibleAnimated:(BOOL)animated {
-    [self setLoadingViewVisibleAnimated:animated completionHandler:nil];
+- (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated {
+    [self setLoadingViewVisible:yesOrNo animated:animated completionHandler:nil];
 }
 
-- (void)setLoadingViewVisibleAnimated:(BOOL)animated completionHandler:(void (^)(void))handler {
-    [self.loadingView setState:AMPLoadingViewVisible animated:animated completionHandler:handler];
+- (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated completionHandler:(void (^)(void))handler {
+    AMPLoadingViewState state = yesOrNo ? AMPLoadingViewVisible : AMPLoadingViewHidden;
+    
+    [self.loadingView setState:state animated:animated completionHandler:handler];
 }
 
-- (void)setLoadingViewHidden {
-    [self setLoadingViewHiddenAnimated:YES];
-}
-
-- (void)setLoadingViewHiddenAnimated:(BOOL)animated {
-    [self setLoadingViewHiddenAnimated:animated completionHandler:nil];
-}
-
-- (void)setLoadingViewHiddenAnimated:(BOOL)animated completionHandler:(void (^)(void))handler {
-    [self.loadingView setState:AMPLoadingViewHidden animated:YES completionHandler:handler];
-}
-
-- (AMPLoadingView *)customLoadingView {
+- (AMPLoadingView *)defaultLoadingView {
     return [AMPLoadingView loadingViewInView:self];
 }
 

@@ -13,15 +13,11 @@
 @interface AMPView : UIView
 @property (nonatomic, strong)   IBOutlet    AMPLoadingView  *loadingView;
 
-- (void)setLoadingViewVisible;
-- (void)setLoadingViewVisibleAnimated:(BOOL)animated;
-- (void)setLoadingViewVisibleAnimated:(BOOL)animated completionHandler:(void (^)(void))handler;
-
-- (void)setLoadingViewHidden;
-- (void)setLoadingViewHiddenAnimated:(BOOL)animated;
-- (void)setLoadingViewHiddenAnimated:(BOOL)animated completionHandler:(void (^)(void))handler;
+- (void)setLoadingViewVisible:(BOOL)yesOrNo;
+- (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated;
+- (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated completionHandler:(void (^)(void))handler;
 
 // this method is intended for subclassing, do not call it directly
-- (AMPLoadingView *)customLoadingView;
+- (AMPLoadingView *)defaultLoadingView;
 
 @end

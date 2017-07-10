@@ -10,35 +10,35 @@
 
 #import "NSFileManager+AMPExtensions.h"
 
-@interface AMPInternetImageModel () <NSURLSessionDataDelegate>
-@property (nonatomic, readonly)     NSURLSession            *session;
-@property (nonatomic, strong)       NSURLSessionDataTask    *imageLoadingTask;
+@interface AMPInternetImageModel ()
+@property (nonatomic, readonly)     NSURLSession                *session;
+@property (nonatomic, strong)       NSURLSessionDownloadTask    *imageLoadingTask;
 
 @end
 
 @implementation AMPInternetImageModel
 
 #pragma mark -
+#pragma mark Initializations and Deallocation
+
+- (void)dealloc {
+    self.imageLoadingTask = nil;
+}
+
+#pragma mark -
 #pragma mark Accessros
 
 - (NSURLSession *)session {
-    __block NSURLSession *session = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                                                delegate:self
-                                           delegateQueue:[NSOperationQueue new]];
-    });
-    
-    return session;
+    return [NSURLSession sharedSession];
 }
 
 - (NSString *)imagePath {
-    return [[[NSFileManager defaultManager] URLForDirectoryInLibraryDirectory:@"Images"]
-                                            URLByAppendingPathComponent:self.imageName].path;
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    return [[manager URLForDirectoryInLibraryDirectory:@"Images"] URLByAppendingPathComponent:self.imageName].path;
 }
 
-- (void)setImageLoadingTask:(NSURLSessionDataTask *)imageLoadingTask {
+- (void)setImageLoadingTask:(NSURLSessionDownloadTask *)imageLoadingTask {
     if (_imageLoadingTask != imageLoadingTask) {
         [_imageLoadingTask cancel];
         
@@ -47,37 +47,33 @@
     }
 }
 
-- (void)processImageLoading {
-    self.imageLoadingTask = [self.session dataTaskWithURL:self.url];
-}
-
 #pragma mark -
-#pragma mark NSURLSessionDataDelegate
+#pragma mark Public Methods
 
-- (void)URLSession:(NSURLSession *)session
-          dataTask:(NSURLSessionDataTask *)dataTask
-didReceiveResponse:(NSURLResponse *)response
- completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
-{
+- (void)performImageLoadingWithCompletionHandler:(AMPImageModelLoadingCompletionHandler)handler {
     NSFileManager *manager = [NSFileManager defaultManager];
-    if (response.expectedContentLength == [manager fileSizeAtPath:self.imagePath]) {
-        completionHandler(NSURLSessionResponseCancel);
-        [super processImageLoading];
-    } else {
-        [manager removeItemAtPath:self.imagePath error:nil];
-        completionHandler(NSURLSessionResponseAllow);
+    NSString *imagePath = self.imagePath;
+    if ([manager fileExistsAtPath:imagePath]) {
+        [super performImageLoadingWithCompletionHandler:handler];
+        if (self.image) {
+            return;
+        }
+        
+        [manager removeItemAtPath:imagePath error:nil];
     }
-}
-
-- (void)URLSession:(NSURLSession *)session
-          dataTask:(NSURLSessionDataTask *)dataTask
-    didReceiveData:(NSData *)data
-{
     
-    UIImage *image = [UIImage imageWithData:data];
-    [self finishLoadingWithImage:image error:dataTask.error];
+    void  (^completionHandler)(NSURL *, NSURLResponse *, NSError *) =
+            ^(NSURL *location, NSURLResponse *response, NSError *error) {
+                [manager moveItemAtPath:location.path toPath:imagePath error:nil];
+                
+                [super performImageLoadingWithCompletionHandler:handler];
+            };
     
-    [data writeToFile:self.imagePath atomically:NO];
+    
+    NSURLSessionDownloadTask *loadingTask = [self.session downloadTaskWithURL:self.url
+                                                            completionHandler:completionHandler];
+    
+    self.imageLoadingTask = loadingTask;
 }
 
 @end

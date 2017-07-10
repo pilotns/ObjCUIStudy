@@ -10,14 +10,14 @@
 
 @implementation NSNotificationCenter (AMPExtensions)
 
-- (NSArray *)addObserverForNames:(NSArray *)names usingBlock:(void (^)(NSNotification *note))block {
-    return [self addObserverForNames:names object:nil queue:[NSOperationQueue mainQueue] usingBlock:block];
+- (NSArray *)observerTokensForNames:(NSArray *)names usingBlock:(void (^)(NSNotification *note))block {
+    return [self observerTokensForNames:names object:nil queue:[NSOperationQueue mainQueue] usingBlock:block];
 }
 
-- (NSArray *)addObserverForNames:(NSArray *)names
-                          object:(id)obj
-                           queue:(NSOperationQueue *)queue
-                      usingBlock:(void (^)(NSNotification *note))block
+- (NSArray *)observerTokensForNames:(NSArray *)names
+                             object:(id)obj
+                              queue:(NSOperationQueue *)queue
+                         usingBlock:(void (^)(NSNotification *note))block
 {
     if (!block) {
         return nil;

@@ -33,6 +33,6 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
 - (void)load;
 
 // this methods is intended for subclassing, do not call it directly
-- (void)processLoading;
+- (void)performLoading;
 
 @end

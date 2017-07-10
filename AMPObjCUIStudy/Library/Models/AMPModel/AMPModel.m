@@ -36,7 +36,7 @@
     [self processLoadingInBackground];
 }
 
-- (void)processLoading {
+- (void)performLoading {
     
 }
 
@@ -47,7 +47,7 @@
     AMPWeakify(self);
     AMPDispatchAsyncInBackground(^{
         AMPStrongifyAndReturnIfNil(self);
-        [self processLoading];
+        [self performLoading];
     });
 }
 
