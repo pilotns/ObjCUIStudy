@@ -44,7 +44,7 @@ static NSUInteger const kAMPDefaultUsersCount       = 10;
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)processLoading {
+- (void)performLoading {
     usleep(1000 * 1000 * 3);
     NSArray *objects = [NSKeyedUnarchiver unarchiveObjectWithFile:[self objectsPath]];
     if (!objects) {

@@ -16,6 +16,8 @@
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo;
 
+- (void)performBlock:(void (^)(void))block postNotifications:(BOOL)yesOrNo;
+
 @end
 
 @implementation AMPObservableObject

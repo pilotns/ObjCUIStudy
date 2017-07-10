@@ -62,9 +62,9 @@
     }
 }
 
-- (void)removeImageModelForURL:(NSURL *)url {
+- (void)removeImageModel:(AMPImageModel *)model {
     @synchronized (self) {
-        [self.storage removeObjectForKey:url];
+        [self.storage removeObjectForKey:model.url];
     }
 }
 

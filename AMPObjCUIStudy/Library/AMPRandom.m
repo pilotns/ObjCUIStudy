@@ -22,3 +22,7 @@ NSUInteger AMPRandomValueUntilLocation(NSUInteger location) {
 NSUInteger AMPRandomValueWithRange(NSRange range) {
     return arc4random_uniform((uint32_t)range.length) + range.location;
 }
+
+BOOL AMPRandomBool() {
+    return AMPRandomValueUntilLocation(2);
+}

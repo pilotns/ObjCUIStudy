@@ -16,7 +16,7 @@
 + (instancetype)sharedCache;
 
 - (void)addImageModel:(AMPImageModel *)model;
-- (void)removeImageModelForURL:(NSURL *)url;
+- (void)removeImageModel:(AMPImageModel *)model;
 
 - (AMPImageModel *)imageModelForURL:(NSURL *)url;
 - (AMPImageModel *)objectForKeyedSubscript:(NSURL *)url;

@@ -12,6 +12,7 @@
 #import "AMPInternetImageModel.h"
 
 #import "AMPImageModelCache.h"
+#import "AMPMacro.h"
 
 #import "NSFileManager+AMPExtensions.h"
 
@@ -31,22 +32,26 @@
 
 + (instancetype)imageModelWithURL:(NSURL *)url {
     AMPImageModel *imageModel = nil;
-    AMPImageModelCache *modelCache = [AMPImageModelCache sharedCache];
+    AMPImageModelCache *modelCache = [self imageCache];
     imageModel = [modelCache imageModelForURL:url];
-    if (!imageModel) {
-        Class imageModelClass = url.isFileURL
-                                ? [AMPFileSystemImageModel class]
-                                : [AMPInternetImageModel class];
-        
-        imageModel = [[imageModelClass alloc] initWithURL:url];
-        [modelCache addImageModel:imageModel];
+    if (imageModel) {
+        return imageModel;
     }
+    
+    Class imageModelClass = url.isFileURL ? [AMPFileSystemImageModel class] : [AMPInternetImageModel class];
+    
+    imageModel = [[imageModelClass alloc] initWithURL:url];
+    [modelCache addImageModel:imageModel];
     
     return imageModel;
 }
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    [[self imageCache] removeImageModel:self];
+}
 
 - (instancetype)initWithURL:(NSURL *)url {
     self = [super init];
@@ -62,22 +67,30 @@
     return [[NSFileManager defaultManager] fileNameWithURL:self.url];
 }
 
++ (AMPImageModelCache *)imageCache {
+    return [AMPImageModelCache sharedCache];
+}
+
+- (AMPImageModelCache *)imageCache {
+    return [[self class] imageCache];
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)processLoading {
-    [self processImageLoading];
+- (void)performLoading {
+    AMPWeakify(self)
+    [self performImageLoadingWithCompletionHandler:^(UIImage *image, NSError *error) {
+        AMPStrongifyAndReturnIfNil(self)
+        self.image = image;
+        AMPModelState state = error ? AMPModelDidFailLoading : AMPModelDidLoad;
+        
+        [self setState:state userInfo:error];
+    }];
 }
 
-- (void)processImageLoading {
+- (void)performImageLoadingWithCompletionHandler:(AMPImageModelLoadingCompletionHandler)handler {
     
-}
-
-- (void)finishLoadingWithImage:(UIImage *)image error:(NSError *)error {
-    self.image = image;
-    AMPModelState state = error ? AMPModelDidFailLoading : AMPModelDidLoad;
-    
-    [self setState:state userInfo:error];
 }
 
 @end
