@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define AMPOnce(block) \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, block);
+
 typedef void (^AMPSheduledBlock)(BOOL *stop);
 
 dispatch_queue_t AMPCreateDispatchSerialQueue();

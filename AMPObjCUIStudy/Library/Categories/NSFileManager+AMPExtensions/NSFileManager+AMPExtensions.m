@@ -8,9 +8,7 @@
 
 #import "NSFileManager+AMPExtensions.h"
 
-#define AMPOnce(block) \
-    static dispatch_once_t onceToken; \
-    dispatch_once(&onceToken, block);
+#import "AMPGCDExtensions.h"
 
 #define AMPOnceURL(block) \
     static NSURL *url = nil; \
