@@ -81,6 +81,31 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
 }
 
 #pragma mark -
+#pragma mark UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.usersModel count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AMPUserCell *cell = [tableView reusableCellWithClass:[AMPUserCell class]];
+    
+    cell.user = [self.usersModel objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - 
+#pragma mark UITableViewDelegate
+
+- (void)    tableView:(UITableView *)tableView
+ didEndDisplayingCell:(AMPUserCell *)cell
+    forRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    cell.user = nil;
+}
+
+#pragma mark -
 #pragma mark AMPModelObserver
 
 - (void)modelWillLoad:(id)model {
@@ -100,19 +125,10 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
     });
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.usersModel count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AMPUserCell *cell = [tableView reusableCellWithClass:[AMPUserCell class]];
-    
-    cell.user = [self.usersModel objectAtIndex:indexPath.row];
-    
-    return cell;
+- (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
+    AMPDispatchSyncOnMainQueue(^{
+        [self.usersView.tableView updateWithArrayModelChange:info];
+    });
 }
 
 @end

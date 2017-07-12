@@ -56,10 +56,7 @@
     
     [requestConnection addRequest:request
                 completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                    NSLog(@"%@", result);
-                    
                     [self handleResponse:result];
-                    
                     if (completionHandler) {
                         completionHandler(error);
                     }
