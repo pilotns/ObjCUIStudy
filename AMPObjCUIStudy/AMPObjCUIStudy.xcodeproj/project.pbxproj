@@ -21,8 +21,22 @@
 		8A028EBC1F13E82500BB0C0E /* AMPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EAD1F13E82500BB0C0E /* AMPLoadingView.m */; };
 		8A028EBD1F13E82500BB0C0E /* AMPLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A028EAE1F13E82500BB0C0E /* AMPLoadingView.xib */; };
 		8A028EBE1F13E82500BB0C0E /* AMPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EB11F13E82500BB0C0E /* AMPView.m */; };
-		8A028EC21F13E85E00BB0C0E /* AMPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EC11F13E85E00BB0C0E /* AMPContext.m */; };
-		8A028EC61F13E97200BB0C0E /* AMPFBLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EC51F13E97200BB0C0E /* AMPFBLoginContext.m */; };
+		8A028ED71F1610F100BB0C0E /* AMPContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028ED61F1610F100BB0C0E /* AMPContext.m */; };
+		8A028EDA1F16152700BB0C0E /* AMPFBLoginContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028ED91F16152700BB0C0E /* AMPFBLoginContext.m */; };
+		8A028EDF1F161B5C00BB0C0E /* AMPFBGetUserContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EDE1F161B5C00BB0C0E /* AMPFBGetUserContext.m */; };
+		8A028EE31F161F1600BB0C0E /* AMPFBGetUsersContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EE21F161F1600BB0C0E /* AMPFBGetUsersContext.m */; };
+		8A028EE71F16215D00BB0C0E /* AMPFBGetContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EE61F16215D00BB0C0E /* AMPFBGetContext.m */; };
+		8A028EEF1F1623E600BB0C0E /* AMPFBLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EED1F1623E600BB0C0E /* AMPFBLoginViewController.m */; };
+		8A028EF01F1623E600BB0C0E /* AMPFBLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A028EEE1F1623E600BB0C0E /* AMPFBLoginViewController.xib */; };
+		8A028EF31F1623FA00BB0C0E /* AMPFBLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EF21F1623FA00BB0C0E /* AMPFBLoginView.m */; };
+		8A028EF71F16479600BB0C0E /* AMPFBLogoutContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EF61F16479600BB0C0E /* AMPFBLogoutContext.m */; };
+		8A028EFB1F164E8C00BB0C0E /* AMPFBUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EF91F164E8C00BB0C0E /* AMPFBUserViewController.m */; };
+		8A028EFC1F164E8C00BB0C0E /* AMPFBUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A028EFA1F164E8C00BB0C0E /* AMPFBUserViewController.xib */; };
+		8A028EFF1F164EA600BB0C0E /* AMPFBUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028EFE1F164EA600BB0C0E /* AMPFBUserView.m */; };
+		8A028F031F1654A400BB0C0E /* AMPFBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028F021F1654A400BB0C0E /* AMPFBUser.m */; };
+		8A028F071F167E2F00BB0C0E /* AMPFBUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028F051F167E2F00BB0C0E /* AMPFBUsersViewController.m */; };
+		8A028F081F167E2F00BB0C0E /* AMPFBUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A028F061F167E2F00BB0C0E /* AMPFBUsersViewController.xib */; };
+		8A028F0B1F167E4700BB0C0E /* AMPFBUsersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A028F0A1F167E4700BB0C0E /* AMPFBUsersView.m */; };
 		8A248B231EE2E1410039958F /* AMPRandom.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A248B221EE2E1410039958F /* AMPRandom.m */; };
 		8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */; };
 		8A4E55B81EE19B28007B5B51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55B11EE19B28007B5B51 /* main.m */; };
@@ -103,10 +117,36 @@
 		8A028EAE1F13E82500BB0C0E /* AMPLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPLoadingView.xib; sourceTree = "<group>"; };
 		8A028EB01F13E82500BB0C0E /* AMPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPView.h; sourceTree = "<group>"; };
 		8A028EB11F13E82500BB0C0E /* AMPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPView.m; sourceTree = "<group>"; };
-		8A028EC01F13E85E00BB0C0E /* AMPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPContext.h; sourceTree = "<group>"; };
-		8A028EC11F13E85E00BB0C0E /* AMPContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPContext.m; sourceTree = "<group>"; };
-		8A028EC41F13E97200BB0C0E /* AMPFBLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBLoginContext.h; sourceTree = "<group>"; };
-		8A028EC51F13E97200BB0C0E /* AMPFBLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBLoginContext.m; sourceTree = "<group>"; };
+		8A028ED51F1610F100BB0C0E /* AMPContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPContext.h; sourceTree = "<group>"; };
+		8A028ED61F1610F100BB0C0E /* AMPContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPContext.m; sourceTree = "<group>"; };
+		8A028ED81F16152700BB0C0E /* AMPFBLoginContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBLoginContext.h; sourceTree = "<group>"; };
+		8A028ED91F16152700BB0C0E /* AMPFBLoginContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBLoginContext.m; sourceTree = "<group>"; };
+		8A028EDB1F16155800BB0C0E /* AMPFBSDKPrefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPFBSDKPrefix.pch; sourceTree = "<group>"; };
+		8A028EDD1F161B5C00BB0C0E /* AMPFBGetUserContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBGetUserContext.h; sourceTree = "<group>"; };
+		8A028EDE1F161B5C00BB0C0E /* AMPFBGetUserContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBGetUserContext.m; sourceTree = "<group>"; };
+		8A028EE11F161F1600BB0C0E /* AMPFBGetUsersContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBGetUsersContext.h; sourceTree = "<group>"; };
+		8A028EE21F161F1600BB0C0E /* AMPFBGetUsersContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBGetUsersContext.m; sourceTree = "<group>"; };
+		8A028EE51F16215D00BB0C0E /* AMPFBGetContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBGetContext.h; sourceTree = "<group>"; };
+		8A028EE61F16215D00BB0C0E /* AMPFBGetContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBGetContext.m; sourceTree = "<group>"; };
+		8A028EEC1F1623E600BB0C0E /* AMPFBLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBLoginViewController.h; sourceTree = "<group>"; };
+		8A028EED1F1623E600BB0C0E /* AMPFBLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBLoginViewController.m; sourceTree = "<group>"; };
+		8A028EEE1F1623E600BB0C0E /* AMPFBLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPFBLoginViewController.xib; sourceTree = "<group>"; };
+		8A028EF11F1623FA00BB0C0E /* AMPFBLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBLoginView.h; sourceTree = "<group>"; };
+		8A028EF21F1623FA00BB0C0E /* AMPFBLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBLoginView.m; sourceTree = "<group>"; };
+		8A028EF51F16479600BB0C0E /* AMPFBLogoutContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBLogoutContext.h; sourceTree = "<group>"; };
+		8A028EF61F16479600BB0C0E /* AMPFBLogoutContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBLogoutContext.m; sourceTree = "<group>"; };
+		8A028EF81F164E8C00BB0C0E /* AMPFBUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBUserViewController.h; sourceTree = "<group>"; };
+		8A028EF91F164E8C00BB0C0E /* AMPFBUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBUserViewController.m; sourceTree = "<group>"; };
+		8A028EFA1F164E8C00BB0C0E /* AMPFBUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPFBUserViewController.xib; sourceTree = "<group>"; };
+		8A028EFD1F164EA600BB0C0E /* AMPFBUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBUserView.h; sourceTree = "<group>"; };
+		8A028EFE1F164EA600BB0C0E /* AMPFBUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBUserView.m; sourceTree = "<group>"; };
+		8A028F011F1654A400BB0C0E /* AMPFBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBUser.h; sourceTree = "<group>"; };
+		8A028F021F1654A400BB0C0E /* AMPFBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBUser.m; sourceTree = "<group>"; };
+		8A028F041F167E2F00BB0C0E /* AMPFBUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBUsersViewController.h; sourceTree = "<group>"; };
+		8A028F051F167E2F00BB0C0E /* AMPFBUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBUsersViewController.m; sourceTree = "<group>"; };
+		8A028F061F167E2F00BB0C0E /* AMPFBUsersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPFBUsersViewController.xib; sourceTree = "<group>"; };
+		8A028F091F167E4700BB0C0E /* AMPFBUsersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBUsersView.h; sourceTree = "<group>"; };
+		8A028F0A1F167E4700BB0C0E /* AMPFBUsersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBUsersView.m; sourceTree = "<group>"; };
 		8A248B191EE1AC000039958F /* AMPMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMPMacro.h; sourceTree = "<group>"; };
 		8A248B211EE2E1410039958F /* AMPRandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPRandom.h; sourceTree = "<group>"; };
 		8A248B221EE2E1410039958F /* AMPRandom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPRandom.m; sourceTree = "<group>"; };
@@ -205,7 +245,11 @@
 		8A028E861F13E7B900BB0C0E /* Contexts */ = {
 			isa = PBXGroup;
 			children = (
+				8A028EE01F161EF200BB0C0E /* AMPFBGetUsersContext */,
+				8A028EDC1F161B3800BB0C0E /* AMPFBGetUserContext */,
+				8A028EE41F16214200BB0C0E /* AMPFBGetContext */,
 				8A028EC31F13E95F00BB0C0E /* AMPFBLoginContext */,
+				8A028EF41F16477500BB0C0E /* AMPFBLogoutContext */,
 			);
 			path = Contexts;
 			sourceTree = "<group>";
@@ -367,8 +411,8 @@
 		8A028EBF1F13E83D00BB0C0E /* AMPContext */ = {
 			isa = PBXGroup;
 			children = (
-				8A028EC01F13E85E00BB0C0E /* AMPContext.h */,
-				8A028EC11F13E85E00BB0C0E /* AMPContext.m */,
+				8A028ED51F1610F100BB0C0E /* AMPContext.h */,
+				8A028ED61F1610F100BB0C0E /* AMPContext.m */,
 			);
 			path = AMPContext;
 			sourceTree = "<group>";
@@ -376,10 +420,101 @@
 		8A028EC31F13E95F00BB0C0E /* AMPFBLoginContext */ = {
 			isa = PBXGroup;
 			children = (
-				8A028EC41F13E97200BB0C0E /* AMPFBLoginContext.h */,
-				8A028EC51F13E97200BB0C0E /* AMPFBLoginContext.m */,
+				8A028ED81F16152700BB0C0E /* AMPFBLoginContext.h */,
+				8A028ED91F16152700BB0C0E /* AMPFBLoginContext.m */,
 			);
 			path = AMPFBLoginContext;
+			sourceTree = "<group>";
+		};
+		8A028EDC1F161B3800BB0C0E /* AMPFBGetUserContext */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EDD1F161B5C00BB0C0E /* AMPFBGetUserContext.h */,
+				8A028EDE1F161B5C00BB0C0E /* AMPFBGetUserContext.m */,
+			);
+			path = AMPFBGetUserContext;
+			sourceTree = "<group>";
+		};
+		8A028EE01F161EF200BB0C0E /* AMPFBGetUsersContext */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EE11F161F1600BB0C0E /* AMPFBGetUsersContext.h */,
+				8A028EE21F161F1600BB0C0E /* AMPFBGetUsersContext.m */,
+			);
+			path = AMPFBGetUsersContext;
+			sourceTree = "<group>";
+		};
+		8A028EE41F16214200BB0C0E /* AMPFBGetContext */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EE51F16215D00BB0C0E /* AMPFBGetContext.h */,
+				8A028EE61F16215D00BB0C0E /* AMPFBGetContext.m */,
+			);
+			path = AMPFBGetContext;
+			sourceTree = "<group>";
+		};
+		8A028EE81F16238900BB0C0E /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EEA1F1623AD00BB0C0E /* AMPFBUsersViewController */,
+				8A028EEB1F1623BE00BB0C0E /* AMPFBUserViewController */,
+				8A028EE91F16239600BB0C0E /* AMPFBLoginViewController */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		8A028EE91F16239600BB0C0E /* AMPFBLoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EEC1F1623E600BB0C0E /* AMPFBLoginViewController.h */,
+				8A028EED1F1623E600BB0C0E /* AMPFBLoginViewController.m */,
+				8A028EEE1F1623E600BB0C0E /* AMPFBLoginViewController.xib */,
+				8A028EF11F1623FA00BB0C0E /* AMPFBLoginView.h */,
+				8A028EF21F1623FA00BB0C0E /* AMPFBLoginView.m */,
+			);
+			path = AMPFBLoginViewController;
+			sourceTree = "<group>";
+		};
+		8A028EEA1F1623AD00BB0C0E /* AMPFBUsersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A028F041F167E2F00BB0C0E /* AMPFBUsersViewController.h */,
+				8A028F051F167E2F00BB0C0E /* AMPFBUsersViewController.m */,
+				8A028F061F167E2F00BB0C0E /* AMPFBUsersViewController.xib */,
+				8A028F091F167E4700BB0C0E /* AMPFBUsersView.h */,
+				8A028F0A1F167E4700BB0C0E /* AMPFBUsersView.m */,
+			);
+			path = AMPFBUsersViewController;
+			sourceTree = "<group>";
+		};
+		8A028EEB1F1623BE00BB0C0E /* AMPFBUserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EF81F164E8C00BB0C0E /* AMPFBUserViewController.h */,
+				8A028EF91F164E8C00BB0C0E /* AMPFBUserViewController.m */,
+				8A028EFA1F164E8C00BB0C0E /* AMPFBUserViewController.xib */,
+				8A028EFD1F164EA600BB0C0E /* AMPFBUserView.h */,
+				8A028EFE1F164EA600BB0C0E /* AMPFBUserView.m */,
+			);
+			path = AMPFBUserViewController;
+			sourceTree = "<group>";
+		};
+		8A028EF41F16477500BB0C0E /* AMPFBLogoutContext */ = {
+			isa = PBXGroup;
+			children = (
+				8A028EF51F16479600BB0C0E /* AMPFBLogoutContext.h */,
+				8A028EF61F16479600BB0C0E /* AMPFBLogoutContext.m */,
+			);
+			path = AMPFBLogoutContext;
+			sourceTree = "<group>";
+		};
+		8A028F001F16548A00BB0C0E /* AMPFBUser */ = {
+			isa = PBXGroup;
+			children = (
+				8A028F011F1654A400BB0C0E /* AMPFBUser.h */,
+				8A028F021F1654A400BB0C0E /* AMPFBUser.m */,
+			);
+			path = AMPFBUser;
 			sourceTree = "<group>";
 		};
 		8A248B181EE1ABD50039958F /* Library */ = {
@@ -433,6 +568,7 @@
 			children = (
 				8A4E55AE1EE19B28007B5B51 /* AMPAppDelegate.h */,
 				8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */,
+				8A028EDB1F16155800BB0C0E /* AMPFBSDKPrefix.pch */,
 				8A4E55B01EE19B28007B5B51 /* Info.plist */,
 				8A4E55B11EE19B28007B5B51 /* main.m */,
 			);
@@ -507,6 +643,7 @@
 		8A8E99F71EF7EB3900B939B1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8A028F001F16548A00BB0C0E /* AMPFBUser */,
 				8A9FDE321F0191400008FD56 /* AMPUsersModel */,
 				8A9FDE071EFCE6490008FD56 /* AMPImageModel */,
 				8A8E9A081EF7EB3900B939B1 /* AMPUser */,
@@ -602,6 +739,7 @@
 		8ACB3E841EED3FC5004A8B89 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8A028EE81F16238900BB0C0E /* Facebook */,
 				8ACB3E851EED3FC5004A8B89 /* AMPUsersViewController */,
 				8ACB3E891EED3FC5004A8B89 /* AMPViewController */,
 			);
@@ -805,13 +943,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A028EFC1F164E8C00BB0C0E /* AMPFBUserViewController.xib in Resources */,
 				8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */,
 				8A4E55BD1EE19C02007B5B51 /* Assets.xcassets in Resources */,
 				8A028EBD1F13E82500BB0C0E /* AMPLoadingView.xib in Resources */,
 				8A8E99C71EEEAF4900B939B1 /* vw.jpg in Resources */,
+				8A028F081F167E2F00BB0C0E /* AMPFBUsersViewController.xib in Resources */,
 				8A9FDE191EFD06EB0008FD56 /* vw_240.jpg in Resources */,
 				8A8E99DF1EF7090E00B939B1 /* AMPUserCell.xib in Resources */,
 				8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */,
+				8A028EF01F1623E600BB0C0E /* AMPFBLoginViewController.xib in Resources */,
 				8ACB3E941EED3FC5004A8B89 /* AMPViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -926,27 +1067,36 @@
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
 				8A028EBE1F13E82500BB0C0E /* AMPView.m in Sources */,
 				8A8E9A101EF7EB3900B939B1 /* AMPUser.m in Sources */,
-				8A028EC21F13E85E00BB0C0E /* AMPContext.m in Sources */,
+				8A028EEF1F1623E600BB0C0E /* AMPFBLoginViewController.m in Sources */,
+				8A028ED71F1610F100BB0C0E /* AMPContext.m in Sources */,
 				8AEA38161F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m in Sources */,
+				8A028F071F167E2F00BB0C0E /* AMPFBUsersViewController.m in Sources */,
 				8A028E7A1F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m in Sources */,
 				8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */,
 				8A9FDE0A1EFCE6700008FD56 /* AMPImageModel.m in Sources */,
 				8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */,
 				8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */,
-				8A028EC61F13E97200BB0C0E /* AMPFBLoginContext.m in Sources */,
+				8A028EDA1F16152700BB0C0E /* AMPFBLoginContext.m in Sources */,
+				8A028F031F1654A400BB0C0E /* AMPFBUser.m in Sources */,
 				8A9FDE361F0191640008FD56 /* AMPUsersModel.m in Sources */,
+				8A028EE31F161F1600BB0C0E /* AMPFBGetUsersContext.m in Sources */,
 				8A8E99DE1EF7090E00B939B1 /* AMPUserCell.m in Sources */,
 				8AEA38231F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m in Sources */,
 				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8A9FDDDE1EFA53E70008FD56 /* NSNotificationCenter+AMPExtensions.m in Sources */,
 				8A028EB91F13E82500BB0C0E /* AMPArrayModelChangeMove.m in Sources */,
 				8A028EB81F13E82500BB0C0E /* AMPArrayModelChangeInsert.m in Sources */,
+				8A028EDF1F161B5C00BB0C0E /* AMPFBGetUserContext.m in Sources */,
+				8A028EE71F16215D00BB0C0E /* AMPFBGetContext.m in Sources */,
 				8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */,
 				8AEA38311F0E5C1400CAE008 /* AMPFileSystemImageModel.m in Sources */,
+				8A028F0B1F167E4700BB0C0E /* AMPFBUsersView.m in Sources */,
 				8A028EBB1F13E82500BB0C0E /* AMPImageView.m in Sources */,
 				8A8E99C01EEEA9BF00B939B1 /* NSBundle+AMPExtensions.m in Sources */,
+				8A028EFF1F164EA600BB0C0E /* AMPFBUserView.m in Sources */,
 				8A9FDE061EFAB4E60008FD56 /* AMPGCDExtensions.m in Sources */,
 				8ACB3EA31EED4420004A8B89 /* NSString+AMPRandom.m in Sources */,
+				8A028EF31F1623FA00BB0C0E /* AMPFBLoginView.m in Sources */,
 				8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */,
 				8A028EB61F13E82500BB0C0E /* AMPArrayModelChange.m in Sources */,
 				8A028EBA1F13E82500BB0C0E /* AMPModel.m in Sources */,
@@ -954,11 +1104,13 @@
 				8ACB3E921EED3FC5004A8B89 /* AMPSquareView.m in Sources */,
 				8AEA38321F0E5C1400CAE008 /* AMPInternetImageModel.m in Sources */,
 				8ACB3E971EED40B8004A8B89 /* AMPUsersView.m in Sources */,
+				8A028EF71F16479600BB0C0E /* AMPFBLogoutContext.m in Sources */,
 				8A028EB51F13E82500BB0C0E /* AMPArrayModel.m in Sources */,
 				8A028EB31F13E82500BB0C0E /* AMPObservableObject.m in Sources */,
 				8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */,
 				8A8E99BC1EEEA4B800B939B1 /* UINib+AMPExtensions.m in Sources */,
 				8A248B231EE2E1410039958F /* AMPRandom.m in Sources */,
+				8A028EFB1F164E8C00BB0C0E /* AMPFBUserViewController.m in Sources */,
 				8A028EB21F13E82500BB0C0E /* AMPImageModelCache.m in Sources */,
 				8A028EB71F13E82500BB0C0E /* AMPArrayModelChangeDelete.m in Sources */,
 				8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */,
@@ -1096,6 +1248,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AMPObjCUIStudy/AMPFBSDKPrefix.pch;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = AMPObjCUIStudy/Info.plist;
@@ -1112,6 +1266,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = FWP6H8H8UZ;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AMPObjCUIStudy/AMPFBSDKPrefix.pch;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
 				GCC_WARN_SHADOW = YES;
 				INFOPLIST_FILE = AMPObjCUIStudy/Info.plist;
