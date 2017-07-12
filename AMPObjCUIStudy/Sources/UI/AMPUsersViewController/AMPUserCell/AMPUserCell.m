@@ -8,12 +8,12 @@
 
 #import "AMPUserCell.h"
 
-#import "AMPUser.h"
+#import "AMPFBUser.h"
 #import "AMPImageView.h"
 
 @interface AMPUserCell ()
 
-- (void)fillWithUser:(AMPUser *)user;
+- (void)fillWithUser:(AMPFBUser *)user;
 
 @end
 
@@ -22,7 +22,7 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setUser:(AMPUser *)user {
+- (void)setUser:(AMPFBUser *)user {
     if (_user != user) {
         _user = user;
     }
@@ -33,9 +33,9 @@
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)fillWithUser:(AMPUser *)user {
+- (void)fillWithUser:(AMPFBUser *)user {
     self.fullNameLabel.text = user.fullName;
-    self.userImageView.imageModel = user.imageModel;
+    self.userImageView.imageModel = user.smallPictureImageModel;
 }
 
 - (void)prepareForReuse {
