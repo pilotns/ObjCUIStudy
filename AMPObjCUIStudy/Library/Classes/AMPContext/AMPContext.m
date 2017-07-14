@@ -10,19 +10,14 @@
 
 #import "AMPModel.h"
 
+#import "AMPMacro.h"
+
 @interface AMPContext ()
 @property (nonatomic, weak) AMPModel    *model;
 
 @end
 
 @implementation AMPContext
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)contextWithModel:(AMPModel *)model {
-    return [[self alloc] initWithModel:model];
-}
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
@@ -38,7 +33,7 @@
     AMPModel *model = self.model;
     AMPModelState state = model.state;
     
-    @synchronized (self) {
+    @synchronized (model) {
         if (AMPModelWillLoad == state || AMPModelDidLoad == state) {
             [model notifyOfState:state];
             return;
@@ -47,7 +42,9 @@
         model.state = AMPModelWillLoad;
     }
     
-    [self performExecutingWithCompletionHandler:^(NSError *error) {
+    AMPWeakify(self);
+    [self performExecutionWithCompletionHandler:^(NSError *error) {
+        AMPStrongifyAndReturnIfNil(self);
         [self notifyOfState:AMPContextDidFinishExecuting userInfo:error];
         model.state = AMPModelDidLoad;
     }];
@@ -57,7 +54,7 @@
 
 }
 
-- (void)performExecutingWithCompletionHandler:(void (^)(NSError *error))completionHandler {
+- (void)performExecutionWithCompletionHandler:(void (^)(NSError *error))completionHandler {
     
 }
 

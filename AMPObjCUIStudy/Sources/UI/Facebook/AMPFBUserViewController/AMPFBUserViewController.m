@@ -22,7 +22,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 @interface AMPFBUserViewController ()
 @property (nonatomic, strong)   AMPFBUser           *user;
-@property (nonatomic, strong)   AMPFBGetUserContext *context;
 
 @end
 
@@ -79,8 +78,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.context = [[AMPFBGetUserContext alloc] initWithModel:self.user
-                                                    graphPath:@"me" parameters:@{@"fields" : @"first_name,last_name,picture.type(large)"}];
 }
 
 - (void)didReceiveMemoryWarning {

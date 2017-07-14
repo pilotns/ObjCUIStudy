@@ -47,7 +47,7 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)performExecutingWithCompletionHandler:(void (^)(NSError *))completionHandler {
+- (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
     FBSDKGraphRequestConnection *requestConnection = [FBSDKGraphRequestConnection new];
     [requestConnection setDelegateQueue:[NSOperationQueue new]];
     

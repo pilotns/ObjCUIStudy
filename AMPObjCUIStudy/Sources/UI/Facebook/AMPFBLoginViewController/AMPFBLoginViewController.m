@@ -9,9 +9,11 @@
 #import "AMPFBLoginViewController.h"
 
 #import "AMPFBLoginView.h"
+#import "AMPFBUserViewController.h"
+
 #import "AMPFBLoginContext.h"
 #import "AMPFBLogoutContext.h"
-#import "AMPFBUserViewController.h"
+#import "AMPFBGetUserContext.h"
 
 #import "AMPMacro.h"
 
@@ -86,6 +88,10 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
         [self prepareLoginButton];
         if (self.accessToken) {
             AMPFBUserViewController *userController = [AMPFBUserViewController new];
+            userController.context = [[AMPFBGetUserContext alloc] initWithModel:userController.user
+                                                                      graphPath:@"me"
+                                                                     parameters:@{@"fields" : @"first_name,last_name,picture.type(large)"}];
+            
             [self.navigationController pushViewController:userController animated:YES];
         }
     }

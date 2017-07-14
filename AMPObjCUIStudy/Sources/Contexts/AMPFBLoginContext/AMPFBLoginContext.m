@@ -29,7 +29,7 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)performExecutingWithCompletionHandler:(void (^)(NSError *))completionHandler {
+- (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
     if ([FBSDKAccessToken currentAccessToken]) {
         [self notifyOfState:AMPContextDidFinishExecuting userInfo:nil];
     }

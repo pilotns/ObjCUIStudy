@@ -26,8 +26,6 @@ typedef NS_ENUM(NSUInteger, AMPContextState) {
 @interface AMPContext : AMPObservableObject
 @property (nonatomic, weak, readonly) id    model;
 
-+ (instancetype)contextWithModel:(id)model;
-
 - (instancetype)initWithModel:(AMPModel *)model;
 
 - (void)execute;
@@ -35,6 +33,6 @@ typedef NS_ENUM(NSUInteger, AMPContextState) {
 
 // this method is intebded for subclassing, do not call it directly,
 // subclasses must call completionHandler after context finish executing
-- (void)performExecutingWithCompletionHandler:(void (^)(NSError *error))completionHandler;
+- (void)performExecutionWithCompletionHandler:(void (^)(NSError *error))completionHandler;
 
 @end

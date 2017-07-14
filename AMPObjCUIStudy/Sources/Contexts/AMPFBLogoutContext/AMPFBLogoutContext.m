@@ -10,7 +10,7 @@
 
 @implementation AMPFBLogoutContext
 
-- (void)performExecutingWithCompletionHandler:(void (^)(NSError *))completionHandler {
+- (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
     [[FBSDKLoginManager new] logOut];
     if (completionHandler) {
         completionHandler(nil);

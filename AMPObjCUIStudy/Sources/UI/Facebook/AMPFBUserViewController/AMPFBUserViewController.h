@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class AMPFBUser;
+@class AMPFBGetUserContext;
 
 @interface AMPFBUserViewController : UIViewController
+@property (nonatomic, readonly) AMPFBUser           *user;
+@property (nonatomic, strong)   AMPFBGetUserContext *context;
 
 - (IBAction)onFriendsButton:(id)sender;
 
