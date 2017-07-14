@@ -8,6 +8,8 @@
 
 #import "AMPFBGetContext.h"
 
+#import "AMPMacro.h"
+
 @interface AMPFBGetContext ()
 @property (nonatomic, copy)     NSString        *graphPath;
 @property (nonatomic, strong)   NSDictionary    *parameters;
@@ -54,8 +56,10 @@
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
                                                                    parameters:self.parameters];
     
+    AMPWeakify(self);
     [requestConnection addRequest:request
                 completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+                    AMPStrongifyAndReturnIfNil(self);
                     [self handleResponse:result];
                     if (completionHandler) {
                         completionHandler(error);

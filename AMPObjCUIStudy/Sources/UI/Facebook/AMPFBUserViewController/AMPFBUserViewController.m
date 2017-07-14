@@ -21,7 +21,7 @@
 AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 @interface AMPFBUserViewController ()
-@property (nonatomic, strong)   AMPFBUser           *user;
+@property (nonatomic, strong)   AMPFBGetUserContext *context;
 
 @end
 
@@ -32,7 +32,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 - (instancetype)init {
     self = [super init];
-    self.user = [AMPFBUser new];
     
     return self;
 }
@@ -63,11 +62,8 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 - (IBAction)onFriendsButton:(id)sender {
     AMPFBUsersViewController *usersViewController = [AMPFBUsersViewController new];
-    AMPFBGetUsersContext *context = [[AMPFBGetUsersContext alloc] initWithModel:usersViewController.usersModel
-                                                                      graphPath:self.user.fbUserID
-                                                                     parameters:@{@"fields" : @"friends{first_name,last_name,id,picture}"}];
+    usersViewController.user = self.user;
     
-    usersViewController.context = context;
     [self.navigationController pushViewController:usersViewController animated:YES];
 }
 
@@ -78,6 +74,12 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    AMPFBUser *user = self.user;
+    NSDictionary *parameters = @{@"fields" : @"first_name,last_name,picture.type(large)"};
+    self.context = [[AMPFBGetUserContext alloc] initWithModel:user
+                                                    graphPath:user.fbUserID
+                                                   parameters:parameters];
 }
 
 - (void)didReceiveMemoryWarning {

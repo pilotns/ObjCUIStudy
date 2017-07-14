@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class AMPFBUser;
 @class AMPUsersModel;
 @class AMPFBGetUsersContext;
 
 @interface AMPFBUsersViewController : UIViewController
+@property (nonatomic, strong)   AMPFBUser               *user;
 @property (nonatomic, strong)   AMPUsersModel           *usersModel;
 @property (nonatomic, strong)   AMPFBGetUsersContext    *context;
 

@@ -32,6 +32,16 @@ typedef NS_ENUM(NSUInteger, AMPFBUserPictureType) {
 @dynamic largePictureImageModel;
 
 #pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithFbUserID:(NSString *)fbUserID {
+    self = [super init];
+    self.fbUserID = fbUserID;
+    
+    return self;
+}
+
+#pragma mark -
 #pragma mark Accessors
 
 - (NSString *)fullName {

@@ -24,6 +24,8 @@ static NSString * const kAMPFBUserLargePictureURL = @"kAMPFBUserLargePictureURL"
 @property (nonatomic, readonly) AMPImageModel   *smallPictureImageModel;
 @property (nonatomic, readonly) AMPImageModel   *largePictureImageModel;
 
+- (instancetype)initWithFbUserID:(NSString *)fbUserID;
+
 - (void)fillWithResponse:(NSDictionary *)response;
 
 @end

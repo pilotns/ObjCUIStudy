@@ -12,8 +12,7 @@
 @class AMPFBGetUserContext;
 
 @interface AMPFBUserViewController : UIViewController
-@property (nonatomic, readonly) AMPFBUser           *user;
-@property (nonatomic, strong)   AMPFBGetUserContext *context;
+@property (nonatomic, strong)   AMPFBUser           *user;
 
 - (IBAction)onFriendsButton:(id)sender;
 

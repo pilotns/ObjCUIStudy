@@ -8,6 +8,7 @@
 
 #import "AMPFBUsersViewController.h"
 
+#import "AMPFBUser.h"
 #import "AMPFBUsersView.h"
 #import "AMPUsersModel.h"
 #import "AMPFBGetUsersContext.h"
@@ -66,6 +67,11 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
     [super viewDidLoad];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    NSDictionary *parameters = @{@"fields" : @"friends{first_name,last_name,id,picture}"};
+    self.context = [[AMPFBGetUsersContext alloc] initWithModel:self.usersModel
+                                                     graphPath:self.user.fbUserID
+                                                    parameters:parameters];
 }
 
 - (void)didReceiveMemoryWarning {

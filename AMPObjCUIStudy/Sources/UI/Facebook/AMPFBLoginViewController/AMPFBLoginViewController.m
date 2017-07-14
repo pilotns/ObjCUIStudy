@@ -8,6 +8,7 @@
 
 #import "AMPFBLoginViewController.h"
 
+#import "AMPFBUser.h"
 #import "AMPFBLoginView.h"
 #import "AMPFBUserViewController.h"
 
@@ -88,9 +89,7 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
         [self prepareLoginButton];
         if (self.accessToken) {
             AMPFBUserViewController *userController = [AMPFBUserViewController new];
-            userController.context = [[AMPFBGetUserContext alloc] initWithModel:userController.user
-                                                                      graphPath:@"me"
-                                                                     parameters:@{@"fields" : @"first_name,last_name,picture.type(large)"}];
+            userController.user = [[AMPFBUser alloc] initWithFbUserID:@"me"];
             
             [self.navigationController pushViewController:userController animated:YES];
         }
