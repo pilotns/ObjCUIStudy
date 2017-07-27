@@ -9,6 +9,7 @@
 #import "AMPContext.h"
 
 @interface AMPFBGetContext : AMPContext
+@property (nonatomic, readonly) NSString    *cachedResponseFileName;
 
 - (instancetype)initWithModel:(id)model
                     graphPath:(NSString *)graphPath
@@ -16,5 +17,6 @@
 
 // this methid is intended for subclassing, do not call it directly
 - (void)handleResponse:(id)response;
+- (void)saveResponse:(id)response;
 
 @end

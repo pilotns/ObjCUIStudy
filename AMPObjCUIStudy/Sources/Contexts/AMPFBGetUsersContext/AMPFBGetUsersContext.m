@@ -11,7 +11,18 @@
 #import "AMPFBUser.h"
 #import "AMPUsersModel.h"
 
+#import "NSFileManager+AMPExtensions.h"
+
+static NSString * const kAMPFBGetUsersCachedResponseFileName = @"fbUsers.plist";
+
 @implementation AMPFBGetUsersContext
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSString *)cachedResponseFileName {
+    return kAMPFBGetUsersCachedResponseFileName;
+}
 
 #pragma mark -
 #pragma mark Private Methods

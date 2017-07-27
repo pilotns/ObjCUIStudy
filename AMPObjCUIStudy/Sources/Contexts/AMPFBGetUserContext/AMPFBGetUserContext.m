@@ -10,7 +10,20 @@
 
 #import "AMPFBUser.h"
 
+#import "NSFileManager+AMPExtensions.h"
+
+static NSString * const kAMPFBGetUserCachedResponseFileName = @"fbUser.plist";
+
 @implementation AMPFBGetUserContext
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSString *)cachedResponseFileName {
+    NSString *fbUserID = [self.model fbUserID];
+    
+    return [NSString stringWithFormat:@"%@_%@", fbUserID, kAMPFBGetUserCachedResponseFileName];
+}
 
 #pragma mark -
 #pragma mark Private Methods

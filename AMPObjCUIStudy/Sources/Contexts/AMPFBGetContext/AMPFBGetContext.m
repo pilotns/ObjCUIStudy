@@ -10,9 +10,14 @@
 
 #import "AMPMacro.h"
 
+#import "NSFileManager+AMPExtensions.h"
+
 @interface AMPFBGetContext ()
 @property (nonatomic, copy)     NSString        *graphPath;
 @property (nonatomic, strong)   NSDictionary    *parameters;
+
+@property (nonatomic, readonly) NSDictionary    *cachedResponse;
+@property (nonatomic, readonly) NSString        *cachedResponsePath;
 
 @property (nonatomic, strong)   FBSDKGraphRequestConnection   *requestConnection;
 
@@ -20,8 +25,14 @@
 
 @implementation AMPFBGetContext
 
+@dynamic cachedResponseFileName;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    [self cancel];
+}
 
 - (instancetype)initWithModel:(id)model
                     graphPath:(NSString *)graphPath
@@ -36,6 +47,16 @@
 
 #pragma mark -
 #pragma mark Accessors
+
+- (NSDictionary *)cachedResponse {
+    return [NSKeyedUnarchiver unarchiveObjectWithFile:self.cachedResponsePath];
+}
+
+- (NSString *)cachedResponsePath {
+    NSFileManager *manager = [NSFileManager defaultManager];
+    
+    return [[manager URLForDocumentsDirectory] URLByAppendingPathComponent:self.cachedResponseFileName].path;
+}
 
 - (void)setRequestConnection:(FBSDKGraphRequestConnection *)requestConnection {
     if (_requestConnection != requestConnection) {
@@ -60,7 +81,14 @@
     [requestConnection addRequest:request
                 completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                     AMPStrongifyAndReturnIfNil(self);
+                    if (!error) {
+                        [self saveResponse:result];
+                    } else {
+                        result = self.cachedResponse;
+                    }
+                    
                     [self handleResponse:result];
+                    
                     if (completionHandler) {
                         completionHandler(error);
                     }
@@ -75,6 +103,10 @@
 
 - (void)handleResponse:(id)request {
     
+}
+
+- (void)saveResponse:(id)response {
+    [NSKeyedArchiver archiveRootObject:response toFile:self.cachedResponsePath];
 }
 
 @end
