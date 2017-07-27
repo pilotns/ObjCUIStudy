@@ -16,7 +16,7 @@ static NSString * const kAMPFBUserLargePictureURL = @"kAMPFBUserLargePictureURL"
 
 @class AMPImageModel;
 
-@interface AMPFBUser : AMPModel
+@interface AMPFBUser : AMPModel <NSCoding>
 @property (nonatomic, readonly) NSString        *fbUserID;
 @property (nonatomic, readonly) NSString        *firstName;
 @property (nonatomic, readonly) NSString        *lastName;

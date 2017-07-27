@@ -41,6 +41,25 @@ typedef NS_ENUM(NSUInteger, AMPFBUserPictureType) {
     return self;
 }
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super init];
+    self.fbUserID = [aDecoder decodeObjectForKey:kAMPFBUserID];
+    self.firstName = [aDecoder decodeObjectForKey:kAMPFBUserFirstName];
+    self.lastName = [aDecoder decodeObjectForKey:kAMPFBUserLastName];
+    self.smallPictureURL = [aDecoder decodeObjectForKey:kAMPFBUserSmallPictureURL];
+    self.largePictureURL = [aDecoder decodeObjectForKey:kAMPFBUserLargePictureURL];
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.fbUserID forKey:kAMPFBUserID];
+    [aCoder encodeObject:self.firstName forKey:kAMPFBUserFirstName];
+    [aCoder encodeObject:self.lastName forKey:kAMPFBUserLastName];
+    [aCoder encodeObject:self.smallPictureURL forKey:kAMPFBUserSmallPictureURL];
+    [aCoder encodeObject:self.largePictureURL forKey:kAMPFBUserLargePictureURL];
+}
+
 #pragma mark -
 #pragma mark Accessors
 
