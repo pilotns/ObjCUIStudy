@@ -8,6 +8,8 @@
 
 #import "AMPFBUsersViewController.h"
 
+#import "AMPFBUserViewController.h"
+
 #import "AMPFBUser.h"
 #import "AMPFBUsersView.h"
 #import "AMPUsersModel.h"
@@ -22,8 +24,7 @@
 AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersView);
 
 @interface AMPFBUsersViewController () <UITableViewDelegate, UITableViewDataSource>
-
-- (void)fillWithModel:(id)model;
+@property (nonatomic, readonly) AMPUsersModel   *usersModel;
 
 @end
 
@@ -34,30 +35,24 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
 
 - (instancetype)init {
     self = [super init];
-    self.usersModel = [AMPUsersModel new];
+    self.model = [AMPUsersModel new];
     
     return self;
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Accessors
 
-- (void)setUsersModel:(AMPUsersModel *)usersModel {
-    if (_usersModel != usersModel) {
-        [_usersModel removeObserver:self];
-        
-        _usersModel = usersModel;
-        [usersModel addObserver:self];
-    }
+- (AMPUsersModel *)usersModel {
+    return (AMPUsersModel *)self.model;
 }
 
-- (void)setContext:(AMPFBGetUsersContext *)context {
-    if (_context != context) {
-        [_context cancel];
-        
-        _context = context;
-        [context execute];
-    }
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)fillWithModel:(id)model {
+    self.navigationItem.title = @"Friends";
+    [self.usersView.tableView reloadData];
 }
 
 #pragma mark -
@@ -65,25 +60,13 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     NSDictionary *parameters = @{@"fields" : @"friends{first_name,last_name,id,picture}"};
-    self.context = [[AMPFBGetUsersContext alloc] initWithModel:self.usersModel
+    self.context = [[AMPFBGetUsersContext alloc] initWithModel:self.model
                                                      graphPath:self.user.fbUserID
                                                     parameters:parameters];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mark -
-#pragma mark Private Methods
-
-- (void)fillWithModel:(id)model {
-    self.navigationItem.title = @"Friends";
-    [self.usersView.tableView reloadData];
 }
 
 #pragma mark -
@@ -111,30 +94,21 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
     cell.user = nil;
 }
 
-#pragma mark -
-#pragma mark AMPModelObserver
-
-- (void)modelWillLoad:(id)model {
-    AMPWeakify(self);
-    AMPDispatchAsyncOnMainQueue(^{
-        AMPStrongifyAndReturnIfNil(self);
-        [self.usersView setLoadingViewVisible:YES];
-    });
-}
-
-- (void)modelDidLoad:(id)model {
-    AMPWeakify(self);
-    AMPDispatchAsyncOnMainQueue(^{
-        AMPStrongifyAndReturnIfNil(self);
-        [self fillWithModel:model];
-        [self.usersView setLoadingViewVisible:NO];
-    });
-}
-
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
     AMPDispatchSyncOnMainQueue(^{
         [self.usersView.tableView updateWithArrayModelChange:info];
     });
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    AMPUserCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    AMPFBUserViewController *userController = [AMPFBUserViewController new];
+    userController.model = cell.user;
+    
+    [self.navigationController pushViewController:userController animated:YES];
 }
 
 @end

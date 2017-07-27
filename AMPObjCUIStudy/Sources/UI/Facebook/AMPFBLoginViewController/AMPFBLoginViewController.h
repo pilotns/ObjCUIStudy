@@ -6,9 +6,9 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AMPFBViewController.h"
 
-@interface AMPFBLoginViewController : UIViewController
+@interface AMPFBLoginViewController : AMPFBViewController
 
 - (IBAction)onLoginButton:(UIButton *)sender;
 

@@ -6,14 +6,11 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AMPFBViewController.h"
 
 @class AMPFBUser;
 @class AMPFBGetUserContext;
 
-@interface AMPFBUserViewController : UIViewController
-@property (nonatomic, strong)   AMPFBUser           *user;
-
-- (IBAction)onFriendsButton:(id)sender;
+@interface AMPFBUserViewController : AMPFBViewController
 
 @end

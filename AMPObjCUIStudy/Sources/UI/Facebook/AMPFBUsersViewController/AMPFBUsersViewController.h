@@ -6,15 +6,13 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AMPFBViewController.h"
 
 @class AMPFBUser;
 @class AMPUsersModel;
 @class AMPFBGetUsersContext;
 
-@interface AMPFBUsersViewController : UIViewController
-@property (nonatomic, strong)   AMPFBUser               *user;
-@property (nonatomic, strong)   AMPUsersModel           *usersModel;
-@property (nonatomic, strong)   AMPFBGetUsersContext    *context;
+@interface AMPFBUsersViewController : AMPFBViewController
+@property (nonatomic, strong)   AMPFBUser   *user;
 
 @end

@@ -12,6 +12,7 @@
 #import "AMPFBGetUserContext.h"
 #import "AMPFBUserView.h"
 #import "AMPFBUser.h"
+#import "AMPFBViewController.h"
 
 #import "AMPFBGetUsersContext.h"
 #import "AMPFBUsersViewController.h"
@@ -21,50 +22,25 @@
 AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 @interface AMPFBUserViewController ()
-@property (nonatomic, strong)   AMPFBGetUserContext *context;
+@property (nonatomic, readonly) AMPFBUser *user;
 
 @end
 
 @implementation AMPFBUserViewController
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
+#pragma mark - Accessors
 
-- (instancetype)init {
-    self = [super init];
-    
-    return self;
+- (AMPFBUser *)user {
+    return (AMPFBUser *)self.model;
 }
 
 #pragma mark -
-#pragma mark Accessors
+#pragma mark Public Methods
 
-- (void)setUser:(AMPFBUser *)user {
-    if (_user != user) {
-        [_user removeObserver:self];
-        
-        _user = user;
-        [user addObserver:self];
-    }
-}
-
-- (void)setContext:(AMPFBGetUserContext *)context {
-    if (_context != context) {
-        [_context cancel];
-        
-        _context = context;
-        [context execute];
-    }
-}
-
-#pragma mark -
-#pragma mark IBActions
-
-- (IBAction)onFriendsButton:(id)sender {
-    AMPFBUsersViewController *usersViewController = [AMPFBUsersViewController new];
-    usersViewController.user = self.user;
-    
-    [self.navigationController pushViewController:usersViewController animated:YES];
+- (void)fillWithModel:(id)model {
+    self.navigationItem.title = self.user.fullName;
+    [self.userView fillWithUser:model];
 }
 
 #pragma mark -
@@ -80,31 +56,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
     self.context = [[AMPFBGetUserContext alloc] initWithModel:user
                                                     graphPath:user.fbUserID
                                                    parameters:parameters];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-#pragma mark -
-#pragma mark AMPModelObserver
-
-- (void)modelWillLoad:(id)model {
-    AMPWeakify(self);
-    AMPDispatchAsyncOnMainQueue(^{
-        AMPStrongifyAndReturnIfNil(self);
-        [self.userView setLoadingViewVisible:YES];
-    });
-}
-
-- (void)modelDidLoad:(id)model {
-    AMPWeakify(self);
-    AMPDispatchAsyncOnMainQueue(^{
-        AMPStrongifyAndReturnIfNil(self);
-        self.navigationItem.title = self.user.fullName;
-        [self.userView fillWithUser:model];
-        [self.userView setLoadingViewVisible:NO];
-    });
 }
 
 @end

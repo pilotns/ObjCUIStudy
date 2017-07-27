@@ -6,9 +6,9 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPView.h"
+#import "AMPFBView.h"
 
-@interface AMPFBUsersView : AMPView
+@interface AMPFBUsersView : AMPFBView
 @property (nonatomic, strong)   IBOutlet    UITableView *tableView;
 
 @end

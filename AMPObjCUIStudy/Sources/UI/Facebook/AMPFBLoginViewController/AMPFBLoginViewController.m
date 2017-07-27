@@ -10,7 +10,7 @@
 
 #import "AMPFBUser.h"
 #import "AMPFBLoginView.h"
-#import "AMPFBUserViewController.h"
+#import "AMPFBUsersViewController.h"
 
 #import "AMPFBLoginContext.h"
 #import "AMPFBLogoutContext.h"
@@ -21,10 +21,10 @@
 AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginView);
 
 @interface AMPFBLoginViewController () <AMPContextObserver>
-@property (nonatomic, strong)   AMPContext          *context;
 @property (nonatomic, readonly) FBSDKAccessToken    *accessToken;
 
 - (void)prepareLoginButton;
+- (void)presentUsersViewController;
 
 @end
 
@@ -32,17 +32,6 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
 
 #pragma mark -
 #pragma mark Accessors
-
-- (void)setContext:(AMPContext *)context {
-    if (_context != context) {
-        [_context cancel];
-        [_context removeObserver:self];
-        
-        _context = context;
-        [context addObserver:self];
-        [context execute];
-    }
-}
 
 - (FBSDKAccessToken *)accessToken {
     return [FBSDKAccessToken currentAccessToken];
@@ -66,6 +55,9 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
     [super viewDidLoad];
     
     [self prepareLoginButton];
+    if (self.accessToken) {
+        [self presentUsersViewController];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,6 +73,13 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
     [self.loginView.loginButton setTitle:buttonTitle forState:UIControlStateNormal];
 }
 
+- (void)presentUsersViewController {
+    AMPFBUsersViewController *usersController = [AMPFBUsersViewController new];
+    usersController.user = [[AMPFBUser alloc] initWithFbUserID:self.accessToken.userID];
+    
+    [self.navigationController pushViewController:usersController animated:YES];
+}
+
 #pragma mark -
 #pragma mark AMPContextObserver
 
@@ -88,10 +87,7 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
     if (!error) {
         [self prepareLoginButton];
         if (self.accessToken) {
-            AMPFBUserViewController *userController = [AMPFBUserViewController new];
-            userController.user = [[AMPFBUser alloc] initWithFbUserID:@"me"];
-            
-            [self.navigationController pushViewController:userController animated:YES];
+            [self presentUsersViewController];
         }
     }
 }
