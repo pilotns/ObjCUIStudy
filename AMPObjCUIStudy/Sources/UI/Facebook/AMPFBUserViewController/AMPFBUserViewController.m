@@ -24,6 +24,8 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 @interface AMPFBUserViewController ()
 @property (nonatomic, readonly) AMPFBUser *user;
 
+- (void)prepareFriendsButton;
+
 @end
 
 @implementation AMPFBUserViewController
@@ -33,6 +35,16 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 - (AMPFBUser *)user {
     return (AMPFBUser *)self.model;
+}
+
+#pragma mark -
+#pragma mark IBActions
+
+- (IBAction)onFriendsButton:(UIButton *)sender {
+    AMPFBUsersViewController *usersController = [AMPFBUsersViewController new];
+    usersController.user = self.user;
+    
+    [self.navigationController pushViewController:usersController animated:YES];
 }
 
 #pragma mark -
@@ -49,6 +61,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self prepareFriendsButton];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     AMPFBUser *user = self.user;
@@ -56,6 +69,15 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
     self.context = [[AMPFBGetUserContext alloc] initWithModel:user
                                                     graphPath:user.fbUserID
                                                    parameters:parameters];
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)prepareFriendsButton {
+    if (![[FBSDKAccessToken currentAccessToken].userID isEqualToString:self.user.fbUserID]) {
+        self.userView.friendsButton.hidden = YES;
+    }
 }
 
 @end

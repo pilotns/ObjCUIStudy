@@ -13,4 +13,6 @@
 
 @interface AMPFBUserViewController : AMPFBViewController
 
+- (IBAction)onFriendsButton:(UIButton *)sender;
+
 @end

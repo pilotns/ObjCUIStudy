@@ -6,12 +6,12 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPViewController.h"
+#import <UIKit/UIKit.h>
 
 @class AMPModel;
 @class AMPContext;
 
-@interface AMPFBViewController : AMPViewController
+@interface AMPFBViewController : UIViewController
 @property (nonatomic, strong)   AMPModel    *model;
 @property (nonatomic, strong)   AMPContext  *context;
 

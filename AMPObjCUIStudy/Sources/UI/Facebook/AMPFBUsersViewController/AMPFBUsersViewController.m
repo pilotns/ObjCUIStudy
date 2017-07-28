@@ -111,4 +111,10 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
     [self.navigationController pushViewController:userController animated:YES];
 }
 
+- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView
+         accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellAccessoryDisclosureIndicator;
+}
+
 @end

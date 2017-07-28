@@ -31,9 +31,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5bS-te-Qge">
+                    <rect key="frame" x="162" y="237" width="51" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Friends"/>
+                    <connections>
+                        <action selector="onFriendsButton:" destination="-1" eventType="touchUpInside" id="08E-Z9-rpW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="friendsButton" destination="5bS-te-Qge" id="NSu-0r-Dr0"/>
                 <outlet property="fullNameLable" destination="hXa-nM-La9" id="LaT-ue-fEf"/>
                 <outlet property="userImageView" destination="NKZ-HF-eQy" id="BqC-v3-UOw"/>
             </connections>

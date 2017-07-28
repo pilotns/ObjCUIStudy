@@ -14,6 +14,7 @@
 @interface AMPFBUserView : AMPFBView
 @property (nonatomic, strong)   IBOutlet    AMPImageView    *userImageView;
 @property (nonatomic, strong)   IBOutlet    UILabel         *fullNameLable;
+@property (nonatomic, strong)   IBOutlet    UIButton        *friendsButton;
 
 - (void)fillWithUser:(AMPFBUser *)user;
 
