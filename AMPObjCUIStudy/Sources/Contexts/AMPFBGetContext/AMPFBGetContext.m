@@ -101,7 +101,7 @@
     self.requestConnection = nil;
 }
 
-- (void)handleResponse:(id)request {
+- (void)handleResponse:(id)response {
     
 }
 
