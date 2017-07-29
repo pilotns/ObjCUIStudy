@@ -30,17 +30,19 @@
 #pragma mark Public Methods
 
 - (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
+    if (!completionHandler) {
+        return;
+    }
+    
     if ([FBSDKAccessToken currentAccessToken]) {
-        [self notifyOfState:AMPContextDidFinishExecuting userInfo:nil];
+        completionHandler(nil);
     }
     
     FBSDKLoginManager *loginManager = [FBSDKLoginManager new];
     [loginManager logInWithReadPermissions:@[@"public_profile", @"user_friends"]
                         fromViewController:nil
                                    handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-                                       if (completionHandler) {
-                                           completionHandler(error);
-                                       }
+                                       completionHandler(error);
                                    }];
     
     self.loginManager = loginManager;
