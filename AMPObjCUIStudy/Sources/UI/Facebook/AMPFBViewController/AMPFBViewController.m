@@ -8,14 +8,14 @@
 
 #import "AMPFBViewController.h"
 
-#import "AMPFBView.h"
+#import "AMPView.h"
 #import "AMPModel.h"
 #import "AMPContext.h"
 
 #import "AMPGCDExtensions.h"
 #import "AMPMacro.h"
 
-AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPFBView, fbView);
+AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
 
 @interface AMPFBViewController () <AMPModelObserver, AMPContextObserver>
 
@@ -68,7 +68,7 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPFBView, fbView);
     AMPWeakify(self);
     AMPDispatchAsyncOnMainQueue(^{
         AMPStrongifyAndReturnIfNil(self);
-        [self.fbView setLoadingViewVisible:YES];
+        [self.rootView setLoadingViewVisible:YES];
     });
 }
 
@@ -77,7 +77,7 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPFBView, fbView);
     AMPDispatchAsyncOnMainQueue(^{
         AMPStrongifyAndReturnIfNil(self);
         [self fillWithModel:model];
-        [self.fbView setLoadingViewVisible:NO];
+        [self.rootView setLoadingViewVisible:NO];
     });
 }
 

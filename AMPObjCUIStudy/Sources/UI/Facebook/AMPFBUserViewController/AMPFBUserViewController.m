@@ -19,7 +19,7 @@
 
 #import "AMPMacro.h"
 
-AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
+AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, rootView);
 
 @interface AMPFBUserViewController ()
 @property (nonatomic, readonly) AMPFBUser *user;
@@ -52,7 +52,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 - (void)fillWithModel:(id)model {
     self.navigationItem.title = self.user.fullName;
-    [self.userView fillWithUser:model];
+    [self.rootView fillWithUser:model];
 }
 
 #pragma mark -
@@ -76,7 +76,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, userView);
 
 - (void)prepareFriendsButton {
     if (![[FBSDKAccessToken currentAccessToken].userID isEqualToString:self.user.fbUserID]) {
-        self.userView.friendsButton.hidden = YES;
+        self.rootView.friendsButton.hidden = YES;
     }
 }
 

@@ -6,12 +6,12 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPFBView.h"
+#import "AMPView.h"
 
 @class AMPImageView;
 @class AMPFBUser;
 
-@interface AMPFBUserView : AMPFBView
+@interface AMPFBUserView : AMPView
 @property (nonatomic, strong)   IBOutlet    AMPImageView    *userImageView;
 @property (nonatomic, strong)   IBOutlet    UILabel         *fullNameLable;
 @property (nonatomic, strong)   IBOutlet    UIButton        *friendsButton;

@@ -21,7 +21,7 @@
 
 #import "UITableView+AMPExtensions.h"
 
-AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersView);
+AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView);
 
 @interface AMPFBUsersViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly) AMPUsersModel   *usersModel;
@@ -52,7 +52,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
 
 - (void)fillWithModel:(id)model {
     self.navigationItem.title = @"Friends";
-    [self.usersView.tableView reloadData];
+    [self.rootView.tableView reloadData];
 }
 
 #pragma mark -
@@ -96,7 +96,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, usersVie
 
 - (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
     AMPDispatchSyncOnMainQueue(^{
-        [self.usersView.tableView updateWithArrayModelChange:info];
+        [self.rootView.tableView updateWithArrayModelChange:info];
     });
 }
 

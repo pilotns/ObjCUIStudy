@@ -68,7 +68,6 @@
 		8ACB3EB31EEE95A6004A8B89 /* NSObject+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3EB21EEE95A6004A8B89 /* NSObject+AMPExtensions.m */; };
 		8ACE4AED1F1E8D3800485A7E /* AMPFBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE4AEB1F1E8D3800485A7E /* AMPFBViewController.m */; };
 		8ACE4AF31F237D7E00485A7E /* AMPFBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACE4AF21F237D7E00485A7E /* AMPFBViewController.xib */; };
-		8ACE4AF61F237DA800485A7E /* AMPFBView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE4AF51F237DA800485A7E /* AMPFBView.m */; };
 		8AEA38161F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38151F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m */; };
 		8AEA38231F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA38221F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m */; };
 		8AEA38311F0E5C1400CAE008 /* AMPFileSystemImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AEA382D1F0E5C1400CAE008 /* AMPFileSystemImageModel.m */; };
@@ -208,8 +207,6 @@
 		8ACE4AEA1F1E8D3800485A7E /* AMPFBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBViewController.h; sourceTree = "<group>"; };
 		8ACE4AEB1F1E8D3800485A7E /* AMPFBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBViewController.m; sourceTree = "<group>"; };
 		8ACE4AF21F237D7E00485A7E /* AMPFBViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AMPFBViewController.xib; sourceTree = "<group>"; };
-		8ACE4AF41F237DA800485A7E /* AMPFBView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPFBView.h; sourceTree = "<group>"; };
-		8ACE4AF51F237DA800485A7E /* AMPFBView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPFBView.m; sourceTree = "<group>"; };
 		8AEA38141F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+AMPExtensions.h"; sourceTree = "<group>"; };
 		8AEA38151F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+AMPExtensions.m"; sourceTree = "<group>"; };
 		8AEA38211F0CDD0800CAE008 /* NSFileManager+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+AMPExtensions.h"; sourceTree = "<group>"; };
@@ -821,8 +818,6 @@
 				8ACE4AEA1F1E8D3800485A7E /* AMPFBViewController.h */,
 				8ACE4AEB1F1E8D3800485A7E /* AMPFBViewController.m */,
 				8ACE4AF21F237D7E00485A7E /* AMPFBViewController.xib */,
-				8ACE4AF41F237DA800485A7E /* AMPFBView.h */,
-				8ACE4AF51F237DA800485A7E /* AMPFBView.m */,
 			);
 			path = AMPFBViewController;
 			sourceTree = "<group>";
@@ -1095,7 +1090,6 @@
 				8A028F071F167E2F00BB0C0E /* AMPFBUsersViewController.m in Sources */,
 				8A028E7A1F1207DD00BB0C0E /* CGGeometry+AMPExtensions.m in Sources */,
 				8ACB3E931EED3FC5004A8B89 /* AMPViewController.m in Sources */,
-				8ACE4AF61F237DA800485A7E /* AMPFBView.m in Sources */,
 				8A9FDE0A1EFCE6700008FD56 /* AMPImageModel.m in Sources */,
 				8A8E99C41EEEAC7E00B939B1 /* UITableView+AMPExtensions.m in Sources */,
 				8ACB3EAF1EEE955E004A8B89 /* NSArray+AMPExtensions.m in Sources */,
