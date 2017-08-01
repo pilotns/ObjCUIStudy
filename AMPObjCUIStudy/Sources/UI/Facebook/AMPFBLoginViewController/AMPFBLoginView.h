@@ -6,9 +6,9 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "AMPView.h"
 
-@interface AMPFBLoginView : UIView
+@interface AMPFBLoginView : AMPView
 @property (nonatomic, strong)   IBOutlet    UIButton    *loginButton;
 
 @end

@@ -15,14 +15,19 @@
 #import "AMPFBLoginContext.h"
 #import "AMPFBLogoutContext.h"
 #import "AMPFBGetUserContext.h"
+#import "AMPGCDExtensions.h"
 
 #import "AMPMacro.h"
 
-AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginView);
+static NSString * const kAMPLoginButtonLoginTitle = @"Login to Facebook";
+static NSString * const kAMPLoginButtonLogoutTitle = @"Logout";
 
-@interface AMPFBLoginViewController () <AMPContextObserver>
-@property (nonatomic, readonly) FBSDKAccessToken    *accessToken;
+AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, rootView);
 
+@interface AMPFBLoginViewController ()
+@property (nonatomic, readonly) AMPFBUser   *user;
+
+- (void)loadModel;
 - (void)prepareLoginButton;
 - (void)presentUserViewController;
 
@@ -33,19 +38,19 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
 #pragma mark -
 #pragma mark Accessors
 
-- (FBSDKAccessToken *)accessToken {
-    return [FBSDKAccessToken currentAccessToken];
+- (AMPFBUser *)user {
+    return self.model;
 }
 
 #pragma mark -
 #pragma mark IBActions
 
 - (IBAction)onLoginButton:(UIButton *)sender {
-    Class contextClass = self.accessToken
+    Class contextClass = self.isAuthorized
     ? [AMPFBLogoutContext class]
     : [AMPFBLoginContext class];
     
-    self.context = [contextClass new];
+    self.context = [[contextClass alloc] initWithModel:self.model];
 }
 
 #pragma mark -
@@ -55,41 +60,54 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, loginVie
     [super viewDidLoad];
     
     [self prepareLoginButton];
-    if (self.accessToken) {
-        [self presentUserViewController];
+    if (self.isAuthorized) {
+        [self loadModel];
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
+- (void)loadModel {
+    self.context = [[AMPFBGetUserContext alloc] initWithModel:self.model];
+}
+
 - (void)prepareLoginButton {
-    NSString *buttonTitle = self.accessToken ? @"Logout" : @"Login to Facebook";
+    NSString *buttonTitle = self.isAuthorized ? kAMPLoginButtonLogoutTitle : kAMPLoginButtonLoginTitle;
     
-    [self.loginView.loginButton setTitle:buttonTitle forState:UIControlStateNormal];
+    [self.rootView.loginButton setTitle:buttonTitle forState:UIControlStateNormal];
 }
 
 - (void)presentUserViewController {
     AMPFBUserViewController *userController = [AMPFBUserViewController new];
-    userController.model = [[AMPFBUser alloc] initWithFbUserID:self.accessToken.userID];
+    userController.model = self.model;
     
     [self.navigationController pushViewController:userController animated:YES];
 }
 
 #pragma mark -
-#pragma mark AMPContextObserver
+#pragma mark AMPModelObserver
 
-- (void)context:(AMPContext *)context didFinishExecutingWithError:(NSError *)error {
-    if (!error) {
+- (void)modelDidUnload:(id)model {
+    AMPWeakify(self);
+    AMPDispatchAsyncOnMainQueue(^{
+        AMPStrongifyAndReturnIfNil(self);
+        self.context = nil;
         [self prepareLoginButton];
-        if (self.accessToken) {
-            [self presentUserViewController];
-        }
-    }
+    });
+}
+
+- (void)modelWillLoad:(id)model {
+    
+}
+
+- (void)modelDidLoad:(id)model {
+    AMPWeakify(self);
+    AMPDispatchAsyncOnMainQueue(^{
+        AMPStrongifyAndReturnIfNil(self);
+        [self prepareLoginButton];
+        [self presentUserViewController];
+    });
 }
 
 @end

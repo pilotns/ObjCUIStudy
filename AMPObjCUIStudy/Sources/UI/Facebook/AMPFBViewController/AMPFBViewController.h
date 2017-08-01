@@ -12,8 +12,10 @@
 @class AMPContext;
 
 @interface AMPFBViewController : UIViewController
-@property (nonatomic, strong)   AMPModel    *model;
+@property (nonatomic, strong)   id          model;
 @property (nonatomic, strong)   AMPContext  *context;
+
+@property (nonatomic, readonly, getter=isAuthorized)    BOOL    authorized;
 
 // this method is intended for subclassing, do not call it directly
 - (void)fillWithModel:(id)model;

@@ -35,7 +35,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
 
 - (instancetype)init {
     self = [super init];
-    self.model = [AMPUsersModel new];
     
     return self;
 }
@@ -43,8 +42,16 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
 #pragma mark -
 #pragma mark Accessors
 
+- (void)setUser:(AMPFBUser *)user {
+    if (_user != user) {
+        _user = user;
+        
+        self.model = user.friends;
+    }
+}
+
 - (AMPUsersModel *)usersModel {
-    return (AMPUsersModel *)self.model;
+    return self.model;
 }
 
 #pragma mark -
@@ -62,11 +69,16 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
     [super viewDidLoad];
 
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    NSDictionary *parameters = @{@"fields" : @"friends{first_name,last_name,id,picture}"};
-    self.context = [[AMPFBGetUsersContext alloc] initWithModel:self.model
-                                                     graphPath:self.user.fbUserID
-                                                    parameters:parameters];
+    self.context = [[AMPFBGetUsersContext alloc] initWithModel:self.model];
+}
+
+#pragma mark -
+#pragma mark AMPArrayModelObserver
+
+- (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
+    AMPDispatchSyncOnMainQueue(^{
+        [self.rootView.tableView updateWithArrayModelChange:info];
+    });
 }
 
 #pragma mark -
@@ -79,26 +91,13 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AMPUserCell *cell = [tableView reusableCellWithClass:[AMPUserCell class]];
     
-    cell.user = [self.usersModel objectAtIndex:indexPath.row];
+    cell.user = self.usersModel[indexPath.row];
     
     return cell;
 }
 
 #pragma mark - 
 #pragma mark UITableViewDelegate
-
-- (void)    tableView:(UITableView *)tableView
- didEndDisplayingCell:(AMPUserCell *)cell
-    forRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    cell.user = nil;
-}
-
-- (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
-    AMPDispatchSyncOnMainQueue(^{
-        [self.rootView.tableView updateWithArrayModelChange:info];
-    });
-}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

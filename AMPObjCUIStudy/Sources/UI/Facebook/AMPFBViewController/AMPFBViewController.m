@@ -8,6 +8,7 @@
 
 #import "AMPFBViewController.h"
 
+#import "AMPFBUser.h"
 #import "AMPView.h"
 #import "AMPModel.h"
 #import "AMPContext.h"
@@ -17,7 +18,7 @@
 
 AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
 
-@interface AMPFBViewController () <AMPModelObserver, AMPContextObserver>
+@interface AMPFBViewController () <AMPModelObserver>
 
 @end
 
@@ -31,8 +32,19 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
     self.context = nil;
 }
 
+- (instancetype)init {
+    self = [super init];
+    self.model = [AMPFBUser new];
+    
+    return self;
+}
+
 #pragma mark -
 #pragma mark Accessors
+
+- (BOOL)isAuthorized {
+    return nil != [FBSDKAccessToken currentAccessToken];
+}
 
 - (void)setModel:(AMPModel *)model {
     if (_model != model) {
@@ -46,10 +58,8 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
 - (void)setContext:(AMPContext *)context {
     if (_context != context) {
         [_context cancel];
-        [_context removeObserver:self];
         
         _context = context;
-        [context addObserver:self];
         [context execute];
     }
 }
@@ -64,6 +74,14 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
 #pragma mark -
 #pragma mark AMPModelObserver
 
+- (void)modelDidUnload:(id)model {
+    AMPWeakify(self);
+    AMPDispatchAsyncOnMainQueue(^{
+        AMPStrongifyAndReturnIfNil(self);
+        self.model = nil;
+    });
+}
+
 - (void)modelWillLoad:(id)model {
     AMPWeakify(self);
     AMPDispatchAsyncOnMainQueue(^{
@@ -76,6 +94,7 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
     AMPWeakify(self);
     AMPDispatchAsyncOnMainQueue(^{
         AMPStrongifyAndReturnIfNil(self);
+        self.context = nil;
         [self fillWithModel:model];
         [self.rootView setLoadingViewVisible:NO];
     });

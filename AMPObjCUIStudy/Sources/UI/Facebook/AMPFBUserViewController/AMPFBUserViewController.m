@@ -34,7 +34,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, rootView);
 #pragma mark - Accessors
 
 - (AMPFBUser *)user {
-    return (AMPFBUser *)self.model;
+    return self.model;
 }
 
 #pragma mark -
@@ -53,6 +53,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, rootView);
 - (void)fillWithModel:(id)model {
     self.navigationItem.title = self.user.fullName;
     [self.rootView fillWithUser:model];
+    [self prepareFriendsButton];
 }
 
 #pragma mark -
@@ -60,22 +61,21 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, rootView);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self prepareFriendsButton];
+
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    AMPFBUser *user = self.user;
-    NSDictionary *parameters = @{@"fields" : @"first_name,last_name,picture.type(large)"};
-    self.context = [[AMPFBGetUserContext alloc] initWithModel:user
-                                                    graphPath:user.fbUserID
-                                                   parameters:parameters];
+    if (self.user.isAuthorized) {
+        [self fillWithModel:self.model];
+    } else {
+        self.context = [[AMPFBGetUserContext alloc] initWithModel:self.model];
+    }
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
 - (void)prepareFriendsButton {
-    if (![[FBSDKAccessToken currentAccessToken].userID isEqualToString:self.user.fbUserID]) {
+    if (!self.user.isAuthorized) {
         self.rootView.friendsButton.hidden = YES;
     }
 }

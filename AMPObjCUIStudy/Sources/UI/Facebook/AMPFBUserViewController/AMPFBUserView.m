@@ -17,7 +17,7 @@
 #pragma mark Public Methods
 
 - (void)fillWithUser:(AMPFBUser *)user {
-    self.userImageView.imageModel = user.largePictureImageModel;
+    self.userImageView.imageModel = user.pictureModel;
     self.fullNameLable.text = user.fullName;
 }
 

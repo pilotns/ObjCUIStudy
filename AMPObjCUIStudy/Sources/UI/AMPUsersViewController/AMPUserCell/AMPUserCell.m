@@ -35,12 +35,13 @@
 
 - (void)fillWithUser:(AMPFBUser *)user {
     self.fullNameLabel.text = user.fullName;
-    self.userImageView.imageModel = user.smallPictureImageModel;
+    self.userImageView.imageModel = user.pictureModel;
 }
 
 - (void)prepareForReuse {
     [super prepareForReuse];
     
+    self.user = nil;
     self.userImageView.contentImageView.image = nil;
 }
 
