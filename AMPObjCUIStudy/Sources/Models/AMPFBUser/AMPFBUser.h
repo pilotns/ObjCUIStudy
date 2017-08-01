@@ -8,24 +8,19 @@
 
 #import "AMPModel.h"
 
-static NSString * const kAMPFBUserID = @"kAMPFBUserID";
-static NSString * const kAMPFBUserFirstName = @"kAMPFBUserFirstName";
-static NSString * const kAMPFBUserLastName = @"kAMPFBUserLastName";
-static NSString * const kAMPFBUserSmallPictureURL = @"kAMPFBUserSmallPictureURL";
-static NSString * const kAMPFBUserLargePictureURL = @"kAMPFBUserLargePictureURL";
-
 @class AMPImageModel;
+@class AMPFBResponseParser;
+@class AMPUsersModel;
 
-@interface AMPFBUser : AMPModel <NSCoding>
-@property (nonatomic, readonly) NSString        *fbUserID;
-@property (nonatomic, readonly) NSString        *firstName;
-@property (nonatomic, readonly) NSString        *lastName;
+@interface AMPFBUser : AMPModel
+@property (nonatomic, copy)     NSString        *userID;
+@property (nonatomic, copy)     NSString        *firstName;
+@property (nonatomic, copy)     NSString        *lastName;
 @property (nonatomic, readonly) NSString        *fullName;
-@property (nonatomic, readonly) AMPImageModel   *smallPictureImageModel;
-@property (nonatomic, readonly) AMPImageModel   *largePictureImageModel;
+@property (nonatomic, strong)   NSURL           *pictureURL;
+@property (nonatomic, readonly) AMPImageModel   *pictureModel;
+@property (nonatomic, strong)   AMPUsersModel   *friends;
 
-- (instancetype)initWithFbUserID:(NSString *)fbUserID;
-
-- (void)fillWithResponse:(NSDictionary *)response;
+@property (nonatomic, readonly) BOOL    isAuthorized;
 
 @end
