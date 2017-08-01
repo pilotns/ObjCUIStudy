@@ -9,14 +9,13 @@
 #import "AMPContext.h"
 
 @interface AMPFBGetContext : AMPContext
-@property (nonatomic, readonly) NSString    *cachedResponseFileName;
+@property (nonatomic, readonly) NSString        *graphPath;
+@property (nonatomic, readonly) NSDictionary    *parameters;
+@property (nonatomic, readonly) NSString        *cachedResponseFileName;
 
-- (instancetype)initWithModel:(id)model
-                    graphPath:(NSString *)graphPath
-                   parameters:(NSDictionary *)parameters;
+- (void)saveResponse:(id)response;
 
 // this methid is intended for subclassing, do not call it directly
-- (void)handleResponse:(id)response;
-- (void)saveResponse:(id)response;
+- (void)parseResponse:(id)response;
 
 @end

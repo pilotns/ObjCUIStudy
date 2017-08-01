@@ -8,6 +8,8 @@
 
 #import "AMPFBGetContext.h"
 
+@class AMPFBUser;
+
 @interface AMPFBGetUsersContext : AMPFBGetContext
 
 @end

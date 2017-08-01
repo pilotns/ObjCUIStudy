@@ -8,12 +8,18 @@
 
 #import "AMPFBLoginContext.h"
 
+#import "AMPFBGetUserContext.h"
 #import "AMPGCDExtensions.h"
 
 #import "AMPMacro.h"
 
 @interface AMPFBLoginContext ()
+@property (nonatomic, readonly, getter=isAuthorized)    BOOL    authorized;
+
 @property (nonatomic, strong)   FBSDKLoginManager   *loginManager;
+@property (nonatomic, strong)   AMPFBGetUserContext *context;
+
+- (void)loadModel;
 
 @end
 
@@ -27,22 +33,36 @@
 }
 
 #pragma mark -
+#pragma mark Accessors
+
+- (BOOL)isAuthorized {
+    return nil != [FBSDKAccessToken currentAccessToken];
+}
+
+- (void)setContext:(AMPFBGetUserContext *)context {
+    if (_context != context) {
+        [_context cancel];
+        
+        _context = context;
+        [context execute];
+    }
+}
+
+#pragma mark -
 #pragma mark Public Methods
 
-- (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
-    if (!completionHandler) {
-        return;
+- (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
+    if (self.isAuthorized) {
+        [self loadModel];
     }
     
-    if ([FBSDKAccessToken currentAccessToken]) {
-        completionHandler(nil);
-    }
-    
+    AMPWeakify(self);
     FBSDKLoginManager *loginManager = [FBSDKLoginManager new];
     [loginManager logInWithReadPermissions:@[@"public_profile", @"user_friends"]
                         fromViewController:nil
                                    handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
-                                       completionHandler(error);
+                                       AMPStrongifyAndReturnIfNil(self);
+                                       [self loadModel];
                                    }];
     
     self.loginManager = loginManager;
@@ -51,6 +71,13 @@
 
 - (void)cancel {
     [self.loginManager logOut];
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)loadModel {
+    self.context = [[AMPFBGetUserContext alloc] initWithModel:self.model];
 }
 
 @end

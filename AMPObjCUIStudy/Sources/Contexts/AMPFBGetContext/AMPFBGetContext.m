@@ -8,14 +8,15 @@
 
 #import "AMPFBGetContext.h"
 
+#import "AMPModel.h"
+#import "AMPFBUser.h"
+
 #import "AMPMacro.h"
 
 #import "NSFileManager+AMPExtensions.h"
 
 @interface AMPFBGetContext ()
-@property (nonatomic, copy)     NSString        *graphPath;
-@property (nonatomic, strong)   NSDictionary    *parameters;
-
+@property (nonatomic, readonly) AMPFBUser       *user;
 @property (nonatomic, readonly) NSDictionary    *cachedResponse;
 @property (nonatomic, readonly) NSString        *cachedResponsePath;
 
@@ -25,6 +26,8 @@
 
 @implementation AMPFBGetContext
 
+@dynamic graphPath;
+@dynamic parameters;
 @dynamic cachedResponseFileName;
 
 #pragma mark -
@@ -34,19 +37,12 @@
     [self cancel];
 }
 
-- (instancetype)initWithModel:(id)model
-                    graphPath:(NSString *)graphPath
-                   parameters:(NSDictionary *)parameters
-{
-    self = [super initWithModel:model];
-    self.graphPath = graphPath;
-    self.parameters = parameters;
-    
-    return self;
-}
-
 #pragma mark -
 #pragma mark Accessors
+
+- (AMPFBUser *)user {
+    return self.model;
+}
 
 - (NSDictionary *)cachedResponse {
     return [NSKeyedUnarchiver unarchiveObjectWithFile:self.cachedResponsePath];
@@ -70,7 +66,25 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
+- (void)execute {
+    AMPModel *model = self.model;
+    AMPModelState state = model.state;
+    
+    @synchronized (model) {
+        if (AMPModelWillLoad == state || AMPModelDidLoad == state) {
+            [model notifyOfState:state];
+            if (AMPModelDidLoad == state) {
+                return;
+            }
+        }
+        
+        model.state = AMPModelWillLoad;
+    }
+    
+    [super execute];
+}
+
+- (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
     FBSDKGraphRequestConnection *requestConnection = [FBSDKGraphRequestConnection new];
     [requestConnection setDelegateQueue:[NSOperationQueue new]];
     
@@ -87,10 +101,11 @@
                         result = self.cachedResponse;
                     }
                     
-                    [self handleResponse:result];
+                    [self parseResponse:result];
+                    AMPModelState state = !error || result ? AMPModelDidLoad : AMPModelDidFailLoading;
                     
                     if (completionHandler) {
-                        completionHandler(error);
+                        completionHandler(state, error);
                     }
                 }];
     
@@ -101,7 +116,7 @@
     self.requestConnection = nil;
 }
 
-- (void)handleResponse:(id)response {
+- (void)parseResponse:(id)response {
     
 }
 

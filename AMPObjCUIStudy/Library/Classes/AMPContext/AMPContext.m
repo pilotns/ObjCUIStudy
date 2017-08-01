@@ -13,7 +13,7 @@
 #import "AMPMacro.h"
 
 @interface AMPContext ()
-@property (nonatomic, weak) AMPModel    *model;
+@property (nonatomic, strong) AMPModel    *model;
 
 @end
 
@@ -30,23 +30,10 @@
 }
 
 - (void)execute {
-    AMPModel *model = self.model;
-    AMPModelState state = model.state;
-    
-    @synchronized (model) {
-        if (AMPModelWillLoad == state || AMPModelDidLoad == state) {
-            [model notifyOfState:state];
-            return;
-        }
-        
-        model.state = AMPModelWillLoad;
-    }
-    
     AMPWeakify(self);
-    [self performExecutionWithCompletionHandler:^(NSError *error) {
+    [self performExecutionWithCompletionHandler:^(NSUInteger modelState, NSError *error) {
         AMPStrongifyAndReturnIfNil(self);
-        [self notifyOfState:AMPContextDidFinishExecuting userInfo:error];
-        model.state = AMPModelDidLoad;
+        [self.model setState:modelState userInfo:error];
     }];
 }
 
@@ -54,17 +41,8 @@
 
 }
 
-- (void)performExecutionWithCompletionHandler:(void (^)(NSError *error))completionHandler {
+- (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
     
-}
-
-#pragma mark -
-#pragma mark AMPObservableObject
-
-- (SEL)selectorForState:(NSUInteger)state {
-    return AMPContextDidFinishExecuting == state
-        ? @selector(context:didFinishExecutingWithError:)
-        : [super selectorForState:state];
 }
 
 @end

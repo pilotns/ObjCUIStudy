@@ -8,12 +8,14 @@
 
 #import "AMPFBLogoutContext.h"
 
+#import "AMPModel.h"
+
 @implementation AMPFBLogoutContext
 
-- (void)performExecutionWithCompletionHandler:(void (^)(NSError *))completionHandler {
+- (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
     [[FBSDKLoginManager new] logOut];
     if (completionHandler) {
-        completionHandler(nil);
+        completionHandler(AMPModelDidUnload, nil);
     }
 }
 

@@ -10,6 +10,7 @@
 
 #import "AMPFBUser.h"
 #import "AMPUsersModel.h"
+#import "AMPFBResponseParser.h"
 
 #import "NSFileManager+AMPExtensions.h"
 
@@ -20,6 +21,14 @@ static NSString * const kAMPFBGetUsersCachedResponseFileName = @"fbUsers.plist";
 #pragma mark -
 #pragma mark Accessors
 
+- (NSString *)graphPath {
+    return [FBSDKAccessToken currentAccessToken].userID;
+}
+
+- (NSDictionary *)parameters {
+    return @{@"fields" : @"friends{first_name,last_name,id,picture}"};
+}
+
 - (NSString *)cachedResponseFileName {
     return kAMPFBGetUsersCachedResponseFileName;
 }
@@ -27,27 +36,12 @@ static NSString * const kAMPFBGetUsersCachedResponseFileName = @"fbUsers.plist";
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)handleResponse:(id)response {
-    AMPUsersModel *usersModel = self.model;
-    NSArray *friends = response[@"friends"][@"data"];
-    NSUInteger friendsCount = friends.count;
-    NSMutableArray *mutableFriends = [NSMutableArray arrayWithCapacity:friendsCount];
-    for (NSUInteger i = 0; i < friendsCount; i++) {
-        NSDictionary *user = friends[i];
-        NSDictionary *result = @{kAMPFBUserID : user[@"id"],
-                                 kAMPFBUserFirstName : user[@"first_name"],
-                                 kAMPFBUserLastName : user[@"last_name"],
-                                 kAMPFBUserSmallPictureURL : user[@"picture"][@"data"][@"url"]
-                                 };
-        
-        AMPFBUser *friend = [AMPFBUser new];
-        [friend fillWithResponse:result];
-        
-        [mutableFriends addObject:friend];
-    }
+- (void)parseResponse:(id)response {
+    AMPFBResponseParser *parser = [AMPFBResponseParser parserWithResponse:response];
+    AMPUsersModel *model = self.model;
     
-    [usersModel performBlockWithoutNotifications:^{
-        [usersModel addObjects:mutableFriends];
+    [model performBlockWithoutNotifications:^{
+        [model addObjects:parser.friends];
     }];
 }
 
