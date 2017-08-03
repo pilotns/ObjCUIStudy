@@ -84,10 +84,6 @@
 		8A3D2C0A1F33370700AAA932 /* IDPObjCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2BD61F33370700AAA932 /* IDPObjCRuntime.m */; };
 		8A3D2C0B1F33370700AAA932 /* IDPBlockTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2BD91F33370700AAA932 /* IDPBlockTypes.m */; };
 		8A3D2C601F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2C5E1F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld */; };
-		8A3D2C7A1F334C5000AAA932 /* AMPDBUser+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2C771F334C5000AAA932 /* AMPDBUser+CoreDataClass.m */; };
-		8A3D2C7B1F334C5000AAA932 /* AMPDBUser+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2C791F334C5000AAA932 /* AMPDBUser+CoreDataProperties.m */; };
-		8A3D2C801F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2C7D1F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.m */; };
-		8A3D2C811F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2C7F1F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.m */; };
 		8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */; };
 		8A4E55B81EE19B28007B5B51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55B11EE19B28007B5B51 /* main.m */; };
 		8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */; };
@@ -304,14 +300,6 @@
 		8A3D2BD81F33370700AAA932 /* IDPBlockTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPBlockTypes.h; sourceTree = "<group>"; };
 		8A3D2BD91F33370700AAA932 /* IDPBlockTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPBlockTypes.m; sourceTree = "<group>"; };
 		8A3D2C5F1F334A6B00AAA932 /* FacebookDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FacebookDataModel.xcdatamodel; sourceTree = "<group>"; };
-		8A3D2C761F334C5000AAA932 /* AMPDBUser+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPDBUser+CoreDataClass.h"; sourceTree = "<group>"; };
-		8A3D2C771F334C5000AAA932 /* AMPDBUser+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMPDBUser+CoreDataClass.m"; sourceTree = "<group>"; };
-		8A3D2C781F334C5000AAA932 /* AMPDBUser+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPDBUser+CoreDataProperties.h"; sourceTree = "<group>"; };
-		8A3D2C791F334C5000AAA932 /* AMPDBUser+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMPDBUser+CoreDataProperties.m"; sourceTree = "<group>"; };
-		8A3D2C7C1F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPDBUserPicture+CoreDataClass.h"; sourceTree = "<group>"; };
-		8A3D2C7D1F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMPDBUserPicture+CoreDataClass.m"; sourceTree = "<group>"; };
-		8A3D2C7E1F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPDBUserPicture+CoreDataProperties.h"; sourceTree = "<group>"; };
-		8A3D2C7F1F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMPDBUserPicture+CoreDataProperties.m"; sourceTree = "<group>"; };
 		8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMPObjCUIStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E55AE1EE19B28007B5B51 /* AMPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPAppDelegate.h; sourceTree = "<group>"; };
 		8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPAppDelegate.m; sourceTree = "<group>"; };
@@ -1089,10 +1077,6 @@
 		8A3D2C5C1F334A6B00AAA932 /* AMPDBUser */ = {
 			isa = PBXGroup;
 			children = (
-				8A3D2C761F334C5000AAA932 /* AMPDBUser+CoreDataClass.h */,
-				8A3D2C771F334C5000AAA932 /* AMPDBUser+CoreDataClass.m */,
-				8A3D2C781F334C5000AAA932 /* AMPDBUser+CoreDataProperties.h */,
-				8A3D2C791F334C5000AAA932 /* AMPDBUser+CoreDataProperties.m */,
 			);
 			path = AMPDBUser;
 			sourceTree = "<group>";
@@ -1100,10 +1084,6 @@
 		8A3D2C5D1F334A6B00AAA932 /* AMPDBUserPicture */ = {
 			isa = PBXGroup;
 			children = (
-				8A3D2C7C1F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.h */,
-				8A3D2C7D1F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.m */,
-				8A3D2C7E1F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.h */,
-				8A3D2C7F1F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.m */,
 			);
 			path = AMPDBUserPicture;
 			sourceTree = "<group>";
@@ -1722,7 +1702,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A3D2C041F33370700AAA932 /* IDPMachTimer.m in Sources */,
-				8A3D2C7B1F334C5000AAA932 /* AMPDBUser+CoreDataProperties.m in Sources */,
 				8A3D2BF61F33370700AAA932 /* IDPMutableDictionary.m in Sources */,
 				8A3D2C0A1F33370700AAA932 /* IDPObjCRuntime.m in Sources */,
 				8A3D2BF91F33370700AAA932 /* IDPObserver.m in Sources */,
@@ -1735,7 +1714,6 @@
 				8A028EEF1F1623E600BB0C0E /* AMPFBLoginViewController.m in Sources */,
 				8A3D2BEE1F33370700AAA932 /* IDPMixinContext.m in Sources */,
 				8A028ED71F1610F100BB0C0E /* AMPContext.m in Sources */,
-				8A3D2C811F334DB900AAA932 /* AMPDBUserPicture+CoreDataProperties.m in Sources */,
 				8A3D2BE91F33370700AAA932 /* NSString+IDPExtensions.m in Sources */,
 				8AEA38161F0BB8BB00CAE008 /* NSMutableArray+AMPExtensions.m in Sources */,
 				8AE325FE1F332DDD00907D3F /* AMPFBGetUserContext.m in Sources */,
@@ -1763,7 +1741,6 @@
 				8A9FDE361F0191640008FD56 /* AMPUsersModel.m in Sources */,
 				8A8E99DE1EF7090E00B939B1 /* AMPUserCell.m in Sources */,
 				8AEA38231F0CDD0800CAE008 /* NSFileManager+AMPExtensions.m in Sources */,
-				8A3D2C7A1F334C5000AAA932 /* AMPDBUser+CoreDataClass.m in Sources */,
 				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8A9FDDDE1EFA53E70008FD56 /* NSNotificationCenter+AMPExtensions.m in Sources */,
 				8A3D2BE41F33370700AAA932 /* NSObject+IDPKVO.m in Sources */,
@@ -1823,7 +1800,6 @@
 				8A3D2BDD1F33370700AAA932 /* NSManagedObjectID+IDPExtensions.m in Sources */,
 				8A028EFB1F164E8C00BB0C0E /* AMPFBUserViewController.m in Sources */,
 				8A3D2C081F33370700AAA932 /* IDPReturnMacros.m in Sources */,
-				8A3D2C801F334DB900AAA932 /* AMPDBUserPicture+CoreDataClass.m in Sources */,
 				8A3D2BF11F33370700AAA932 /* IDPModelMixin.m in Sources */,
 				8A028EB21F13E82500BB0C0E /* AMPImageModelCache.m in Sources */,
 				8A028EB71F13E82500BB0C0E /* AMPArrayModelChangeDelete.m in Sources */,
