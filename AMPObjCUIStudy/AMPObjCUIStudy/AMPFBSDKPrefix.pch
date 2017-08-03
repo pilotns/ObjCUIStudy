@@ -13,4 +13,6 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
+#import "ActiveRecordKit.h"
+
 #endif /* AMPFBSDKPrefix_pch */

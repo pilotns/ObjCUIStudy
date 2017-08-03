@@ -13,6 +13,8 @@
 #import "UIWindow+AMPExtensions.h"
 #import "NSObject+AMPExtensions.h"
 
+static NSString * const AMPMomName = @"FacebookDataModel";
+
 @interface AMPAppDelegate ()
 
 @end
@@ -23,6 +25,7 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
+    [IDPCoreDataManager sharedManagerWithMomName:AMPMomName];
     
     AMPFBLoginViewController *controller = [AMPFBLoginViewController new];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
@@ -41,7 +44,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-
+    [NSManagedObjectContext saveManagedObjectContext];
 }
 
 
@@ -56,7 +59,7 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-
+    [NSManagedObjectContext saveManagedObjectContext];
 }
 
 - (BOOL)application:(UIApplication *)application
