@@ -83,7 +83,6 @@
 		8A3D2C091F33370700AAA932 /* IDPMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2BD31F33370700AAA932 /* IDPMath.m */; };
 		8A3D2C0A1F33370700AAA932 /* IDPObjCRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2BD61F33370700AAA932 /* IDPObjCRuntime.m */; };
 		8A3D2C0B1F33370700AAA932 /* IDPBlockTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2BD91F33370700AAA932 /* IDPBlockTypes.m */; };
-		8A3D2C601F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8A3D2C5E1F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld */; };
 		8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */; };
 		8A4E55B81EE19B28007B5B51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E55B11EE19B28007B5B51 /* main.m */; };
 		8A4E55BC1EE19BFD007B5B51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E55B41EE19B28007B5B51 /* LaunchScreen.storyboard */; };
@@ -299,7 +298,6 @@
 		8A3D2BD61F33370700AAA932 /* IDPObjCRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPObjCRuntime.m; sourceTree = "<group>"; };
 		8A3D2BD81F33370700AAA932 /* IDPBlockTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDPBlockTypes.h; sourceTree = "<group>"; };
 		8A3D2BD91F33370700AAA932 /* IDPBlockTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDPBlockTypes.m; sourceTree = "<group>"; };
-		8A3D2C5F1F334A6B00AAA932 /* FacebookDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FacebookDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8A4E55911EE19AB4007B5B51 /* AMPObjCUIStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AMPObjCUIStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4E55AE1EE19B28007B5B51 /* AMPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPAppDelegate.h; sourceTree = "<group>"; };
 		8A4E55AF1EE19B28007B5B51 /* AMPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPAppDelegate.m; sourceTree = "<group>"; };
@@ -1064,30 +1062,6 @@
 			path = IDPTypes;
 			sourceTree = "<group>";
 		};
-		8A3D2C5B1F334A6B00AAA932 /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				8A3D2C5C1F334A6B00AAA932 /* AMPDBUser */,
-				8A3D2C5D1F334A6B00AAA932 /* AMPDBUserPicture */,
-				8A3D2C5E1F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld */,
-			);
-			path = "Core Data";
-			sourceTree = "<group>";
-		};
-		8A3D2C5C1F334A6B00AAA932 /* AMPDBUser */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AMPDBUser;
-			sourceTree = "<group>";
-		};
-		8A3D2C5D1F334A6B00AAA932 /* AMPDBUserPicture */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AMPDBUserPicture;
-			sourceTree = "<group>";
-		};
 		8A4E55881EE19AB4007B5B51 = {
 			isa = PBXGroup;
 			children = (
@@ -1201,7 +1175,6 @@
 		8A8E99F71EF7EB3900B939B1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8A3D2C5B1F334A6B00AAA932 /* Core Data */,
 				8A028F001F16548A00BB0C0E /* AMPFBUser */,
 				8A9FDE321F0191400008FD56 /* AMPUsersModel */,
 				8A9FDE071EFCE6490008FD56 /* AMPImageModel */,
@@ -1744,7 +1717,6 @@
 				8A8E99D21EEEC21500B939B1 /* NSIndexPath+AMPExtensions.m in Sources */,
 				8A9FDDDE1EFA53E70008FD56 /* NSNotificationCenter+AMPExtensions.m in Sources */,
 				8A3D2BE41F33370700AAA932 /* NSObject+IDPKVO.m in Sources */,
-				8A3D2C601F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld in Sources */,
 				8A3D2C071F33370700AAA932 /* IDPOwnershipMacros.m in Sources */,
 				8A028EB91F13E82500BB0C0E /* AMPArrayModelChangeMove.m in Sources */,
 				8A028EB81F13E82500BB0C0E /* AMPArrayModelChangeInsert.m in Sources */,
@@ -2027,19 +1999,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8A3D2C5E1F334A6B00AAA932 /* FacebookDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8A3D2C5F1F334A6B00AAA932 /* FacebookDataModel.xcdatamodel */,
-			);
-			currentVersion = 8A3D2C5F1F334A6B00AAA932 /* FacebookDataModel.xcdatamodel */;
-			path = FacebookDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8A4E55891EE19AB4007B5B51 /* Project object */;
 }
