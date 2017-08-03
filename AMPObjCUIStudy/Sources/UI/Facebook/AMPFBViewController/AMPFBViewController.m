@@ -78,6 +78,7 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
     AMPWeakify(self);
     AMPDispatchAsyncOnMainQueue(^{
         AMPStrongifyAndReturnIfNil(self);
+        self.context = nil;
         self.model = nil;
     });
 }

@@ -95,14 +95,19 @@
     [requestConnection addRequest:request
                 completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                     AMPStrongifyAndReturnIfNil(self);
-                    if (!error) {
-                        [self saveResponse:result];
-                    } else {
+                    if (error) {
                         result = self.cachedResponse;
                     }
                     
-                    [self parseResponse:result];
-                    AMPModelState state = !error || result ? AMPModelDidLoad : AMPModelDidFailLoading;
+                    AMPModelState state = self.user.state;
+                    if (result) {
+                        [self saveResponse:result];
+                        [self parseResponse:result];
+                        
+                        state = AMPModelDidLoad;
+                    } else {
+                        state = AMPModelDidFailLoading;
+                    }
                     
                     if (completionHandler) {
                         completionHandler(state, error);

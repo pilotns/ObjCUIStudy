@@ -8,13 +8,14 @@
 
 #import "AMPFBLoginContext.h"
 
+#import "AMPFBUser.h"
 #import "AMPFBGetUserContext.h"
 #import "AMPGCDExtensions.h"
 
 #import "AMPMacro.h"
 
 @interface AMPFBLoginContext ()
-@property (nonatomic, readonly, getter=isAuthorized)    BOOL    authorized;
+@property (nonatomic, readonly) AMPFBUser   *user;
 
 @property (nonatomic, strong)   FBSDKLoginManager   *loginManager;
 @property (nonatomic, strong)   AMPFBGetUserContext *context;
@@ -35,10 +36,6 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (BOOL)isAuthorized {
-    return nil != [FBSDKAccessToken currentAccessToken];
-}
-
 - (void)setContext:(AMPFBGetUserContext *)context {
     if (_context != context) {
         [_context cancel];
@@ -52,7 +49,7 @@
 #pragma mark Public Methods
 
 - (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
-    if (self.isAuthorized) {
+    if (self.user.isAuthorized) {
         [self loadModel];
     }
     
@@ -62,7 +59,9 @@
                         fromViewController:nil
                                    handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                        AMPStrongifyAndReturnIfNil(self);
-                                       [self loadModel];
+                                       if (!result.isCancelled && !error) {
+                                           [self loadModel];
+                                       }
                                    }];
     
     self.loginManager = loginManager;
