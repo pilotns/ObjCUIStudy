@@ -36,6 +36,10 @@
 #pragma mark -
 #pragma mark Accessors
 
+- (AMPFBUser *)user {
+    return self.model;
+}
+
 - (void)setContext:(AMPFBGetUserContext *)context {
     if (_context != context) {
         [_context cancel];
