@@ -8,13 +8,13 @@
 
 #import "AMPTableViewCell.h"
 
-@class AMPUser;
+@class AMPFBUser;
 @class AMPImageView;
 
 @interface AMPUserCell : AMPTableViewCell
 @property (nonatomic, strong)   IBOutlet    UILabel         *fullNameLabel;
 @property (nonatomic, strong)   IBOutlet    AMPImageView    *userImageView;
 
-@property (nonatomic, strong)   AMPUser *user;
+@property (nonatomic, strong)   AMPFBUser *user;
 
 @end
