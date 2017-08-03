@@ -101,6 +101,9 @@
 		8A9FDE0A1EFCE6700008FD56 /* AMPImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FDE091EFCE6700008FD56 /* AMPImageModel.m */; };
 		8A9FDE191EFD06EB0008FD56 /* vw_240.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A9FDE181EFD06EB0008FD56 /* vw_240.jpg */; };
 		8A9FDE361F0191640008FD56 /* AMPUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FDE351F0191640008FD56 /* AMPUsersModel.m */; };
+		8AC062041F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AC062021F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld */; };
+		8AC062081F33669300E142F4 /* AMPDBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC062071F33669300E142F4 /* AMPDBUser.m */; };
+		8AC0620C1F3366B300E142F4 /* AMPDBUserPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0620B1F3366B300E142F4 /* AMPDBUserPicture.m */; };
 		8ACB3E7B1EEC0632004A8B89 /* UIWindow+AMPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */; };
 		8ACB3E901EED3FC5004A8B89 /* AMPUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB3E871EED3FC5004A8B89 /* AMPUsersViewController.m */; };
 		8ACB3E911EED3FC5004A8B89 /* AMPUsersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACB3E881EED3FC5004A8B89 /* AMPUsersViewController.xib */; };
@@ -331,6 +334,11 @@
 		8A9FDE181EFD06EB0008FD56 /* vw_240.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vw_240.jpg; sourceTree = "<group>"; };
 		8A9FDE341F0191640008FD56 /* AMPUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModel.h; sourceTree = "<group>"; };
 		8A9FDE351F0191640008FD56 /* AMPUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModel.m; sourceTree = "<group>"; };
+		8AC062031F3365B800E142F4 /* AMPFBDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AMPFBDataModel.xcdatamodel; sourceTree = "<group>"; };
+		8AC062061F33669300E142F4 /* AMPDBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPDBUser.h; sourceTree = "<group>"; };
+		8AC062071F33669300E142F4 /* AMPDBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPDBUser.m; sourceTree = "<group>"; };
+		8AC0620A1F3366B300E142F4 /* AMPDBUserPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPDBUserPicture.h; sourceTree = "<group>"; };
+		8AC0620B1F3366B300E142F4 /* AMPDBUserPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPDBUserPicture.m; sourceTree = "<group>"; };
 		8ACB3E771EEC0632004A8B89 /* CGGeometry+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CGGeometry+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E791EEC0632004A8B89 /* UIWindow+AMPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+AMPExtensions.h"; sourceTree = "<group>"; };
 		8ACB3E7A1EEC0632004A8B89 /* UIWindow+AMPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+AMPExtensions.m"; sourceTree = "<group>"; };
@@ -1091,6 +1099,7 @@
 				8ACB3E841EED3FC5004A8B89 /* UI */,
 				8A8E99F71EF7EB3900B939B1 /* Models */,
 				8AE325EA1F332DDD00907D3F /* Contexts */,
+				8AC062011F33658500E142F4 /* CoreData */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -1237,6 +1246,34 @@
 				8A9FDE351F0191640008FD56 /* AMPUsersModel.m */,
 			);
 			path = AMPUsersModel;
+			sourceTree = "<group>";
+		};
+		8AC062011F33658500E142F4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				8AC062091F33669F00E142F4 /* AMPDBUserPicture */,
+				8AC062051F33667F00E142F4 /* AMPDBUser */,
+				8AC062021F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		8AC062051F33667F00E142F4 /* AMPDBUser */ = {
+			isa = PBXGroup;
+			children = (
+				8AC062061F33669300E142F4 /* AMPDBUser.h */,
+				8AC062071F33669300E142F4 /* AMPDBUser.m */,
+			);
+			path = AMPDBUser;
+			sourceTree = "<group>";
+		};
+		8AC062091F33669F00E142F4 /* AMPDBUserPicture */ = {
+			isa = PBXGroup;
+			children = (
+				8AC0620A1F3366B300E142F4 /* AMPDBUserPicture.h */,
+				8AC0620B1F3366B300E142F4 /* AMPDBUserPicture.m */,
+			);
+			path = AMPDBUserPicture;
 			sourceTree = "<group>";
 		};
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
@@ -1676,10 +1713,12 @@
 			files = (
 				8A3D2C041F33370700AAA932 /* IDPMachTimer.m in Sources */,
 				8A3D2BF61F33370700AAA932 /* IDPMutableDictionary.m in Sources */,
+				8AC0620C1F3366B300E142F4 /* AMPDBUserPicture.m in Sources */,
 				8A3D2C0A1F33370700AAA932 /* IDPObjCRuntime.m in Sources */,
 				8A3D2BF91F33370700AAA932 /* IDPObserver.m in Sources */,
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
 				8A3D2C001F33370700AAA932 /* IDPRetainingDictionary.m in Sources */,
+				8AC062081F33669300E142F4 /* AMPDBUser.m in Sources */,
 				8A028EBE1F13E82500BB0C0E /* AMPView.m in Sources */,
 				8A3D2BFA1F33370700AAA932 /* IDPProxy.m in Sources */,
 				8A3D2BE51F33370700AAA932 /* IDPSafeKVOContext.m in Sources */,
@@ -1774,6 +1813,7 @@
 				8A3D2C081F33370700AAA932 /* IDPReturnMacros.m in Sources */,
 				8A3D2BF11F33370700AAA932 /* IDPModelMixin.m in Sources */,
 				8A028EB21F13E82500BB0C0E /* AMPImageModelCache.m in Sources */,
+				8AC062041F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld in Sources */,
 				8A028EB71F13E82500BB0C0E /* AMPArrayModelChangeDelete.m in Sources */,
 				8A4E55B61EE19B28007B5B51 /* AMPAppDelegate.m in Sources */,
 				8A028EB41F13E82500BB0C0E /* AMPTableViewCell.m in Sources */,
@@ -1999,6 +2039,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8AC062021F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8AC062031F3365B800E142F4 /* AMPFBDataModel.xcdatamodel */,
+			);
+			currentVersion = 8AC062031F3365B800E142F4 /* AMPFBDataModel.xcdatamodel */;
+			path = AMPFBDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8A4E55891EE19AB4007B5B51 /* Project object */;
 }

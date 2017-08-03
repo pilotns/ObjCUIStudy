@@ -13,7 +13,7 @@
 #import "UIWindow+AMPExtensions.h"
 #import "NSObject+AMPExtensions.h"
 
-static NSString * const AMPMomName = @"FacebookDataModel";
+static NSString * const AMPMomName = @"AMPFBDataModel";
 
 @interface AMPAppDelegate ()
 
