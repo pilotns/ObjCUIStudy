@@ -11,7 +11,7 @@
 @class AMPImageModel;
 
 @interface AMPImageView : AMPView
-@property (nonatomic, readonly) UIImageView     *contentImageView;
+@property (nonatomic, strong)   IBOutlet    UIImageView *contentImageView;
 @property (nonatomic, strong)   AMPImageModel   *imageModel;
 
 @end

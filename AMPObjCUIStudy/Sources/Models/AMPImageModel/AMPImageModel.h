@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^AMPImageModelLoadingCompletionHandler)(UIImage *image, NSError *error);
+typedef void(^AMPImageModelLoadingCompletionHandler)(UIImage *image);
 
 @class AMPImageModelCache;
 
@@ -20,6 +20,10 @@ typedef void(^AMPImageModelLoadingCompletionHandler)(UIImage *image, NSError *er
 @property (nonatomic, readonly) NSString    *imagePath;
 @property (nonatomic, readonly) NSString    *imageName;
 
+@property (nonatomic, readonly) AMPImageModelCache  *imageCache;
+
++ (AMPImageModelCache *)imageCache;
+
 + (instancetype)imageModelWithURL:(NSURL *)url;
 
 - (instancetype)initWithURL:(NSURL *)url;
@@ -27,10 +31,6 @@ typedef void(^AMPImageModelLoadingCompletionHandler)(UIImage *image, NSError *er
 // this method is intended for subclassing, do not call it directly
 // subclasses must call completionHandler after loading is finished
 - (void)performImageLoadingWithCompletionHandler:(AMPImageModelLoadingCompletionHandler)handler;
-
-// in default implemmentation
-+ (AMPImageModelCache *)imageCache;
-- (AMPImageModelCache *)imageCache;
 
 
 @end

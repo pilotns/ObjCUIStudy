@@ -11,6 +11,11 @@
 #import "AMPImageModel.h"
 #import "AMPUsersModel.h"
 
+@interface AMPFBUser ()
+@property (nonatomic, strong)   AMPUsersModel   *friends;
+
+@end
+
 @implementation AMPFBUser
 
 @dynamic pictureModel;

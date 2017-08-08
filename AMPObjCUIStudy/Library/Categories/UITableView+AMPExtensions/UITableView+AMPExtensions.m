@@ -8,10 +8,9 @@
 
 #import "UITableView+AMPExtensions.h"
 
-#import "AMPArrayModelChange.h"
-
 #import "UINib+AMPExtensions.h"
 #import "NSIndexPath+AMPExtensions.h"
+#import "AMPArrayModelChange+UITableView.h"
 
 @implementation UITableView (AMPExtensions)
 

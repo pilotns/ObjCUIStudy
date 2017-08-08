@@ -40,22 +40,3 @@
 }
 
 @end
-
-@implementation AMPArrayModelChange (UITableView)
-
-- (void)applyToTableView:(UITableView *)tableView {
-    [self applyToTableView:tableView section:0];
-}
-
-- (void)applyToTableView:(UITableView *)tableView section:(NSUInteger)section {
-    [self applyToTableView:tableView section:section rowAnimation:UITableViewRowAnimationAutomatic];
-}
-
-- (void)applyToTableView:(UITableView *)tableView
-                 section:(NSUInteger)section
-            rowAnimation:(UITableViewRowAnimation)animation
-{
-    
-}
-
-@end

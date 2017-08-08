@@ -15,6 +15,8 @@
 
 @implementation AMPView
 
+@dynamic loadingViewVisible;
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -49,11 +51,12 @@
     }
 }
 
-#pragma mark -
-#pragma mark Public Methods
+- (BOOL)isLoadingViewVisible {
+    return AMPLoadingViewVisible == self.loadingView.state;
+}
 
-- (void)setLoadingViewVisible:(BOOL)yesOrNo {
-    [self setLoadingViewVisible:yesOrNo animated:YES];
+- (void)setLoadingViewVisible:(BOOL)loadingViewVisible {
+    [self setLoadingViewVisible:loadingViewVisible animated:YES];
 }
 
 - (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated {
@@ -65,6 +68,9 @@
     
     [self.loadingView setState:state animated:animated completionHandler:handler];
 }
+
+#pragma mark -
+#pragma mark Public Methods
 
 - (AMPLoadingView *)defaultLoadingView {
     return [AMPLoadingView loadingViewInView:self];

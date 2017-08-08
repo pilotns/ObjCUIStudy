@@ -16,14 +16,3 @@
                                    destinationIndex:(NSUInteger)destinationIndex;
 
 @end
-
-@interface AMPArrayModelChange (UITableView)
-
-- (void)applyToTableView:(UITableView *)tableView;
-- (void)applyToTableView:(UITableView *)tableView section:(NSUInteger)section;
-
-- (void)applyToTableView:(UITableView *)tableView
-                 section:(NSUInteger)section
-            rowAnimation:(UITableViewRowAnimation)animation;
-
-@end

@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 
 #define AMPOnce(block) \
-static dispatch_once_t onceToken; \
-dispatch_once(&onceToken, block);
+    { \
+        static id value = nil; \
+        static dispatch_once_t onceToken; \
+        dispatch_once(&onceToken, ^{ \
+            value = block(); \
+        }); \
+        \
+        return value; \
+    }
 
 typedef void (^AMPSheduledBlock)(BOOL *stop);
 

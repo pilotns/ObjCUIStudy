@@ -9,6 +9,7 @@
 #import "AMPArrayModelChangeMove.h"
 
 #import "NSIndexPath+AMPExtensions.h"
+#import "AMPArrayModelChange+UITableView.h"
 
 @interface AMPArrayModelChangeMove ()
 @property (nonatomic, assign)   NSUInteger sourceIndex;

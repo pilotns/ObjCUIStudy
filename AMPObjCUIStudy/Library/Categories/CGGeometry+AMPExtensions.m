@@ -8,6 +8,6 @@
 
 #import "CGGeometry+AMPExtensions.h"
 
-CGPoint AMPCGrectCenter(CGRect rect) {
+CGPoint CGRectCenter(CGRect rect) {
     return CGPointMake(CGMidX(rect), CGMidY(rect));
 }

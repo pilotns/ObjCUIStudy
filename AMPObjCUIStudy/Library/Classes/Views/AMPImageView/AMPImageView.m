@@ -13,7 +13,6 @@
 #import "AMPMacro.h"
 
 @interface AMPImageView ()
-@property (nonatomic, strong)   UIImageView     *contentImageView;
 
 - (void)fillWithModel:(AMPImageModel *)model;
 - (void)initSubviews;
@@ -40,7 +39,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    [self initSubviews];
+    if (!self.contentImageView) {
+        [self initSubviews];
+    }
 }
 
 #pragma mark -

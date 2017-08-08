@@ -21,14 +21,11 @@
 #pragma mark Public Methods
 
 - (void)performImageLoadingWithCompletionHandler:(AMPImageModelLoadingCompletionHandler)handler {
-    NSError *error = nil;
-    NSData *imageData = [NSData dataWithContentsOfFile:self.imagePath
-                                               options:NSDataReadingMappedAlways
-                                                 error:&error];
+    NSData *imageData = [NSData dataWithContentsOfFile:self.imagePath];
     
     UIImage *image = [UIImage imageWithData:imageData];
     if (handler) {
-        handler(image, error);
+        handler(image);
     }
 }
 

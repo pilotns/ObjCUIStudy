@@ -10,38 +10,32 @@
 
 #import "AMPGCDExtensions.h"
 
-#define AMPOnceURL(block) \
-    static NSURL *url = nil; \
-    AMPOnce(block); \
-    \
-    return url;
-
-#define AMPOnceURLForDirectoryWithSearchPathAndDoamin(searchPath, domain) \
-    AMPOnceURL(^{ \
-        url = [self URLsForDirectory:searchPath inDomains:domain].firstObject; \
+#define AMPOnceURLForDirectoryWithSearchPathAndDoamin(searchPath) \
+    AMPOnce(^{ \
+        return [self URLsForDirectory:searchPath inDomains:NSUserDomainMask].firstObject; \
     });
 
 @implementation NSFileManager (AMPExtensions)
 
 - (NSURL *)URLForLibraryDirectory {
-    AMPOnceURLForDirectoryWithSearchPathAndDoamin(NSLibraryDirectory, NSUserDomainMask);
+    AMPOnceURLForDirectoryWithSearchPathAndDoamin(NSLibraryDirectory);
 }
 
 - (NSURL *)URLForDocumentsDirectory {
-    AMPOnceURLForDirectoryWithSearchPathAndDoamin(NSDocumentDirectory, NSUserDomainMask);
+    AMPOnceURLForDirectoryWithSearchPathAndDoamin(NSDocumentDirectory);
 }
 
 - (NSURL *)URLForDirectoryInLibraryDirectory:(NSString *)directoryName {
-    AMPOnceURL(^{
-        url = [[self URLForLibraryDirectory] URLByAppendingPathComponent:directoryName];
-        NSFileManager *manager = [NSFileManager defaultManager];
-        if (![manager createDirectoryAtPath:url.path
-                withIntermediateDirectories:YES
-                                 attributes:nil
-                                      error:nil]) {
-            url = nil;
-        }
-    });
+    NSURL *url = [[self URLForLibraryDirectory] URLByAppendingPathComponent:directoryName];
+    if ([self createDirectoryAtPath:url.path
+        withIntermediateDirectories:YES
+                         attributes:nil
+                              error:nil])
+    {
+        return url;
+    }
+    
+    return nil;
 }
 
 - (NSString *)fileNameWithURL:(NSURL *)url {

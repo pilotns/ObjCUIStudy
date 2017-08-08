@@ -101,6 +101,7 @@
 		8A9FDE0A1EFCE6700008FD56 /* AMPImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FDE091EFCE6700008FD56 /* AMPImageModel.m */; };
 		8A9FDE191EFD06EB0008FD56 /* vw_240.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A9FDE181EFD06EB0008FD56 /* vw_240.jpg */; };
 		8A9FDE361F0191640008FD56 /* AMPUsersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A9FDE351F0191640008FD56 /* AMPUsersModel.m */; };
+		8AABE1471F39DEB600491B8E /* AMPArrayModelChange+UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AABE1461F39DEB600491B8E /* AMPArrayModelChange+UITableView.m */; };
 		8AC062041F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AC062021F3365B800E142F4 /* AMPFBDataModel.xcdatamodeld */; };
 		8AC062081F33669300E142F4 /* AMPDBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC062071F33669300E142F4 /* AMPDBUser.m */; };
 		8AC0620C1F3366B300E142F4 /* AMPDBUserPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0620B1F3366B300E142F4 /* AMPDBUserPicture.m */; };
@@ -334,6 +335,8 @@
 		8A9FDE181EFD06EB0008FD56 /* vw_240.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vw_240.jpg; sourceTree = "<group>"; };
 		8A9FDE341F0191640008FD56 /* AMPUsersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPUsersModel.h; sourceTree = "<group>"; };
 		8A9FDE351F0191640008FD56 /* AMPUsersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPUsersModel.m; sourceTree = "<group>"; };
+		8AABE1451F39DEB600491B8E /* AMPArrayModelChange+UITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AMPArrayModelChange+UITableView.h"; sourceTree = "<group>"; };
+		8AABE1461F39DEB600491B8E /* AMPArrayModelChange+UITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AMPArrayModelChange+UITableView.m"; sourceTree = "<group>"; };
 		8AC062031F3365B800E142F4 /* AMPFBDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AMPFBDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8AC062061F33669300E142F4 /* AMPDBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMPDBUser.h; sourceTree = "<group>"; };
 		8AC062071F33669300E142F4 /* AMPDBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMPDBUser.m; sourceTree = "<group>"; };
@@ -1248,6 +1251,15 @@
 			path = AMPUsersModel;
 			sourceTree = "<group>";
 		};
+		8AABE1441F39DE7D00491B8E /* AMPArrayModelChange+UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				8AABE1451F39DEB600491B8E /* AMPArrayModelChange+UITableView.h */,
+				8AABE1461F39DEB600491B8E /* AMPArrayModelChange+UITableView.m */,
+			);
+			path = "AMPArrayModelChange+UITableView";
+			sourceTree = "<group>";
+		};
 		8AC062011F33658500E142F4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -1279,6 +1291,7 @@
 		8ACB3E761EEC0632004A8B89 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				8AABE1441F39DE7D00491B8E /* AMPArrayModelChange+UITableView */,
 				8AEA38201F0CDCDE00CAE008 /* NSFileManager+AMPExtensions */,
 				8A9FDDDB1EFA53B90008FD56 /* NSNotificationCenter+AMPExtensions */,
 				8A8E99CF1EEEC1F000B939B1 /* NSIndexPath+AMPExtensions */,
@@ -1716,6 +1729,7 @@
 				8AC0620C1F3366B300E142F4 /* AMPDBUserPicture.m in Sources */,
 				8A3D2C0A1F33370700AAA932 /* IDPObjCRuntime.m in Sources */,
 				8A3D2BF91F33370700AAA932 /* IDPObserver.m in Sources */,
+				8AABE1471F39DEB600491B8E /* AMPArrayModelChange+UITableView.m in Sources */,
 				8A4E55B81EE19B28007B5B51 /* main.m in Sources */,
 				8A3D2C001F33370700AAA932 /* IDPRetainingDictionary.m in Sources */,
 				8AC062081F33669300E142F4 /* AMPDBUser.m in Sources */,

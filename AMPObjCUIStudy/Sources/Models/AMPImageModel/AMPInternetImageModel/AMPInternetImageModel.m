@@ -53,27 +53,29 @@
 - (void)performImageLoadingWithCompletionHandler:(AMPImageModelLoadingCompletionHandler)handler {
     NSFileManager *manager = [NSFileManager defaultManager];
     NSString *imagePath = self.imagePath;
-    if ([manager fileExistsAtPath:imagePath]) {
+    
+    void  (^completionHandler)(NSURL *, NSURLResponse *, NSError *) =
+    ^(NSURL *location, NSURLResponse *response, NSError *error) {
+        [manager moveItemAtPath:location.path toPath:imagePath error:nil];
+        
         [super performImageLoadingWithCompletionHandler:handler];
-        if (self.image) {
+    };
+    
+    [super performImageLoadingWithCompletionHandler:^(UIImage *image){
+        if (!handler) {
+            return;
+        }
+        
+        if (image) {
+            handler(image);
             return;
         }
         
         [manager removeItemAtPath:imagePath error:nil];
-    }
-    
-    void  (^completionHandler)(NSURL *, NSURLResponse *, NSError *) =
-            ^(NSURL *location, NSURLResponse *response, NSError *error) {
-                [manager moveItemAtPath:location.path toPath:imagePath error:nil];
-                
-                [super performImageLoadingWithCompletionHandler:handler];
-            };
-    
-    
-    NSURLSessionDownloadTask *loadingTask = [self.session downloadTaskWithURL:self.url
-                                                            completionHandler:completionHandler];
-    
-    self.imageLoadingTask = loadingTask;
+        NSURLSessionDownloadTask *loadingTask = [self.session downloadTaskWithURL:self.url
+                                                                completionHandler:completionHandler];
+        self.imageLoadingTask = loadingTask;
+    }];
 }
 
 @end

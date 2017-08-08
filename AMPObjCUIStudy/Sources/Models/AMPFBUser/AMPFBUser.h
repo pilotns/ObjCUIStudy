@@ -14,12 +14,15 @@
 
 @interface AMPFBUser : AMPModel
 @property (nonatomic, copy)     NSString        *userID;
+
 @property (nonatomic, copy)     NSString        *firstName;
 @property (nonatomic, copy)     NSString        *lastName;
 @property (nonatomic, readonly) NSString        *fullName;
+
 @property (nonatomic, strong)   NSURL           *pictureURL;
 @property (nonatomic, readonly) AMPImageModel   *pictureModel;
-@property (nonatomic, strong)   AMPUsersModel   *friends;
+
+@property (nonatomic, readonly) AMPUsersModel   *friends;
 
 @property (nonatomic, readonly) BOOL    isAuthorized;
 

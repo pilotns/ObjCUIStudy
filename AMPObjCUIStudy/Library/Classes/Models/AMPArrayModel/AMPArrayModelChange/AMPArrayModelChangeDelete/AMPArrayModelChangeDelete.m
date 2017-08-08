@@ -10,6 +10,7 @@
 
 #import "NSIndexPath+AMPExtensions.h"
 #import "UITableView+AMPExtensions.h"
+#import "AMPArrayModelChange+UITableView.h"
 
 @interface AMPArrayModelChangeDelete ()
 @property (nonatomic, assign)   NSUInteger  index;

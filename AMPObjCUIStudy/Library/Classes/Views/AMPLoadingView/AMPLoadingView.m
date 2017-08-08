@@ -108,7 +108,7 @@ static const CGFloat    AMPLoadingViewBackgroundColorAlpha  = 0.8;
     }
     
     indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    indicator.center = AMPCGrectCenter(self.bounds);
+    indicator.center = CGRectCenter(self.bounds);
 
     indicator.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [indicator startAnimating];

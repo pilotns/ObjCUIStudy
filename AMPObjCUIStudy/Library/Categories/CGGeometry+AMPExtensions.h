@@ -23,6 +23,6 @@
 #define CGWidth CGRectGetWidth
 #define CGHeight CGRectGetHeight
 
-CGPoint AMPCGrectCenter(CGRect rect);
+CGPoint CGRectCenter(CGRect rect);
 
 #endif /* AMPCGShortCuts_h */

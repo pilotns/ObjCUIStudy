@@ -26,9 +26,14 @@
 
 @dynamic imagePath;
 @dynamic imageName;
+@dynamic imageCache;
 
 #pragma mark -
 #pragma mark Class Methods
+
++ (AMPImageModelCache *)imageCache {
+    return [AMPImageModelCache sharedCache];
+}
 
 + (instancetype)imageModelWithURL:(NSURL *)url {
     AMPImageModel *imageModel = nil;
@@ -67,10 +72,6 @@
     return [[NSFileManager defaultManager] fileNameWithURL:self.url];
 }
 
-+ (AMPImageModelCache *)imageCache {
-    return [AMPImageModelCache sharedCache];
-}
-
 - (AMPImageModelCache *)imageCache {
     return [[self class] imageCache];
 }
@@ -80,12 +81,10 @@
 
 - (void)performLoading {
     AMPWeakify(self)
-    [self performImageLoadingWithCompletionHandler:^(UIImage *image, NSError *error) {
+    [self performImageLoadingWithCompletionHandler:^(UIImage *image) {
         AMPStrongifyAndReturnIfNil(self)
         self.image = image;
-        AMPModelState state = error ? AMPModelDidFailLoading : AMPModelDidLoad;
-        
-        [self setState:state userInfo:error];
+        self.state = image ? AMPModelDidLoad : AMPModelDidFailLoading;
     }];
 }
 

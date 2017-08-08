@@ -112,13 +112,15 @@
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo {
     @synchronized (self) {
-        if (self.postNotifications) {
-            for (id observer in self.mutableObservers) {
-                if ([observer respondsToSelector:aSelector]) {
-                    AMPPragmaDiagnosticPushSelectorLeak
-                    [observer performSelector:aSelector withObject:self withObject:userInfo];
-                    AMPPragmaDiagnosticPop
-                }
+        if (!self.postNotifications) {
+            return;
+        }
+        
+        for (id observer in self.mutableObservers) {
+            if ([observer respondsToSelector:aSelector]) {
+                AMPPragmaDiagnosticPushSelectorLeak
+                [observer performSelector:aSelector withObject:self withObject:userInfo];
+                AMPPragmaDiagnosticPop
             }
         }
     }

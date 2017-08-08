@@ -13,7 +13,8 @@
 @interface AMPView : UIView
 @property (nonatomic, strong)   IBOutlet    AMPLoadingView  *loadingView;
 
-- (void)setLoadingViewVisible:(BOOL)yesOrNo;
+@property (nonatomic, assign, getter=isLoadingViewVisible)  BOOL    loadingViewVisible;
+
 - (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated;
 - (void)setLoadingViewVisible:(BOOL)yesOrNo animated:(BOOL)animated completionHandler:(void (^)(void))handler;
 
