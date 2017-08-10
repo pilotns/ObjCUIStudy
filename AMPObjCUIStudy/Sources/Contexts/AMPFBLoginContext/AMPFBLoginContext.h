@@ -6,8 +6,8 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPContext.h"
+#import "AMPFBContext.h"
 
-@interface AMPFBLoginContext : AMPContext
+@interface AMPFBLoginContext : AMPFBContext
 
 @end

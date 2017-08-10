@@ -9,14 +9,12 @@
 #import "AMPFBGetUserContext.h"
 
 #import "AMPFBUser.h"
+#import "AMPFBUserPicture.h"
 #import "AMPFBResponseParser.h"
 
 #import "NSFileManager+AMPExtensions.h"
 
-static NSString * const kAMPFBGetUserCachedResponseFileName = @"fbUser.plist";
-
 @interface AMPFBGetUserContext ()
-@property (nonatomic, readonly) AMPFBUser   *user;
 
 @end
 
@@ -25,8 +23,8 @@ static NSString * const kAMPFBGetUserCachedResponseFileName = @"fbUser.plist";
 #pragma mark -
 #pragma mark Accessors
 
-- (AMPFBUser *)user {
-    return self.model;
+- (id)model {
+    return self.user;
 }
 
 - (NSString *)graphPath {
@@ -39,23 +37,17 @@ static NSString * const kAMPFBGetUserCachedResponseFileName = @"fbUser.plist";
     return @{@"fields" : @"first_name,last_name,picture.type(large)"};
 }
 
-- (NSString *)cachedResponseFileName {
-    NSString *userID = [self.model userID];
-    
-    return [NSString stringWithFormat:@"%@_%@", userID, kAMPFBGetUserCachedResponseFileName];
-}
-
 #pragma mark -
 #pragma mark Private Methods
 
 - (void)parseResponse:(id)response {
-    AMPFBUser *user = self.model;
+    AMPFBUser *user = self.user;
     AMPFBResponseParser *parser = [AMPFBResponseParser parserWithResponse:response];
     
     user.userID = parser.userID;
     user.firstName = parser.firstName;
     user.lastName = parser.lastName;
-    user.pictureURL = parser.pictureURL;
+    user.largePicture = [AMPFBUserPicture managedObjectWithURLString:parser.pictureURLString];
 }
 
 @end

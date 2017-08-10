@@ -6,14 +6,11 @@
 //  Copyright © 2017 pilotns. All rights reserved.
 //
 
-#import "AMPContext.h"
+#import "AMPFBContext.h"
 
-@interface AMPFBGetContext : AMPContext
+@interface AMPFBGetContext : AMPFBContext
 @property (nonatomic, readonly) NSString        *graphPath;
 @property (nonatomic, readonly) NSDictionary    *parameters;
-@property (nonatomic, readonly) NSString        *cachedResponseFileName;
-
-- (void)saveResponse:(id)response;
 
 // this methid is intended for subclassing, do not call it directly
 - (void)parseResponse:(id)response;

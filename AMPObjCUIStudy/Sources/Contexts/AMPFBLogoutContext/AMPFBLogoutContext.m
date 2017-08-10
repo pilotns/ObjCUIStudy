@@ -12,6 +12,16 @@
 
 @implementation AMPFBLogoutContext
 
+#pragma mark -
+#pragma mark Accessors
+
+- (id)model {
+    return self.user;
+}
+
+#pragma mark -
+#pragma mark Public Methods
+
 - (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
     [[FBSDKLoginManager new] logOut];
     if (completionHandler) {

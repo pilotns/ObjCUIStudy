@@ -12,28 +12,26 @@
 
 #import "AMPMacro.h"
 
-@interface AMPContext ()
-@property (nonatomic, strong) AMPModel    *model;
-
-@end
-
 @implementation AMPContext
+
+@dynamic model;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
-- (instancetype)initWithModel:(AMPModel *)model {
-    self = [super init];
-    self.model = model;
-    
-    return self;
+- (void)dealloc {
+    [self cancel];
 }
+
+#pragma mark -
+#pragma mark Public Methods
 
 - (void)execute {
     AMPWeakify(self);
     [self performExecutionWithCompletionHandler:^(NSUInteger modelState, NSError *error) {
         AMPStrongifyAndReturnIfNil(self);
         [self.model setState:modelState userInfo:error];
+        [self.model save];
     }];
 }
 

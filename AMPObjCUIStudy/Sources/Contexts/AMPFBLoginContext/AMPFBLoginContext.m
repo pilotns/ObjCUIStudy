@@ -12,26 +12,23 @@
 #import "AMPFBGetUserContext.h"
 #import "AMPGCDExtensions.h"
 
+#import "AMPFBViewController.h"
+
 #import "AMPMacro.h"
 
 @interface AMPFBLoginContext ()
-@property (nonatomic, readonly) AMPFBUser   *user;
-
 @property (nonatomic, strong)   FBSDKLoginManager   *loginManager;
+@property (nonatomic, readonly) NSArray             *readPermissions;
 @property (nonatomic, strong)   AMPFBGetUserContext *context;
 
-- (void)loadModel;
+
+- (void)loadUserWithFacebokUserID:(NSString *)userID;
 
 @end
 
 @implementation AMPFBLoginContext
 
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    [self cancel];
-}
+@dynamic readPermissions;
 
 #pragma mark -
 #pragma mark Accessors
@@ -45,28 +42,32 @@
     }
 }
 
+- (NSArray *)readPermissions {
+    return @[@"public_profile", @"user_friends"];
+}
+
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
-    if (self.user.isAuthorized) {
-        [self loadModel];
+- (void)execute {
+    if (self.authorizedUserID) {
+        [self loadUserWithFacebokUserID:self.authorizedUserID];
+        return;
     }
     
     AMPWeakify(self);
     FBSDKLoginManager *loginManager = [FBSDKLoginManager new];
-    [loginManager logInWithReadPermissions:@[@"public_profile", @"user_friends"]
+    [loginManager logInWithReadPermissions:self.readPermissions
                         fromViewController:nil
                                    handler:^(FBSDKLoginManagerLoginResult *result, NSError *error) {
                                        AMPStrongifyAndReturnIfNil(self);
                                        if (!result.isCancelled && !error) {
-                                           [self loadModel];
+                                           [self loadUserWithFacebokUserID:result.token.userID];
                                        }
                                    }];
     
     self.loginManager = loginManager;
 }
-
 
 - (void)cancel {
     [self.loginManager logOut];
@@ -75,8 +76,12 @@
 #pragma mark -
 #pragma mark Private Methods
 
-- (void)loadModel {
-    self.context = [[AMPFBGetUserContext alloc] initWithModel:self.model];
+- (void)loadUserWithFacebokUserID:(NSString *)userID {
+    AMPFBUser *user = [AMPFBUser managedObjectWithUserID:userID];
+    self.viewController.model = user;
+    
+    self.context = [[AMPFBGetUserContext alloc] initWithUser:user
+                                              viewController:self.viewController];
 }
 
 @end

@@ -16,10 +16,6 @@
 #import "NSFileManager+AMPExtensions.h"
 
 @interface AMPFBGetContext ()
-@property (nonatomic, readonly) AMPFBUser       *user;
-@property (nonatomic, readonly) NSDictionary    *cachedResponse;
-@property (nonatomic, readonly) NSString        *cachedResponsePath;
-
 @property (nonatomic, strong)   FBSDKGraphRequestConnection   *requestConnection;
 
 @end
@@ -28,30 +24,12 @@
 
 @dynamic graphPath;
 @dynamic parameters;
-@dynamic cachedResponseFileName;
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    [self cancel];
-}
 
 #pragma mark -
 #pragma mark Accessors
 
-- (AMPFBUser *)user {
-    return self.model;
-}
-
-- (NSDictionary *)cachedResponse {
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:self.cachedResponsePath];
-}
-
-- (NSString *)cachedResponsePath {
-    NSFileManager *manager = [NSFileManager defaultManager];
-    
-    return [[manager URLForDocumentsDirectory] URLByAppendingPathComponent:self.cachedResponseFileName].path;
+- (NSString *)graphPath {
+    return self.user.userID;
 }
 
 - (void)setRequestConnection:(FBSDKGraphRequestConnection *)requestConnection {
@@ -69,13 +47,10 @@
 - (void)execute {
     AMPModel *model = self.model;
     AMPModelState state = model.state;
-    
-    @synchronized (model) {
-        if (AMPModelWillLoad == state || AMPModelDidLoad == state) {
+    @synchronized (self) {
+        if (AMPModelDidLoad == state || AMPModelWillLoad == state) {
             [model notifyOfState:state];
-            if (AMPModelDidLoad == state) {
-                return;
-            }
+            return;
         }
         
         model.state = AMPModelWillLoad;
@@ -86,7 +61,6 @@
 
 - (void)performExecutionWithCompletionHandler:(AMPContextCompletionHandler)completionHandler {
     FBSDKGraphRequestConnection *requestConnection = [FBSDKGraphRequestConnection new];
-    [requestConnection setDelegateQueue:[NSOperationQueue new]];
     
     FBSDKGraphRequest *request = [[FBSDKGraphRequest alloc] initWithGraphPath:self.graphPath
                                                                    parameters:self.parameters];
@@ -95,22 +69,10 @@
     [requestConnection addRequest:request
                 completionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                     AMPStrongifyAndReturnIfNil(self);
-                    if (error) {
-                        result = self.cachedResponse;
-                    }
-                    
-                    AMPModelState state = self.user.state;
-                    if (result) {
-                        [self saveResponse:result];
-                        [self parseResponse:result];
-                        
-                        state = AMPModelDidLoad;
-                    } else {
-                        state = AMPModelDidFailLoading;
-                    }
+                    [self parseResponse:result];
                     
                     if (completionHandler) {
-                        completionHandler(state, error);
+                        completionHandler(result ? AMPModelDidLoad : AMPModelDidFailLoading, error);
                     }
                 }];
     
@@ -123,10 +85,6 @@
 
 - (void)parseResponse:(id)response {
     
-}
-
-- (void)saveResponse:(id)response {
-    [NSKeyedArchiver archiveRootObject:response toFile:self.cachedResponsePath];
 }
 
 @end
