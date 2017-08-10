@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="AMPFBUser" representedClassName="AMPFBUser" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AMPFBUser" inverseName="friends" inverseEntity="AMPFBUser" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AMPFBUserPicture" inverseName="user" inverseEntity="AMPFBUserPicture" syncable="YES"/>
+    </entity>
+    <entity name="AMPFBUserPicture" representedClassName="AMPFBUserPicture" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="urlString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AMPFBUser" inverseName="pictures" inverseEntity="AMPFBUser" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="AMPFBUser" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="AMPFBUserPicture" positionX="0" positionY="0" width="128" height="90"/>
+    </elements>
+</model>
