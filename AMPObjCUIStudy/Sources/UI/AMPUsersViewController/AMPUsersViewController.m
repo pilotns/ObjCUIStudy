@@ -56,10 +56,10 @@ static NSString * const AMPNavigationControllerTitle    = @"Users";
 
 - (void)setUsers:(AMPUsersModel *)users {
     if (_users != users) {
-        [_users removeObserver:self];
+        [_users removeListener:self];
         
         _users = users;
-        [_users addObserver:self];
+        [_users addListener:self];
         
         [users load];
     }

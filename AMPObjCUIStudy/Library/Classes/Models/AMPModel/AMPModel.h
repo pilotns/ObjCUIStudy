@@ -28,9 +28,21 @@ typedef NS_ENUM(NSUInteger, AMPModelState) {
 
 @end
 
-@interface AMPModel : AMPObservableObject
+@protocol AMPModel <NSObject>
 
+@optional
 - (void)load;
+- (void)save;
+- (void)clear;
+- (void)cancel;
+- (void)finishLoading;
+- (void)failLoading;
+
+@end
+
+@interface AMPModel : AMPObservableObject <AMPModel>
+
++ (instancetype)modelWithTarget:(id)target;
 
 // this methods is intended for subclassing, do not call it directly
 - (void)performLoading;

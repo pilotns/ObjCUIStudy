@@ -11,7 +11,7 @@
 #import "AMPMacro.h"
 
 @interface AMPObservableObject ()
-@property (nonatomic, retain)   NSHashTable     *mutableObservers;
+@property (nonatomic, retain)   NSHashTable     *mutableListeners;
 @property (nonatomic, assign)   BOOL            postNotifications;
 
 - (void)notifyOfStateWithSelector:(SEL)aSelector userInfo:(id)userInfo;
@@ -24,14 +24,14 @@
 
 @synthesize state = _state;
 
-@dynamic observers;
+@dynamic listeners;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (instancetype)init {
     self = [super init];
-    self.mutableObservers = [NSHashTable weakObjectsHashTable];
+    self.mutableListeners = [NSHashTable weakObjectsHashTable];
     self.postNotifications = YES;
     
     return self;
@@ -40,9 +40,13 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (NSSet *)observers {
+- (id)target {
+    return self;
+}
+
+- (NSSet *)listeners {
     @synchronized (self) {
-        return [self.mutableObservers setRepresentation];
+        return [self.mutableListeners setRepresentation];
     }
 }
 
@@ -69,21 +73,21 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)addObserver:(id)observer {
+- (void)addListener:(id)listener {
     @synchronized (self) {
-        [self.mutableObservers addObject:observer];
+        [self.mutableListeners addObject:listener];
     }
 }
 
-- (void)removeObserver:(id)observer {
+- (void)removeListener:(id)listener {
     @synchronized (self) {
-        [self.mutableObservers removeObject:observer];
+        [self.mutableListeners removeObject:listener];
     }
 }
 
-- (BOOL)isObserver:(id)observer {
+- (BOOL)isListener:(id)listener {
     @synchronized (self) {
-        return [self.mutableObservers containsObject:observer];
+        return [self.mutableListeners containsObject:listener];
     }
 }
 
@@ -116,10 +120,10 @@
             return;
         }
         
-        for (id observer in self.mutableObservers) {
+        for (id observer in self.mutableListeners) {
             if ([observer respondsToSelector:aSelector]) {
                 AMPPragmaDiagnosticPushSelectorLeak
-                [observer performSelector:aSelector withObject:self withObject:userInfo];
+                [observer performSelector:aSelector withObject:self.target withObject:userInfo];
                 AMPPragmaDiagnosticPop
             }
         }

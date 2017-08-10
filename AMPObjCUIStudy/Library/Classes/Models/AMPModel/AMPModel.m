@@ -8,19 +8,50 @@
 
 #import "AMPModel.h"
 
-#import "AMPMacro.h"
-#import "AMPGCDExtensions.h"
-
 @interface AMPModel ()
-
-- (void)processLoadingInBackground;
+@property (nonatomic, weak) id  target;
 
 @end
 
 @implementation AMPModel
 
+@synthesize target = _target;
+
+#pragma mark -
+#pragma mark Class Methods
+
++ (instancetype)modelWithTarget:(id)target {
+    return [[self alloc] initWithTarget:target];
+}
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (instancetype)initWithTarget:(id)target {
+    self = [super init];
+    self.target = target;
+    
+    return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (id)target {
+    id target = _target;
+    
+    return target ? target : self;
+}
+
 #pragma mark -
 #pragma mark Public Methods
+
+- (void)performLoading {
+    
+}
+
+#pragma mark -
+#pragma mark AMPModel
 
 - (void)load {
     @synchronized (self) {
@@ -33,22 +64,38 @@
         self.state = AMPModelWillLoad;
     }
     
-    [self processLoadingInBackground];
+    [self performLoading];
 }
 
-- (void)performLoading {
+- (void)save {
     
 }
 
-#pragma mark -
-#pragma mark Private Methods
+- (void)clear {
+    
+}
 
-- (void)processLoadingInBackground {
-    AMPWeakify(self);
-    AMPDispatchAsyncInBackground(^{
-        AMPStrongifyAndReturnIfNil(self);
-        [self performLoading];
-    });
+- (void)cancel {
+    @synchronized (self) {
+        if (AMPModelWillLoad != self.state) {
+            return;
+        }
+        
+        [self clear];
+        self.state = AMPModelDidUnload;
+    }
+}
+
+- (void)finishLoading {
+    @synchronized (self) {
+        self.state = AMPModelDidLoad;
+    }
+}
+
+- (void)failLoading {
+    @synchronized (self) {
+        self.state = AMPModelDidFailLoading;
+    }
 }
 
 #pragma mark -

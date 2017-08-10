@@ -49,10 +49,10 @@
 
 - (void)setImageModel:(AMPImageModel *)imageModel {
     if (_imageModel != imageModel) {
-        [_imageModel removeObserver:self];
+        [_imageModel removeListener:self];
         
         _imageModel = imageModel;
-        [_imageModel addObserver:self];
+        [_imageModel addListener:self];
 
         [_imageModel load];
     }

@@ -10,11 +10,11 @@
 
 @interface AMPObservableObject : NSObject
 @property (nonatomic, assign)   NSUInteger  state;
-@property (nonatomic, readonly) NSSet       *observers;
+@property (nonatomic, readonly) NSSet       *listeners;
 
-- (void)addObserver:(id)observer;
-- (void)removeObserver:(id)observer;
-- (BOOL)isObserver:(id)observer;
+- (void)addListener:(id)listener;
+- (void)removeListener:(id)listener;
+- (BOOL)isListener:(id)listener;
 
 - (void)setState:(NSUInteger)state userInfo:(id)userInfo;
 

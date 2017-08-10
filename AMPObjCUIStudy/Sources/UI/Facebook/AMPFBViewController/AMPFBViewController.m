@@ -34,7 +34,6 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
 
 - (instancetype)init {
     self = [super init];
-    self.model = [AMPFBUser new];
     
     return self;
 }
@@ -48,10 +47,10 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
 
 - (void)setModel:(AMPModel *)model {
     if (_model != model) {
-        [_model removeObserver:self];
+        [_model removeListener:self];
         
         _model = model;
-        [model addObserver:self];
+        [model addListener:self];
     }
 }
 
@@ -62,6 +61,14 @@ AMPSynthesizeBaseViewProperty(AMPFBViewController, AMPView, rootView);
         _context = context;
         [context execute];
     }
+}
+
+#pragma mark -
+#pragma mark View Lifecycle
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.rootView setLoadingViewVisible:NO];
 }
 
 #pragma mark -
