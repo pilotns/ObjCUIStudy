@@ -9,7 +9,8 @@
 #import "AMPFBResponseParser.h"
 
 #import "AMPFBUser.h"
-#import "AMPUsersModel.h"
+
+static NSString * const kAMPFBParserLargePicture = @"200x200";
 
 static NSString * const kAMPFBUserID = @"id";
 static NSString * const kAMPFBUserFirstName = @"first_name";
@@ -18,9 +19,10 @@ static NSString * const kAMPFBUserFriends = @"friends.data";
 static NSString * const kAMPFBUserPictureURL = @"picture.data.url";
 
 @interface AMPFBResponseParser ()
-@property (nonatomic, strong)   id          response;
+@property (nonatomic, strong)   id                  response;
+@property (nonatomic, readonly) AMPFBUserPicture    *picture;
 
-- (AMPFBUser *)userWithResponse:(id)response;
+@property (nonatomic, readonly, getter=isLargePictureURL)   BOOL    largePictureURL;
 
 @end
 
@@ -29,8 +31,9 @@ static NSString * const kAMPFBUserPictureURL = @"picture.data.url";
 @dynamic userID;
 @dynamic firstName;
 @dynamic lastName;
-@dynamic pictureURL;
+@dynamic pictureURLString;
 @dynamic friends;
+
 
 #pragma mark -
 #pragma mark Class Methods
@@ -64,39 +67,12 @@ static NSString * const kAMPFBUserPictureURL = @"picture.data.url";
     return [self.response valueForKeyPath:kAMPFBUserLastName];
 }
 
-- (NSURL *)pictureURL {
-    return [NSURL URLWithString:[self.response valueForKeyPath:kAMPFBUserPictureURL]];
+- (NSString *)pictureURLString {
+    return [self.response valueForKeyPath:kAMPFBUserPictureURL];
 }
 
 - (NSArray *)friends {
-    NSArray *friends = [self.response valueForKeyPath:kAMPFBUserFriends];
-    NSUInteger friendsCount = friends.count;
-    if (!friendsCount) {
-        return nil;
-    }
-    
-    NSMutableArray *mutableFriends = [NSMutableArray arrayWithCapacity:friendsCount];
-    for (id friend in friends) {
-        [mutableFriends addObject:[self userWithResponse:friend]];
-    }
-    
-    return [mutableFriends copy];
-}
-
-#pragma mark -
-#pragma mark Private Methods
-
-- (AMPFBUser *)userWithResponse:(id)response {
-    AMPFBUser *user = [AMPFBUser new];
-    AMPFBResponseParser *parser = [[self class] parserWithResponse:response];
-    user.userID = parser.userID;
-    user.firstName = parser.firstName;
-    user.lastName = parser.lastName;
-    user.pictureURL = parser.pictureURL;
-    
-    [user.friends addObjects:[parser friends]];
-    
-    return user;
+    return [self.response valueForKeyPath:kAMPFBUserFriends];
 }
 
 @end

@@ -14,11 +14,10 @@
 @property (nonatomic, readonly) NSString    *userID;
 @property (nonatomic, readonly) NSString    *firstName;
 @property (nonatomic, readonly) NSString    *lastName;
-@property (nonatomic, readonly) NSURL       *pictureURL;
+
+@property (nonatomic, readonly) NSString    *pictureURLString;
 @property (nonatomic, readonly) NSArray     *friends;
 
 + (instancetype)parserWithResponse:(id)response;
-
-- (instancetype)initWithResponse:(id)response;
 
 @end
