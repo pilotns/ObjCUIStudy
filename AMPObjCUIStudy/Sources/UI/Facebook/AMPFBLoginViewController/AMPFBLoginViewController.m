@@ -19,16 +19,12 @@
 
 #import "AMPMacro.h"
 
-static NSString * const kAMPLoginButtonLoginTitle = @"Login to Facebook";
-static NSString * const kAMPLoginButtonLogoutTitle = @"Logout";
-
 AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, rootView);
 
 @interface AMPFBLoginViewController ()
 @property (nonatomic, readonly) AMPFBUser   *user;
 
 - (void)loadModel;
-- (void)prepareLoginButton;
 - (void)presentUserViewController;
 
 @end
@@ -50,7 +46,8 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, rootView
     ? [AMPFBLogoutContext class]
     : [AMPFBLoginContext class];
     
-    self.context = [[contextClass alloc] initWithModel:self.model];
+    self.context = [[contextClass alloc] initWithUser:self.model
+                                            viewController:self];
 }
 
 #pragma mark -
@@ -59,23 +56,18 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, rootView
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self prepareLoginButton];
-    if (self.isAuthorized) {
-        [self loadModel];
-    }
+    [self.rootView prepareLoginButton];
+    [self loadModel];
 }
 
 #pragma mark -
 #pragma mark Private Methods
 
 - (void)loadModel {
-    self.context = [[AMPFBGetUserContext alloc] initWithModel:self.model];
-}
-
-- (void)prepareLoginButton {
-    NSString *buttonTitle = self.isAuthorized ? kAMPLoginButtonLogoutTitle : kAMPLoginButtonLoginTitle;
-    
-    [self.rootView.loginButton setTitle:buttonTitle forState:UIControlStateNormal];
+    if (self.isAuthorized) {
+        self.context = [[AMPFBLoginContext alloc] initWithUser:self.model
+                                                viewController:self];
+    }
 }
 
 - (void)presentUserViewController {
@@ -93,19 +85,15 @@ AMPSynthesizeBaseViewProperty(AMPFBLoginViewController, AMPFBLoginView, rootView
     AMPDispatchAsyncOnMainQueue(^{
         AMPStrongifyAndReturnIfNil(self);
         self.context = nil;
-        [self prepareLoginButton];
+        [self.rootView prepareLoginButton];
     });
-}
-
-- (void)modelWillLoad:(id)model {
-    
 }
 
 - (void)modelDidLoad:(id)model {
     AMPWeakify(self);
     AMPDispatchAsyncOnMainQueue(^{
         AMPStrongifyAndReturnIfNil(self);
-        [self prepareLoginButton];
+        [self.rootView prepareLoginButton];
         [self presentUserViewController];
     });
 }

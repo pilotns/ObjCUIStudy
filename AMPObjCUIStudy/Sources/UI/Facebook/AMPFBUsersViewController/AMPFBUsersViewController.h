@@ -9,8 +9,6 @@
 #import "AMPFBViewController.h"
 
 @class AMPFBUser;
-@class AMPUsersModel;
-@class AMPFBGetUsersContext;
 
 @interface AMPFBUsersViewController : AMPFBViewController
 @property (nonatomic, strong)   AMPFBUser   *user;

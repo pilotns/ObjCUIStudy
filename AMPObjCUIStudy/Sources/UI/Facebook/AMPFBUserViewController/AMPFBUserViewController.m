@@ -67,7 +67,8 @@ AMPSynthesizeBaseViewProperty(AMPFBUserViewController, AMPFBUserView, rootView);
     if (self.user.isAuthorized) {
         [self fillWithModel:self.model];
     } else {
-        self.context = [[AMPFBGetUserContext alloc] initWithModel:self.model];
+        self.context = [[AMPFBGetUserContext alloc] initWithUser:self.model
+                                                  viewController:self];
     }
 }
 

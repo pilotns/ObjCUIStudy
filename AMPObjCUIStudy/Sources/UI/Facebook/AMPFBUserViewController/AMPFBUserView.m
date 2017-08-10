@@ -10,6 +10,7 @@
 
 #import "AMPImageView.h"
 #import "AMPFBUser.h"
+#import "AMPFBUserPicture.h"
 
 @implementation AMPFBUserView
 
@@ -17,8 +18,8 @@
 #pragma mark Public Methods
 
 - (void)fillWithUser:(AMPFBUser *)user {
-    self.userImageView.imageModel = user.pictureModel;
     self.fullNameLable.text = user.fullName;
+    self.userImageView.imageModel = user.largePicture.imageModel;
 }
 
 @end

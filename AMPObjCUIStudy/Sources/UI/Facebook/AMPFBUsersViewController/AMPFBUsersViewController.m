@@ -23,8 +23,8 @@
 
 AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView);
 
-@interface AMPFBUsersViewController () <UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, readonly) AMPUsersModel   *usersModel;
+@interface AMPFBUsersViewController () <UITableViewDelegate, UITableViewDataSource, AMPArrayModelObserver>
+@property (nonatomic, strong)   AMPFBFriends    *friends;
 
 @end
 
@@ -42,16 +42,22 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
 #pragma mark -
 #pragma mark Accessors
 
+- (AMPFBFriends *)friends {
+    return self.model;
+}
+
 - (void)setUser:(AMPFBUser *)user {
     if (_user != user) {
         _user = user;
-        
-        self.model = user.friends;
+
+        self.model =  user.friendsModel;
     }
 }
 
-- (AMPUsersModel *)usersModel {
-    return self.model;
+- (void)setModel:(AMPModel *)model {
+    [super setModel:model];
+    
+    [model load];
 }
 
 #pragma mark -
@@ -67,31 +73,29 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.context = [[AMPFBGetUsersContext alloc] initWithModel:self.model];
+    self.context = [[AMPFBGetUsersContext alloc] initWithUser:self.user
+                                               viewController:self];
 }
 
-#pragma mark -
-#pragma mark AMPArrayModelObserver
-
-- (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
-    AMPDispatchSyncOnMainQueue(^{
-        [self.rootView.tableView updateWithArrayModelChange:info];
-    });
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.rootView.tableView reloadData];
 }
 
 #pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.usersModel count];
+    return self.friends.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AMPUserCell *cell = [tableView reusableCellWithClass:[AMPUserCell class]];
     
-    cell.user = self.usersModel[indexPath.row];
+    cell.user = self.friends[indexPath.row];
     
     return cell;
 }
@@ -115,5 +119,15 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
 {
     return UITableViewCellAccessoryDisclosureIndicator;
 }
+
+#pragma mark -
+#pragma mark AMPArrayModelObserver
+
+- (void)arrayModel:(AMPArrayModel *)model didChangeWithArrayModelChange:(AMPArrayModelChange *)info {
+    AMPDispatchSyncOnMainQueue(^{
+        [self.rootView.tableView updateWithArrayModelChange:info];
+    });
+}
+
 
 @end

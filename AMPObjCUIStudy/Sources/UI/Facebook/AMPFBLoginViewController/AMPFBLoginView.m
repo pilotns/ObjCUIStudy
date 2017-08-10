@@ -8,8 +8,20 @@
 
 #import "AMPFBLoginView.h"
 
-#import "AMPFBLoginContext.h"
+static NSString * const kAMPLoginButtonLoginTitle   = @"Login to Facebook";
+static NSString * const kAMPLoginButtonLogoutTitle  = @"Logout";
 
 @implementation AMPFBLoginView
+
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)prepareLoginButton {
+    NSString *buttonTitle = [FBSDKAccessToken currentAccessToken]
+                                ? kAMPLoginButtonLogoutTitle
+                                : kAMPLoginButtonLoginTitle;
+    
+    [self.loginButton setTitle:buttonTitle forState:UIControlStateNormal];
+}
 
 @end
