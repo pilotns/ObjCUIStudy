@@ -8,6 +8,7 @@
 
 #import "AMPFBUser.h"
 
+#import "AMPGCDExtensions.h"
 #import "AMPFBUserPicture.h"
 
 @interface AMPFBUser ()
@@ -65,7 +66,9 @@
 }
 
 - (AMPFBFriends *)friendsModel {
-    return [[AMPFBFriends alloc] initWithUser:self];
+    AMPOnce(^{
+        return [[AMPFBFriends alloc] initWithUser:self];
+    });
 }
 
 #pragma mark -
