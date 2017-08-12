@@ -43,11 +43,10 @@
 - (void)parseResponse:(id)response {
     AMPFBUser *user = self.user;
     AMPFBResponseParser *parser = [AMPFBResponseParser parserWithResponse:response];
+
+    [parser fillUser:user withPictureType:AMPFBUserPictureLarge];
     
-    user.userID = parser.userID;
-    user.firstName = parser.firstName;
-    user.lastName = parser.lastName;
-    user.largePicture = [AMPFBUserPicture managedObjectWithURLString:parser.pictureURLString];
+    [user save];
 }
 
 @end

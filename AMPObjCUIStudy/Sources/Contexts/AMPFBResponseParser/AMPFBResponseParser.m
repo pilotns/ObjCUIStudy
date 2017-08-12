@@ -72,4 +72,19 @@ static NSString * const kAMPFBUserPictureURL = @"picture.data.url";
     return [self.response valueForKeyPath:kAMPFBUserFriends];
 }
 
+#pragma mark -
+#pragma mark Public Methods
+
+- (void)fillUser:(AMPFBUser *)user withPictureType:(AMPFBUserPictureType)type {
+    user.userID = self.userID;
+    user.firstName = self.firstName;
+    user.lastName = self.lastName;
+    
+    AMPFBUserPicture *picture = [AMPFBUserPicture managedObjectWithURLString:self.pictureURLString];
+    picture.type = type;
+    [user addPicture:picture];
+    
+    [picture save];
+}
+
 @end

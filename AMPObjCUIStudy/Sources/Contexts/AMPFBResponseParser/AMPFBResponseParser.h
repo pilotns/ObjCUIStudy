@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AMPFBUserPicture.h"
+
 @class AMPFBUser;
 
 @interface AMPFBResponseParser : NSObject
@@ -19,5 +21,7 @@
 @property (nonatomic, readonly) NSArray     *friends;
 
 + (instancetype)parserWithResponse:(id)response;
+
+- (void)fillUser:(AMPFBUser *)user withPictureType:(AMPFBUserPictureType)type;
 
 @end

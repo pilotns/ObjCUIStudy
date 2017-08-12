@@ -86,8 +86,6 @@
     [self performBlockWithoutNotifications:^{
         [self addObjects:self.controller.fetchedObjects];
     }];
-    
-    [self finishLoading];
 }
 
 #pragma mark -

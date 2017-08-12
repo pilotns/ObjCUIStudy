@@ -54,12 +54,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
     }
 }
 
-- (void)setModel:(AMPModel *)model {
-    [super setModel:model];
-    
-    [model load];
-}
-
 #pragma mark -
 #pragma mark Public Methods
 

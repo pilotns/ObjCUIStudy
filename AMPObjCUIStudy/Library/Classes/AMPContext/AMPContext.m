@@ -31,7 +31,6 @@
     [self performExecutionWithCompletionHandler:^(NSUInteger modelState, NSError *error) {
         AMPStrongifyAndReturnIfNil(self);
         [self.model setState:modelState userInfo:error];
-        [self.model save];
     }];
 }
 
