@@ -42,7 +42,7 @@
 }
 
 #pragma mark -
-#pragma mark Private Methods
+#pragma mark Public Methods
 
 - (void)parseResponse:(id)response {
     AMPFBResponseParser *parser = [AMPFBResponseParser parserWithResponse:response];
@@ -54,6 +54,9 @@
     
     [user.friendsModel finishLoading];
 }
+
+#pragma mark -
+#pragma mark Private Methods
 
 - (AMPFBUser *)userWithResponse:(id)response {
     AMPFBResponseParser *parser = [AMPFBResponseParser parserWithResponse:response];

@@ -96,6 +96,7 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
     AMPUserCell *cell = [tableView reusableCellWithClass:[AMPUserCell class]];
     
     cell.user = self.friends[indexPath.row];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -112,12 +113,6 @@ AMPSynthesizeBaseViewProperty(AMPFBUsersViewController, AMPFBUsersView, rootView
     userController.model = cell.user;
     
     [self.navigationController pushViewController:userController animated:YES];
-}
-
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView
-         accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellAccessoryDisclosureIndicator;
 }
 
 #pragma mark -

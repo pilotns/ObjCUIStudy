@@ -38,7 +38,7 @@
 }
 
 #pragma mark -
-#pragma mark Private Methods
+#pragma mark Public Methods
 
 - (void)parseResponse:(id)response {
     AMPFBUser *user = self.user;
