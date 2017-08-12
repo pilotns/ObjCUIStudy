@@ -20,9 +20,6 @@ static NSString * const kAMPFBUserPictureURL = @"picture.data.url";
 
 @interface AMPFBResponseParser ()
 @property (nonatomic, strong)   id                  response;
-@property (nonatomic, readonly) AMPFBUserPicture    *picture;
-
-@property (nonatomic, readonly, getter=isLargePictureURL)   BOOL    largePictureURL;
 
 @end
 
